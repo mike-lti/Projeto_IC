@@ -19,7 +19,6 @@ header h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .loginDiv{
     bottom: 20px;
     border: 1px;
@@ -27,8 +26,6 @@ header h1 {
     text-align: center;
     text-decoration-style: solid;
 }
-
-
 
 .registerDiv{
 
@@ -38,7 +35,6 @@ header h1 {
     text-align: center;
     text-decoration: solid;
 }
-
 
 .menu {    
     background-color: lightgrey;
