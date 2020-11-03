@@ -5,6 +5,7 @@
     background-color: grey;
     display: grid;
     grid-template: auto  auto / 200px auto;
+    
 }
 
 header {
@@ -17,19 +18,24 @@ header h1 {
     padding: 0px 20px;
 }
 
-nav {
-    grid-area: 2 / 1 / span 1 / span 1;
-    background-color: chartreuse;
-    text-align: left;
+.menu {    
+    background-color: grey;
+    float: left;
     margin-bottom: 450px;
     height: 100%;
+    border-style: dashed;
 }
 
 nav a{
 	display: block;
-	color: black;
+    color: black;
+    border: 2px;
+    margin-bottom: 2px;
+    background-color: red;
+    text-align: center;
+    border-style: solid;
+    text-decoration: none;
 	padding: 8px 20px;
-	text-decoration: none;
 	font-family: Lucida Console;
 }
 
