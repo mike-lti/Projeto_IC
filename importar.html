@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!--Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166-->
-<!--Página inicial-->
 
 <html lang="pt-pt">
     <head>
         <title>Memento</title>
         <link rel="stylesheet" type="text/css" href="styles/style.css">
+        <script src="scripts/importar_pageScripts.js"></script>
         <meta charset="utf-8">
     </head>
 
@@ -16,7 +16,7 @@
             </header>
 
             <nav class="menu">
-                <a href="index.html">Galeria</a>
+                <a href="galeria.html">Galeria</a>
                 <a id="currentpage" href="#">Importar</a>
                 <a href="criar_album.html">Criar Álbum</a>
                 <a href="partilhar.html">Partilhar</a>
@@ -26,14 +26,14 @@
 
             <div class="workspace">
                 <div id="top_row_icons">
-                    <img id="pc_icon" width="230" height="280" src="images/pc_icon.png" alt="Importar a partir do PC"> 
-                    <img id="flickr_icon" width="230" height="280" src="images/flickr_icon.png" alt="Icon Flickr">
-                    <img id="google_fotos_icon" width="230" height="280" src="images/google_fotos_icon.png" alt="Icon Google Fotos">
+                    <img id="pc_icon" width="230" height="280" src="images/pc_icon.png" alt="Importar a partir do PC" onclick="importPhotos()">
+                    <img id="flickr_icon" width="230" height="280" src="images/flickr_icon.png" alt="Icon Flickr" onclick="importPhotos()">
+                    <img id="google_fotos_icon" width="230" height="280" src="images/google_fotos_icon.png" alt="Icon Google Fotos" onclick="importPhotos()">
                 </div>
                 <div id="bot_row_icons">
-                    <img id="onedrive_icon" width="230" height="280" src="images/onedrive_icon.png" alt="Icon OneDrive">
-                    <img id="dropbox_icon" width="230" height="280" src="images/dropbox_icon.png" alt="Icon Dropbox">
-                    <img id="icloud_icon" width="230" height="280" src="images/icloud_icon.png" alt="Icon Icloud">
+                    <img id="onedrive_icon" width="230" height="280" src="images/onedrive_icon.png" alt="Icon OneDrive" onclick="importPhotos()">
+                    <img id="dropbox_icon" width="230" height="280" src="images/dropbox_icon.png" alt="Icon Dropbox" onclick="importPhotos()">
+                    <img id="icloud_icon" width="230" height="280" src="images/icloud_icon.png" alt="Icon Icloud" onclick="importPhotos()">
                 </div>
             </div>
         </div>
