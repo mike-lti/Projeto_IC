@@ -1,7 +1,7 @@
 .container {
     margin: auto;
-    width: 1280px !important;
-    height: 720px !important;
+    width: 1280px;
+    height: 720px;
     background-color: grey;
     display: grid;
     grid-template: 80px  auto / 200px auto;
@@ -16,23 +16,6 @@ header {
 header h1 {
     padding: 0px 20px;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-.loginDiv{
-    bottom: 20px;
-    border: 1px;
-    border-style: solid;
-    text-align: center;
-    text-decoration-style: solid;
-}
-
-.registerDiv{
-
-    bottom: 0px;
-    border: 1px;
-    border-style: solid;
-    text-align: center;
-    text-decoration: solid;
 }
 
 .menu {    
@@ -59,4 +42,27 @@ nav a{
 .workspace {
     grid-area: 2 / 2 /span 1 / span 1;
     background-color: beige;
+    text-align: center;
+}
+
+#top_row_icons {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+#pc_icon {
+    margin-right: 50px;
+}
+
+#onedrive_icon {
+    margin-right: 50px;
+}
+
+#flickr_icon {
+    margin-right: 50px;
+}
+
+#dropbox_icon {
+    margin-right: 50px;
 }
