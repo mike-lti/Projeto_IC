@@ -6,7 +6,7 @@
     <head>
         <title>Memento</title>
         <link rel="stylesheet" type="text/css" href="styles/home_page_style.css">
-        <script src="scripts/loginScripts.js"></script>
+        <script src="scripts/home_pageScripts.js"></script>
         <meta charset="utf-8">
     </head>
 
@@ -42,10 +42,43 @@
             <div class="loginConfirmationButton"><a href="index.html">Entrar</a> </div>
         </div>
 
-        <div class="registerHandler">
-            Register        
+        <div class="registarHandler" onclick="RegistarDimmerShower()">
+            Registar        
         </div>
+        
+        
+        <div class="registarDimmer">
+            <form class="registarFormStyle">
+                <label for="username">
+                    <p><b>Nome:</b></p>
+                </label>
+                <input type="text" maxlength="20" size="30" placeholder="Insira o seu nome de utilizador"
+                name="username" required>
+                
+                <label for="email">
+                    <p><b>Endereço de Correio Eletrónico:</b></p>
+                </label>
+                <input type="text" maxlength="15" size="30" placeholder="Insira o seu Endereço de Correio Eletrónico"
+                name="email" required>
+                
+                <label for="password">
+                    <p><b>Palavra Passe:</b></p>
+                </label>
+                <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
+                name="password" required>
+                
+                <label for="confirmPassword">
+                    <p><b>Confirme a Sua Palavra Passe:</b></p>
+                </label>
+                <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
+                name="confirmPassword" required>
 
+            </form>
+            
+            <div class="closeButtonRegistar" onclick = "RegistarDimmerCloser()"><p>X</p></div>
+            <div class="registarConfirmationButton"><a href="index.html">Entrar</a> </div>
+        </div>
+        
     <div class="backgroudPopups">
 
 
