@@ -5,7 +5,6 @@
     background-color: grey;
     display: grid;
     grid-template: auto  auto / 200px auto;
-    
 }
 
 header {
