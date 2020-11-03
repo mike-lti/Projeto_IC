@@ -48,6 +48,10 @@ header h1 {
     color: black;
 }
 
+#currentpage {
+    background-color: palegoldenrod;
+}
+
 nav a{
     color: black;
 	display: block;
