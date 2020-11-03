@@ -1,0 +1,51 @@
+.welcomeUserPage{
+    width: 1280px;
+    height: 720px;
+    background-color: brown;
+    margin: auto;
+}
+
+.imageContainer{
+    text-align: center;
+    margin:auto;
+    width: 35%;
+}
+
+#mementoLogo{
+    width: 50%;
+    margin-top: 10px;
+}
+
+.loginHandler{
+    justify-content: center;
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 30%;
+    height: 20%;
+    text-align: center;
+    border: 2px;
+    border-style: solid;
+    font-weight: bold;
+    font-size: 5em;
+    
+}
+
+.loginLink{
+    text-decoration: none;
+    font-size: 80%;
+    color: black;
+}
+
+.registerHandler{
+    display: block;
+    margin: auto;    
+    width: 30%;
+    height: 20%;
+    text-align: center;
+    border: 2px;
+    border-style: solid;
+    font-weight: bold;
+    font-size: 3.5em;
+}
