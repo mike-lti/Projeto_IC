@@ -18,6 +18,27 @@ header h1 {
     padding: 0px 20px;
 }
 
+
+.loginDiv{
+    bottom: 20px;
+    border: 1px;
+    border-style: solid;
+    text-align: center;
+    text-decoration-style: solid;
+}
+
+
+
+.registerDiv{
+
+    bottom: 0px;
+    border: 1px;
+    border-style: solid;
+    text-align: center;
+    text-decoration: solid;
+}
+
+
 .menu {    
     background-color: grey;
     float: left;
