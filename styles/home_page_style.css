@@ -6,16 +6,16 @@ a{
     color: black;
 }
 
-
-
-.welcomeUserPage{
+.container {
     width: 1280px;
-    height: 720px;
-    background-color: white;
-    margin: auto;
+    height: 720px; 
 }
 
 
+.welcomeUserPage{
+    background-color: brown;
+    margin: auto;
+}
 
 .loginFormStyle{
     text-align: center;

@@ -12,80 +12,77 @@
 
 
     <body class="welcomeUserPage">
-    <div class="backgroundPopups"></div>      
-        <div class="imageContainer">
-            <img src="images/logo_Memento.png" id="mementoLogo">
-        </div>
+        <div class="container">
+            <div class="backgroundPopups"></div>      
+                <div class="imageContainer">
+                    <img src="images/logo_Memento.png" id="mementoLogo">
+                </div>
 
-        <div class="loginHandler" onclick="loginDimmerShower()">            
-            Login           
-        </div>
+                <div class="loginHandler" onclick="loginDimmerShower()">            
+                    Login           
+                </div>
 
 
-        <div class="loginDimmer">
-            <form class="loginFormStyle">
-                <label for="username">
-                    <p><b>Nome:</b></p>
-                </label>
-                <input type="text" maxlength="20" size="30" placeholder="Insira o seu nome de utilizador"
-                name="username" required>
+                <div class="loginDimmer">
+                    <form class="loginFormStyle">
+                        <label for="username">
+                            <p><b>Nome:</b></p>
+                        </label>
+                        <input type="text" maxlength="20" size="30" placeholder="Insira o seu nome de utilizador"
+                        name="username" required>
+                        
+                        <label for="password">
+                            <p><b>Palavra passe:</b></p>
+                        </label>
+                        <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
+                        name="password" required>
+
+                    </form>
+
+                    <div class="closeButtonLogin" onclick = "loginDimmerCloser()"><p>X</p></div>
+                    <div class="loginConfirmationButton"><a href="index.html">Entrar</a> </div>
+                </div>
+
+                <div class="registarHandler" onclick="RegistarDimmerShower()">
+                    Registar        
+                </div>
                 
-                <label for="password">
-                    <p><b>Palavra passe:</b></p>
-                </label>
-                <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
-                name="password" required>
-
-            </form>
-
-            <div class="closeButtonLogin" onclick = "loginDimmerCloser()"><p>X</p></div>
-            <div class="loginConfirmationButton"><a href="index.html">Entrar</a> </div>
-        </div>
-
-        <div class="registarHandler" onclick="RegistarDimmerShower()">
-            Registar        
-        </div>
-        
-        
-        <div class="registarDimmer">
-            <form class="registarFormStyle">
-                <label for="username">
-                    <p><b>Nome:</b></p>
-                </label>
-                <input type="text" maxlength="20" size="30" placeholder="Insira o seu nome de utilizador"
-                name="username" required>
                 
-                <label for="email">
-                    <p><b>Endereço de Correio Eletrónico:</b></p>
-                </label>
-                <input type="text" maxlength="15" size="30" placeholder="Insira o seu Endereço de Correio Eletrónico"
-                name="email" required>
-                
-                <label for="password">
-                    <p><b>Palavra Passe:</b></p>
-                </label>
-                <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
-                name="password" required>
-                
-                <label for="confirmPassword">
-                    <p><b>Confirme a Sua Palavra Passe:</b></p>
-                </label>
-                <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
-                name="confirmPassword" required>
+                <div class="registarDimmer">
+                    <form class="registarFormStyle">
+                        <label for="username">
+                            <p><b>Nome:</b></p>
+                        </label>
+                        <input type="text" maxlength="20" size="30" placeholder="Insira o seu nome de utilizador"
+                        name="username" required>
+                        
+                        <label for="email">
+                            <p><b>Endereço de Correio Eletrónico:</b></p>
+                        </label>
+                        <input type="text" maxlength="15" size="30" placeholder="Insira o seu Endereço de Correio Eletrónico"
+                        name="email" required>
+                        
+                        <label for="password">
+                            <p><b>Palavra Passe:</b></p>
+                        </label>
+                        <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
+                        name="password" required>
+                        
+                        <label for="confirmPassword">
+                            <p><b>Confirme a Sua Palavra Passe:</b></p>
+                        </label>
+                        <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
+                        name="confirmPassword" required>
 
-            </form>
-            
-            <div class="closeButtonRegistar" onclick = "RegistarDimmerCloser()"><p>X</p></div>
-            <div class="registarConfirmationButton"><a href="index.html">Entrar</a> </div>
+                    </form>
+                    
+                    <div class="closeButtonRegistar" onclick = "RegistarDimmerCloser()"><p>X</p></div>
+                    <div class="registarConfirmationButton"><a href="index.html">Entrar</a> </div>
+                </div>
+                
+            <div class="backgroudPopups">
+            </div>
         </div>
-        
-    <div class="backgroudPopups">
-
-
-    </div>
-
-
-    
     </body>
     
 
