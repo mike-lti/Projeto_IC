@@ -2,9 +2,8 @@
     width: 1280px;
     height: 720px;
     background-color: brown;
-
+    margin: auto;
 }
-
 
 .imageContainer{
     text-align: center;
@@ -13,7 +12,8 @@
 }
 
 #mementoLogo{
-    width: 50%;
+    width: 35%;
+    margin-top: 10px;
 }
 
 .loginHandler{
@@ -22,7 +22,7 @@
     margin: auto;
     margin-top: 5%;
     margin-bottom: 5%;
-    width: 50%;
+    width: 30%;
     height: 20%;
     text-align: center;
     border: 2px;
@@ -41,7 +41,7 @@
 .registerHandler{
     display: block;
     margin: auto;    
-    width: 50%;
+    width: 30%;
     height: 20%;
     text-align: center;
     border: 2px;
@@ -116,4 +116,3 @@ nav a{
     grid-area: 2 / 2 /span 1 / span 1;
     background-color: moccasin;
 }
-
