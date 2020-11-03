@@ -1,10 +1,10 @@
 .container {
     margin: auto;
-    width: 1280px;
-    height: 720px;
+    width: 1280px !important;
+    height: 720px !important;
     background-color: grey;
     display: grid;
-    grid-template: auto  auto / 200px auto;
+    grid-template: 80px  auto / 200px auto;
 }
 
 header {
@@ -38,12 +38,11 @@ header h1 {
 .menu {    
     background-color: lightgrey;
     float: left;
-    margin-bottom: 450px;
     height: 100%;
 }
 
 #currentpage {
-    background-color: palegoldenrod;
+    background-color: beige;
 }
 
 nav a{
