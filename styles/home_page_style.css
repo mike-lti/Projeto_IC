@@ -5,6 +5,15 @@
     margin: auto;
 }
 
+.loginDimmer{
+    border: 2px, solid, black;
+    display: absolute;
+    text-align: center;
+}
+
+
+
+
 .imageContainer{
     text-align: center;
     margin:auto;
