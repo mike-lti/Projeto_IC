@@ -1,3 +1,6 @@
+/*Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166*/
+
+
 a{
     text-decoration: none;
     color: black;
@@ -40,6 +43,33 @@ a{
 
 }
 
+.registarFormStyle{
+    text-align: center;
+    max-width: 400px;
+    padding: 10px;
+}
+
+.registarDimmer{
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    border: 5px solid black;  
+    top: 50%;
+    left: 50%; 
+    z-index: 9;
+    background-color: grey;    
+    text-align: center;   
+    transform: translate(-50%, -50%);
+}
+
+.registarConfirmationButton{
+    width: 40%;
+    padding: 10px;
+    border: 2px solid black; 
+    margin: auto;
+}
+
+
 .backgroundPopups{
     position: fixed;
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.589);
@@ -62,6 +92,16 @@ a{
 
 
 .closeButtonLogin{
+    width: 7%;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+
+}
+
+.closeButtonRegistar{
     width: 7%;
     cursor: pointer;
     display: inline-block;
@@ -95,14 +135,18 @@ a{
     color: black;
 }
 
-.registerHandler{
-    display: block;
-    margin: auto;    
+.registarHandler{
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
     width: 30%;
     height: 20%;
     text-align: center;
     border: 2px;
     border-style: solid;
     font-weight: bold;
-    font-size: 3.5em;
+    font-size: 4em;
 }
