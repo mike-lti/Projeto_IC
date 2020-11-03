@@ -43,11 +43,6 @@ header h1 {
     height: 100%;
 }
 
-.menu a:hover {
-    background-color: white;
-    color: black;
-}
-
 #currentpage {
     background-color: palegoldenrod;
 }
