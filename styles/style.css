@@ -85,16 +85,17 @@ nav a{
 }
 
 .modal_content {
-    background-color: lightgoldenrodyellow;
-    margin: 15% auto;
-    padding: 20px;
+    background-color: beige;
+    margin: auto;
+    margin-top: 30px;
+    padding: 30px;
     border: 1px solid #888;
-    width: 40%;
+    width: 80%;
 }
 
-.close_button {
+#close_button {
     color: grey;
     float: right;
-    font-size: 12px;
+    font-size: 30px;
     font-weight: bold;
 }

@@ -4,3 +4,7 @@ function showModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
     document.getElementsByClassName("importing_modal")[0].style.zIndex = "2";
 }
+
+function closeModal() {
+    document.getElementsByClassName("importing_modal")[0].style.display = "none";
+}
