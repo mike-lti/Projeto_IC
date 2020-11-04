@@ -6,11 +6,15 @@ a{
     color: black;
 }
 
+b{
+    font-size: 170%;
+}
+
 .container {
     width: 1280px;
     height: 720px; 
     margin: auto;
-    background-color: brown;
+    background-color: beige;
 }
 
 
