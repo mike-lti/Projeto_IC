@@ -6,11 +6,11 @@
     height: 720px;
     background-color: grey;
     display: grid;
-    grid-template: 80px  auto / 200px auto;
+    grid-template: 80px  auto / 200px auto auto;
 }
 
 header {
-    grid-area: 1 / 1 / span 1 / span 2;
+    grid-area: 1 / 1 / span 1 / span 1;
     background-color: grey;
     height: fit-content;
 }
@@ -25,10 +25,32 @@ header a {
     text-decoration: none;
 }
 
-.menu {    
+.top-right-bar {
+    grid-area: 1 / 2 / span 1 / span 3;
+    background-color: lightgray;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: xx-large;
+}
+
+.side-bar {    
     background-color: lightgrey;
-    float: left;
-    height: 100%;
+    grid-area: 2 / 1 / span 2 / span 1;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.menu {
+    float: center;
+    height: auto;
+    grid-area: 1 / 1 / span 1 / span 1;
+}
+
+#memento {
+    grid-area: 3 / 1 / span 1 / span 1;
+    text-align: center;
+    margin: 10px;
 }
 
 #currentpage {
@@ -47,7 +69,7 @@ nav a{
 }
 
 .workspace {
-    grid-area: 2 / 2 /span 1 / span 1;
+    grid-area: 2 / 2 /span 2 / span 3;
     background-color: beige;
     text-align: center;
 }
@@ -107,4 +129,27 @@ nav a{
     pointer-events: none;
     z-index: 8;
     opacity: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+    margin-top: 40px;
+}
+.grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    height: 95px;
+    width: 160px;
+}
+
+#editar {
+    float: right;
+}
+
+#mais {
+    float: left;
 }
