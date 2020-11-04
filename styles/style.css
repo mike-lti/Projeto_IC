@@ -96,7 +96,8 @@ nav a{
     margin-right: 50px;
 }
 
-/*POPUP na pagina importar*/
+
+/* popup importar*/
 .importing_modal {
     display: none;
     position: absolute;
@@ -177,3 +178,24 @@ nav a{
     margin-right: 8px;
 }
 
+
+.processHandler{
+    position: absolute;
+    padding: 2px;
+    margin: auto; 
+    left: 29%;
+    top: 84%;         
+    width: 60%;
+    height: 15%;
+    background-color: grey;
+    z-index: 9;
+    display: none;
+    
+}
+
+
+.processHandler, p{
+    text-align: center;
+    font-size: 110%;
+
+}
