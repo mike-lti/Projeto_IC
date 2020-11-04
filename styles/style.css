@@ -52,7 +52,7 @@ nav a{
     text-align: center;
 }
 
-#top_row_icons {
+.top_row_icons {
     margin-top: 20px;
     margin-bottom: 30px;
     display: inline-block;
@@ -72,4 +72,29 @@ nav a{
 
 #dropbox_icon {
     margin-right: 50px;
+}
+
+.importing_modal {
+    display: none;
+    position: absolute;
+    top: 230px;
+    right: 230px;
+    width: 640px;
+    height: 340px;
+    background-color: lightblue;
+}
+
+.modal_content {
+    background-color: lightgoldenrodyellow;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+}
+
+.close_button {
+    color: grey;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
 }

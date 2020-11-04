@@ -25,19 +25,23 @@
             </nav>
 
             <div class="workspace">
-                <div id="top_row_icons">
-                    <img id="pc_icon" width="230" height="280" src="images/pc_icon.png" alt="Importar a partir do PC" onclick="importPhotos()">
-                    <img id="flickr_icon" width="230" height="280" src="images/flickr_icon.png" alt="Icon Flickr" onclick="importPhotos()">
-                    <img id="google_fotos_icon" width="230" height="280" src="images/google_fotos_icon.png" alt="Icon Google Fotos" onclick="importPhotos()">
+                <div class="top_row_icons">
+                    <input type="image" id="pc_icon" width="230" height="280" src="images/pc_icon.png" onclick="showModal()">
+                    <input type="image" id="flickr_icon" width="230" height="280" src="images/flickr_icon.png"  onclick="showModal()">
+                    <input type="image" id="google_fotos_icon" width="230" height="280" src="images/google_fotos_icon.png" onclick="showModal()">
                 </div>
                 
-                <div id="bot_row_icons">
-                    <img id="onedrive_icon" width="230" height="280" src="images/onedrive_icon.png" alt="Icon OneDrive" onclick="importPhotos()">
-                    <img id="dropbox_icon" width="230" height="280" src="images/dropbox_icon.png" alt="Icon Dropbox" onclick="importPhotos()">
-                    <img id="icloud_icon" width="230" height="280" src="images/icloud_icon.png" alt="Icon Icloud" onclick="importPhotos()">
+                <div class="bot_row_icons">
+                    <input type="image" id="onedrive_icon" width="230" height="280" src="images/onedrive_icon.png" onclick="showModal()">
+                    <input type="image" id="dropbox_icon" width="230" height="280" src="images/dropbox_icon.png" onclick="showModal()">
+                    <input type="image" id="icloud_icon" width="230" height="280" src="images/icloud_icon.png" onclick="showModal()">
                 </div>
 
-                <div class="importing_popup">
+                <div class="importing_modal">
+                    <div class="modal_content">
+                        <span id="close_button">&times;</span>
+                        <p>IMPORTANDO</p>
+                    </div>
                 </div>
             </div>
         </div>
