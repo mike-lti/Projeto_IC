@@ -134,6 +134,7 @@ nav a{
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 15px;
     margin-top: 40px;
+    padding-left: 40px;
 }
 .grid-item {
     border: 1px solid rgba(0, 0, 0, 0.8);
