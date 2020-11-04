@@ -98,4 +98,13 @@ nav a{
     float: right;
     font-size: 30px;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.dimmer {
+    position: fixed;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.589);
+    pointer-events: none;
+    z-index: 8;
+    opacity: 0;
 }

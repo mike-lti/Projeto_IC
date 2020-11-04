@@ -2,9 +2,12 @@
 
 function showModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
-    document.getElementsByClassName("importing_modal")[0].style.zIndex = "2";
+    document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
+    document.getElementsByClassName("dimmer")[0].style.opacity = "1";
 }
 
 function closeModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "none";
+    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
 }
+
