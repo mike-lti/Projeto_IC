@@ -11,3 +11,14 @@ function closeModal() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
 }
 
+function importCubaPhotos() {
+
+}
+
+function importFrancePhotos() {
+
+}
+
+function importSpikePhotos() {
+    
+}

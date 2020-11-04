@@ -114,7 +114,7 @@ nav a{
 }
 
 #close_button {
-    color: grey;
+    color:black;
     float: right;
     font-size: 30px;
     font-weight: bold;
@@ -150,4 +150,9 @@ nav a{
 
 #mais {
     float: left;
+}
+
+#file_franca {
+    margin-left: 8px;
+    margin-right: 8px;
 }
