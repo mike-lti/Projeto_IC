@@ -137,7 +137,7 @@ nav a{
     padding-left: 40px;
 }
 .grid-item {
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    border: 1px dashed rgba(0, 0, 0, 0.8);
     font-size: 30px;
     text-align: center;
     align-items: center;
@@ -149,11 +149,20 @@ nav a{
     float: right;
 }
 
-#mais {
+#sinal_mais_icon {
     float: left;
 }
 
 #file_franca {
     margin-left: 8px;
     margin-right: 8px;
+}
+
+.nome-album {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    background-color: aqua;
+    top: 200px;
+    left: 490px;
 }
