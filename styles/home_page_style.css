@@ -9,11 +9,13 @@ a{
 .container {
     width: 1280px;
     height: 720px; 
+    margin: auto;
+    background-color: brown;
 }
 
 
 .welcomeUserPage{
-    background-color: brown;
+    
     margin: auto;
 }
 
