@@ -7,7 +7,6 @@ function loginDimmerShower() {
     backgroundDimmer.style.opacity = "1";
 }
 
-
 function loginDimmerCloser() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let loginPopup = document.getElementsByClassName("loginDimmer")[0];
@@ -18,16 +17,12 @@ function loginDimmerCloser() {
 
 }
 
-
-
-
 function RegistarDimmerShower() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let registarPopup = document.getElementsByClassName("registarDimmer")[0];
     registarPopup.style.display = "block";
     backgroundDimmer.style.opacity = "1";
 }
-
 
 function RegistarDimmerCloser() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
