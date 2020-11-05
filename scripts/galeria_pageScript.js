@@ -2,27 +2,25 @@
 
 "use strict";
 
-$(document).ready(showPhotos());
+$(document).ready(imagePlacer());
 
-let cubaAlbumPhoto =["images/cubaAlbum.jpg"] 
+let cubaAlbumPhoto = "images/cubaAlbum.jpg" 
 
 function showPhotos() {
     switch (localStorage.getItem("selectedFile")) {
         case "Cuba":
-            return cubaAlbumPhoto[0]
+            return cubaAlbumPhoto
             break;
 
         case "Franca":
-            return cubaAlbumPhoto[1]
+            return cubaAlbumPhoto
             break;
 
         case "Spike":
-            return cubaAlbumPhoto[2]
+            return cubaAlbumPhoto
             break;        
     }
 }
-
-
 
 function imagePlacer(){
     let imageToPlace = showPhotos()
