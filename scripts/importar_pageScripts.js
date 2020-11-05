@@ -13,26 +13,19 @@ function closeModal() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
 }
 
+function closePopup(){
+    document.getElementsByClassName("popup")[0].style.display = "none"
+
+}
+
 function importCubaPhotos() {
-    document.getElementsByClassName("importing_modal")[0].style.display = "none"
-    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
-    document.getElementsByClassName("popup")[0].style.display = "inline-block"
+
 }
 
 function importFrancePhotos() {
-    document.getElementsByClassName("importing_modal")[0].style.display = "none"
-    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
-    document.getElementsByClassName("popup")[0].style.display = "inline-block"
+
 }
 
 function importSpikePhotos() {
-    document.getElementsByClassName("importing_modal")[0].style.display = "none"
-    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
-    document.getElementsByClassName("popup")[0].style.display = "inline-block"
-}
-
-
-function closePopup(){
-    document.getElementsByClassName("popup")[0].style.display = "none"
 
 }
