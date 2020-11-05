@@ -29,12 +29,12 @@ b{
     padding: 10px;
 }
 .loginDimmer{
-    display: none;
     overflow: hidden;
     position: fixed;
     border: 5px solid black;  
     top: 50%;
     left: 50%; 
+    height: 300px;
     z-index: 9;
     background-color: grey;    
     text-align: center;   
@@ -51,6 +51,7 @@ b{
 
 .registarFormStyle{
     text-align: center;
+    height: 300px;
     max-width: 400px;
     padding: 10px;
 }
@@ -97,7 +98,6 @@ b{
     position: absolute;
     
 }
-
 
 .closeButtonLogin{
     width: 7%;
@@ -173,7 +173,7 @@ b{
     font-size: 2em;
 }
 
-p {
+#mensagem-abertura {
     position: absolute;
     top: 370px;
     right: 420px;
