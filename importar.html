@@ -5,7 +5,6 @@
     <head>
         <title>Memento</title>
         <link rel="stylesheet" type="text/css" href="styles/style.css">
-        <script src="scripts/importar_pageScripts.js"></script>
         <meta charset="utf-8">
     </head>
 
@@ -15,10 +14,10 @@
                 <a href="home_page.html"><img src="https://fontmeme.com/permalink/201105/65accd916ad7ea7ffc6c7b7279901614.png" id="memento-top-left" alt="fonte-against-romance" border="0"></a>
             </header>
 
-            <div class="top-right-bar">
-                <div id="centro-top-bar"><a href="https://fontmeme.com/fontes/fonte-against-romance/"><img src="https://fontmeme.com/permalink/201105/fbf34808a039087a375499b6f68e3b7e.png" alt="fonte-against-romance" border="0"></a></div>                
+            <div id="top-right-bar">
+                <div id="centro-top-bar"><img src="https://fontmeme.com/permalink/201105/fbf34808a039087a375499b6f68e3b7e.png" alt="fonte-against-romance" border="0"></div>                
             </div>
-            <div class="side-bar">
+            <div id="side-bar">
                 <nav class="menu">
                     <a href="galeria.html">Galeria <img src="images/galeria_icon.png" style="vertical-align:middle" height="35px" width="40px"  alt=""></a> 
                     <a id="currentpage" href="#">Importar <img src="images/importar_icon.png" style="vertical-align:middle" height="35px" width="40px" alt=""></a>
@@ -34,16 +33,16 @@
             </div>
             
             <div class="workspace">
-                <div class="top_row_icons">
+                <div id="top_row_icons">
                     <input type="image" id="pc_icon" width="230" height="280" src="images/pc_icon.png" onclick="showModal()">
-                    <input type="image" id="flickr_icon" width="230" height="280" src="images/flickr_icon.png"  onclick="showModal()">
-                    <input type="image" id="google_fotos_icon" width="230" height="280" src="images/google_fotos_icon.png" onclick="showModal()">
+                    <img id="flickr_icon" src="images/flickr_icon.png" width="230" height="280" alt="flickr icon">
+                    <img id="google_fotos_icon" src="images/google_fotos_icon.png" width="230" height="280" alt="google fotos icon">
                 </div>
                 
-                <div class="bot_row_icons">
-                    <input type="image" id="onedrive_icon" width="230" height="280" src="images/onedrive_icon.png" onclick="showModal()">
-                    <input type="image" id="dropbox_icon" width="230" height="280" src="images/dropbox_icon.png" onclick="showModal()">
-                    <input type="image" id="icloud_icon" width="230" height="280" src="images/icloud_icon.png" onclick="showModal()">
+                <div id="bot_row_icons">
+                    <img id="onedrive_icon" src="images/onedrive_icon.png" width="230" height="280" alt="onedrive icon">
+                    <img id="dropbox_icon" src="images/dropbox_icon.png" width="230" height="280" alt="dropbox icon">
+                    <img id="icloud_icon" src="images/icloud_icon.png" width="230" height="280" alt="icloud icon">
                 </div>
 
                 <div class="importing_modal">
@@ -67,5 +66,8 @@
 
         <div class="dimmer">
         </div>
+
+        <script src="scripts/importar_pageScripts.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </body>
 </html>

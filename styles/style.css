@@ -29,7 +29,7 @@ header a {
     text-decoration: none;
 }
 
-.top-right-bar {
+#top-right-bar {
     grid-area: 1 / 2 / span 1 / span 3;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -41,7 +41,7 @@ header a {
     font-size: xx-large;
 }
 
-.side-bar {    
+#side-bar {    
     background-color: lightgrey;
     grid-area: 2 / 1 / span 2 / span 1;
     display: grid;
@@ -81,7 +81,7 @@ nav a{
     text-align: center;
 }
 
-.top_row_icons {
+#top_row_icons {
     margin-top: 20px;
     margin-bottom: 30px;
     display: inline-block;
@@ -234,4 +234,8 @@ nav a{
     right: 30px;
     top: 25px;
     width: 60px;
+}
+
+.disabled {
+    pointer-events: none;
 }

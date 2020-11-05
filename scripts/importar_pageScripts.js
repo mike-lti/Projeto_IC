@@ -6,11 +6,13 @@ function showModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
     document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
+    disableBackground()
 }
 
 function closeModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+    enableBackground()
 }
 
 function showPopup() {
@@ -30,6 +32,7 @@ function cancelSelection() {
 function confirmSelection() {
     closeModal()
     showPopup()
+
 }
 
 function selectCuba() {
@@ -42,4 +45,18 @@ function selectFranca() {
 
 function selectSpike() {
    localStorage.setItem("selectedFile", "Spike") 
+}
+
+function disableBackground() {
+    $("#side-bar").addClass("disabled");
+    $("#memento-top-left").addClass("disabled");
+    $("#top-row-icons").addClass("disabled");
+    $("bot-row-icons").addClass("disabled");
+}
+
+function enableBackground() {
+    $("#side-bar").removeClass("disabled");
+    $("#memento-top-left").removeClass("disabled")
+    $("#top-row-icons").removeClass("disabled");
+    $("bot-row-icons").removeClass("disabled");
 }
