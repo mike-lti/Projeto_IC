@@ -16,7 +16,7 @@
             </header>
 
             <div class="top-right-bar">
-                <div>Importar Fotografias</div>                
+                <div id="centro-top-bar">Importar Fotografias</div>                
             </div>
             <div class="side-bar">
                 <nav class="menu">
@@ -51,10 +51,12 @@
                         <span id="close_button" onclick="closeModal()">&times;</span>
                         <h2>Escolha os ficheiros a importar</h2>
                         <div class="files_row">
-                            <input type="image" id="file_cuba" width="205" height="260" src="images/ferias_cuba.png" onclick="importCubaPhotos()">
-                            <input type="image" id="file_franca" width="205" height="260" src="images/fotos_frança.png" onclick="importFrancePhotos()">
-                            <input type="image" id="file_spike" width="205" height="260" src="images/fotos_spike.png" onclick="importSpikePhotos()">
+                            <input type="image" id="file_cuba" width="180" height="235" src="images/ferias_cuba.png" onclick="importCubaPhotos()">
+                            <input type="image" id="file_franca" width="180" height="235" src="images/fotos_frança.png" onclick="importFrancePhotos()">
+                            <input type="image" id="file_spike" width="180" height="235" src="images/fotos_spike.png" onclick="importSpikePhotos()">
                         </div>
+                        <button id="botao-cancelar" onclick="closeModal()">Cancelar</button>
+                        <button id="botao-confirmar">Confirmar</button>
                     </div>
                 </div>
                 <div class="processHandler"><p>As suas fotos foram importadas com sucesso!</p> 

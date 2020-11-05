@@ -1,5 +1,7 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
+const NAVEGADOR = 'navegador';
+
 function showModal() {
     document.getElementsByClassName("album_modal")[0].style.display = "inline-block";
     document.getElementsByClassName("album_modal")[0].style.zIndex = "9";
