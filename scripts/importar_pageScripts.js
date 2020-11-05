@@ -18,14 +18,18 @@ function closePopup(){
 
 }
 
-function importCubaPhotos() {
-
+function cancelSelection() {
+    localStorage.setItem("selectedFile", "")
 }
 
-function importFrancePhotos() {
-
+function selectCuba() {
+    localStorage.setItem("selectedFile", "Cuba")
 }
 
-function importSpikePhotos() {
+function selectFranca() {
+    localStorage.setItem("selectedFile", "Franca")
+}
 
+function selectSpike() {
+   localStorage.setItem("selectedFile", "Spike") 
 }
