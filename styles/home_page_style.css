@@ -29,6 +29,7 @@ b{
     padding: 10px;
 }
 .loginDimmer{
+    display: none;
     overflow: hidden;
     position: fixed;
     border: 5px solid black;  
