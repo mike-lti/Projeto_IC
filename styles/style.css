@@ -9,7 +9,10 @@
     display: grid;
     grid-template: 80px  auto / 200px auto auto;
 }
-
+#memento-top-left {
+    margin: 20px;
+    margin-left: 25px;
+}
 header {
     grid-area: 1 / 1 / span 1 / span 1;
     background-color: grey;
