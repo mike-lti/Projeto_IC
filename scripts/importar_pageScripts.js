@@ -11,7 +11,9 @@ function showModal() {
 function closeModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+    document.getElementsByClassName("popup")[0].style.display = "block";
 }
+
 
 function closePopup(){
     document.getElementsByClassName("popup")[0].style.display = "none"
