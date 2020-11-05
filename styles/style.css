@@ -190,12 +190,12 @@ nav a{
 }
 
 
-.processHandler{
+.popup{
     position: absolute;
     padding: 2px;
     margin: auto; 
     left: 29%;
-    top: 84%;         
+    top: 86%;         
     width: 60%;
     height: 15%;
     background-color: grey;
@@ -205,7 +205,7 @@ nav a{
 }
 
 
-.processHandler, p{
+.popup, p{
     text-align: center;
     font-size: 110%;
 
