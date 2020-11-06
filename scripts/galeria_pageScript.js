@@ -28,4 +28,5 @@ function closePopup() {
 
 function showPopup() {
     document.getElementsByClassName("popup")[0].style.display = "block";
+    $('.popup').fadeOut(7000);
 }
