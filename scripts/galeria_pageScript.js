@@ -7,7 +7,7 @@ $(document).ready(showPhotos());
 function showPhotos() {
     switch (localStorage.getItem("selectedFile")) {
         case "Cuba":
-            document.getElementById("tabela").style.display = "block"
+            $("#tabela").find(".option-item").css( "display", "block");
             break;
 
         case "Franca":
