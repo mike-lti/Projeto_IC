@@ -293,5 +293,6 @@ nav a{
 
 #tabela {
     display: none;
-    margin-left: 10px;
+    padding-top: 15px;
+    padding-left: 20px;
 }
