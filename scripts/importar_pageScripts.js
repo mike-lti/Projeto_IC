@@ -15,15 +15,6 @@ function closeModal() {
     enableBackground()
 }
 
-function showPopup() {
-    document.getElementsByClassName("popup")[0].style.display = "block";
-}
-
-function closePopup() {
-    document.getElementsByClassName("popup")[0].style.display = "none"
-
-}
-
 function cancelSelection() {
     localStorage.setItem("selectedFile", "");
     closeModal()
@@ -31,8 +22,7 @@ function cancelSelection() {
 
 function confirmSelection() {
     closeModal()
-    showPopup()
-
+    localStorage.setItem("showPopup", "true");
 }
 
 function selectCuba() {

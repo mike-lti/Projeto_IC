@@ -8,6 +8,10 @@ function showPhotos() {
     switch (localStorage.getItem("selectedFile")) {
         case "Cuba":
             $("#tabela").find(".option-item").css( "display", "block");
+            if (localStorage.getItem("showPopup") == "true") {
+                showPopup();
+                localStorage.setItem("showPopup", "false")
+            }
             break;
 
         case "Franca":
@@ -18,5 +22,10 @@ function showPhotos() {
     }
 }
 
+function closePopup() {
+    document.getElementsByClassName("popup")[0].style.display = "none"
+}
 
-
+function showPopup() {
+    document.getElementsByClassName("popup")[0].style.display = "block";
+}
