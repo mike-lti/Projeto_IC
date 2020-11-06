@@ -285,7 +285,7 @@ nav a{
 }
 
 
-.closeButton{
+.closeButton {
     width: 7%;
     cursor: pointer;
     display: inline-block;
@@ -293,4 +293,9 @@ nav a{
     right: -1%;
     top: 0%;
 
+}
+
+#tabela {
+    display: none;
+    margin-left: 10px;
 }

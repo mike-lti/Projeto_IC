@@ -2,28 +2,21 @@
 
 "use strict";
 
-$(document).ready(imagePlacer());
-
-let cubaAlbumPhoto = "images/cubaAlbum.jpg" 
+$(document).ready(showPhotos());
 
 function showPhotos() {
     switch (localStorage.getItem("selectedFile")) {
         case "Cuba":
-            return cubaAlbumPhoto
+            document.getElementById("tabela").style.display = "inline"
             break;
 
         case "Franca":
-            return cubaAlbumPhoto
             break;
 
         case "Spike":
-            return cubaAlbumPhoto
             break;        
     }
 }
 
-function imagePlacer(){
-    let imageToPlace = showPhotos()
-    document.getElementsByClassName("grid-item").innerHTML = "<img src = imageToPlace>"
 
-}
+
