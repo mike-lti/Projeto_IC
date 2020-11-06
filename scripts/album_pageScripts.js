@@ -45,6 +45,10 @@ function popUpTabela1Close(){
 
 
 function imagePlacerCorfirm(){
+    document.getElementsByClassName("grid-item")[0].style.display="block"
+    document.getElementById("popUpTabela1").style.display="none"
+    document.getElementById("seleciona-fotos-album").style.display="none"
+    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     
 }
 
