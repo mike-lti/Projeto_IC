@@ -168,7 +168,6 @@ nav a{
 }
 .grid-item {
     display: none;
-    border: 1px dashed rgba(0, 0, 0, 0.8);
     font-size: 30px;
     text-align: center;
     align-items: center;
