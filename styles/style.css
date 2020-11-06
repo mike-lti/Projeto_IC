@@ -80,6 +80,7 @@ nav a{
     grid-area: 2 / 2 /span 2 / span 3;
     background-color: beige;
     text-align: center;
+    overflow: scroll;
 }
 
 #top_row_icons {
