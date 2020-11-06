@@ -229,6 +229,11 @@ nav a{
     height: 45px;
 }
 
+#botao-confirmar a{
+    text-decoration: none;
+    color: black;
+}
+
 #botao-popup {
     position: absolute;
     right: 30px;
