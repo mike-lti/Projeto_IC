@@ -427,4 +427,19 @@ nav a{
     width: 105px;
     height: 45px;  
 }
+
+
+.popupAlbum{
+
+    position: absolute;
+    padding: 2px;
+    margin: auto; 
+    left: 478px;
+    top: 90%;         
+    width: 40%;
+    height: 8%;
+    background-color: rgb(253, 255, 157);
+    z-index: 9;
+    display: none;
+}
 /* --------------------------------------- */

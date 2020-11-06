@@ -49,13 +49,19 @@ function imagePlacerCorfirm(){
     document.getElementById("popUpTabela1").style.display="none"
     document.getElementById("seleciona-fotos-album").style.display="none"
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+    document.getElementsByClassName("popupAlbum")[0].style.display="block"
     
+}
+
+function closePopup(){
+    document.getElementsByClassName("popupAlbum")[0].style.display="none"
+
 }
 
 
 
 function importCubaPhotos() {
-
+    
 }
 
 function importFrancePhotos() {
