@@ -29,6 +29,29 @@ function closeAlbumPhotos(){
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
 }
 
+
+function imagePlacer(){
+    document.getElementById("popUpTabela1").style.display="block"
+    document.getElementsByClassName("album_modal")[0].style.display = "none";
+
+
+
+}
+
+function popUpTabela1Close(){
+
+    document.getElementById("popUpTabela1").style.display="none"
+    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+
+}
+
+
+function imagePlacerCorfirm(){
+    
+}
+
+
+
 function importCubaPhotos() {
 
 }

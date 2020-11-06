@@ -326,3 +326,52 @@ nav a{
 .option-item .checkbox:checked ~ .option-inner {
     border-color: black;
 }
+
+
+#popUpTabela1{
+    display: none;
+    position: fixed;
+    width: 83%;
+    height: 77%;
+    grid-area: 2 / 2 /span 2 / span 3;
+    background-color: beige;
+    border: solid;
+    top: 15%;
+    left: 9%;
+    text-align: center;
+    overflow: scroll;
+    z-index: 9;
+
+}
+
+#tabela1 {
+    padding-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#tabela .option-item {
+    display: none;
+    position: relative; 
+}
+
+
+
+
+.closeButton1 {
+    width: 7%;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    right: -1%;
+    top: 3%;
+
+}
+
+#botao-confirmar-selecao{     
+        width: 105px;
+        height: 45px;
+   
+}
+
+
