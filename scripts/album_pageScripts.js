@@ -15,6 +15,20 @@ function closeModal() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
 }
 
+
+function openAlbumPhotos(){
+    document.getElementsByClassName("dimmer")[0].style.opacity = "1";
+    document.getElementById("opcoes-album").style.display="block"
+    document.getElementById("fundo-fotos-album").style.display="block"
+
+}
+
+function closeAlbumPhotos(){
+    document.getElementById("opcoes-album").style.display="none"
+    document.getElementById("fundo-fotos-album").style.display="none"
+    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+}
+
 function importCubaPhotos() {
 
 }

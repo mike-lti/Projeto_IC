@@ -38,7 +38,7 @@
             <div class="workspace">
                 
                 <div class="grid-container">
-                    <div class="grid-item"></div>
+                    <div class="grid-item" onclick="openAlbumPhotos()"></div>
                 </div>
                 <div class="album_modal">
                     <div class="album_modal_content">
@@ -57,6 +57,9 @@
                 </div>
 
                 <div id="fundo-fotos-album" >
+                    <div class="closeButton" onclick = "closeAlbumPhotos()">
+                        <img src="images/close_button.png" height="30px" width="30px" alt="close button icon">
+                    </div>
                     <table id="fotos-album">
                         <tbody>
                           <tr>
@@ -86,7 +89,7 @@
                         </tbody>
                     </table>
 
-                    <button id="botao-fotos-album" >Confirmar</button>
+                    <button id="botao-fotos-album" onclick="closeAlbumPhotos()">Confirmar</button>
                 </div>
             </div>
             <div class="dimmer">
