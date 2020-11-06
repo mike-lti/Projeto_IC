@@ -32,7 +32,7 @@ b{
     font-size: small;
     overflow: hidden;
     display: none;
-    position: fixed;
+    position: relative;
     border: 5px solid black; 
     border-radius: 20px; 
     top: 50%;
@@ -84,7 +84,7 @@ b{
     font-size: small;  
     overflow: hidden;
     display: none;
-    position: fixed;
+    position: absolute;
     border: 5px solid black;  
     border-radius: 20px;
     top: 50%;
@@ -94,6 +94,7 @@ b{
     text-align: center;   
     transform: translate(-50%, -50%);
     height: 400px;
+
 }
 
 .registarConfirmationButton{
@@ -141,7 +142,6 @@ b{
     left: 300px;
     margin-top: 50px;
     position: absolute;
-    
 }
 
 .closeButton{
