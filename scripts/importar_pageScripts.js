@@ -23,7 +23,6 @@ function cancelSelection() {
 }
 
 function confirmSelection() {
-    closeModal()
     localStorage.setItem("showPopup", "true");
 }
 
