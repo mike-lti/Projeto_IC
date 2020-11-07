@@ -54,7 +54,10 @@ function openAlbumPhotos() {
        trElement.appendChild(arrayElementosParaFicar[i]);
        tabela.appendChild(trElement);
 
-   }
+    }
+
+
+    document.getElementsByClassName("grid-item")[0].appendChild(document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]));    
 
     document.getElementById("fundo-fotos-album").style.display = "block";
 
@@ -107,6 +110,9 @@ function imagePlacerCorfirm() {
     }
 
     localStorage.setItem('album-criado', 'true');
+
+    
+    document.getElementsByClassName("grid-item")[0].appendChild(document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]));
 }
 
 function show_album() {
