@@ -42,7 +42,7 @@ header a {
     font-size: xx-large;
 }
 
-#side-bar {    
+#side-bar {
     background-color: lightgray;
     grid-area: 2 / 1 / span 2 / span 1;
     display: grid;
@@ -205,9 +205,9 @@ nav a{
 .popup{
     position: absolute;
     padding: 2px;
-    margin: auto; 
+    margin: auto;
     left: 478px;
-    top: 88%;         
+    top: 88%;
     width: 40%;
     height: 8%;
     background-color: rgb(253, 255, 157);
@@ -232,7 +232,7 @@ nav a{
     height: 45px;
 }
 
-#botao-confirmar {  
+#botao-confirmar {
     width: 105px;
     height: 45px;
 }
@@ -260,7 +260,10 @@ nav a{
 
 #fotos-album td {
     padding: 2px;
+    /* display: none; */
 }
+
+
 
 
 #fundo-fotos-album {
@@ -312,7 +315,7 @@ nav a{
 
 #tabela .option-item {
     display: none;
-    position: relative; 
+    position: relative;
 }
 
 .option-item .option-inner {
@@ -339,7 +342,7 @@ nav a{
 
 #tabela .option-item {
     display: none;
-    position: relative; 
+    position: relative;
 }
 
 .closeButton1 {
@@ -361,7 +364,7 @@ nav a{
 
 #tabela .option-item-album {
     display: none;
-    position: relative; 
+    position: relative;
 }
 
 /* POPUP PARA SELECIONAR AS FOTOGRAFIAS DO ALBUM CRIADO ALBUM.HTML*/
@@ -383,7 +386,7 @@ nav a{
 
 #popUpTabela1 .option-item {
     display: block;
-    position: relative; 
+    position: relative;
     margin: 10px;
 }
 
@@ -427,12 +430,12 @@ nav a{
     margin-left: 300px;
 }
 
-#botao-confirmar-selecao{   
+#botao-confirmar-selecao{
     position: absolute;
     right: 90px;
     top: 13px;
     width: 105px;
-    height: 45px;  
+    height: 45px;
 }
 
 
@@ -442,9 +445,9 @@ nav a{
 .popupAlbum{
     position: absolute;
     padding: 2px;
-    margin: auto; 
+    margin: auto;
     left: 530px;
-    top: 88%;         
+    top: 88%;
     width: 32%;
     height: 8%;
     background-color: rgb(253, 255, 157);
@@ -457,7 +460,7 @@ nav a{
     position: absolute;
     padding: 2px;
     left: 520px;
-    top: 88%;         
+    top: 88%;
     width: 34%;
     height: 8%;
     background-color: rgb(238, 148, 148);
