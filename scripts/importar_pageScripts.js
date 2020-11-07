@@ -6,12 +6,14 @@ function showModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
     document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
+    document.getElementById("botao-confirmar").disabled = true;
     disableBackground()
 }
 
 function closeModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+    localStorage.setItem("selectedFile", "");
     enableBackground()
 }
 
@@ -26,14 +28,17 @@ function confirmSelection() {
 }
 
 function selectCuba() {
+    document.getElementById("botao-confirmar").disabled = false;
     localStorage.setItem("selectedFile", "Cuba")
 }
 
 function selectFranca() {
+    document.getElementById("botao-confirmar").disabled = false;
     localStorage.setItem("selectedFile", "Franca")
 }
 
 function selectSpike() {
+    document.getElementById("botao-confirmar").disabled = false;
    localStorage.setItem("selectedFile", "Spike") 
 }
 

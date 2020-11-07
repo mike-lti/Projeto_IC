@@ -40,7 +40,7 @@
                 <div class="grid-container">
                     <div class="grid-item" onclick="openAlbumPhotos()"> 
                         <img src="img_cuba/img_1.jpg" width="100%" height="100%">
-                        Férias Cuba
+                        <p>Férias Cuba</p>
                     </div>
                 </div>
                 <div class="album_modal">
@@ -50,16 +50,13 @@
                         <textarea id="nome-album" name="nome-album" rows="1" cols="20"></textarea>
                         <br>
                         <button id="botao-cancelar" onclick="closeModal()">Cancelar</button>
-                        <button id="botao-confirmar" onclick="imagePlacer()">Confirmar</button>
-                        
-                    </div>
+                        <button id="botao-confirmar" onclick="imagePlacer(); show_galeria()">Confirmar</button>
+                    </div>                    
                 </div>
-
+                
                 <div id="opcoes-album">
                     <p>As fotos do seu álbum:</p>
-                    <div class="closeButton" onclick = "closeAlbumPhotos()">
-                        <img src="images/close_button.png" height="30px" width="30px" alt="close button icon">
-                    </div>
+                    <div class="closeButton" onclick = "closeAlbumPhotos()"> &times; </div>
                 </div>
 
                 <div id="fundo-fotos-album" >
@@ -96,11 +93,8 @@
 
                 <div id="seleciona-fotos-album">
                     <p>Selecione as fotos para o seu álbum:</p>                    
-                    <div class="closeButton" onclick = "popUpTabela1Close()">
-                        <img src="images/close_button.png" height="30px" width="30px" alt="close button icon">
-                    </div>
+                    <div class="closeButton" onclick = "popUpTabela1Close()"> &times; </div>
                     <button id="botao-confirmar-selecao" onclick="imagePlacerCorfirm()">Confirmar</button>
-    
                     
                 </div>
 
@@ -287,8 +281,11 @@
             <div class="popupAlbum"><p>O seu álbum foi criado com sucesso!</p> 
                 <p> <button type="button" id="botao-popup" onclick="closePopup()">OK</button> </p>                 
             </div>
+            <div id="popup-sem-fotos"><p>Ainda não tem fotos na sua galeria. Importe primeiro!</p> </div>
+            
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="scripts/album_pageScripts.js"></script>
     </body>
 </html>
