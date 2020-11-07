@@ -143,6 +143,7 @@ b{
 }
 
 .closeButton{
+    font-size: 30px;
     width: 7%;
     cursor: pointer;
     display: inline-block;
@@ -153,7 +154,7 @@ b{
 }
 
 .closeButtonRegistar{
-    width: 7%;
+    font-size: 30px;
     cursor: pointer;
     display: inline-block;
     position: absolute;

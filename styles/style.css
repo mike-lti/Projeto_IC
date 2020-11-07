@@ -148,7 +148,6 @@ nav a{
     color:black;
     float: right;
     font-size: 30px;
-    font-weight: bold;
     cursor: pointer;
 }
 
@@ -295,12 +294,12 @@ nav a{
 }
 
 .closeButton {
-    width: 7%;
+    font-size: 30px;
     cursor: pointer;
     display: inline-block;
     position: absolute;
-    right: -1%;
-    top: 6%;
+    right: 7px;
+    top: 1%;
 
 }
 
