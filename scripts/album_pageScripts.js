@@ -2,6 +2,8 @@
 
 "use strict";
 
+$(document).ready(show_album());
+
 const NAVEGADOR = 'navegador';
 
 function showModal() {
@@ -50,6 +52,18 @@ function imagePlacerCorfirm(){
     document.getElementById("seleciona-fotos-album").style.display="none"
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     document.getElementsByClassName("popupAlbum")[0].style.display="block"
+    $('.popupAlbum').fadeOut(7000);
+
+    localStorage.setItem("album-criado", "true")
+}
+
+function show_album() {
+
+    if (localStorage.getItem("album-criado"))    {
+        document.getElementsByClassName("grid-item")[0].style.display="block"
+    } else {
+        document.getElementsByClassName("grid-item")[0].style.display="none"
+    }
     
 }
 
@@ -57,8 +71,6 @@ function closePopup(){
     document.getElementsByClassName("popupAlbum")[0].style.display="none"
 
 }
-
-
 
 function importCubaPhotos() {
     
