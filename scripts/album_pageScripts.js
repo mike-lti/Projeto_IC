@@ -32,7 +32,6 @@ function openAlbumPhotos() {
     var arrayElementosParaFicar =  [];
     var elements = document.querySelectorAll('table#fotos-album tbody tr td');
     var ids = JSON.parse(localStorage.getItem("ids"));
-    console.log(ids[0]);
     for (var element of elements) {
         for(var i = 0; i < ids.length; i++){
 			if (element.children[0].getAttribute('id') == ids[i]){
