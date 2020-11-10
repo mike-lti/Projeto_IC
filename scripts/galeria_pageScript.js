@@ -15,6 +15,11 @@ function showPhotos() {
             break;
 
         case "Franca":
+            $("#tabela2").find(".option-item").css( "display", "block");
+            if (localStorage.getItem("showPopup") == "true") {
+                showPopup();
+                localStorage.setItem("showPopup", "false")
+            }
             break;
 
         case "Spike":

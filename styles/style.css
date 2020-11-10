@@ -318,6 +318,18 @@ nav a{
     position: relative;
 }
 
+#tabela2 {
+    display: none;
+    padding-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#tabela2 .option-item {
+    display: none;
+    position: relative;
+}
+
 .option-item .option-inner {
     position: relative;
     width: 255px;
