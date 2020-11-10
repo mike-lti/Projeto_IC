@@ -45,7 +45,7 @@
                 </div>
                 <div class="album_modal">
                     <div class="album_modal_content">
-                        <span id="close_button" onclick="closeModal()">&times;</span>
+                        <span class="close_button" onclick="closeModal()">&times;</span>
                         <h2>Indique o nome do Álbum:</h2>
                         <form name="nomeDoAlbum">
                             <label>
@@ -63,7 +63,7 @@
                     <div class="closeButton" onclick = "closeAlbumPhotos()"> &times; </div>
                 </div>
 
-                <div id="fundo-fotos-album" >
+                <div id="fundo-fotos-album">
                     <table id="fotos-album">
                         <tbody>
                           <tr>
@@ -308,8 +308,10 @@
                     
                 </div>
             </div>
+
             <div class="dimmer">
             </div>
+
             <div class="popupAlbum"><p>O seu álbum foi criado com sucesso!</p> 
                 <p> <button type="button" id="botao-popup" onclick="closePopup()">OK</button> </p>                 
             </div>

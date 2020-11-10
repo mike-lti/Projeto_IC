@@ -1,5 +1,8 @@
 /*Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166*/
 
+
+/*---GERAL---*/
+
 *{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -89,6 +92,10 @@ nav a{
     overflow-x: hidden;
 }
 
+/*--------------------------------*/
+
+/*---importar---*/
+
 #top_row_icons {
     margin-top: 0px;
     margin-bottom: 30px;
@@ -111,8 +118,6 @@ nav a{
     margin-right: 50px;
 }
 
-
-/* popup importar*/
 .importing_modal {
     display: none;
     position: absolute;
@@ -129,6 +134,36 @@ nav a{
     width: 100%;
     height: 100%;
 }
+
+#file_franca {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+#botao-cancelar {
+    width: 105px;
+    height: 45px;
+}
+
+#botao-confirmar {
+    width: 105px;
+    height: 45px;
+}
+
+#botao-confirmar a{
+    text-decoration: none;
+    color: black;
+}
+
+#p-importar{
+    padding-top: 5px;
+    height: 10px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/*--------------------------------*/
+
+/*---album---*/
 
 /*POPUP na pagina album*/
 .album_modal {
@@ -148,7 +183,7 @@ nav a{
     height: 100%;
 }
 
-#close_button {
+.close_button {
     color:black;
     float: right;
     font-size: 30px;
@@ -201,60 +236,8 @@ nav a{
     text-align: right;
 }
 
-#file_franca {
-    margin-left: 8px;
-    margin-right: 8px;
-}
-
-.popup{
-    position: absolute;
-    padding: 2px;
-    margin: auto;
-    left: 478px;
-    top: 88%;
-    width: 40%;
-    height: 8%;
-    background-color: rgb(253, 255, 157);
-    z-index: 9;
-    display: none;
-}
-
-.popup, p{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: left;
-    font-size: 110%;
-    padding-left: 10px;
-    padding-bottom: 10px;
-}
-
 #nome-album {
     margin-bottom: 10px;
-}
-
-#botao-cancelar {
-    width: 105px;
-    height: 45px;
-}
-
-#botao-confirmar {
-    width: 105px;
-    height: 45px;
-}
-
-#botao-confirmar a{
-    text-decoration: none;
-    color: black;
-}
-
-#botao-popup {
-    position: absolute;
-    right: 30px;
-    top: 25px;
-    width: 60px;
-}
-
-.disabled {
-    pointer-events: none;
 }
 
 #fotos-album {
@@ -266,9 +249,6 @@ nav a{
     padding: 2px;
     /* display: none; */
 }
-
-
-
 
 #fundo-fotos-album {
     display: none;
@@ -361,30 +341,12 @@ nav a{
     position: relative;
 }
 
-.closeButton1 {
-    width: 7%;
-    cursor: pointer;
-    display: inline-block;
-    position: absolute;
-    right: -1%;
-    top: 3%;
-
-}
-
-#p-importar{
-    padding-top: 5px;
-    height: 10px;
-    text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
 #tabela .option-item-album {
     display: none;
     position: relative;
 }
 
 /* POPUP PARA SELECIONAR AS FOTOGRAFIAS DO ALBUM CRIADO ALBUM.HTML*/
-
 #popUpTabela1 {
     position: absolute;
     background-color: white;
@@ -495,8 +457,6 @@ nav a{
     bottom: 10px;
 }
 
-/* --------------------------------------- */
-
 .popupAlbum{
     position: absolute;
     padding: 2px;
@@ -523,3 +483,53 @@ nav a{
     display: none;
     border-radius: 10px;
 }
+
+/*--------------------------------*/
+
+/*---galeria---*/
+
+.popup{
+    position: absolute;
+    padding: 2px;
+    margin: auto;
+    left: 478px;
+    top: 88%;
+    width: 40%;
+    height: 8%;
+    background-color: rgb(253, 255, 157);
+    z-index: 9;
+    display: none;
+}
+
+.popup, p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: left;
+    font-size: 110%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+#botao-popup {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+    width: 60px;
+}
+
+/*--------------------------------*/
+
+/*---partilhar---*/
+
+#link_icon {
+    margin-right: 50px;
+}
+
+#insta_icon {
+    margin-left: 50px;
+}
+
+#twitter_icon {
+    margin-left: 50px;
+}
+
+/*--------------------------------*/
