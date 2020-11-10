@@ -41,7 +41,7 @@
                 <div class="grid-container">
                     <div class="grid-item" onclick="openAlbumPhotos()"> 
                         <img id="imagem-album" width="100%" height="100%">
-                        <p>Férias Cuba</p>
+                        <p class="nomeDoAlbum"></p>
                     </div>
                 </div>
 
@@ -49,10 +49,16 @@
                     <div class="album_modal_content">
                         <span id="close_button" onclick="closeModal()">&times;</span>
                         <h2>Indique o nome do Álbum:</h2>
-                        <textarea id="nome-album" name="nome-album" rows="1" cols="20"></textarea>
+
+                        <form name="nomeDoAlbum">
+                            <label>
+                            <input type="text" name="aName" required>
+                        </label>                        
+                        </form>
+
                         <br>
                         <button id="botao-cancelar" onclick="closeModal()">Cancelar</button>
-                        <button id="botao-confirmar" onclick="imagePlacer(); show_galeria()">Confirmar</button>
+                        <button id="botao-confirmar" onclick="imagePlacer(); show_galeria(); albumNameHandler()">Confirmar</button>
                     </div>                    
                 </div>
                 
