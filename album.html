@@ -40,7 +40,7 @@
                 <div class="grid-container">
                     <div class="grid-item" onclick="openAlbumPhotos()"> 
                         <img id="imagem-album" width="100%" height="100%">
-                        <p>Férias Cuba</p>
+                        <p id="nome-album"></p>
                     </div>
                 </div>
                 <div class="album_modal">
@@ -54,7 +54,7 @@
                         </form>
                         <br>
                         <button id="botao-cancelar" onclick="closeModal()">Cancelar</button>
-                        <button id="botao-confirmar" onclick="imagePlacer(); show_galeria()">Confirmar</button>
+                        <button id="botao-confirmar" onclick="newAlbumHandler()">Confirmar</button>
                     </div>                    
                 </div>
                 

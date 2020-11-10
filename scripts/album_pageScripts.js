@@ -3,7 +3,6 @@
 "use strict";
 
 $(document).ready(show_album());
-$(document).ready(show_galeria());
 $(document).ready(show_albumPhoto());
 $(document).ready(albumNameHandler());
 
@@ -25,7 +24,6 @@ function closeModal() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     document.getElementById("popup-sem-fotos").style.display = "none";
 }
-
 
 function openAlbumPhotos() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
@@ -70,13 +68,6 @@ function closeAlbumPhotos() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
 }
 
-
-function imagePlacer() {
-    document.getElementById("popUpTabela1").style.display = "block";
-    document.getElementById("seleciona-fotos-album").style.display = "block";
-    document.getElementsByClassName("album_modal")[0].style.display = "none";
-}
-
 function popUpTabela1Close() {
     document.getElementById("popUpTabela1").style.display = "none";
     document.getElementById("seleciona-fotos-album").style.display = "none";
@@ -84,7 +75,6 @@ function popUpTabela1Close() {
     tira_filtros();
 
 }
-
 
 function imagePlacerCorfirm() {
     if (localStorage.getItem('selectedFile') == 'Cuba') {
@@ -126,30 +116,8 @@ function show_album() {
     }
 }
 
-function show_galeria() {
-    if (localStorage.getItem("selectedFile") == "Cuba") {
-        document.getElementById("tabela1").style.display = "block";
-        document.getElementById("popup-sem-fotos").style.display = "none";
-    } else {
-        document.getElementById("tabela1").style.display = "none";
-    }
-
-}
-
 function closePopup() {
     document.getElementsByClassName("popupAlbum")[0].style.display = "none";
-
-}
-
-function importCubaPhotos() {
-
-}
-
-function importFrancePhotos() {
-
-}
-
-function importSpikePhotos() {
 
 }
 
@@ -158,7 +126,6 @@ function show_albumPhoto() {
         document.getElementById("imagem-album").src = document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]).src;
     }
 }
-
 
 function open_filtros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon1.png";
@@ -172,10 +139,22 @@ function tira_filtros() {
 }
 
 function albumNameHandler(){
-    let formText;
-    let formVar = document.forms.nomeDoAlbum;
-    formText = formVar.elements.aName.value;
-    document.getElementsByClassName("nomeDoAlbum")[0].innerHTML= formText;
-    localStorage.setItem('nomeDoAlbum', formText);
-    document.getElementsByClassName("nomeDoAlbum")[0].innerHTML= formText;
+    document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
+
+    if (localStorage.getItem("selectedFile") == "Cuba") {
+        document.getElementById("tabela1").style.display = "block";
+        document.getElementById("popup-sem-fotos").style.display = "none";
+    } else {
+        document.getElementById("tabela1").style.display = "none";
+    }
+}
+
+function newAlbumHandler(){
+    let ff = document.forms.nomeDoAlbum;
+    localStorage.setItem("nomeAlbum", ff.elements.aName.value)
+    document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
+
+    document.getElementById("popUpTabela1").style.display = "block";
+    document.getElementById("seleciona-fotos-album").style.display = "block";
+    document.getElementsByClassName("album_modal")[0].style.display = "none";
 }
