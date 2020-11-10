@@ -47,7 +47,11 @@
                     <div class="album_modal_content">
                         <span id="close_button" onclick="closeModal()">&times;</span>
                         <h2>Indique o nome do Álbum:</h2>
-                        <textarea id="nome-album" name="nome-album" rows="1" cols="20"></textarea>
+                        <form name="nomeDoAlbum">
+                            <label>
+                            <input type="text" name="aName" required>
+                            </label>
+                        </form>
                         <br>
                         <button id="botao-cancelar" onclick="closeModal()">Cancelar</button>
                         <button id="botao-confirmar" onclick="imagePlacer(); show_galeria()">Confirmar</button>
@@ -104,26 +108,29 @@
                     <div id="botao-filtros" onclick="open_filtros()" ><img id="imagem_filtros" src="images/filtros_icon.png" width="30" height="30"  alt=""></div>
                 </div>
 
-                <div id="popup-filtros">
-                    <div class="filtros">
-                        <form>
-                            <input type="checkbox" id="desfocadas" name="desfocadas" value="desfocadas">
-                            <label for="desfocadas"> Desfocadas</label><br>
-                            <input type="checkbox" id="localização" name="localizacao" value="localizacao">
-                            <label for="localização"> Localização</label><br>
-                            <input type="checkbox" id="qualidade" name="qualidade" value="qualidade">
-                            <label for="qualidade"> Qualidade</label><br>
-                            <input type="checkbox" id="praia" name="praia" value="praia">
-                            <label for="praia"> Praia </label><br>
-                            <input type="checkbox" id="dia" name="dia" value="dia">
-                            <label for="dia"> Dia </label><br><br>
-                            <input onclick="tira_filtros()" id="botao-confirmar-filtros" type="submit" value="Filtrar">
-                        </form>
-                        <button id="botao-cancelar-filtros" onclick="tira_filtros()">Cancelar</button>
-                    </div>
-                </div>
+                
 
                 <div id="popUpTabela1">
+
+                    <div id="popup-filtros">
+                        <div class="filtros">
+                            <form>
+                                <input type="checkbox" id="desfocadas" name="desfocadas" value="desfocadas">
+                                <label for="desfocadas"> Desfocadas</label><br>
+                                <input type="checkbox" id="localização" name="localizacao" value="localizacao">
+                                <label for="localização"> Localização</label><br>
+                                <input type="checkbox" id="qualidade" name="qualidade" value="qualidade">
+                                <label for="qualidade"> Qualidade</label><br>
+                                <input type="checkbox" id="praia" name="praia" value="praia">
+                                <label for="praia"> Praia </label><br>
+                                <input type="checkbox" id="dia" name="dia" value="dia">
+                                <label for="dia"> Dia </label><br><br>
+                                <input onclick="tira_filtros()" id="botao-confirmar-filtros" type="submit" value="Filtrar">
+                            </form>
+                            <button id="botao-cancelar-filtros" onclick="tira_filtros()">Cancelar</button>
+                        </div>
+                    </div>
+
                     <table id="tabela1">
                         <tbody>
                             <tr>

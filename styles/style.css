@@ -475,8 +475,8 @@ nav a{
     display: none;
     font-size: Large;
     position: absolute;
-    margin-top: 50px;
-    margin-left: 100px;
+    margin-top: 0px;
+    margin-left: 10px;
     padding-top: 10px;
     padding-left: 10px;
     background-color: lightgray;
