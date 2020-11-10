@@ -42,15 +42,15 @@ function selectSpike() {
 }
 
 function disableBackground() {
-    $("#side-bar").addClass("disabled");
-    $("#memento-top-left").addClass("disabled");
-    $("#top-row-icons").addClass("disabled");
-    $("bot-row-icons").addClass("disabled");
+    document.getElementById("side-bar").disabled = true;
+    document.getElementById("memento-top-left").disabled = true;
+    document.getElementById("top-row-icons").disabled = true;
+    document.getElementById("bot-row-icons").disabled = true;
 }
 
 function enableBackground() {
-    $("#side-bar").removeClass("disabled");
-    $("#memento-top-left").removeClass("disabled")
-    $("#top-row-icons").removeClass("disabled");
-    $("bot-row-icons").removeClass("disabled");
+    document.getElementById("side-bar").disabled = false;
+    document.getElementById("memento-top-left").disabled = false;
+    document.getElementById("top-row-icons").disabled = false;
+    document.getElementById("bot-row-icons").disabled = false;
 }
