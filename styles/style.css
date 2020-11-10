@@ -94,7 +94,7 @@ nav a{
 
 /*--------------------------------*/
 
-/*---importar---*/
+/*----------------IMPORTAR-----------------------*/
 
 #top_row_icons {
     margin-top: 0px;
@@ -163,7 +163,7 @@ nav a{
 }
 /*--------------------------------*/
 
-/*---album---*/
+/*----------------------ALBUM--------------------------*/
 
 /*POPUP na pagina album*/
 .album_modal {
@@ -172,7 +172,7 @@ nav a{
     top: 230px;
     right: 355px;
     width: 400px;
-    height: 160px;
+    height: 170px;
 }
 
 .album_modal_content {
@@ -486,7 +486,7 @@ nav a{
 
 /*--------------------------------*/
 
-/*---galeria---*/
+/*-------------------GALERIA--------------------------*/
 
 .popup{
     position: absolute;
@@ -518,7 +518,7 @@ nav a{
 
 /*--------------------------------*/
 
-/*---partilhar---*/
+/*----------------PARTILHAR-------------*/
 
 #link_icon {
     margin-right: 50px;
