@@ -143,11 +143,16 @@ nav a{
 #botao-cancelar {
     width: 105px;
     height: 45px;
+    border-radius: 5px;
 }
 
 #botao-confirmar {
     width: 105px;
     height: 45px;
+    background-color: goldenrod;
+    border-color: goldenrod;
+    border-radius: 5px;
+    
 }
 
 #botao-confirmar a{
@@ -427,6 +432,8 @@ nav a{
     top: 13px;
     width: 105px;
     height: 45px;
+    background-color: goldenrod;
+    border-radius: 5px;
 }
 
 #botao-filtros {
@@ -446,6 +453,17 @@ nav a{
     bottom: 10px;
 }
 
+#botao-confirmar-filtros {
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    right: 10px;
+    bottom: 10px;
+    background-color: goldenrod;
+    border-color: goldenrod;
+    border-radius: 5px;
+}
+
 #popup-filtros {
     display: none;
     font-size: Large;
@@ -461,14 +479,6 @@ nav a{
     height: 160px;
     text-align: left;
     z-index: 10;
-}
-
-#botao-confirmar-filtros {
-    position: absolute;
-    background-color: white;
-    border-radius: 5px;
-    right: 10px;
-    bottom: 10px;
 }
 
 .popupAlbum{
