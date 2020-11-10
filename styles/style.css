@@ -354,12 +354,17 @@ nav a{
     display: none;
     flex-wrap: wrap;
     width: 70%;
-    height: 70%;
+    height: 80%;
     margin-left: 92px;
     z-index: 9;
     bottom: 26px;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+#tabela1 {
+    position: absolute;
+    margin-top: 65px;
 }
 
 #popUpTabela1 .option-item {
@@ -391,15 +396,23 @@ nav a{
     border-color: black;
 }
 
-#seleciona-fotos-album {
-    display: none;
+#closeButton-popup-album {
+    font-size: 30px;
+    cursor: pointer;
+    display: inline-block;
     position: absolute;
+    right: 3%;
+    top: 3%;
+}
+
+#seleciona-fotos-album {
+    position: absolute;
+    position: fixed;
     background-color: white;
-    width: 70%;
-    height: 10%;
-    margin-left: 92px;
-    bottom: 530px;
-    z-index: 9;
+    width: 895px;
+    height: 6%;
+    margin-bottom: 620px;
+    z-index: 9; 
 }
 
 #seleciona-fotos-album p {
@@ -437,7 +450,8 @@ nav a{
     display: none;
     font-size: Large;
     position: absolute;
-    margin-top: 0px;
+    position: fixed;
+    margin-top: 60px;
     margin-left: 10px;
     padding-top: 10px;
     padding-left: 10px;

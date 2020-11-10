@@ -178,5 +178,4 @@ function albumNameHandler(){
     document.getElementsByClassName("nomeDoAlbum")[0].innerHTML= formText;
     localStorage.setItem('nomeDoAlbum', formText);
     document.getElementsByClassName("nomeDoAlbum")[0].innerHTML= formText;
-
 }

@@ -101,19 +101,15 @@
 
                 </div>
 
-                <div id="seleciona-fotos-album">
-                    <p>Selecione as fotos para o seu álbum:</p>                    
-                    <div class="closeButton" onclick = "popUpTabela1Close()"> &times; </div>
-                    <button id="botao-confirmar-selecao" onclick="imagePlacerCorfirm()">Confirmar</button>
-                    <div id="botao-filtros" onclick="open_filtros()" ><img id="imagem_filtros" src="images/filtros_icon.png" width="30" height="30"  alt=""></div>
-                </div>
+                
 
                 
 
                 <div id="popUpTabela1">
 
+                    
+
                     <div id="popup-filtros">
-                        <div class="filtros">
                             <form>
                                 <input type="checkbox" id="desfocadas" name="desfocadas" value="desfocadas">
                                 <label for="desfocadas"> Desfocadas</label><br>
@@ -128,10 +124,16 @@
                                 <input onclick="tira_filtros()" id="botao-confirmar-filtros" type="submit" value="Filtrar">
                             </form>
                             <button id="botao-cancelar-filtros" onclick="tira_filtros()">Cancelar</button>
-                        </div>
                     </div>
 
+                    <div id="seleciona-fotos-album">
+                        <p>Selecione as fotos para o seu álbum:</p>                    
+                        <div id="closeButton-popup-album" onclick = "popUpTabela1Close()"> &times; </div>
+                        <button id="botao-confirmar-selecao" onclick="imagePlacerCorfirm()">Confirmar</button>
+                        <div id="botao-filtros" onclick="open_filtros()" ><img id="imagem_filtros" src="images/filtros_icon.png" width="40" height="40"  alt=""></div>
+                    </div>
                     <table id="tabela1">
+                        
                         <tbody>
                             <tr>
                                 <td>
