@@ -115,3 +115,9 @@ function close_popup_adicionar_fotografias() {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
     document.getElementById("popup-adicionar-fotos-galeria").style.display = "none";
 }
+
+function guardarFavoritos() {
+    for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+        let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+    }
+}
