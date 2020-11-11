@@ -560,4 +560,28 @@ nav a{
     margin-left: 50px;
 }
 
+.linkPopup{
+    display: none;
+    text-align: center;
+    background-color: grey;
+    left: 32%;
+    position: absolute;
+    border: solid;
+    border-radius: 25px;
+    z-index: 9;
+    width: 40%;
+    top: 21%;
+    height: 50%;
+}
+
+
+.linkParagraph{
+    text-align: center;
+}
+
+
+.tituloLinkPopup{
+    text-align: center;
+    
+}
 /*--------------------------------*/
