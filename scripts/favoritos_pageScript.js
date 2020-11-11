@@ -6,26 +6,30 @@ var tabela = document.querySelector("table#fotos-favoritas tbody");
 var favList = JSON.parse(localStorage.getItem("favoritos"))
 var favFotos = [];
 
-$(document).ready(show_favoritos());
+$(document).ready(getFavoritos());
 
 function getFavoritos() {
     for (let srcFoto of favList) {
-        let newImg = $('<img />', {src: srcFoto, width:"255px", height:"145px"});
+        let newImg = document.createElement("img");
+        newImg.setAttribute("src", srcFoto);
+        newImg.setAttribute("width", "255px");
+        newImg.setAttribute("height", "145px");
         favFotos.push(newImg)
     }
+    
+    showFavoritos();
 }
 
 function showFavoritos() {
     tabela.innerHTML = "";
-    let trElement;
+    var trElement;
     
-    for (let i = 0; i < favFotos.length; i++) {
+    for (var i = 0; i < favFotos.length; i++) {
         if(i%4 == 0 || i == 0) {
             trElement = document.createElement('tr');
         }
+
         trElement.appendChild(favFotos[i]);
         tabela.appendChild(trElement);
     }
 }
-
-/* TESTE */
