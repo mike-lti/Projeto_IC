@@ -7,6 +7,7 @@ $(document).ready(show_albumPhoto());
 $(document).ready(albumNameHandler());
 
 function showModal() {
+    disableBackground()
     document.getElementsByClassName("album_modal")[0].style.display = "inline-block";
     document.getElementsByClassName("album_modal")[0].style.zIndex = "9";
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
@@ -20,6 +21,7 @@ function showModal() {
 }
 
 function closeModal() {
+    enableBackground()
     document.getElementsByClassName("album_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     document.getElementById("popup-sem-fotos").style.display = "none";
@@ -76,7 +78,8 @@ function popUpTabela1Close() {
 
 }
 
-function imagePlacerCorfirm() {
+function imagePlacerConfirm() {
+    enableBackground()
     if (localStorage.getItem('selectedFile') == 'Cuba') {
         let ids = [];
         for (var clicked of document.querySelectorAll(
@@ -157,4 +160,14 @@ function newAlbumHandler(){
     document.getElementById("popUpTabela1").style.display = "block";
     document.getElementById("seleciona-fotos-album").style.display = "block";
     document.getElementsByClassName("album_modal")[0].style.display = "none";
+}
+
+function disableBackground() {
+    $("#side-bar").addClass("disabled")
+    $("#memento-top-left").addClass("disabled")
+}
+
+function enableBackground() {
+    $("#side-bar").removeClass("disabled")
+    $("#memento-top-left").removeClass("disabled")
 }
