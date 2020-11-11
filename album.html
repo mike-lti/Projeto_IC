@@ -101,16 +101,10 @@
 
                 </div>
 
-                
-
-                
-
                 <div id="popUpTabela1">
 
-                    
-
                     <div id="popup-filtros">
-                            <form>
+                            <form name="filtros">
                                 <input type="checkbox" id="desfocadas" name="desfocadas" value="desfocadas">
                                 <label for="desfocadas"> Desfocadas</label><br>
                                 <input type="checkbox" id="localização" name="localizacao" value="localizacao">
@@ -121,7 +115,7 @@
                                 <label for="praia"> Praia </label><br>
                                 <input type="checkbox" id="dia" name="dia" value="dia">
                                 <label for="dia"> Dia </label><br><br>
-                                <input onclick="tira_filtros()" id="botao-confirmar-filtros" type="submit" value="Filtrar">
+                                <input onclick="aplica_filtros()" id="botao-confirmar-filtros" type="submit" value="Filtrar">
                             </form>
                             <button id="botao-cancelar-filtros" onclick="tira_filtros()">Cancelar</button>
                     </div>
@@ -132,15 +126,15 @@
                         <button id="botao-confirmar-selecao" onclick="imagePlacerConfirm()">Confirmar</button>
                         <div id="botao-filtros" onclick="open_filtros()" ><img id="imagem_filtros" src="images/filtros_icon.png" width="40" height="40"  alt=""></div>
                     </div>
-                    <table id="tabela1">
-                        
+
+                    <table id="tabela-cuba">
                         <tbody>
                             <tr>
                                 <td>
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem1" width="200px" height="140px" src="img_cuba/img_1.jpg" alt="">
+                                            <img image-id="imagem1" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_1.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -148,7 +142,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem2" width="200px" height="140px" src="img_cuba/img_2.jpg" alt="">
+                                            <img image-id="imagem2" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_2.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -156,7 +150,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem3" width="200px" height="140px" src="img_cuba/img_3.jpg" alt="">
+                                            <img image-id="imagem3" praia="false" dia="true" width="200px" height="140px" src="img_cuba/img_3.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -164,41 +158,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem4" width="200px" height="140px" src="img_cuba/img_4.jpg" alt="">
-                                        </div>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="option-item-album">
-                                        <input type="checkbox" class="checkbox-album">
-                                        <div class="option-inner-album">
-                                            <img image-id="imagem5" width="200px" height="140px" src="img_cuba/img_5.jpg" alt="">
-                                        </div>
-                                    </label>
-                                </td>
-                                <td>
-                                    <label class="option-item-album">
-                                        <input type="checkbox" class="checkbox-album">
-                                        <div class="option-inner-album">
-                                            <img image-id="imagem6" width="200px" height="140px" src="img_cuba/img_6.jpg" alt="">
-                                        </div>
-                                    </label>
-                                </td>
-                                <td>
-                                    <label class="option-item-album">
-                                        <input type="checkbox" class="checkbox-album">
-                                        <div class="option-inner-album">
-                                            <img image-id="imagem7" width="200px" height="140px" src="img_cuba/img_7.jpg" alt="">
-                                        </div>
-                                    </label>
-                                </td>
-                                <td>
-                                    <label class="option-item-album">
-                                        <input type="checkbox" class="checkbox-album">
-                                        <div class="option-inner-album">
-                                            <img image-id="imagem8" width="200px" height="140px" src="img_cuba/img_8.jpg" alt="">
+                                            <img image-id="imagem4" praia="false" dia="false" width="200px" height="140px" src="img_cuba/img_4.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -208,7 +168,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem9" width="200px" height="140px" src="img_cuba/img_9.jpg" alt="">
+                                            <img image-id="imagem5" praia="false" dia="true" width="200px" height="140px" src="img_cuba/img_5.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -216,7 +176,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem10" width="200px" height="140px" src="img_cuba/img_10.jpg" alt="">
+                                            <img image-id="imagem6" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_6.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -224,7 +184,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem11" width="200px" height="140px" src="img_cuba/img_11.jpg" alt="">
+                                            <img image-id="imagem7" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_7.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -232,41 +192,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem12" width="200px" height="140px" src="img_cuba/img_12.jpg" alt="">
-                                        </div>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="option-item-album">
-                                        <input type="checkbox" class="checkbox-album">
-                                        <div class="option-inner-album">
-                                            <img image-id="imagem13" width="200px" height="140px" src="img_cuba/img_13.jpg" alt="">
-                                        </div>
-                                    </label>
-                                </td>
-                                <td>
-                                    <label class="option-item-album">
-                                        <input type="checkbox" class="checkbox-album">
-                                        <div class="option-inner-album">
-                                            <img image-id="imagem14" width="200px" height="140px" src="img_cuba/img_14.jpg" alt="">
-                                        </div>
-                                    </label>
-                                </td>
-                                <td>
-                                    <label class="option-item-album">
-                                        <input type="checkbox" class="checkbox-album">
-                                        <div class="option-inner-album">
-                                            <img image-id="imagem15" width="200px" height="140px" src="img_cuba/img_15.jpg" alt="">
-                                        </div>
-                                    </label>
-                                </td>
-                                <td>
-                                    <label class="option-item-album">
-                                        <input type="checkbox" class="checkbox-album">
-                                        <div class="option-inner-album">
-                                            <img image-id="imagem16" width="200px" height="140px" src="img_cuba/img_16.jpg" alt="">
+                                            <img image-id="imagem8" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_8.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -276,7 +202,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem17" width="200px" height="140px" src="img_cuba/img_17.jpg" alt="">
+                                            <img image-id="imagem9" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_9.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -284,7 +210,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem18" width="200px" height="140px" src="img_cuba/img_18.jpg" alt="">
+                                            <img image-id="imagem10" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_10.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -292,7 +218,7 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem19" width="200px" height="140px" src="img_cuba/img_19.jpg" alt="">
+                                            <img image-id="imagem11" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_11.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
@@ -300,14 +226,81 @@
                                     <label class="option-item-album">
                                         <input type="checkbox" class="checkbox-album">
                                         <div class="option-inner-album">
-                                            <img image-id="imagem20" width="200px" height="140px" src="img_cuba/img_20.jpg" alt="">
+                                            <img image-id="imagem12" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_12.jpg" alt="">
+                                        </div>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="option-item-album">
+                                        <input type="checkbox" class="checkbox-album">
+                                        <div class="option-inner-album">
+                                            <img image-id="imagem13" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_13.jpg" alt="">
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="option-item-album">
+                                        <input type="checkbox" class="checkbox-album">
+                                        <div class="option-inner-album">
+                                            <img image-id="imagem14" praia="false" dia="true" width="200px" height="140px" src="img_cuba/img_14.jpg" alt="">
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="option-item-album">
+                                        <input type="checkbox" class="checkbox-album">
+                                        <div class="option-inner-album">
+                                            <img image-id="imagem15" praia="false" dia="true" width="200px" height="140px" src="img_cuba/img_15.jpg" alt="">
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="option-item-album">
+                                        <input type="checkbox" class="checkbox-album">
+                                        <div class="option-inner-album">
+                                            <img image-id="imagem16" praia="false" dia="true" width="200px" height="140px" src="img_cuba/img_16.jpg" alt="">
+                                        </div>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="option-item-album">
+                                        <input type="checkbox" class="checkbox-album">
+                                        <div class="option-inner-album">
+                                            <img image-id="imagem17" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_17.jpg" alt="">
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="option-item-album">
+                                        <input type="checkbox" class="checkbox-album">
+                                        <div class="option-inner-album">
+                                            <img image-id="imagem18" praia="false" dia="true" width="200px" height="140px" src="img_cuba/img_18.jpg" alt="">
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="option-item-album">
+                                        <input type="checkbox" class="checkbox-album">
+                                        <div class="option-inner-album">
+                                            <img image-id="imagem19" praia="false" dia="true" width="200px" height="140px" src="img_cuba/img_19.jpg" alt="">
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="option-item-album">
+                                        <input type="checkbox" class="checkbox-album">
+                                        <div class="option-inner-album">
+                                            <img image-id="imagem20" praia="true" dia="true" width="200px" height="140px" src="img_cuba/img_20.jpg" alt="">
                                         </div>
                                     </label>
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
-                    
+                    </table>  
                 </div>
             </div>
 

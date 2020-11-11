@@ -27,12 +27,44 @@ function closeModal() {
     document.getElementById("popup-sem-fotos").style.display = "none";
 }
 
+function imagePlacerConfirm() {
+    enableBackground()
+    if (localStorage.getItem('selectedFile') == 'Cuba') {
+        let ids = [];
+        /* Itera sobre todas as images que foram escolhidas e guarda os ids das mesmas */
+        for (var clicked of document.querySelectorAll(
+            'input[type=checkbox]:checked'
+        )) {
+            ids.push(
+                clicked.parentElement
+                    .querySelector('div')
+                    .children[0].getAttribute('image-id')
+            );
+        }
+
+        localStorage.setItem("ids",JSON.stringify(ids));
+        document.getElementsByClassName('grid-item')[0].style.display ='block';
+        document.getElementById('popUpTabela1').style.display = 'none';
+        document.getElementById('seleciona-fotos-album').style.display ='none';
+        document.getElementsByClassName('dimmer')[0].style.opacity = '0';
+        document.getElementsByClassName('popupAlbum')[0].style.display ='block';
+        $('.popupAlbum').fadeOut(7000);
+    }
+
+    localStorage.setItem('album-criado', 'true');
+
+    document.getElementById("imagem-album").src = document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]).src; 
+    tira_filtros();
+}
+
 function openAlbumPhotos() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
     document.getElementById("opcoes-album").style.display = "block";
     var arrayElementosParaFicar =  [];
     var elements = document.querySelectorAll('table#fotos-album tbody tr td');
     var ids = JSON.parse(localStorage.getItem("ids"));
+
+    /* Itera sobre as fotos à procura de img com o mesmo id das fotos escolhidas */
     for (var element of elements) {
         for(var i = 0; i < ids.length; i++){
 			if (element.children[0].getAttribute('id') == ids[i]){
@@ -42,10 +74,10 @@ function openAlbumPhotos() {
     }
 
     var tabela = document.querySelector("table#fotos-album tbody");
-
     tabela.innerHTML = "";
     var x = 0;
     var trElement;
+    /* Cria tabela que vai conter as fotos que vão ficar no album */
     for(var i = 0; i < arrayElementosParaFicar.length; i++){
        if(i%4 == 0 || x == 0){
             trElement = document.createElement('tr');
@@ -57,11 +89,9 @@ function openAlbumPhotos() {
 
     }
 
-    
+    /* Coloca a primeira foto escolhida para ser a capa do album */
     document.getElementById("imagem-album").src = document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]).src;    
-
     document.getElementById("fundo-fotos-album").style.display = "block";
-
 }
 
 function closeAlbumPhotos() {
@@ -76,38 +106,6 @@ function popUpTabela1Close() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     tira_filtros();
 
-}
-
-function imagePlacerConfirm() {
-    enableBackground()
-    if (localStorage.getItem('selectedFile') == 'Cuba') {
-        let ids = [];
-        for (var clicked of document.querySelectorAll(
-            'input[type=checkbox]:checked'
-        )) {
-            ids.push(
-                clicked.parentElement
-                    .querySelector('div')
-                    .children[0].getAttribute('image-id')
-            );
-        }
-
-        localStorage.setItem("ids",JSON.stringify(ids));
-        document.getElementsByClassName('grid-item')[0].style.display =
-            'block';
-        document.getElementById('popUpTabela1').style.display = 'none';
-        document.getElementById('seleciona-fotos-album').style.display =
-            'none';
-        document.getElementsByClassName('dimmer')[0].style.opacity = '0';
-        document.getElementsByClassName('popupAlbum')[0].style.display =
-            'block';
-        $('.popupAlbum').fadeOut(7000);
-    }
-
-    localStorage.setItem('album-criado', 'true');
-
-    document.getElementById("imagem-album").src = document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]).src; 
-    tira_filtros();
 }
 
 function show_album() {
@@ -139,6 +137,10 @@ function open_filtros() {
 function tira_filtros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     document.getElementById("popup-filtros").style.display = "none";
+}
+
+function aplica_filtros() {
+
 }
 
 function albumNameHandler(){
