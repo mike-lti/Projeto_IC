@@ -78,16 +78,16 @@ header a {
     background-color: white;
 }
 
-#botao-adicionar {
-    right: 230px;
+.disabled-image-button {
+    opacity: 0.5;
 }
 
-#botao-favoritos {
+#botao-adicionar {
     right: 165px;
 }
 
 #botao-partilhar {
-    right: 100px;    
+    right: 100px;
 }
 
 #botao-eliminar {
@@ -95,7 +95,6 @@ header a {
     border-color: rgb(209, 73, 73);
     right: 35px;
 }
-
 
 #side-bar {
     background-color: lightgray;
@@ -617,7 +616,59 @@ nav a{
 }
 
 #botao-criar-galeria {
-    right: 335px;
+    right: 272px;
+}
+
+#popup-eliminar-fotos-galeria {
+    display: none;
+    position: absolute;
+    position: relative;
+    z-index: 10;
+    margin-left: 350px;
+    bottom: 590px;
+    background-color: white;
+    width: 400px;
+    height: 110px;
+    border-radius: 5px;
+    padding-top: 20px;
+
+}
+
+#botao-popup-eliminar-cancelar {
+    margin-top: 20px;
+    font-size: large;
+    margin-right: 20px;
+}
+
+#botao-popup-eliminar-confirmar {
+    margin-top: 20px;
+    font-size: large;
+}
+
+#popup-adicionar-fotos-galeria {
+    display: none;
+    position: absolute;
+    position: relative;
+    z-index: 10;
+    margin-left: 320px;
+    bottom: 590px;
+    background-color: white;
+    width: 430px;
+    height: 110px;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+
+
+#botao-popup-adicionar-cancelar {
+    margin-top: 20px;
+    font-size: large;
+    margin-right: 20px;
+}
+
+#botao-popup-adicionar-confirmar {
+    margin-top: 20px;
+    font-size: large;
 }
 
 /*--------------------------------*/
