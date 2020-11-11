@@ -117,7 +117,12 @@ function close_popup_adicionar_fotografias() {
 }
 
 function guardarFavoritos() {
+    let srcList = [];
+
     for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
         let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+        srcList.push(srcImagem)
     }
+
+    localStorage.setItem("favoritos", JSON.stringify(srcList))
 }
