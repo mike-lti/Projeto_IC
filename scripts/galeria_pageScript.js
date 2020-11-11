@@ -10,6 +10,19 @@ document.getElementById("botao-criar-galeria").disabled = true;
 document.getElementById("botao-adicionar").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
+if (localStorage.length == 0) {
+    document.getElementById("botao-selecionar-galeria").disabled = true;
+    document.getElementById("botao-selecionar-todas-galeria").disabled = true;
+    for (let item of document.querySelectorAll('#tabela .option-item')) {
+        item.style.display = "none";
+    }
+} else {
+    document.getElementById("botao-selecionar-galeria").disabled = false;
+    document.getElementById("botao-selecionar-todas-galeria").disabled = false;
+}
+
+
+
 
 var elementos = document.querySelectorAll('input[type=checkbox]');
 for (let element of elementos) {
@@ -114,6 +127,7 @@ function open_popup_adicionar_fotografias() {
 function close_popup_adicionar_fotografias() {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
     document.getElementById("popup-adicionar-fotos-galeria").style.display = "none";
+    document.getElementById("popup-adicionar-fotos-galeria").style.display = "none";
 }
 
 
@@ -147,9 +161,12 @@ function nova_galeria_eliminada() {
     }
         
     document.getElementsByClassName("dimmer")[0].style.opacity="0"  
+    
+    
+    close_popup_eliminar_fotografias()
 }   
 
-function guardarFavoritos() {
+    function guardarFavoritos() {
     let srcList = [];
 
     for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {

@@ -63,7 +63,7 @@
                             <label class="option-item">
                                 <input type="checkbox" class="checkbox">
                                 <div class="option-inner">
-                                    <img id="aaa" width="255px" height="145px" src="img_cuba/img_1.jpg" alt="">
+                                    <img width="255px" height="145px" src="img_cuba/img_1.jpg" alt="">
                                 </div>
                             </label>
                         </td>
@@ -409,8 +409,10 @@
 
                 <div id="popup-adicionar-fotos-galeria">
                     Para onde deseja adicionar as fotografias selecionadas? <br>
-                    <button id="botao-popup-adicionar-album" onclick="close_popup_adicionar_fotografias()">Album</button>
-                    <a href="favoritos.html"><button id="botao-popup-adicionar-favoritos" onclick="guardarFavoritos()">Favoritos</button></a>
+                    <a href="album.html"><div id="botao-popup-adicionar-album"> <img src="images/album_icon.png" width="70px" height="70px" alt=""> Álbum </div></a>
+                    <a href="favoritos.html"><div id="botao-popup-adicionar-favoritos" onclick="guardarFavoritos()"> <img src="images/favoritos_icon.png" width="70px" height="70px" alt="">Favoritos</div></a>
+                    <button id="botao-popup-adicionar-cancelar" onclick="close_popup_adicionar_fotografias()">Cancelar</button>
+                    <button id="botao-popup-adicionar-confirmar" onclick="" >Confirmar</button>
                 </div>
 
                 <div id="popup-eliminar-fotos-galeria">
@@ -420,8 +422,11 @@
                 </div>
                 
                     
-            <div class="popup"><p>As suas fotos foram importadas com sucesso!</p> 
-                <p> <button type="button" id="botao-popup" onclick="closePopup()">OK</button> </p>                 
+            <div class="popup">
+                <p>As suas fotos foram importadas com sucesso!
+                    <button type="button" id="botao-popup" onclick="closePopup()">OK</button>
+                </p> 
+                                  
             </div>
             </div>
         </div>
