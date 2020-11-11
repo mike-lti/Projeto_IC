@@ -356,7 +356,7 @@ nav a{
 }
 
 #tabela .option-item {
-    display: none;
+    display: block;
     position: relative;
 }
 
@@ -391,12 +391,6 @@ nav a{
 
 .option-item .checkbox:checked ~ .option-inner {
     border-color: black;
-}
-
-
-#tabela .option-item {
-    display: none;
-    position: relative;
 }
 
 #tabela .option-item-album {
