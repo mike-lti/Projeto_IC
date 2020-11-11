@@ -135,6 +135,7 @@
                             </form>
                             <button id="botao-cancelar-filtros" onclick="tira_filtros()">Cancelar</button>
                     </div>
+                    
 
                     <div id="seleciona-fotos-album">
                         <p>Selecione as fotos para o seu álbum:</p>                    
@@ -322,6 +323,11 @@
 
             <div class="dimmer">
             </div>
+
+            <div class="popupFiltrosAplicados"><p>Os seus filtros foram aplicados com sucesso!</p> 
+                <p> <button type="button" id="botao-popup" onclick="closePopupFiltrosAplicados()">OK</button> </p>                 
+            </div>
+
 
             <div class="popupAlbum"><p>O seu álbum foi criado com sucesso!</p> 
                 <p> <button type="button" id="botao-popup" onclick="closePopup()">OK</button> </p>                 

@@ -140,8 +140,45 @@ function tira_filtros() {
 }
 
 function aplica_filtros() {
+    let filtrosDesejados = []
+    var checkbox1 = document.getElementById("desfocadas").checked; //variavel tem o valor de true ou false consoante esteja selecionada ou nao
+    var checkbox2 = document.getElementById("localização").checked;
+    var checkbox3 = document.getElementById("qualidade").checked;
+    var checkbox4 = document.getElementById("praia").checked;
+    var checkbox5 = document.getElementById("dia").checked;
+
+    document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
+    $('.popupFiltrosAplicados').fadeOut(7000);
+
+    //amanha tenho de ver istro melhor ja que as variaveis so ficam definidas por uma fracao de tempo ja que depois de o botao de submit ser clicado deixam de estar definidas
+    //e rever no caso de retirar filtros que ja selecionou anteriormente
+    if(checkbox1 == "true"){
+        filtrosDesejados.push("desfocadas")
+    }
+        if(checkbox2 == "true"){
+            filtrosDesejados.push("localização")
+    }
+            if(checkbox3 == "true"){
+               filtrosDesejados.push("qualidade")
+    }
+                if(checkbox4 == "true"){
+                    filtrosDesejados.push("praia")
+    }
+                    if(checkbox5 == "true"){
+                        filtrosDesejados.push("dia")
+    }
+
+    //for(pos = 0, pos > filtrosDesejados.length(), pos++){
+        //filtrosDesejados[pos]    filtro a aplicar a comprara com id das imgs
+    //}
+    
+}
+
+function closePopupFiltrosAplicados(){
+    document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "none"
 
 }
+
 
 function albumNameHandler(){
     document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
