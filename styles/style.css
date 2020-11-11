@@ -356,7 +356,7 @@ nav a{
 }
 
 #tabela .option-item {
-    display: block;
+    display: none;
     position: relative;
 }
 
@@ -476,7 +476,7 @@ nav a{
 #botao-confirmar-selecao{
     position: absolute;
     right: 90px;
-    top: 13px;
+    top: 6px;
     width: 105px;
     height: 45px;
     background-color: goldenrod;

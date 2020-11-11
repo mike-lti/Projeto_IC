@@ -75,7 +75,6 @@ function imagem_selecionada() {
         document.getElementById("botao-adicionar").disabled = true;
     
     }
-    
 }  
 
 function seleciona_todos() {
@@ -169,10 +168,24 @@ function nova_galeria_eliminada() {
     function guardarFavoritos() {
     let srcList = [];
 
-    for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
-        let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
-        srcList.push(srcImagem)
-    }
+    if (localStorage.getItem("favoritos") == null) {
+        let srcList = [];
 
-    localStorage.setItem("favoritos", JSON.stringify(srcList))
+        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+            srcList.push(srcImagem)
+        }
+
+        localStorage.setItem("favoritos", JSON.stringify(srcList))
+    } else {
+
+        let srcList = JSON.parse(localStorage.getItem("favoritos"));
+
+        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+            srcList.push(srcImagem)
+        }
+    
+        localStorage.setItem("favoritos", JSON.stringify(srcList))
+    }
 }

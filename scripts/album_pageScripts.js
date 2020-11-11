@@ -1,13 +1,17 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
 "use strict";
+var tabelaOrigin = document.querySelector("#tabela-cuba tbody");
+
+
 
 $(document).ready(show_album());
 $(document).ready(show_albumPhoto());
 $(document).ready(albumNameHandler());
-$(document).ready(aplica_filtros());
+//$(document).ready(aplica_filtros());
 
-var tabelaOriginal;
+
+
 
 function showModal() {
     disableBackground()
@@ -141,8 +145,6 @@ function tira_filtros() {
 
 function aplica_filtros() {
 
-    var tabelaOriginal = $("#tabela-cuba tbody").children();
-    console.log(tabelaOriginal)
     let imagensFiltradas = []  
     let filtrosDesejados = [] 
     var images = document.querySelectorAll("#tabela-cuba td")
@@ -172,7 +174,6 @@ function aplica_filtros() {
                     filtrosDesejados.push("praia")
                     for(let img = 0; img < images.length; img++) {
                         let imageToCheck = images[img].querySelector("img").getAttribute("praia");
-                        console.log(imageToCheck)
                         if(imageToCheck == "true"){
                             imagensFiltradas.push(images[img]);
                         }
@@ -189,7 +190,7 @@ function aplica_filtros() {
                     }
 
 
-    console.log(filtrosDesejados)
+    
 
 
     if(filtrosDesejados.length != 0) {
@@ -207,8 +208,7 @@ function aplica_filtros() {
             tabela.appendChild(trElement);
         }
     }else{
-        /* var tabela = document.querySelector("#tabela-cuba tbody");
-        tabela.appendChild(tabelaOriginal); */ 
+        document.querySelector("#tabela-cuba").appendChild(tabelaOrigin) 
         
     }
   
