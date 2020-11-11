@@ -115,3 +115,81 @@ function close_popup_adicionar_fotografias() {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
     document.getElementById("popup-adicionar-fotos-galeria").style.display = "none";
 }
+
+
+function nova_galeria_eliminada() {
+    
+    var arrayFicar = document.querySelectorAll('input[type=checkbox]:not(:checked)');
+    var tabela = document.querySelector("#tabela tbody");
+    tabela.innerHTML = "";
+    var x = 0;
+    var i = 0;
+    var trElement;
+    /* Cria tabela que vai conter as fotos que vão ficar no album */
+    for (let input of arrayFicar ) {
+            
+        if(i%4 == 0 || x == 0){
+            trElement = document.createElement('tr');
+            trElement.setAttribute('id', `tr${x}`);
+            x++;
+                
+        }
+        let src = input.parentElement.children[1].children[0].getAttribute('src');
+        let linha = document.createElement("td");
+        linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner'>" +
+                                    "<img width='255px' height='145px' src='" + src + "'>" +
+                                "</div>" +
+                            "</label>";
+        trElement.appendChild(linha);
+        tabela.appendChild(trElement);
+        i++;  
+    }
+        
+       
+    
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"  
+    document.getElementById("tabela").style.display = "block";
+}   
+
+
+
+
+
+
+
+
+
+
+/* function nova_galeria_eliminada() {
+    
+
+
+    let galeriaAntiga = document.getElementById("table-nova");
+
+    let galeriaNova = document.createElement("table");
+    let linhas = 0
+    let index = 0       
+        
+    for(let i = 0; i <  document.querySelectorAll('input[type=checkbox]:not(:checked)'); i++) {
+
+        let divNovo = document.createElement('tr')
+
+        if (i%4 == 0 || linhas == 0 ) {
+            let linha = document.createElement("td");
+            divNovo.innerHTML = "<label class='option-item'>" +
+                                    "<input type='checkbox' class='checkbox'>"
+                                    "<div class='option-inner'>" +
+                                        "<img width='255px' height='145px' src='../img_cuba/img" + document.querySelectorAll('input[type=checkbox]:not(:checked)')[index].id  +"'>" +
+                                    "</div>" + 
+                                "</label>";
+            linha.appendChild(divNovo);
+        
+        }
+        index++;       
+        galeriaNova.appendChild(linha);
+    }
+    galeriaAntiga.  replaceChild(galeriaNova, galeriaAntiga);
+}
+ */

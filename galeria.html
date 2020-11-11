@@ -54,14 +54,16 @@
             </div>
            
             <div class="workspace">
+
                 <table id="tabela">
+                    
                     <tbody>
                       <tr>
                         <td>
                             <label class="option-item">
                                 <input type="checkbox" class="checkbox">
                                 <div class="option-inner">
-                                    <img width="255px" height="145px" src="img_cuba/img_1.jpg" alt="">
+                                    <img id="aaa" width="255px" height="145px" src="img_cuba/img_1.jpg" alt="">
                                 </div>
                             </label>
                         </td>
@@ -224,7 +226,7 @@
                                   <img width="255px" height="145px" src="img_cuba/img_20.jpg" alt="">
                               </div>
                           </label>
-                        </td>
+                        </td>   
                     </tr>
                     </tbody>
                     
@@ -414,7 +416,7 @@
                 <div id="popup-eliminar-fotos-galeria">
                     Tem a certeza que pretente eliminar as fotografias selecionadas? <br>
                     <button id="botao-popup-eliminar-cancelar" onclick="close_popup_eliminar_fotografias()">Cancelar</button>
-                    <button id="botao-popup-eliminar-confirmar">Confirmar</button>
+                    <button id="botao-popup-eliminar-confirmar" onclick="nova_galeria_eliminada()" >Confirmar</button>
                 </div>
                 
                     
