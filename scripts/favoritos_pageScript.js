@@ -27,3 +27,5 @@ function showFavoritos() {
         tabela.appendChild(trElement);
     }
 }
+
+/* TESTE */
