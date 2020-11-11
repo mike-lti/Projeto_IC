@@ -2,7 +2,7 @@
 
 "use strict";
 
-var tabela = document.querySelector("table#fotos-album tbody");
+var tabela = document.querySelector("table#fotos-favoritas tbody");
 var favList = JSON.parse(localStorage.getItem("favoritos"))
 var favFotos = [];
 
@@ -21,21 +21,9 @@ function showFavoritos() {
     
     for (let i = 0; i < favFotos.length; i++) {
         if(i%4 == 0 || i == 0) {
-                
-        } 
+            trElement = document.createElement('tr');
+        }
+        trElement.appendChild(favFotos[i]);
+        tabela.appendChild(trElement);
     }
 }
-
-
-    // tabela.innerHTML = "";
-    // var x = 0;
-    // var trElement;
-    // /* Cria tabela que vai conter as fotos que vão ficar no album */
-    // for(var i = 0; i < arrayElementosParaFicar.length; i++){
-    //    if(i%4 == 0 || x == 0){
-    //         trElement = document.createElement('tr');
-    //         trElement.setAttribute('id', `tr${x}`);
-    //         x++;
-    //    }
-    //    trElement.appendChild(arrayElementosParaFicar[i]);
-    //    tabela.appendChild(trElement); 
