@@ -63,6 +63,8 @@ header a {
     margin-bottom: 10px;
     position: absolute;
     top: 20px;
+    background-color: white;
+    border-color: white;
 }
 
 #right-top-right-bar button {
@@ -72,6 +74,8 @@ header a {
     margin-bottom: 10px;
     position: absolute;
     top: 20px;
+    border-color: white;
+    background-color: white;
 }
 
 #botao-adicionar {
@@ -87,7 +91,8 @@ header a {
 }
 
 #botao-eliminar {
-    background-color: rgb(209, 73, 73);
+    background-color: rgb(209, 73, 73) !important;
+    border-color: rgb(209, 73, 73);
     right: 35px;
 }
 
