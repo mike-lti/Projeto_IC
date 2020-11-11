@@ -1,13 +1,17 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
 "use strict";
+var tabelaOrigin = document.querySelector("#tabela-cuba tbody");
+
+
 
 $(document).ready(show_album());
 $(document).ready(show_albumPhoto());
 $(document).ready(albumNameHandler());
-$(document).ready(aplica_filtros());
+//$(document).ready(aplica_filtros());
 
-var tabelaOriginal = document.querySelector("tabela-cuba tbody");
+
+
 
 function showModal() {
     disableBackground()
@@ -139,9 +143,8 @@ function tira_filtros() {
     document.getElementById("popup-filtros").style.display = "none";
 }
 
-function aplica_filtros(tabelaOriginal) {
+function aplica_filtros() {
 
-    //var tabelaOriginal = document.querySelector("#tabela-cuba body")
     let imagensFiltradas = []  
     let filtrosDesejados = [] 
     var images = document.querySelectorAll("#tabela-cuba td")
@@ -205,8 +208,7 @@ function aplica_filtros(tabelaOriginal) {
             tabela.appendChild(trElement);
         }
     }else{
-        console.log(tabelaOriginal)
-        document.getElementById("tabela-cuba").innerHTML = tabelaOriginal
+        document.querySelector("#tabela-cuba").appendChild(tabelaOrigin) 
         
     }
   
