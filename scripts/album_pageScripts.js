@@ -141,6 +141,7 @@ function tira_filtros() {
 }
 
 function aplica_filtros() {
+
     var tabelaOriginal = $("#tabela-cuba tbody").children();
     console.log(tabelaOriginal)
     let imagensFiltradas = []  
@@ -191,6 +192,7 @@ function aplica_filtros() {
 
 
     console.log(filtrosDesejados)
+
 
     if(filtrosDesejados.length != 0) {
         var tabela = document.querySelector("#tabela-cuba tbody");
