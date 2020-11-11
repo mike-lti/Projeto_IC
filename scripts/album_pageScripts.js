@@ -5,6 +5,9 @@
 $(document).ready(show_album());
 $(document).ready(show_albumPhoto());
 $(document).ready(albumNameHandler());
+$(document).ready(aplica_filtros());
+
+var tabelaOriginal;
 
 function showModal() {
     disableBackground()
@@ -32,14 +35,12 @@ function imagePlacerConfirm() {
     if (localStorage.getItem('selectedFile') == 'Cuba') {
         let ids = [];
         /* Itera sobre todas as images que foram escolhidas e guarda os ids das mesmas */
-        for (var clicked of document.querySelectorAll(
-            'input[type=checkbox]:checked'
-        )) {
-            ids.push(
-                clicked.parentElement
-                    .querySelector('div')
-                    .children[0].getAttribute('image-id')
+        for (var clicked of document.querySelectorAll('#tabela-cuba input[type=checkbox]:checked')) {
+            console.log(clicked.parentElement.children[1].children[0])            
+            ids.push(        
+                clicked.parentElement.children[1].children[0].getAttribute('image-id')
             );
+
         }
 
         localStorage.setItem("ids",JSON.stringify(ids));
@@ -141,60 +142,78 @@ function tira_filtros() {
 
 function aplica_filtros() {
 
-    // let imagensFiltradas = []  
-    // let filtrosDesejados = [] 
-    // var images = document.querySelectorAll("#tabela-cuba img")
-    // //variavel tem o valor de true ou false consoante esteja selecionada ou nao
-    // var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
-    // var checkboxLocalização = document.getElementById("localização").checked;
-    // var checkboxQualidade = document.getElementById("qualidade").checked;
-    // var checkboxPraia = document.getElementById("praia").checked;
-    // var checkboxDia = document.getElementById("dia").checked;
+    var tabelaOriginal = $("#tabela-cuba tbody").children();
+    console.log(tabelaOriginal)
+    let imagensFiltradas = []  
+    let filtrosDesejados = [] 
+    var images = document.querySelectorAll("#tabela-cuba td")
+    console.log(images)
+    //variavel tem o valor de true ou false consoante esteja selecionada ou nao
+    var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
+    var checkboxLocalização = document.getElementById("localização").checked;
+    var checkboxQualidade = document.getElementById("qualidade").checked;
+    var checkboxPraia = document.getElementById("praia").checked;
+    var checkboxDia = document.getElementById("dia").checked;
 
-    // localStorage.setItem("desfocadas", checkboxDesfocadas)
-    // localStorage.setItem("localização", checkboxLocalização)
-    // localStorage.setItem("qualidade", checkboxQualidade)
-    // localStorage.setItem("praia", checkboxPraia)
-    // localStorage.setItem("dia", checkboxDia)
-    // console.log(filtrosDesejados)
-    // console.log(imagensFiltradas)
+    localStorage.setItem("desfocadas", checkboxDesfocadas)
+    localStorage.setItem("localização", checkboxLocalização)
+    localStorage.setItem("qualidade", checkboxQualidade)
+    localStorage.setItem("praia", checkboxPraia)
+    localStorage.setItem("dia", checkboxDia)
 
-    // if(localStorage.getItem("desfocadas") == "true"){    
-    //     filtrosDesejados.push("desfocada")
-    // }
-    //     if(localStorage.getItem("localização") == "true"){
-    //         filtrosDesejados.push("localização")
-    //     }
-    //         if(localStorage.getItem("qualidade") == "true"){
-    //            filtrosDesejados.push("qualidade")
-    //         }
-    //             if(localStorage.getItem("praia") == "true"){
-    //                 filtrosDesejados.push("praia")
-    //                 for(let img = 0; img < images.length; img++) {
-    //                     let imageToCheck = images[img].getAttribute("praia");
-    //                     if(imageToCheck == "true"){
-    //                         imagensFiltradas.push(images[img]);
-    //                     }
-    //                 }                       
-    //             }
-    //                 if(localStorage.getItem("dia") == "true"){
-    //                     filtrosDesejados.push("dia")
-    //                     for(let img = 0; img < images.length; img++) {
-    //                         let imageToCheck = images[img].getAttribute("dia")
-    //                         if(imageToCheck == "true"){
-    //                             imagensFiltradas.push(images[img])
-    //                         }
-    //                     }
-    //                 }
+    if(localStorage.getItem("desfocadas") == "true"){    
+        filtrosDesejados.push("desfocada")
+    }
+        if(localStorage.getItem("localização") == "true"){
+            filtrosDesejados.push("localização")
+        }
+            if(localStorage.getItem("qualidade") == "true"){
+               filtrosDesejados.push("qualidade")
+            }
+                if(localStorage.getItem("praia") == "true"){
+                    filtrosDesejados.push("praia")
+                    for(let img = 0; img < images.length; img++) {
+                        let imageToCheck = images[img].querySelector("img").getAttribute("praia");
+                        console.log(imageToCheck)
+                        if(imageToCheck == "true"){
+                            imagensFiltradas.push(images[img]);
+                        }
+                    }                       
+                }
+                    if(localStorage.getItem("dia") == "true"){
+                        filtrosDesejados.push("dia")
+                        for(let img = 0; img < images.length; img++) {
+                            let imageToCheck = images[img].querySelector("img").getAttribute("dia");
+                            if(imageToCheck == "true"){
+                                imagensFiltradas.push(images[img])
+                            }
+                        }
+                    }
 
 
-    // console.log(filtrosDesejados)
-    // console.log(imagensFiltradas)
-                
-    // var tabela = document.querySelector("#tabela-cuba img");
-    // console.log(tabela)
-    // tabela.innerHTML=" ";                 
+    console.log(filtrosDesejados)
 
+
+    if(filtrosDesejados.length != 0) {
+        var tabela = document.querySelector("#tabela-cuba tbody");
+        tabela.innerHTML=" ";   
+        var x = 0
+        var trElement;
+        for(var i = 0; i < imagensFiltradas.length; i++){
+            if(i % 4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', "tr${x}");
+                x++
+            }
+            trElement.appendChild(imagensFiltradas[i]);
+            tabela.appendChild(trElement);
+        }
+    }else{
+        /* var tabela = document.querySelector("#tabela-cuba tbody");
+        tabela.appendChild(tabelaOriginal); */ 
+        
+    }
+  
     
     
 
