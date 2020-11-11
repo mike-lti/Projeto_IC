@@ -3,7 +3,7 @@
 "use strict";
 
 var tabela = document.querySelector("table#fotos-favoritas tbody");
-var favList = JSON.parse(localStorage.getItem("favoritos"))
+var favList = JSON.parse(localStorage.getItem("favoritos"));
 var favFotos = [];
 
 $(document).ready(getFavoritos());
