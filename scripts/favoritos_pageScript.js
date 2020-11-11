@@ -21,7 +21,6 @@ function getFavoritos() {
 }
 
 function showFavoritos() {
-    tabela.innerHTML = "";
     var trElement;
     
     for (var i = 0; i < favFotos.length; i++) {
