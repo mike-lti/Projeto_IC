@@ -140,45 +140,44 @@ function tira_filtros() {
 }
 
 function aplica_filtros() {
-    let filtrosDesejados = []
-    var checkbox1 = document.getElementById("desfocadas").checked; //variavel tem o valor de true ou false consoante esteja selecionada ou nao
-    var checkbox2 = document.getElementById("localização").checked;
-    var checkbox3 = document.getElementById("qualidade").checked;
-    var checkbox4 = document.getElementById("praia").checked;
-    var checkbox5 = document.getElementById("dia").checked;
 
-    document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
-    $('.popupFiltrosAplicados').fadeOut(7000);
+    let imagensFiltradas = []
+    
+    //variavel tem o valor de true ou false consoante esteja selecionada ou nao
+    var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
+    var checkboxLocalização = document.getElementById("localização").checked;
+    var checkboxQualidade = document.getElementById("qualidade").checked;
+    var checkboxPraia = document.getElementById("praia").checked;
+    var checkboxDia = document.getElementById("dia").checked;
 
-    //amanha tenho de ver istro melhor ja que as variaveis so ficam definidas por uma fracao de tempo ja que depois de o botao de submit ser clicado deixam de estar definidas
-    //e rever no caso de retirar filtros que ja selecionou anteriormente
-    if(checkbox1 == "true"){
-        filtrosDesejados.push("desfocadas")
+    if(checkboxDesfocadas == "true"){
+        
     }
-        if(checkbox2 == "true"){
+        if(checkboxLocalização == "true"){
             filtrosDesejados.push("localização")
     }
-            if(checkbox3 == "true"){
+            if(checkboxQualidade == "true"){
                filtrosDesejados.push("qualidade")
     }
-                if(checkbox4 == "true"){
+                if(checkboxPraia == "true"){
                     filtrosDesejados.push("praia")
     }
-                    if(checkbox5 == "true"){
+                    if(checkboxDia == "true"){
                         filtrosDesejados.push("dia")
     }
 
     //for(pos = 0, pos > filtrosDesejados.length(), pos++){
         //filtrosDesejados[pos]    filtro a aplicar a comprara com id das imgs
     //}
-    
+
+    document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
+    $('.popupFiltrosAplicados').fadeOut(7000);
 }
 
 function closePopupFiltrosAplicados(){
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "none"
 
 }
-
 
 function albumNameHandler(){
     document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
