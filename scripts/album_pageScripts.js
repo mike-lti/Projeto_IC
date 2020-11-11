@@ -35,8 +35,7 @@ function imagePlacerConfirm() {
     if (localStorage.getItem('selectedFile') == 'Cuba') {
         let ids = [];
         /* Itera sobre todas as images que foram escolhidas e guarda os ids das mesmas */
-        for (var clicked of document.querySelectorAll('#tabela-cuba input[type=checkbox]:checked')) {
-            console.log(clicked.parentElement.children[1].children[0])            
+        for (var clicked of document.querySelectorAll('#tabela-cuba input[type=checkbox]:checked')) {          
             ids.push(        
                 clicked.parentElement.children[1].children[0].getAttribute('image-id')
             );
@@ -147,7 +146,6 @@ function aplica_filtros() {
     let imagensFiltradas = []  
     let filtrosDesejados = [] 
     var images = document.querySelectorAll("#tabela-cuba td")
-    console.log(images)
     //variavel tem o valor de true ou false consoante esteja selecionada ou nao
     var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
     var checkboxLocalização = document.getElementById("localização").checked;
