@@ -7,7 +7,7 @@ $(document).ready(show_albumPhoto());
 $(document).ready(albumNameHandler());
 $(document).ready(aplica_filtros());
 
-var tabelaOriginal;
+var tabelaOriginal = document.querySelector("tabela-cuba tbody");
 
 function showModal() {
     disableBackground()
@@ -139,10 +139,9 @@ function tira_filtros() {
     document.getElementById("popup-filtros").style.display = "none";
 }
 
-function aplica_filtros() {
+function aplica_filtros(tabelaOriginal) {
 
-    var tabelaOriginal = $("#tabela-cuba tbody").children();
-    console.log(tabelaOriginal)
+    //var tabelaOriginal = document.querySelector("#tabela-cuba body")
     let imagensFiltradas = []  
     let filtrosDesejados = [] 
     var images = document.querySelectorAll("#tabela-cuba td")
@@ -172,7 +171,6 @@ function aplica_filtros() {
                     filtrosDesejados.push("praia")
                     for(let img = 0; img < images.length; img++) {
                         let imageToCheck = images[img].querySelector("img").getAttribute("praia");
-                        console.log(imageToCheck)
                         if(imageToCheck == "true"){
                             imagensFiltradas.push(images[img]);
                         }
@@ -189,7 +187,7 @@ function aplica_filtros() {
                     }
 
 
-    console.log(filtrosDesejados)
+    
 
 
     if(filtrosDesejados.length != 0) {
@@ -207,8 +205,8 @@ function aplica_filtros() {
             tabela.appendChild(trElement);
         }
     }else{
-        /* var tabela = document.querySelector("#tabela-cuba tbody");
-        tabela.appendChild(tabelaOriginal); */ 
+        console.log(tabelaOriginal)
+        document.getElementById("tabela-cuba").innerHTML = tabelaOriginal
         
     }
   

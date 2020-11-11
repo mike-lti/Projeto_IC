@@ -476,7 +476,7 @@ nav a{
 #botao-confirmar-selecao{
     position: absolute;
     right: 90px;
-    top: 13px;
+    top: 6px;
     width: 105px;
     height: 45px;
     background-color: goldenrod;
@@ -596,7 +596,7 @@ nav a{
 
 .botao-popup {
     position: absolute;
-    right: 30px;
+    right: 40px;
     top: 25px;
     width: 60px;
 }
