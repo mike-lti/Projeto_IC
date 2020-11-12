@@ -2,18 +2,18 @@
 
 "use strict";
 
-function openLinkPopup(){
+function open_popup_link(){
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
-    document.getElementsByClassName("linkPopup")[0].style.display="block"
+    document.getElementsByClassName("popup-link")[0].style.display="block"
 }
 
-function closeLinkPopup(){
+function close_popup_link(){
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
-    document.getElementsByClassName("linkPopup")[0].style.display="none"
+    document.getElementsByClassName("popup-link")[0].style.display="none"
 
 }
 
 function linkGenerate(){
-    let tempLink = "https//montaNelas420POVOASANTAIRIA2625!?!?!?.com"
+    let tempLink = "https://memento_098765435.com"
     document.getElementsByClassName("linkParagraph")[0].innerHTML = tempLink
 }

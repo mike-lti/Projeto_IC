@@ -414,6 +414,10 @@ nav a{
     overflow-x: hidden;
 }
 
+#tabela-cuba {
+    margin-top: 60px;
+}
+
 #tabela1 {
     position: absolute;
     margin-top: 75px;
@@ -530,7 +534,6 @@ nav a{
 
 .popupAlbum{
     position: absolute;
-    padding: 2px;
     margin: auto;
     left: 530px;
     top: 88%;
@@ -538,22 +541,35 @@ nav a{
     height: 8%;
     background-color: rgb(253, 255, 157);
     z-index: 9;
+    padding-left: 10px;
     display: none;
     border-radius: 10px;
 }
 
-.popupFiltrosAplicados{
+.botao-popup {
     position: absolute;
-    padding: 2px;
+    margin-left: 30px;
+    width: 60px;
+}
+
+.popupFiltrosAplicados{
+    display: none;
+    position: absolute;
     margin: auto;
-    left: 530px;
+    left: 510px;
     top: 88%;
-    width: 32%;
+    width: 36%;
     height: 8%;
     background-color: rgb(253, 255, 157);
     z-index: 9;
-    display: none;
     border-radius: 10px;
+}
+
+#botao-popup-filtros-aplicados {
+    position: absolute;
+    margin-left: 30px;
+    width: 60px;
+
 }
 
 #popup-sem-fotos{
@@ -718,20 +734,22 @@ nav a{
     margin-left: 50px;
 }
 
-.linkPopup{
+.popup-link{
     display: none;
     text-align: center;
-    background-color: grey;
+    background-color: white;
     left: 32%;
     position: absolute;
-    border: solid;
-    border-radius: 25px;
+    border-radius: 5px;
     z-index: 9;
     width: 40%;
-    top: 21%;
-    height: 50%;
+    top: 39%;
+    height: 20%;
 }
 
+.buttonLink {
+    font-size: large;
+}
 
 .linkParagraph{
     text-align: center;

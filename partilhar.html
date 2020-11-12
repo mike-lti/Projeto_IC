@@ -38,7 +38,7 @@
             <div class="workspace">
                 <p id="p-importar">Escolha o local para onde pretende partilhar as suas fotografias:</p>
                 <div id="top_row_icons">
-                    <input type="image" id="link_icon" width="230" height="280" src="img_icon_partilhar/link_icon.png" onclick="openLinkPopup()">
+                    <input type="image" id="link_icon" width="230" height="280" src="img_icon_partilhar/link_icon.png" onclick="open_popup_link()">
                     <img id="facebook_icon" src="img_icon_partilhar/facebook_icon.png" width="230" height="280" alt="facebook icon">
                     <img id="insta_icon" src="img_icon_partilhar/insta_icon.png" width="230" height="280" alt="insta icon">
                 </div>
@@ -51,9 +51,9 @@
             </div>
 
 
-            <div class="linkPopup">
-                <p class="tituloLinkPopup">Deseja criar o link para poder partilhar estas fotos:</p>
-                <div class="closeButton" onclick="closeLinkPopup()">x</div>
+            <div class="popup-link">
+                <p class="tituloLinkPopup">Deseja criar o link para poder partilhar as fotografias?</p>
+                <div class="closeButton" onclick = "close_popup_link()"> &times; </div>
                 <button class="buttonLink" type="button" onclick="linkGenerate()">Gerar</button>
                 <p class="linkParagraph"></p>
             </div>
