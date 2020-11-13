@@ -29,6 +29,7 @@ function closeNomeAlbum() {
 }
 
 function albumCriado() {
+    console.log("albumCriado chamado")
     enableBackground()
 
     document.getElementsByClassName('grid-item')[0].style.display ='block';
@@ -53,36 +54,7 @@ function closeCriaAlbum() {
 function openAlbumPhotos() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
     document.getElementById("opcoes-album").style.display = "block";
-    var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked');
-    var tabela = document.querySelector("table#fotos-album tbody");
-    tabela.innerHTML = "";
-    var x = 0;
-    var i = 0;
-    var trElement;
-    /* Cria tabela que vai conter as fotos que vão ficar no album */
-    for (let input of arrayImagensGuardadas) {
-            
-        if(i%4 == 0 || x == 0){
-            trElement = document.createElement('tr');
-            trElement.setAttribute('id', `tr${x}`);
-            x++;
-        }
-
-        let src = input.parentElement.children[1].children[0].getAttribute('src');
-        let linha = document.createElement("td");
-        linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
-                                "<div class='option-inner'>" +
-                                    "<img width='255px' height='145px' src='" + src + "'>" +
-                                "</div>" +
-                            "</label>";
-        trElement.appendChild(linha);
-        tabela.appendChild(trElement);
-        i++; 
-
-    }
-    
-
+   
     /* Coloca a primeira foto escolhida para ser a capa do album */
     /* document.getElementById("imagem-album").src =  COLOCAR FOTO CAPA ALBUM */  
     document.getElementById("fundo-fotos-album").style.display = "block";
@@ -216,7 +188,7 @@ function nomeAlbumDado(){
     
 }
 
-function preencheTabelaAlbum() {
+function preencheTabelaAlbum() {    
     var tabela = document.querySelector("#tabela-album tbody");
     tabela.innerHTML = "";
     let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
@@ -230,11 +202,12 @@ function preencheTabelaAlbum() {
                 trElement.setAttribute('id', `tr${x}`);
                 x++;
             }
+
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item'>" +
                                 "<input type='checkbox' class='checkbox'>" +
                                 "<div class='option-inner'>" +
-                                    "<img width='255px' height='145px' src='" + imagens + "'>" +
+                                    "<img width='180px' height='100px' src='" + imagens + "'>" +
                                 "</div>" +
                             "</label>";
             trElement.appendChild(linha);
@@ -250,6 +223,7 @@ function preencheTabelaAlbum() {
 
 
 function preencheTabelaAlbumCriado() {
+    console.log("preencheTabelaAlbumCriado chamado")
     var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked');
     var tabela = document.querySelector("#fotos-album tbody");
     tabela.innerHTML = "";
@@ -270,7 +244,7 @@ function preencheTabelaAlbumCriado() {
         linha.innerHTML = "<label class='option-item'>" +
                                 "<input type='checkbox' class='checkbox'>" +
                                 "<div class='option-inner'>" +
-                                    "<img width='255px' height='145px' src='" + src + "'>" +
+                                    "<img width='180px' height='100px' src='" + src + "'>" +
                                 "</div>" +
                             "</label>";
         trElement.appendChild(linha);

@@ -304,8 +304,7 @@ nav a{
 }
 
 #fotos-album td {
-    padding: 2px;
-    /* display: none; */
+    padding: 1px;
 }
 
 #fundo-fotos-album {
@@ -374,8 +373,6 @@ nav a{
 
 .option-item .option-inner {
     position: relative;
-    width: 255px;
-    height: 145px;
     border-radius: 5px;
     border: 5px solid transparent;
     text-align: center;
@@ -426,7 +423,7 @@ nav a{
 #popUpTabela1 .option-item {
     display: block;
     position: relative;
-    margin: 10px;
+    margin: 2px;
 }
 
 .option-item-album .option-inner-album {
