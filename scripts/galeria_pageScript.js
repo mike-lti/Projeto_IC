@@ -3,6 +3,7 @@
 "use strict";
 
 $(document).ready(showPhotos());
+$(document).ready(preencheTabelaImagens());
 
 $("#right-top-right-bar button img").addClass("disabled-image-button")
 document.getElementById("botao-eliminar").disabled = true;
@@ -165,7 +166,7 @@ function nova_galeria_eliminada() {
     close_popup_eliminar_fotografias()
 }   
 
-    function guardarFavoritos() {
+function guardarFavoritos() {
 
     if (localStorage.getItem("fotosFavoritas") == null) {
         let srcList = [];
@@ -187,4 +188,40 @@ function nova_galeria_eliminada() {
     
         localStorage.setItem("fotosFavoritas", JSON.stringify(srcList))
     }
+}
+
+function preencheTabelaImagens() {
+    var tabela = document.querySelector("#tabela tbody");
+    tabela.innerHTML = "";
+    let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+    var x = 0;
+    var i = 0;
+    var trElement;
+    for (let lista of arrayImagens) {
+        for (let imagens of lista) {
+            if(i%4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', `tr${x}`);
+                x++;
+            }
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner'>" +
+                                    "<img width='255px' height='145px' src='" + imagens + "'>" +
+                                "</div>" +
+                            "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++;
+
+            }
+        }
+
+
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"
+
+
+    close_popup_eliminar_fotografias()
+    
 }
