@@ -38,30 +38,21 @@ function confirmSelection() {
 function selectCuba() {
     document.getElementById("botao-confirmar").disabled = false;
     localStorage.setItem("selectedFile", "Cuba");
-<<<<<<< Updated upstream
     var arrayImagensCuba = ["img_cuba/img_1.jpg", "img_cuba/img_2.jpg", "img_cuba/img_3.jpg", "img_cuba/img_4.jpg", "img_cuba/img_5.jpg", "img_cuba/img_6.jpg", "img_cuba/img_7.jpg", "img_cuba/img_8.jpg", "img_cuba/img_9.jpg", "img_cuba/img_10.jpg", "img_cuba/img_11.jpg", "img_cuba/img_12.jpg", "img_cuba/img_13.jpg", "img_cuba/img_14.jpg", "img_cuba/img_15.jpg", "img_cuba/img_16.jpg", "img_cuba/img_17.jpg", "img_cuba/img_18.jpg", "img_cuba/img_19.jpg", "img_cuba/img_20.jpg"];
-   
-    if (localStorage.getItem("imagensImportadas") == null) {
-=======
-    var arrayImagensCuba = ["img_cuba/img_1.jpg", "img_cuba/img_2.jpg", "img_cuba/img_3.jpg", "img_cuba/img_4.jpg",
-    "img_cuba/img_5.jpg", "img_cuba/img_6.jpg", "img_cuba/img_7.jpg", "img_cuba/img_8.jpg", "img_cuba/img_9.jpg",
-    "img_cuba/img_10.jpg", "img_cuba/img_11.jpg", "img_cuba/img_12.jpg", "img_cuba/img_13.jpg", "img_cuba/img_14.jpg",
-    "img_cuba/img_15.jpg", "img_cuba/img_16.jpg", "img_cuba/img_17.jpg", "img_cuba/img_18.jpg", "img_cuba/img_19.jpg", "img_cuba/img_20.jpg"];
+    
     var arrayTagsImg = [["true", "true"], ["true", "true"], ["false","true"], ["false", "false"], 
     ["false", "true"], ["true", "true"], ["true", "true"], ["true", "true"]
     , ["true", "true"], ["true", "true"], ["true", "true"], ["true", "true"]
     , ["true", "true"], ["false", "true"], ["false", "true"], ["false", "true"],
      ["true", "true"], ["false", "true"], ["false", "true"], ["true", "true"]];
 
-
     var objArray = objHandler(arrayImagensCuba, arrayTagsImg);
-    
 
-    if (localStorage.getItem("imagensImportadas") == null) {      
->>>>>>> Stashed changes
-        arrayImagensImportadas.push(arrayImagensCuba);
-        localStorage.setItem("imagensFiltros", JSON.stringify(objArray));
+    if (localStorage.getItem("imagensImportadas") == null) {        
+        arrayImagensImportadas.push(arrayImagensCuba);        
+        console.log(arrayImagensImportadas)
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
+        
     }else {        
         arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
         arrayImagensImportadas.push(arrayImagensCuba);
@@ -81,11 +72,7 @@ function selectCuba() {
 function selectFranca() {
     document.getElementById("botao-confirmar").disabled = false;
     localStorage.setItem("selectedFile", "Franca");
-<<<<<<< Updated upstream
     var arrayImagensFranca = ["img_franca/img_1.jpg", "img_franca/img_2.jpg", "img_franca/img_3.jpg", "img_franca/img_4.jpg", "img_franca/img_5.jpg", "img_franca/img_6.jpg", "img_franca/img_7.jpg", "img_franca/img_8.jpg", "img_franca/img_9.jpg", "img_franca/img_10.jpg", "img_franca/img_11.jpg", "img_franca/img_12.jpg", "img_franca/img_13.jpg", "img_franca/img_14.jpg", "img_franca/img_15.jpg", "img_franca/img_16.jpg", "img_franca/img_17.jpg", "img_franca/img_18.jpg", "img_franca/img_19.jpg", "img_franca/img_20.jpg"];
-=======
-    var arrayImagensFranca = ["img_franca/img1_.jpg", "img_franca/img_2.jpg", "img_franca/img_3.jpg", "img_franca/img_4.jpg", "img_franca/img_5.jpg", "img_franca/img_6.jpg", "img_franca/img_7.jpg", "img_franca/img_8.jpg", "img_franca/img_9.jpg", "img_franca/img_10.jpg", "img_franca/img_11.jpg", "img_franca/img_12.jpg", "img_franca/img_13.jpg", "img_franca/img_14.jpg", "img_franca/img_15.jpg", "img_franca/img_16.jpg", "img_franca/img_17.jpg", "img_franca/img_18.jpg", "img_franca/img_9.jpg", "img_franca/img_20.jpg"];
->>>>>>> Stashed changes
     if (localStorage.getItem("imagensImportadas") == null) {
         arrayImagensImportadas.push(arrayImagensFranca);
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
@@ -114,10 +101,10 @@ function selectSpike() {
 
 function objHandler(arrayImagens, arrayTagsImg) {
     let listObj = []
-    for(var i = 0; i < arrayImagens.length(); i++){
-        filterImg = arrayTagsImg[i];
-        imgSrc = arrayImagens[i];      
-        var objToAdd = filterObj(imgSrc, filterImg)); 
+    for(var i = 0; i < arrayImagens.length; i++){
+        let filterImg = arrayTagsImg[i];
+        let imgSrc = arrayImagens[i];      
+        var objToAdd = new filterObj(imgSrc, filterImg); 
         listObj.push(objToAdd);
 
         

@@ -138,6 +138,50 @@ function tira_filtros() {
     document.getElementById("popup-filtros").style.display = "none";
 }
 
+function preencheTabelaAlbum() {
+    var tabela = document.querySelector("#tabela-album tbody");
+    tabela.innerHTML = "";
+    let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+    var x = 0;
+    var i = 0;
+    var trElement;
+    for (let lista of arrayImagens) {
+        for (let imagens of lista) {
+            if(i%4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', `tr${x}`);
+                x++;
+            }
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner'>" +
+                                    "<img width='255px' height='145px' src='" + imagens + "'>" +
+                                "</div>" +
+                            "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++;
+
+            }
+        }
+
+
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"
+
+
+    close_popup_eliminar_fotografias()
+    
+}
+
+
+
+
+
+
+
+
+
 function aplica_filtros() {
 
     let imagensFiltradas = []  
@@ -232,12 +276,14 @@ function albumNameHandler(){
 
 function newAlbumHandler(){
     let ff = document.forms.nomeDoAlbum;
+
     localStorage.setItem("nomeAlbum", ff.elements.aName.value)
     document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
 
     document.getElementById("popUpTabela1").style.display = "block";
     document.getElementById("seleciona-fotos-album").style.display = "block";
     document.getElementsByClassName("album_modal")[0].style.display = "none";
+    preencheTabelaAlbum()
 }
 
 function disableBackground() {
