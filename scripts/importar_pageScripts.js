@@ -29,16 +29,21 @@ function confirmSelection() {
 function selectCuba() {
     document.getElementById("botao-confirmar").disabled = false;
     localStorage.setItem("selectedFile", "Cuba")
+    arrayImagensCuba = ["img_cuba/img_1.jpg", "img_cuba/img_2.jpg", "img_cuba/img_3.jpg", "img_cuba/img_4.jpg", "img_cuba/img_5.jpg", "img_cuba/img_6.jpg", "img_cuba/img_7.jpg", "img_cuba/img_8.jpg", "img_cuba/img_9.jpg", "img_cuba/img_10.jpg", "img_cuba/img_11.jpg", "img_cuba/img_12.jpg", "img_cuba/img_13.jpg", "img_cuba/img_14.jpg", "img_cuba/img_15.jpg", "img_cuba/img_16.jpg", "img_cuba/img_17.jpg", "img_cuba/img_18.jpg", "img_cuba/img_9.jpg", "img_cuba/img_20.jpg"]
+
 }
 
 function selectFranca() {
     document.getElementById("botao-confirmar").disabled = false;
     localStorage.setItem("selectedFile", "Franca")
+    arrayImagensFranca = ["img_franca/img1_.jpg", "img_franca/img_2.jpg", "img_franca/img_3.jpg", "img_franca/img_4.jpg", "img_franca/img_5.jpg", "img_franca/img_6.jpg", "img_franca/img_7.jpg", "img_franca/img_8.jpg", "img_franca/img_9.jpg", "img_franca/img_10.jpg", "img_franca/img_11.jpg", "img_franca/img_12.jpg", "img_franca/img_13.jpg", "img_franca/img_14.jpg", "img_franca/img_15.jpg", "img_franca/img_16.jpg", "img_franca/img_17.jpg", "img_franca/img_18.jpg", "img_franca/img_9.jpg", "img_franca/img_20.jpg"]
+
 }
 
 function selectSpike() {
     document.getElementById("botao-confirmar").disabled = false;
-   localStorage.setItem("selectedFile", "Spike") 
+    localStorage.setItem("selectedFile", "Spike") 
+    arrayImagensSpike = ["img_spike/img1_.jpg", "img_spike/img_2.jpg", "img_spike/img_3.jpg", "img_spike/img_4.jpg", "img_spike/img_5.jpg", "img_spike/img_6.jpg", "img_spike/img_7.jpg", "img_spike/img_8.jpg", "img_spike/img_9.jpg", "img_spike/img_10.jpg", "img_spike/img_11.jpg", "img_spike/img_12.jpg", "img_spike/img_13.jpg", "img_spike/img_14.jpg", "img_spike/img_15.jpg", "img_spike/img_16.jpg", "img_spike/img_17.jpg", "img_spike/img_18.jpg", "img_spike/img_9.jpg", "img_spike/img_20.jpg"]
 }
 
 function disableBackground() {
