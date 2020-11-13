@@ -96,7 +96,8 @@ function aplica_filtros() {
 
     let imagensFiltradas = []  
     let filtrosDesejados = [] 
-    var images = document.querySelectorAll("#tabela-cuba td")
+    var listFiltrosToParse = localStorage.getItem("imagensFiltros")
+    var listFiltrosImgs = JSON.parse(listFiltrosToParse);
     //variavel tem o valor de true ou false consoante esteja selecionada ou nao
     var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
     var checkboxLocalização = document.getElementById("localização").checked;
@@ -121,25 +122,26 @@ function aplica_filtros() {
             }
                 if(localStorage.getItem("praia") == "true"){
                     filtrosDesejados.push("praia")
-                    for(let img = 0; img < images.length; img++) {
-                        let imageToCheck = images[img].querySelector("img").getAttribute("praia");
+                    for(let img = 0; img < listFiltrosImgs.length; img++) {
+                        let imageToCheck = listFiltrosImgs[img]["praia"];
                         if(imageToCheck == "true"){
-                            imagensFiltradas.push(images[img]);
+                            imagensFiltradas.push(listFiltrosImgs[img]);
                         }
                     }                       
                 }
                     if(localStorage.getItem("dia") == "true"){
                         filtrosDesejados.push("dia")
-                        for(let img = 0; img < images.length; img++) {
-                            let imageToCheck = images[img].querySelector("img").getAttribute("dia");
+                        for(let img = 0; img < listFiltrosImgs.length; img++) {
+                            let imageToCheck = listFiltrosImgs[img]["dia"];
                             if(imageToCheck == "true"){
-                                imagensFiltradas.push(images[img])
+                                imagensFiltradas.push(listFiltrosImgs[img])
                             }
                         }
                     }
 
+    console.log(imagensFiltradas)
     if(filtrosDesejados.length != 0) {
-        var tabela = document.querySelector("#tabela-cuba tbody");
+        var tabela = document.querySelector("#tabela-album tbody");
         tabela.innerHTML=" ";   
         var x = 0
         var trElement;
@@ -149,11 +151,43 @@ function aplica_filtros() {
                 trElement.setAttribute('id', "tr${x}");
                 x++
             }
-            trElement.appendChild(imagensFiltradas[i]);
+
+            let srcImg = imagensFiltradas[i]["imgSrcObj"]; 
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner'>" +
+                                    "<img width='180px' height='100px' src='" + srcImg + "'>" +
+                                "</div>" +
+                            "</label>";
+                       
+            trElement.appendChild(linha);
             tabela.appendChild(trElement);
         }
     }else{
-        document.querySelector("#tabela-cuba").appendChild(tabelaOrigin) 
+        var tabela = document.querySelector("#tabela-album tbody");
+        tabela.innerHTML=" ";   
+        var x = 0
+        var trElement;
+        for(var i = 0; i < listFiltrosImgs.length; i++){
+            if(i % 4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', "tr${x}");
+                x++
+            }
+
+            let srcImg = listFiltrosImgs[i]["imgSrcObj"]; 
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner'>" +
+                                    "<img width='180px' height='100px' src='" + srcImg + "'>" +
+                                "</div>" +
+                            "</label>";
+                       
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement)
+        }
         
     }
 
