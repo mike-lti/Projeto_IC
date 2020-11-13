@@ -3,17 +3,16 @@
 "use strict";
 var tabelaOrigin = document.querySelector("#tabela-cuba tbody");
 
-$(document).ready(show_album());
-$(document).ready(show_albumPhoto());
-$(document).ready(albumNameHandler());
+$(document).ready(showCapaAlbum());
+$(document).ready(showNomeAlbum());
 //$(document).ready(aplica_filtros());
 
-function showModal() {
+function abreNomeAlbum() {
     disableBackground()
     document.getElementsByClassName("album_modal")[0].style.display = "inline-block";
     document.getElementsByClassName("album_modal")[0].style.zIndex = "9";
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
-    if (localStorage.getItem("selectedFile") == "Cuba") {
+    if (localStorage.getItem("imagensImportadas") != null) {
         document.getElementById("botao-confirmar").disabled = false;
         document.getElementById("popup-sem-fotos").style.display = "none";
     } else {
@@ -22,38 +21,33 @@ function showModal() {
     }
 }
 
-function closeModal() {
+function closeNomeAlbum() {
     enableBackground()
     document.getElementsByClassName("album_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     document.getElementById("popup-sem-fotos").style.display = "none";
 }
 
-function imagePlacerConfirm() {
+function albumCriado() {
     enableBackground()
-    if (localStorage.getItem('selectedFile') == 'Cuba') {
-        let ids = [];
-        /* Itera sobre todas as images que foram escolhidas e guarda os ids das mesmas */
-        for (var clicked of document.querySelectorAll('#tabela-cuba input[type=checkbox]:checked')) {          
-            ids.push(        
-                clicked.parentElement.children[1].children[0].getAttribute('image-id')
-            );
 
-        }
-
-        localStorage.setItem("ids",JSON.stringify(ids));
-        document.getElementsByClassName('grid-item')[0].style.display ='block';
-        document.getElementById('popUpTabela1').style.display = 'none';
-        document.getElementById('seleciona-fotos-album').style.display ='none';
-        document.getElementsByClassName('dimmer')[0].style.opacity = '0';
-        document.getElementsByClassName('popupAlbum')[0].style.display ='block';
-        $('.popupAlbum').fadeOut(7000);
-    }
+    document.getElementsByClassName('grid-item')[0].style.display ='block';
+    document.getElementById('popUpTabela1').style.display = 'none';
+    document.getElementById('seleciona-fotos-album').style.display ='none';
+    document.getElementsByClassName('dimmer')[0].style.opacity = '0';
+    document.getElementsByClassName('popupAlbum')[0].style.display ='block';
+    $('.popupAlbum').fadeOut(7000);
 
     localStorage.setItem('album-criado', 'true');
 
-    document.getElementById("imagem-album").src = document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]).src; 
-    tira_filtros();
+    /*document.getElementById("imagem-album").src = COLOCAR AQUI A FOTO DA CAPA DO ALBUM */
+}
+
+function closeCriaAlbum() {
+    document.getElementById("popUpTabela1").style.display = "none";
+    document.getElementById("seleciona-fotos-album").style.display = "none";
+    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+    tiraFiltros();
 }
 
 function openAlbumPhotos() {
@@ -100,41 +94,28 @@ function closeAlbumPhotos() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
 }
 
-function popUpTabela1Close() {
-    document.getElementById("popUpTabela1").style.display = "none";
-    document.getElementById("seleciona-fotos-album").style.display = "none";
-    document.getElementsByClassName("dimmer")[0].style.opacity = "0";
-    tira_filtros();
-
-}
-
-function show_album() {
+function showCapaAlbum() {
 
     if (localStorage.getItem("album-criado")) {
         document.getElementsByClassName("grid-item")[0].style.display = "block";
+        /* document.getElementById("imagem-album").src = FOTO CAPA ALBUM */ 
     } else {
         document.getElementsByClassName("grid-item")[0].style.display = "none";
     }
 }
 
-function closePopup() {
+function closePopupAlbumCriado() {
     document.getElementsByClassName("popupAlbum")[0].style.display = "none";
 
 }
 
-function show_albumPhoto() {
-    if (localStorage.getItem("album-criado")) {
-        document.getElementById("imagem-album").src = document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]).src;
-    }
-}
-
-function open_filtros() {
+function openFiltros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon1.png";
     document.getElementById("popup-filtros").style.display = "block";
 
 }
 
-function tira_filtros() {
+function tiraFiltros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     document.getElementById("popup-filtros").style.display = "none";
 }
@@ -213,7 +194,7 @@ function closePopupFiltrosAplicados(){
 
 }
 
-function albumNameHandler(){
+function showNomeAlbum(){
     document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
 
     if (localStorage.getItem("selectedFile") == "Cuba") {
@@ -224,30 +205,20 @@ function albumNameHandler(){
     }
 }
 
-function newAlbumHandler(){
+function nomeAlbumDado(){
     let ff = document.forms.nomeDoAlbum;
 
+    preencheTabelaAlbum()
     localStorage.setItem("nomeAlbum", ff.elements.aName.value)
     document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
-    preencheTabelaAlbum();
     document.getElementById("popUpTabela1").style.display = "block";
     document.getElementById("seleciona-fotos-album").style.display = "block";
     document.getElementsByClassName("album_modal")[0].style.display = "none";
-    preencheTabelaAlbum()
-}
-
-function disableBackground() {
-    $("#side-bar").addClass("disabled")
-    $("#memento-top-left").addClass("disabled")
-}
-
-function enableBackground() {
-    $("#side-bar").removeClass("disabled")
-    $("#memento-top-left").removeClass("disabled")
+    
 }
 
 function preencheTabelaAlbum() {
-    var tabela = document.querySelector("#tabela-cuba tbody");
+    var tabela = document.querySelector("#tabela-album tbody");
     tabela.innerHTML = "";
     let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
     var x = 0;
@@ -255,7 +226,7 @@ function preencheTabelaAlbum() {
     var trElement;
     for (let lista of arrayImagens) {
         for (let imagens of lista) {
-            if(i%3 == 0 || x == 0){
+            if(i%4 == 0 || x == 0){
                 trElement = document.createElement('tr');
                 trElement.setAttribute('id', `tr${x}`);
                 x++;
@@ -312,3 +283,13 @@ function preencheTabelaAlbumCriado() {
     
 
 }   
+
+function disableBackground() {
+    $("#side-bar").addClass("disabled")
+    $("#memento-top-left").addClass("disabled")
+}
+
+function enableBackground() {
+    $("#side-bar").removeClass("disabled")
+    $("#memento-top-left").removeClass("disabled")
+}
