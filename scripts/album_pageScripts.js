@@ -59,34 +59,35 @@ function imagePlacerConfirm() {
 function openAlbumPhotos() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
     document.getElementById("opcoes-album").style.display = "block";
-    var arrayElementosParaFicar =  [];
-    var elements = document.querySelectorAll('table#fotos-album tbody tr td');
-    var ids = JSON.parse(localStorage.getItem("ids"));
-
-    /* Itera sobre as fotos à procura de img com o mesmo id das fotos escolhidas */
-    for (var element of elements) {
-        for(var i = 0; i < ids.length; i++){
-			if (element.children[0].getAttribute('id') == ids[i]){
-                arrayElementosParaFicar.push(element);
-            }
-		}
-    }
-
+    var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked');
     var tabela = document.querySelector("table#fotos-album tbody");
     tabela.innerHTML = "";
     var x = 0;
+    var i = 0;
     var trElement;
     /* Cria tabela que vai conter as fotos que vão ficar no album */
-    for(var i = 0; i < arrayElementosParaFicar.length; i++){
-       if(i%4 == 0 || x == 0){
+    for (let input of arrayImagensGuardadas) {
+            
+        if(i%4 == 0 || x == 0){
             trElement = document.createElement('tr');
-			trElement.setAttribute('id', `tr${x}`);
+            trElement.setAttribute('id', `tr${x}`);
             x++;
-       }
-       trElement.appendChild(arrayElementosParaFicar[i]);
-       tabela.appendChild(trElement);
+        }
+
+        let src = input.parentElement.children[1].children[0].getAttribute('src');
+        let linha = document.createElement("td");
+        linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner'>" +
+                                    "<img width='255px' height='145px' src='" + src + "'>" +
+                                "</div>" +
+                            "</label>";
+        trElement.appendChild(linha);
+        tabela.appendChild(trElement);
+        i++; 
 
     }
+    
 
     /* Coloca a primeira foto escolhida para ser a capa do album */
     document.getElementById("imagem-album").src = document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]).src;    
@@ -279,7 +280,7 @@ function newAlbumHandler(){
 
     localStorage.setItem("nomeAlbum", ff.elements.aName.value)
     document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
-
+    preencheTabelaAlbum();
     document.getElementById("popUpTabela1").style.display = "block";
     document.getElementById("seleciona-fotos-album").style.display = "block";
     document.getElementsByClassName("album_modal")[0].style.display = "none";
@@ -295,3 +296,73 @@ function enableBackground() {
     $("#side-bar").removeClass("disabled")
     $("#memento-top-left").removeClass("disabled")
 }
+
+function preencheTabelaAlbum() {
+    var tabela = document.querySelector("#tabela-cuba tbody");
+    tabela.innerHTML = "";
+    let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+    var x = 0;
+    var i = 0;
+    var trElement;
+    for (let lista of arrayImagens) {
+        for (let imagens of lista) {
+            if(i%3 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', `tr${x}`);
+                x++;
+            }
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner'>" +
+                                    "<img width='255px' height='145px' src='" + imagens + "'>" +
+                                "</div>" +
+                            "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++;
+
+            }
+        }
+
+
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"
+
+
+    
+}
+
+
+function preencheTabelaAlbumCriado() {
+    var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked');
+    var tabela = document.querySelector("#fotos-album tbody");
+    tabela.innerHTML = "";
+    var x = 0;
+    var i = 0;
+    var trElement;
+    /* Cria tabela que vai conter as fotos que vão ficar no album */
+    for (let input of arrayImagensGuardadas) {
+            
+        if(i%4 == 0 || x == 0){
+            trElement = document.createElement('tr');
+            trElement.setAttribute('id', `tr${x}`);
+            x++;
+        }
+
+        let src = input.parentElement.children[1].children[0].getAttribute('src');
+        let linha = document.createElement("td");
+        linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner'>" +
+                                    "<img width='255px' height='145px' src='" + src + "'>" +
+                                "</div>" +
+                            "</label>";
+        trElement.appendChild(linha);
+        tabela.appendChild(trElement);
+        i++;  
+    }
+        
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"  
+    
+
+}   
