@@ -139,50 +139,6 @@ function tira_filtros() {
     document.getElementById("popup-filtros").style.display = "none";
 }
 
-function preencheTabelaAlbum() {
-    var tabela = document.querySelector("#tabela-album tbody");
-    tabela.innerHTML = "";
-    let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
-    var x = 0;
-    var i = 0;
-    var trElement;
-    for (let lista of arrayImagens) {
-        for (let imagens of lista) {
-            if(i%4 == 0 || x == 0){
-                trElement = document.createElement('tr');
-                trElement.setAttribute('id', `tr${x}`);
-                x++;
-            }
-            let linha = document.createElement("td");
-            linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
-                                "<div class='option-inner'>" +
-                                    "<img width='255px' height='145px' src='" + imagens + "'>" +
-                                "</div>" +
-                            "</label>";
-            trElement.appendChild(linha);
-            tabela.appendChild(trElement);
-            i++;
-
-            }
-        }
-
-
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"
-
-
-    close_popup_eliminar_fotografias()
-    
-}
-
-
-
-
-
-
-
-
-
 function aplica_filtros() {
 
     let imagensFiltradas = []  
@@ -229,10 +185,6 @@ function aplica_filtros() {
                         }
                     }
 
-
-    
-
-
     if(filtrosDesejados.length != 0) {
         var tabela = document.querySelector("#tabela-cuba tbody");
         tabela.innerHTML=" ";   
@@ -251,9 +203,6 @@ function aplica_filtros() {
         document.querySelector("#tabela-cuba").appendChild(tabelaOrigin) 
         
     }
-  
-    
-    
 
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
     $('.popupFiltrosAplicados').fadeOut(7000);
@@ -326,10 +275,7 @@ function preencheTabelaAlbum() {
         }
 
 
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"
-
-
-    
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"    
 }
 
 

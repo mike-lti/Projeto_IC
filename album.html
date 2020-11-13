@@ -69,7 +69,7 @@
                         </form>
                         <br>
                         <button id="botao-cancelar" onclick="closeModal()">Cancelar</button>
-                        <button id="botao-confirmar" onclick="newAlbumHandler()">Confirmar</button>
+                        <button id="botao-confirmar" onclick="newAlbumHandler(); preencheTabelaAlbum()">Confirmar</button>
                     </div>                    
                 </div>
                 
@@ -110,7 +110,7 @@
                     <div id="seleciona-fotos-album">
                         <p>Selecione as fotos para o seu álbum:</p>                    
                         <div id="closeButton-popup-album" onclick = "popUpTabela1Close()"> &times; </div>
-                        <button id="botao-confirmar-selecao" onclick="imagePlacerConfirm()">Confirmar</button>
+                        <button id="botao-confirmar-selecao" onclick="imagePlacerConfirm(); preencheTabelaAlbumCriado()">Confirmar</button>
                         <div id="botao-filtros" onclick="open_filtros()" ><img id="imagem_filtros" src="images/filtros_icon.png" width="40" height="40"  alt=""></div>
                     </div>
 
