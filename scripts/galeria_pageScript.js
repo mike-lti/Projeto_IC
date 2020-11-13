@@ -166,9 +166,8 @@ function nova_galeria_eliminada() {
 }   
 
     function guardarFavoritos() {
-    let srcList = [];
 
-    if (localStorage.getItem("favoritos") == null) {
+    if (localStorage.getItem("fotosFavoritas") == null) {
         let srcList = [];
 
         for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
@@ -179,13 +178,13 @@ function nova_galeria_eliminada() {
         localStorage.setItem("favoritos", JSON.stringify(srcList))
     } else {
 
-        let srcList = JSON.parse(localStorage.getItem("favoritos"));
+        let srcList = JSON.parse(localStorage.getItem("fotosFavoritas"));
 
         for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
             let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
             srcList.push(srcImagem)
         }
     
-        localStorage.setItem("favoritos", JSON.stringify(srcList))
+        localStorage.setItem("fotosFavoritas", JSON.stringify(srcList))
     }
 }

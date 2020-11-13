@@ -3,15 +3,10 @@
 "use strict";
 var tabelaOrigin = document.querySelector("#tabela-cuba tbody");
 
-
-
 $(document).ready(show_album());
 $(document).ready(show_albumPhoto());
 $(document).ready(albumNameHandler());
 //$(document).ready(aplica_filtros());
-
-
-
 
 function showModal() {
     disableBackground()
