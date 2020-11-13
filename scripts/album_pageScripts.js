@@ -84,7 +84,7 @@ function openAlbumPhotos() {
     
 
     /* Coloca a primeira foto escolhida para ser a capa do album */
-    document.getElementById("imagem-album").src = document.getElementById(JSON.parse(localStorage.getItem("ids"))[0]).src;    
+    /* document.getElementById("imagem-album").src =  COLOCAR FOTO CAPA ALBUM */  
     document.getElementById("fundo-fotos-album").style.display = "block";
 }
 
@@ -197,11 +197,10 @@ function closePopupFiltrosAplicados(){
 function showNomeAlbum(){
     document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
 
-    if (localStorage.getItem("selectedFile") == "Cuba") {
-        document.getElementById("tabela1").style.display = "block";
-        document.getElementById("popup-sem-fotos").style.display = "none";
+    if (localStorage.getItem("imagensImportadas") != null) {
+        document.getElementById("fotos-album").style.display = "block";
     } else {
-        document.getElementById("tabela1").style.display = "none";
+        document.getElementById("fotos-album").style.display = "none";
     }
 }
 
