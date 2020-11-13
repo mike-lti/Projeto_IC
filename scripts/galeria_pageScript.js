@@ -175,7 +175,7 @@ function nova_galeria_eliminada() {
             srcList.push(srcImagem)
         }
 
-        localStorage.setItem("favoritos", JSON.stringify(srcList))
+        localStorage.setItem("fotosFavoritas", JSON.stringify(srcList))
     } else {
 
         let srcList = JSON.parse(localStorage.getItem("fotosFavoritas"));
