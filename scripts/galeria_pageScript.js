@@ -141,7 +141,7 @@ function nova_galeria_eliminada() {
         linha.innerHTML = "<label class='option-item'>" +
                                 "<input type='checkbox' class='checkbox'>" +
                                 "<div class='option-inner'>" +
-                                    "<img width='255px' height='145px' src='" + src + "'>" +
+                                    "<img width='250px' height='155px' src='" + src + "'>" +
                                 "</div>" +
                             "</label>";
         trElement.appendChild(linha);
@@ -201,7 +201,7 @@ function preencheTabelaImagens() {
                 linha.innerHTML = "<label class='option-item'>" +
                                     "<input type='checkbox' class='checkbox'>" +
                                     "<div class='option-inner'>" +
-                                        "<img width='255px' height='145px' src='" + imagens + "'>" +
+                                        "<img width='250px' height='155px' src='" + imagens + "'>" +
                                     "</div>" +
                                 "</label>";
                 trElement.appendChild(linha);
