@@ -87,8 +87,7 @@ function selectFranca() {
     "img_franca/img_18.jpg", "img_franca/img_19.jpg", "img_franca/img_20.jpg"];
 
     if (localStorage.getItem("imagensImportadas") == null) {
-        arrayImagensImportadas = arrayImagensFranca;
-        localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
+        arrayImagensImportadas = arrayImagensFranca;        
     } else {
         arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
         
@@ -109,10 +108,10 @@ function selectSpike() {
      "img_spike/img_9.jpg", "img_spike/img_10.jpg", "img_spike/img_11.jpg", 
      "img_spike/img_12.jpg", "img_spike/img_13.jpg", "img_spike/img_14.jpg", 
      "img_spike/img_15.jpg", "img_spike/img_16.jpg", "img_spike/img_17.jpg", 
-     "img_spike/img_18.jpg", "img_spike/img_9.jpg", "img_spike/img_20.jpg"];
+     "img_spike/img_18.jpg", "img_spike/img_19.jpg", "img_spike/img_20.jpg"];
+
     if (localStorage.getItem("imagensImportadas") == null) {
         arrayImagensImportadas = arrayImagensSpike;
-        localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
     } else {
         arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
         
