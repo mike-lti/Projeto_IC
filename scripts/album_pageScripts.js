@@ -29,7 +29,6 @@ function closeNomeAlbum() {
 }
 
 function albumCriado() {
-    console.log("albumCriado chamado")
     enableBackground()
 
     document.getElementsByClassName('grid-item')[0].style.display ='block';
@@ -41,7 +40,7 @@ function albumCriado() {
 
     localStorage.setItem('album-criado', 'true');
 
-    /*document.getElementById("imagem-album").src = COLOCAR AQUI A FOTO DA CAPA DO ALBUM */
+    document.getElementById("imagem-album").src = localStorage.getItem("capa_album");
 }
 
 function closeCriaAlbum() {
@@ -56,7 +55,7 @@ function openAlbumPhotos() {
     document.getElementById("opcoes-album").style.display = "block";
    
     /* Coloca a primeira foto escolhida para ser a capa do album */
-    /* document.getElementById("imagem-album").src =  COLOCAR FOTO CAPA ALBUM */  
+    document.getElementById("imagem-album").src = localStorage.getItem("capa_album");
     document.getElementById("fundo-fotos-album").style.display = "block";
 }
 
@@ -70,7 +69,7 @@ function showCapaAlbum() {
 
     if (localStorage.getItem("album-criado")) {
         document.getElementsByClassName("grid-item")[0].style.display = "block";
-        /* document.getElementById("imagem-album").src = FOTO CAPA ALBUM */ 
+        document.getElementById("imagem-album").src = localStorage.getItem("capa_album"); 
     } else {
         document.getElementsByClassName("grid-item")[0].style.display = "none";
     }
@@ -139,7 +138,6 @@ function aplica_filtros() {
                         }
                     }
 
-    console.log(imagensFiltradas)
     if(filtrosDesejados.length != 0) {
         var tabela = document.querySelector("#tabela-album tbody");
         tabela.innerHTML=" ";   
@@ -154,10 +152,10 @@ function aplica_filtros() {
 
             let srcImg = imagensFiltradas[i]["imgSrcObj"]; 
             let linha = document.createElement("td");
-            linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
-                                "<div class='option-inner'>" +
-                                    "<img width='180px' height='100px' src='" + srcImg + "'>" +
+            linha.innerHTML = "<label class='option-item-album'>" +
+                                "<input type='checkbox' class='checkbox-album'>" +
+                                "<div class='option-inner-album'>" +
+                                    "<img width='220px' height='140px' src='" + srcImg + "'>" +
                                 "</div>" +
                             "</label>";
                        
@@ -178,10 +176,10 @@ function aplica_filtros() {
 
             let srcImg = listFiltrosImgs[i]["imgSrcObj"]; 
             let linha = document.createElement("td");
-            linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
-                                "<div class='option-inner'>" +
-                                    "<img width='180px' height='100px' src='" + srcImg + "'>" +
+            linha.innerHTML = "<label class='option-item-album'>" +
+                                "<input type='checkbox' class='checkbox-album'>" +
+                                "<div class='option-inner-album'>" +
+                                    "<img width='220px' height='140px' src='" + srcImg + "'>" +
                                 "</div>" +
                             "</label>";
                        
@@ -238,10 +236,10 @@ function preencheTabelaAlbum() {
             }
 
             let linha = document.createElement("td");
-            linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
-                                "<div class='option-inner'>" +
-                                    "<img width='180px' height='100px' src='" + imagens + "'>" +
+            linha.innerHTML = "<label class='option-item-album'>" +
+                                "<input type='checkbox' class='checkbox-album'>" +
+                                "<div class='option-inner-album'>" +
+                                    "<img width='220px' height='140px' src='" + imagens + "'>" +
                                 "</div>" +
                             "</label>";
             trElement.appendChild(linha);
@@ -257,7 +255,6 @@ function preencheTabelaAlbum() {
 
 
 function preencheTabelaAlbumCriado() {
-    console.log("preencheTabelaAlbumCriado chamado")
     var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked');
     var tabela = document.querySelector("#fotos-album tbody");
     tabela.innerHTML = "";
@@ -275,20 +272,22 @@ function preencheTabelaAlbumCriado() {
 
         let src = input.parentElement.children[1].children[0].getAttribute('src');
         let linha = document.createElement("td");
-        linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
-                                "<div class='option-inner'>" +
-                                    "<img width='180px' height='100px' src='" + src + "'>" +
+        linha.innerHTML = "<label class='option-item-album'>" +
+                                "<input type='checkbox' class='checkbox-album'>" +
+                                "<div class='option-inner-album'>" +
+                                    "<img width='220px' height='140px' src='" + src + "'>" +
                                 "</div>" +
                             "</label>";
         trElement.appendChild(linha);
         tabela.appendChild(trElement);
-        i++;  
-    }
-        
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"  
-    
+        i++; 
+        localStorage.setItem("capa_album", src);
 
+         
+    }
+    
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"; 
+   
 }   
 
 function disableBackground() {
@@ -299,4 +298,38 @@ function disableBackground() {
 function enableBackground() {
     $("#side-bar").removeClass("disabled")
     $("#memento-top-left").removeClass("disabled")
+}
+
+
+function preencheTabelaAlbunsTodos() {    
+    var tabela = document.querySelector("#tabela-album-criados tbody");
+    tabela.innerHTML = "";
+    let arrayImagens = JSON.parse(localStorage.getItem("album_criado"));
+    var x = 0;
+    var i = 0;
+    var trElement;
+    for (let lista of arrayImagens) {
+        for (let imagens of lista) {
+            if(i%4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', `tr${x}`);
+                x++;
+            }
+
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item-album'>" +
+                                "<input type='checkbox' class='checkbox-album'>" +
+                                "<div class='option-inner-album'>" +
+                                    "<img width='220px' height='140px' src='" + imagens + "'>" +
+                                "</div>" +
+                            "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++;
+
+            }
+        }
+
+
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"    
 }
