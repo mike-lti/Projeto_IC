@@ -22,12 +22,10 @@ function showModal() {
 function closeModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
-    localStorage.setItem("selectedFile", "");
     enableBackground()
 }
 
 function cancelSelection() {
-    localStorage.setItem("selectedFile", "");
     closeModal()
 }
 
@@ -37,8 +35,12 @@ function confirmSelection() {
 
 function selectCuba() {
     document.getElementById("botao-confirmar").disabled = false;
-    localStorage.setItem("selectedFile", "Cuba");
-    var arrayImagensCuba = ["img_cuba/img_1.jpg", "img_cuba/img_2.jpg", "img_cuba/img_3.jpg", "img_cuba/img_4.jpg", "img_cuba/img_5.jpg", "img_cuba/img_6.jpg", "img_cuba/img_7.jpg", "img_cuba/img_8.jpg", "img_cuba/img_9.jpg", "img_cuba/img_10.jpg", "img_cuba/img_11.jpg", "img_cuba/img_12.jpg", "img_cuba/img_13.jpg", "img_cuba/img_14.jpg", "img_cuba/img_15.jpg", "img_cuba/img_16.jpg", "img_cuba/img_17.jpg", "img_cuba/img_18.jpg", "img_cuba/img_19.jpg", "img_cuba/img_20.jpg"];
+    var arrayImagensCuba = ["img_cuba/img_1.jpg", "img_cuba/img_2.jpg", "img_cuba/img_3.jpg", 
+    "img_cuba/img_4.jpg", "img_cuba/img_5.jpg", "img_cuba/img_6.jpg", "img_cuba/img_7.jpg", 
+    "img_cuba/img_8.jpg", "img_cuba/img_9.jpg", "img_cuba/img_10.jpg", "img_cuba/img_11.jpg", 
+    "img_cuba/img_12.jpg", "img_cuba/img_13.jpg", "img_cuba/img_14.jpg", "img_cuba/img_15.jpg", 
+    "img_cuba/img_16.jpg", "img_cuba/img_17.jpg", "img_cuba/img_18.jpg", "img_cuba/img_19.jpg", 
+    "img_cuba/img_20.jpg"];
     
     var arrayTagsImg = [["true", "true"], ["true", "true"], ["false","true"], ["false", "false"], 
     ["false", "true"], ["true", "true"], ["true", "true"], ["true", "true"]
@@ -49,19 +51,23 @@ function selectCuba() {
     var objArray = objHandler(arrayImagensCuba, arrayTagsImg);
 
     if (localStorage.getItem("imagensImportadas") == null) {        
-        arrayImagensImportadas.push(arrayImagensCuba);        
-        console.log(arrayImagensImportadas)
+        arrayImagensImportadas = arrayImagensCuba;   
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
         
     }else {        
         arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
-        arrayImagensImportadas.push(arrayImagensCuba);
+
+        for (let imgSrc of arrayImagensCuba) {
+            arrayImagensImportadas.push(imgSrc);
+        }
+
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
     }
 
     if(localStorage.getItem("imagensFiltros") == null) {        
         localStorage.setItem("imagensFiltros", JSON.stringify(objArray));
-    }else{
+
+    }else {
         var objCheck = JSON.parse(localStorage.getItem("imagensFiltros"));
         objCheck.push(objArray);
         localStorage.setItem("imagensFiltros", JSON.stringify(objCheck));
@@ -71,14 +77,24 @@ function selectCuba() {
 
 function selectFranca() {
     document.getElementById("botao-confirmar").disabled = false;
-    localStorage.setItem("selectedFile", "Franca");
-    var arrayImagensFranca = ["img_franca/img_1.jpg", "img_franca/img_2.jpg", "img_franca/img_3.jpg", "img_franca/img_4.jpg", "img_franca/img_5.jpg", "img_franca/img_6.jpg", "img_franca/img_7.jpg", "img_franca/img_8.jpg", "img_franca/img_9.jpg", "img_franca/img_10.jpg", "img_franca/img_11.jpg", "img_franca/img_12.jpg", "img_franca/img_13.jpg", "img_franca/img_14.jpg", "img_franca/img_15.jpg", "img_franca/img_16.jpg", "img_franca/img_17.jpg", "img_franca/img_18.jpg", "img_franca/img_19.jpg", "img_franca/img_20.jpg"];
+    var arrayImagensFranca = ["img_franca/img_1.jpg", "img_franca/img_2.jpg", 
+    "img_franca/img_3.jpg", "img_franca/img_4.jpg", "img_franca/img_5.jpg", 
+    "img_franca/img_6.jpg", "img_franca/img_7.jpg", "img_franca/img_8.jpg", 
+    "img_franca/img_9.jpg", "img_franca/img_10.jpg", "img_franca/img_11.jpg", 
+    "img_franca/img_12.jpg", "img_franca/img_13.jpg", "img_franca/img_14.jpg", 
+    "img_franca/img_15.jpg", "img_franca/img_16.jpg", "img_franca/img_17.jpg", 
+    "img_franca/img_18.jpg", "img_franca/img_19.jpg", "img_franca/img_20.jpg"];
+
     if (localStorage.getItem("imagensImportadas") == null) {
-        arrayImagensImportadas.push(arrayImagensFranca);
+        arrayImagensImportadas = arrayImagensFranca;
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
     } else {
         arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
-        arrayImagensImportadas.push(arrayImagensFranca);
+        
+        for (let imgSrc of arrayImagensFranca) {
+            arrayImagensImportadas.push(imgSrc);
+        }
+
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
     }
 
@@ -86,14 +102,23 @@ function selectFranca() {
 
 function selectSpike() {
     document.getElementById("botao-confirmar").disabled = false;
-    localStorage.setItem("selectedFile", "Spike");
-    var arrayImagensSpike = ["img_spike/img_1.jpg", "img_spike/img_2.jpg", "img_spike/img_3.jpg", "img_spike/img_4.jpg", "img_spike/img_5.jpg", "img_spike/img_6.jpg", "img_spike/img_7.jpg", "img_spike/img_8.jpg", "img_spike/img_9.jpg", "img_spike/img_10.jpg", "img_spike/img_11.jpg", "img_spike/img_12.jpg", "img_spike/img_13.jpg", "img_spike/img_14.jpg", "img_spike/img_15.jpg", "img_spike/img_16.jpg", "img_spike/img_17.jpg", "img_spike/img_18.jpg", "img_spike/img_9.jpg", "img_spike/img_20.jpg"];
+    var arrayImagensSpike = ["img_spike/img_1.jpg", "img_spike/img_2.jpg",
+     "img_spike/img_3.jpg", "img_spike/img_4.jpg", "img_spike/img_5.jpg", 
+     "img_spike/img_6.jpg", "img_spike/img_7.jpg", "img_spike/img_8.jpg", 
+     "img_spike/img_9.jpg", "img_spike/img_10.jpg", "img_spike/img_11.jpg", 
+     "img_spike/img_12.jpg", "img_spike/img_13.jpg", "img_spike/img_14.jpg", 
+     "img_spike/img_15.jpg", "img_spike/img_16.jpg", "img_spike/img_17.jpg", 
+     "img_spike/img_18.jpg", "img_spike/img_9.jpg", "img_spike/img_20.jpg"];
     if (localStorage.getItem("imagensImportadas") == null) {
-        arrayImagensImportadas.push(arrayImagensSpike);
+        arrayImagensImportadas = arrayImagensSpike;
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
     } else {
         arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
-        arrayImagensImportadas.push(arrayImagensSpike);
+        
+        for (let imgSrc of arrayImagensSpike) {
+            arrayImagensImportadas.push(imgSrc);
+        }
+
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
     }
 }

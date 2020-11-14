@@ -31,27 +31,12 @@ for (let element of elementos) {
 }
 
 function showPhotos() {
-    switch (localStorage.getItem("selectedFile")) {
-        case "Cuba":
-            $("#tabela").find(".option-item").css( "display", "block");
-            if (localStorage.getItem("showPopup") == "true") {
-                showPopup();
-                localStorage.setItem("showPopup", "false")
-            }
-            break;
-
-        case "Franca":
-            $("#tabela2").find(".option-item").css( "display", "block");
-            if (localStorage.getItem("showPopup") == "true") {
-                showPopup();
-                localStorage.setItem("showPopup", "false")
-            }
-            break;
-
-        case "Spike":
-            break;        
+    $("#tabela").find(".option-item").css( "display", "block");
+    if (localStorage.getItem("showPopup") == "true") {
+        showPopup();
+        localStorage.setItem("showPopup", "false")
     }
-}
+}         
 
 function closePopup() {
     document.getElementsByClassName("popup")[0].style.display = "none"
@@ -134,6 +119,7 @@ function close_popup_adicionar_fotografias() {
 function nova_galeria_eliminada() {
     var arrayFicar = document.querySelectorAll('input[type=checkbox]:not(:checked)');
     var tabela = document.querySelector("#tabela tbody");
+    var arraySrc = [];
     tabela.innerHTML = "";
     var x = 0;
     var i = 0;
@@ -148,6 +134,9 @@ function nova_galeria_eliminada() {
         }
 
         let src = input.parentElement.children[1].children[0].getAttribute('src');
+
+        arraySrc.push(src);
+
         let linha = document.createElement("td");
         linha.innerHTML = "<label class='option-item'>" +
                                 "<input type='checkbox' class='checkbox'>" +
@@ -159,9 +148,10 @@ function nova_galeria_eliminada() {
         tabela.appendChild(trElement);
         i++;  
     }
-        
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"  
     
+    localStorage.setItem("imagensImportadas", JSON.stringify(arraySrc));
+
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"  
     
     close_popup_eliminar_fotografias()
 }   
@@ -197,13 +187,13 @@ function preencheTabelaImagens() {
     var x = 0;
     var i = 0;
     var trElement;
-    for (let lista of arrayImagens) {
-        for (let imagens of lista) {
+    for (let imagens of arrayImagens) {
             if(i%4 == 0 || x == 0){
                 trElement = document.createElement('tr');
                 trElement.setAttribute('id', `tr${x}`);
                 x++;
             }
+
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item'>" +
                                 "<input type='checkbox' class='checkbox'>" +
@@ -216,12 +206,8 @@ function preencheTabelaImagens() {
             i++;
 
             }
-        }
-
 
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
 
-
-    close_popup_eliminar_fotografias()
-    
+    close_popup_eliminar_fotografias()    
 }
