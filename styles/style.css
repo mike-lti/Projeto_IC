@@ -315,9 +315,9 @@ nav a{
     background-color: white;
     margin: auto;
     z-index: 9;
-    width: 70%;
+    width: 970px;
     height: 70%;
-    margin-left: 92px;
+    margin-left: 55px;
     bottom: 30px;
 }
 
@@ -325,9 +325,9 @@ nav a{
     display: none;
     position: absolute;
     background-color: white;
-    width: 70%;
+    width: 970px;
     height: 10%;
-    margin-left: 92px;
+    margin-left: 55px;
     bottom: 530px;
     text-align: center;
     z-index: 9;
@@ -359,21 +359,11 @@ nav a{
     position: relative;
 }
 
-#tabela2 {
-    display: none;
-    padding-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#tabela2 .option-item {
-    display: none;
-    position: relative;
-}
-
 .option-item .option-inner {
     position: relative;
     border-radius: 5px;
+    width: 250px;
+    height: 155px;
     border: 5px solid transparent;
     text-align: center;
 }
@@ -402,9 +392,9 @@ nav a{
     display: flex;
     display: none;
     flex-wrap: wrap;
-    width: 70%;
+    width: 970px;
     height: 80%;
-    margin-left: 92px;
+    margin-left: 55px;
     z-index: 9;
     bottom: 26px;
     overflow-y: scroll;
@@ -413,6 +403,7 @@ nav a{
 
 #tabela-album {
     margin-top: 60px;
+    margin-left: 5px;
 }
 
 #tabela1 {
@@ -427,12 +418,11 @@ nav a{
 }
 
 .option-item-album .option-inner-album {
-    width: 200px;
+    width: 220px;
     height: 140px;
     border-radius: 5px;
     border: 5px solid transparent;
     text-align: center;
-    margin: 3px;
 }
 
 .option-item-album .checkbox-album {
@@ -462,7 +452,7 @@ nav a{
     position: absolute;
     position: fixed;
     background-color: white;
-    width: 895px;
+    width: 970px;
     height: 6%;
     margin-bottom: 620px;
     z-index: 9; 

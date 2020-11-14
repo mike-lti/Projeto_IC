@@ -181,33 +181,37 @@ function guardarFavoritos() {
 }
 
 function preencheTabelaImagens() {
-    var tabela = document.querySelector("#tabela tbody");
-    tabela.innerHTML = "";
-    let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
-    var x = 0;
-    var i = 0;
-    var trElement;
-    for (let imagens of arrayImagens) {
-            if(i%4 == 0 || x == 0){
-                trElement = document.createElement('tr');
-                trElement.setAttribute('id', `tr${x}`);
-                x++;
-            }
 
-            let linha = document.createElement("td");
-            linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
-                                "<div class='option-inner'>" +
-                                    "<img width='255px' height='145px' src='" + imagens + "'>" +
-                                "</div>" +
-                            "</label>";
-            trElement.appendChild(linha);
-            tabela.appendChild(trElement);
-            i++;
+    if (JSON.parse(localStorage.getItem("imagensImportadas"))) {
+        var tabela = document.querySelector("#tabela tbody");
+        tabela.innerHTML = "";
+        let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+        var x = 0;
+        var i = 0;
+        var trElement;
 
-            }
+        for (let imagens of arrayImagens) {
+                if(i%4 == 0 || x == 0){
+                    trElement = document.createElement('tr');
+                    trElement.setAttribute('id', `tr${x}`);
+                    x++;
+                }
 
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"
+                let linha = document.createElement("td");
+                linha.innerHTML = "<label class='option-item'>" +
+                                    "<input type='checkbox' class='checkbox'>" +
+                                    "<div class='option-inner'>" +
+                                        "<img width='255px' height='145px' src='" + imagens + "'>" +
+                                    "</div>" +
+                                "</label>";
+                trElement.appendChild(linha);
+                tabela.appendChild(trElement);
+                i++;
 
-    close_popup_eliminar_fotografias()    
+                }
+
+        document.getElementsByClassName("dimmer")[0].style.opacity="0"
+
+        close_popup_eliminar_fotografias()    
+    }
 }
