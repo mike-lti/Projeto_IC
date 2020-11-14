@@ -14,6 +14,7 @@ function close_popup_link(){
 }
 
 function linkGenerate(){
-    let tempLink = "https://memento_098765435.com"
+    let randomNumber = Math.floor(Math.random() * 100000001);
+    let tempLink = "https://memento_" + randomNumber + ".com"
     document.getElementsByClassName("linkParagraph")[0].innerHTML = tempLink
 }
