@@ -4,6 +4,7 @@
 
 var arrayImagensImportadas = []; 
 
+
 function filter(filter1, filter2) {
     this.firstName = first;
     this.lastName = last;
@@ -30,6 +31,7 @@ function cancelSelection() {
 }
 
 function confirmSelection() {
+    localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas))
     localStorage.setItem("showPopup", "true");
 }
 
@@ -52,7 +54,6 @@ function selectCuba() {
 
     if (localStorage.getItem("imagensImportadas") == null) {        
         arrayImagensImportadas = arrayImagensCuba;   
-        localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
         
     }else {        
         arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
