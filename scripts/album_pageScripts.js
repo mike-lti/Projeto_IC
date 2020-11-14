@@ -221,36 +221,37 @@ function nomeAlbumDado(){
 }
 
 function preencheTabelaAlbum() {    
-    var tabela = document.querySelector("#tabela-album tbody");
-    tabela.innerHTML = "";
-    let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
-    var x = 0;
-    var i = 0;
-    var trElement;
-    for (let lista of arrayImagens) {
-        for (let imagens of lista) {
-            if(i%4 == 0 || x == 0){
-                trElement = document.createElement('tr');
-                trElement.setAttribute('id', `tr${x}`);
-                x++;
-            }
+    if (JSON.parse(localStorage.getItem("imagensImportadas"))) {
+        var tabela = document.querySelector("#tabela-album tbody");
+        tabela.innerHTML = "";
+        let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+        var x = 0;
+        var i = 0;
+        var trElement;
 
-            let linha = document.createElement("td");
-            linha.innerHTML = "<label class='option-item-album'>" +
-                                "<input type='checkbox' class='checkbox-album'>" +
-                                "<div class='option-inner-album'>" +
-                                    "<img width='220px' height='140px' src='" + imagens + "'>" +
-                                "</div>" +
-                            "</label>";
-            trElement.appendChild(linha);
-            tabela.appendChild(trElement);
-            i++;
+        for (let imagens of arrayImagens) {
+                if(i%4 == 0 || x == 0){
+                    trElement = document.createElement('tr');
+                    trElement.setAttribute('id', `tr${x}`);
+                    x++;
+                }
 
-            }
-        }
+                let linha = document.createElement("td");
+                linha.innerHTML = "<label class='option-item-album'>" +
+                                    "<input type='checkbox' class='checkbox-album'>" +
+                                    "<div class='option-inner-album'>" +
+                                        "<img width='220px' height='140px' src='" + imagens + "'>" +
+                                    "</div>" +
+                                "</label>";
+                trElement.appendChild(linha);
+                tabela.appendChild(trElement);
+                i++;
 
+                }
 
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"    
+        document.getElementsByClassName("dimmer")[0].style.opacity="0"
+  
+    }
 }
 
 
@@ -301,10 +302,10 @@ function enableBackground() {
 }
 
 
-function preencheTabelaAlbunsTodos() {    
+/* function preencheTabelaAlbunsTodos() {    
     var tabela = document.querySelector("#tabela-album-criados tbody");
     tabela.innerHTML = "";
-    let arrayImagens = JSON.parse(localStorage.getItem("album_criado"));
+    let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
     var x = 0;
     var i = 0;
     var trElement;
@@ -331,5 +332,5 @@ function preencheTabelaAlbunsTodos() {
         }
 
 
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"    
-}
+    document.getElementsByClassName("dimmer")[0].style.opacity="0";    
+} */
