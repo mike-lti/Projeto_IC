@@ -139,6 +139,13 @@ nav a{
     overflow-x: hidden;
 }
 
+.workspace_importar, .workspace_partilhar {
+    grid-area: 2 / 2 /span 2 / span 3;
+    background-color: beige;
+    text-align: center;
+    overflow-x: hidden;
+}
+
 .disabled {
     pointer-events: none;
 }
@@ -738,9 +745,12 @@ nav a{
 }
 
 .linkParagraph{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
+    font-size: 110%;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
-
 
 .tituloLinkPopup{
     text-align: center;
