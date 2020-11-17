@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="loginDimmer">
-                    <form class="loginFormStyle">
+                    <form name = "loginData" class="loginFormStyle">
                         <label for="username">
                             <p><b>Nome:</b></p>
                         </label>
@@ -34,13 +34,13 @@
                         <label for="password">
                             <p class=""><b>Palavra-passe:</b></p>
                         </label>
-                        <input type="text" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
+                        <input type="password" maxlength="15" size="30" placeholder="Insira a sua palavra passe"
                         name="password" required>
 
                     </form>
 
                     <div class="closeButton" onclick = "loginDimmerCloser()">&times;</div>
-                    <div class="loginConfirmationButton"><a href="galeria.html">Entrar</a> </div>
+                    <div class="loginConfirmationButton" onclick = "loginHandler()"> Entrar </div>
                     <div class="loginCancelationButton" onclick = "loginDimmerCloser()">Cancelar</div>
                 </div> 
 
@@ -86,5 +86,6 @@
         </div>
         
         <script src="scripts/home_pageScripts.js"></script>
+        <script src="scripts/login_pageScript.js"></script>
     </body>
 </html>
