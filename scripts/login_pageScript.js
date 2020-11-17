@@ -20,3 +20,13 @@ function loginHandler(){
 
 }
 
+
+function showPass(){
+    var checkShow = document.getElementById("passShow");
+    if(checkShow.type == "password"){
+        checkShow.type = "text";
+    }else{
+        checkShow.type = "password";
+    }
+}
+
