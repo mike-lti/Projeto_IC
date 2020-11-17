@@ -80,6 +80,7 @@ header a {
 
 .disabled-image-button {
     opacity: 0.5;
+    pointer-events: none;
 }
 
 #botao-adicionar {
@@ -207,15 +208,15 @@ nav a{
 #botao-confirmar {
     width: 105px;
     height: 45px;
-    background-color: goldenrod;
-    border-color: goldenrod;
+    background-color:rgb(4, 125, 154);
+    border-color:rgb(4, 125, 154);
     border-radius: 5px;
-    
+    color: white;
 }
 
 #botao-confirmar a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 #p-importar{
@@ -409,7 +410,7 @@ nav a{
 }
 
 #tabela-album {
-    margin-top: 60px;
+    margin-top: 86px;
     margin-left: 5px;
 }
 
@@ -460,7 +461,7 @@ nav a{
     position: fixed;
     background-color: white;
     width: 970px;
-    height: 7%;
+    height: 70px;
     margin-bottom: 620px;
     z-index: 9; 
 }
@@ -477,7 +478,8 @@ nav a{
     top: 6px;
     width: 105px;
     height: 45px;
-    background-color: goldenrod;
+    background-color:rgb(4, 125, 154);
+    color: white;
     border-radius: 5px;
 }
 
@@ -504,9 +506,10 @@ nav a{
     border-radius: 5px;
     right: 3px;
     bottom: 10px;
-    background-color: goldenrod;
-    border-color: goldenrod;
+    background-color:rgb(4, 125, 154);
+    border-color:rgb(4, 125, 154);
     border-radius: 5px;
+    color: white;
 }
 
 #popup-filtros {

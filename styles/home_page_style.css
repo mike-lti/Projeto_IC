@@ -15,7 +15,7 @@ b{
     position:relative;
     width: 1280px;
     height: 720px; 
-    background-color: beige;
+    background-color: white;
 }
 
 
@@ -27,6 +27,16 @@ b{
     max-width: 400px;
     padding: 10px;
 }
+
+.loginFormStyle p{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.loginFormStyle input{
+    width: 250px;
+}
+
 .loginDimmer{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: small;
@@ -53,7 +63,7 @@ b{
     right: 30px;
     width: 30%;
     padding: 10px;
-    background-color: goldenrod;
+    background-color:rgb(4, 125, 154);
     border-radius: 5px;
     margin-top: 10px;
 }
@@ -78,6 +88,15 @@ b{
     padding: 10px;
 }
 
+.registarFormStyle p{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.registarFormStyle input{
+    width: 310px;
+}
+
 .registarDimmer{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: small;  
@@ -92,7 +111,6 @@ b{
     text-align: center;   
     transform: translate(-50%, -50%);
     height: 400px;
-
 }
 
 .registarConfirmationButton{
@@ -103,7 +121,8 @@ b{
     right: 30px;
     width: 30%;
     padding: 10px;
-    background-color: goldenrod;
+    background-color:rgb(4, 125, 154);
+    color: white;
     border-radius: 5px;
     margin-top: 10px;
 }
@@ -177,14 +196,15 @@ b{
     height: 5%;
     text-align: center;
     border: 2px;
-    border-style:  goldenrod solid;
+    border-style: rgb(4, 125, 154) solid;
     border-radius: 20px;
     font-weight: bold;
     font-size: 2em;
     position: absolute;
-    background-color: goldenrod;
+    background-color: rgb(4, 125, 154);
     top: 460px;
     left: 15px;
+    color: white;
     
 }
 
@@ -212,7 +232,7 @@ b{
     border: 2px;
     border-style: lightgray solid;
     border-radius: 20px;
-    background-color: lightgray;
+    background-color:lightgray;
     font-weight: bold;
     font-size: 2em;
 }
@@ -224,6 +244,7 @@ b{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: large;
     text-align: center;
+    color: rgb(4, 125, 154);
 }
 
 #letras-memento {

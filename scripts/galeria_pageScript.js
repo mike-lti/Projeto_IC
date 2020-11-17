@@ -54,11 +54,15 @@ function imagem_selecionada() {
         document.getElementById("botao-eliminar").disabled = false;    
         document.getElementById("botao-criar-galeria").disabled = false;
         document.getElementById("botao-adicionar").disabled = false;
+        document.getElementById("href-partilhar").href = "partilhar.html";
     } else {
         $("#right-top-right-bar button img").addClass("disabled-image-button");
         document.getElementById("botao-eliminar").disabled = true;    
         document.getElementById("botao-criar-galeria").disabled = true;
         document.getElementById("botao-adicionar").disabled = true;
+        document.getElementById("href-partilhar").disabled = true;
+        document.getElementById("href-partilhar").href = "";
+        
     
     }
 }  
@@ -85,9 +89,19 @@ function enable_galeria() {
     if ( $("input[type=checkbox]").attr("disabled")) {
         document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
         $("input[type=checkbox]").attr("disabled", false);
+        document.getElementById("href-partilhar").href = "partilhar.html";
     } else {
         document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
         $("input[type=checkbox]").attr("disabled", true);
+        document.getElementById("botao-criar-galeria").disabled = true;
+        document.getElementById("botao-adicionar").disabled = true;
+        document.getElementById("botao-eliminar").disabled = true;
+        document.getElementById("botao-partilhar").disabled = true;
+        document.getElementById("href-partilhar").disabled = true;
+        document.getElementById("href-partilhar").href = "";   
+        $("#right-top-right-bar button img").addClass("disabled-image-button");
+        
+
         for (let imagem of document.querySelectorAll('input[type=checkbox]:checked')) {
             imagem.checked = false; 
         }   
@@ -215,3 +229,76 @@ function preencheTabelaImagens() {
         close_popup_eliminar_fotografias()    
     }
 }
+
+
+function preencheTabelaAlbumCriado() {
+    var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked');
+    var tabela = document.querySelector("#fotos-album tbody");
+    tabela.innerHTML = "";
+    var x = 0;
+    var i = 0;
+    var trElement;
+    /* Cria tabela que vai conter as fotos que vão ficar no album */
+    for (let input of arrayImagensGuardadas) {
+            
+        if(i%4 == 0 || x == 0){
+            trElement = document.createElement('tr');
+            trElement.setAttribute('id', `tr${x}`);
+            x++;
+        }
+
+        let src = input.parentElement.children[1].children[0].getAttribute('src');
+        let linha = document.createElement("td");
+        linha.innerHTML = "<label class='option-item-album'>" +
+                                "<input type='checkbox' class='checkbox-album'>" +
+                                "<div class='option-inner-album'>" +
+                                    "<img width='220px' height='140px' src='" + src + "'>" +
+                                "</div>" +
+                            "</label>";
+        trElement.appendChild(linha);
+        tabela.appendChild(trElement);
+        i++; 
+        localStorage.setItem("capa_album", src);
+
+         
+    }
+    
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"; 
+   
+}
+
+function trocaCSS() {
+    document.getElementById("estilos-css").href = "styles/style_darkmode.css"
+}
+
+/* 
+Cria arrays diferentes de imagens à medida que o utlizador carrega 
+no botao de "Criar" para cria diferentes albuns 
+function guardarAlbumFotos() {
+
+    var n = localStorage.getItem("contador");
+    if (n == null) { 
+        n = 0;
+        let srcList = [];
+        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+            srcList.push(srcImagem)
+        }
+
+        localStorage.setItem(`guardaAlbumFotos${n}`, JSON.stringify(srcList));
+
+    } else {
+        n++;
+        let srcList = [];
+        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+            srcList.push(srcImagem)
+        }
+
+        localStorage.setItem(`guardaAlbumFotos${n}`, JSON.stringify(srcList));
+    }
+
+    localStorage.setItem("contador",n);
+   
+    
+} */

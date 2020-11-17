@@ -1,6 +1,6 @@
 
-var tempUsername = "tempuser";
-var tempPassword = "temppass";
+var tempUsername = "admin";
+var tempPassword = "admin";
 
 
 function loginHandler(){
@@ -11,12 +11,14 @@ function loginHandler(){
 
     if(dataUsername == tempUsername && tempPassword == dataPassword){
         location.replace("file:///D:/GitHubRepositories/Projeto-IC/Projeto_IC/galeria.html");
+        location.replace("galeria.html")
 
-    }else{
+    } else {
         console.warn("Username ou palavra passe encontram-se incorretos");
 
     }
 
+    
 
 }
 

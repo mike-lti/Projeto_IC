@@ -46,21 +46,19 @@
                 </nav>
                 
                 <div id="memento">
-                    <img src="images/logo_Memento.png" height="200px" width="160px" alt="">
+                    <img src="images/logo_Memento1.png" width="180px" alt="">
                 </div>    
             </div>
 
             <div class="workspace">
-                
-                <div id="tabela-albuns-criados">
-                    
+
+                <div id="disposicao-albuns">
+                    <table id="disposicao-albuns-tabela">
+                        <tbody>
+                        </tbody>
+                    </table>    
                 </div>
-                <div class="grid-container">
-                    <div class="grid-item" onclick="openAlbumPhotos()"> 
-                        <img id="imagem-album" width="220" height="140">
-                        <p id="nome-album"></p>
-                    </div>
-                </div>
+
                 <div class="album_modal">
                     <div class="album_modal_content">
                         <span class="close_button" onclick="closeNomeAlbum()">&times;</span>
@@ -112,7 +110,7 @@
                     <div id="seleciona-fotos-album">
                         <p>Selecione as fotos para o seu álbum:</p>                    
                         <div id="closeButton-popup-album" onclick = "closeCriaAlbum()"> &times; </div>
-                        <button id="botao-confirmar-selecao" onclick="preencheTabelaAlbumCriado(); albumCriado();">Confirmar</button>
+                        <button id="botao-confirmar-selecao" onclick="preencheTabelaAlbumCriado()">Confirmar</button>
                         <div id="botao-filtros" onclick="openFiltros()" ><img id="imagem_filtros" src="images/filtros_icon.png" width="40" height="40"  alt=""></div>
                     </div>
 

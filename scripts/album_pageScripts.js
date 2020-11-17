@@ -3,9 +3,10 @@
 "use strict";
 var tabelaOrigin = document.querySelector("#tabela-cuba tbody");
 
-$(document).ready(showCapaAlbum());
 $(document).ready(showNomeAlbum());
+$(document).ready(mostraCapaAlbunsWorkspace());
 //$(document).ready(aplica_filtros());
+
 
 function abreNomeAlbum() {
     disableBackground()
@@ -31,7 +32,6 @@ function closeNomeAlbum() {
 function albumCriado() {
     enableBackground()
 
-    document.getElementsByClassName('grid-item')[0].style.display ='block';
     document.getElementById('popUpTabela1').style.display = 'none';
     document.getElementById('seleciona-fotos-album').style.display ='none';
     document.getElementsByClassName('dimmer')[0].style.opacity = '0';
@@ -40,13 +40,13 @@ function albumCriado() {
 
     localStorage.setItem('album-criado', 'true');
 
-    document.getElementById("imagem-album").src = localStorage.getItem("capa_album");
 }
 
 function closeCriaAlbum() {
     document.getElementById("popUpTabela1").style.display = "none";
     document.getElementById("seleciona-fotos-album").style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+    enableBackground()
     tiraFiltros();
 }
 
@@ -55,7 +55,6 @@ function openAlbumPhotos() {
     document.getElementById("opcoes-album").style.display = "block";
    
     /* Coloca a primeira foto escolhida para ser a capa do album */
-    document.getElementById("imagem-album").src = localStorage.getItem("capa_album");
     document.getElementById("fundo-fotos-album").style.display = "block";
 }
 
@@ -63,16 +62,6 @@ function closeAlbumPhotos() {
     document.getElementById("opcoes-album").style.display = "none";
     document.getElementById("fundo-fotos-album").style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
-}
-
-function showCapaAlbum() {
-
-    if (localStorage.getItem("album-criado")) {
-        document.getElementsByClassName("grid-item")[0].style.display = "block";
-        document.getElementById("imagem-album").src = localStorage.getItem("capa_album"); 
-    } else {
-        document.getElementsByClassName("grid-item")[0].style.display = "none";
-    }
 }
 
 function closePopupAlbumCriado() {
@@ -188,8 +177,14 @@ function aplica_filtros() {
         }
         
     }
-
+    checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
+    checkboxLocalização = document.getElementById("localização").checked = false;
+    checkboxQualidade = document.getElementById("qualidade").checked = false;
+    checkboxPraia = document.getElementById("praia").checked = false;
+    checkboxDia = document.getElementById("dia").checked = false;
+    document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
+    document.getElementById("popup-filtros").style.display = "none" 
     $('.popupFiltrosAplicados').fadeOut(7000);
 }
 
@@ -199,7 +194,6 @@ function closePopupFiltrosAplicados(){
 }
 
 function showNomeAlbum(){
-    document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
 
     if (localStorage.getItem("imagensImportadas") != null) {
         document.getElementById("fotos-album").style.display = "block";
@@ -212,8 +206,6 @@ function nomeAlbumDado(){
     let ff = document.forms.nomeDoAlbum;
 
     preencheTabelaAlbum()
-    localStorage.setItem("nomeAlbum", ff.elements.aName.value)
-    document.getElementById("nome-album").innerHTML= localStorage.getItem("nomeAlbum")
     document.getElementById("popUpTabela1").style.display = "block";
     document.getElementById("seleciona-fotos-album").style.display = "block";
     document.getElementsByClassName("album_modal")[0].style.display = "none";
@@ -223,12 +215,11 @@ function nomeAlbumDado(){
 function preencheTabelaAlbum() {    
     if (JSON.parse(localStorage.getItem("imagensImportadas"))) {
         var tabela = document.querySelector("#tabela-album tbody");
-        tabela.innerHTML = "";
         let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+        tabela.innerHTML = "";
         var x = 0;
         var i = 0;
-        var trElement;
-
+        var trElement;        
         for (let imagens of arrayImagens) {
                 if(i%4 == 0 || x == 0){
                     trElement = document.createElement('tr');
@@ -238,7 +229,7 @@ function preencheTabelaAlbum() {
 
                 let linha = document.createElement("td");
                 linha.innerHTML = "<label class='option-item-album'>" +
-                                    "<input type='checkbox' class='checkbox-album'>" +
+                                    "<input type='checkbox' onclick='imagem_selecionada()' class='checkbox-album'>" +
                                     "<div class='option-inner-album'>" +
                                         "<img width='220px' height='140px' src='" + imagens + "'>" +
                                     "</div>" +
@@ -255,8 +246,63 @@ function preencheTabelaAlbum() {
 }
 
 
+/* aqui cria cada album */
 function preencheTabelaAlbumCriado() {
-    var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked');
+    
+    var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked'); 
+    var tabela = document.querySelector("#fotos-album tbody");
+    tabela.innerHTML = "";
+    var x = 0;
+    var i = 0;
+    var trElement;
+    var arrayFotos;
+    var arrayImagensAlbuns = [];
+
+    if ( JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns")) == null) {
+        arrayFotos = [];
+    } else {
+        arrayFotos = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"))
+    }
+
+    /* Cria tabela que vai conter as fotos que vão ficar no album */
+    for (let input of arrayImagensGuardadas) {
+            
+        if(i%4 == 0 || x == 0){
+            trElement = document.createElement('tr');
+            trElement.setAttribute('id', `tr${x}`);
+            x++;
+        }
+        let src = input.parentElement.children[1].children[0].getAttribute('src');
+        arrayImagensAlbuns.push(src);
+        
+        let linha = document.createElement("td");
+        linha.innerHTML = "<label class='option-item-album'>" +
+                                "<input type='checkbox' class='checkbox-album'>" +
+                                "<div class='option-inner-album'>" +
+                                    "<img width='220px' height='140px' src='" + src + "'>" +
+                                "</div>" +
+                            "</label>";
+        trElement.appendChild(linha);
+        tabela.appendChild(trElement);
+        i++; 
+
+         
+    }
+    arrayFotos.push(arrayImagensAlbuns);
+    localStorage.setItem("arrayImagensDiferentesAlbuns", JSON.stringify(arrayFotos));
+    enableBackground()
+    document.getElementById('popUpTabela1').style.display = 'none';
+    document.getElementById('seleciona-fotos-album').style.display ='none';
+    document.getElementsByClassName('dimmer')[0].style.opacity = '0';
+    document.getElementsByClassName('popupAlbum')[0].style.display ='block';
+    $('.popupAlbum').fadeOut(7000);
+    mostraCapaAlbunsWorkspace();
+   
+}  
+
+/* Aqui mostra o album selecionado no workspace */
+function mostraAlbumSelecionado(indice) {
+    var arrayImagensGuardadas = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"))[indice]; 
     var tabela = document.querySelector("#fotos-album tbody");
     tabela.innerHTML = "";
     var x = 0;
@@ -270,36 +316,159 @@ function preencheTabelaAlbumCriado() {
             trElement.setAttribute('id', `tr${x}`);
             x++;
         }
-
-        let src = input.parentElement.children[1].children[0].getAttribute('src');
+        
         let linha = document.createElement("td");
         linha.innerHTML = "<label class='option-item-album'>" +
                                 "<input type='checkbox' class='checkbox-album'>" +
                                 "<div class='option-inner-album'>" +
-                                    "<img width='220px' height='140px' src='" + src + "'>" +
+                                    "<img width='220px' height='140px' src='" + input + "'>" +
                                 "</div>" +
                             "</label>";
         trElement.appendChild(linha);
         tabela.appendChild(trElement);
         i++; 
-        localStorage.setItem("capa_album", src);
 
          
+    }
+    document.getElementsByClassName("dimmer")[0].style.opacity = "1";
+    document.getElementById("opcoes-album").style.display = "block";
+    document.getElementById("fundo-fotos-album").style.display = "block"; 
+   
+}   
+
+function mostraCapaAlbunsWorkspace() {  
+
+
+    if (localStorage.getItem("arrayImagensDiferentesAlbuns") != null ) {
+        
+        document.getElementById("botao-selecionar-album").disabled = false;
+        document.getElementById("botao-selecionar-todos-album").disabled = false;
+        document.getElementById("botao-adicionar").disabled = false;
+        document.getElementById("botao-eliminar").disabled = false;
+        document.getElementById("botao-partilhar").disabled = false;
+        var arrayImagensDiferentesAlbuns = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"));  
+        console.log(arrayImagensDiferentesAlbuns);
+        var tabela = document.querySelector("#disposicao-albuns-tabela tbody");
+        tabela.innerHTML = "";
+        var x = 0;
+        var i = 0;
+        let ff = document.forms.nomeDoAlbum;
+        var trElement;
+        var contador = 0;
+        for (let imagens of arrayImagensDiferentesAlbuns) {
+                if(i%4 == 0 || x == 0){
+                    trElement = document.createElement('tr');
+                    trElement.setAttribute('id', `tr${x}`);
+                    x++;
+                }
+                let linha = document.createElement("td");
+                linha.innerHTML = "<label class='option-item'>" +
+                                    "<input type='checkbox' class='checkbox'>" +
+                                    "<div class='option-inner' onclick='mostraAlbumSelecionado(" + contador + ")'>" +
+                                        "<img width='250px' height='155px' src='" + imagens[0] + "'>" +
+                                        ff.elements.aName.value +
+                                    "</div>" +
+                                "</label>";
+                trElement.appendChild(linha);
+                tabela.appendChild(trElement);
+                i++;
+                contador++;
+
+                }
+        
+        document.getElementsByClassName("dimmer")[0].style.opacity="0"
+        document.getElementById('popUpTabela1').style.display = 'none';
+    } else {
+        document.getElementById("botao-selecionar-album").disabled = true;
+        document.getElementById("botao-selecionar-todos-album").disabled = true;
+        document.getElementById("botao-adicionar").disabled = true;
+        document.getElementById("botao-eliminar").disabled = true;
+        document.getElementById("botao-partilhar").disabled = true;
+    }
+
+    if (localStorage.getItem("imagensImportadas") != null) {
+        document.getElementById("botao-criar-album").disabled = false;
+    } else {
+        document.getElementById("botao-criar-album").disabled = true;
+    }
+    
+}
+
+document.getElementById("botao-confirmar-selecao").disabled = true;
+
+function imagem_selecionada() {
+    
+    if (document.querySelectorAll('input[type=checkbox]:checked').length > 0) {
+        document.getElementById("botao-confirmar-selecao").disabled = false;
+    } else {
+        document.getElementById("botao-confirmar-selecao").disabled = true;
+    }
+}
+
+
+
+
+
+
+
+
+function disableBackground() {
+    $("#side-bar").addClass("disabled");
+    $("#memento-top-left").addClass("disabled");
+    $("#right-top-right-bar").addClass("disabled");
+    $("#left-top-right-bar").addClass("disabled");
+}
+
+function enableBackground() {
+    $("#side-bar").removeClass("disabled");
+    $("#memento-top-left").removeClass("disabled");
+    $("#right-top-right-bar").removeClass("disabled");
+    $("#left-top-right-bar").removeClass("disabled");
+}
+/* 
+function () {
+    var tabela = document.querySelector("#fotos-album tbody");
+    tabela.innerHTML = "";
+    var x = 0;
+    var i = 0;
+    var n = 0;
+    var trElement;
+    Cria os diferentes albuns 
+    while ( localStorage.getItem(`guardaAlbumFotos${n}`)) {
+
+        for (let input of localStorage.getItem(`guardaAlbumFotos${n}`)) {
+                
+            if(i%4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', `tr${x}`);
+                x++;
+            }
+
+            let src = input.parentElement.children[1].children[0].getAttribute('src');
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item-album'>" +
+                                    "<input type='checkbox' class='checkbox-album'>" +
+                                    "<div class='option-inner-album'>" +
+                                        "<img width='220px' height='140px' src='" + src + "'>" +
+                                    "</div>" +
+                                "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++; 
+            localStorage.setItem("capa_album", src);
+
+            
+        }
+        n++;
+
     }
     
     document.getElementsByClassName("dimmer")[0].style.opacity="0"; 
    
-}   
+}  */
 
-function disableBackground() {
-    $("#side-bar").addClass("disabled")
-    $("#memento-top-left").addClass("disabled")
-}
 
-function enableBackground() {
-    $("#side-bar").removeClass("disabled")
-    $("#memento-top-left").removeClass("disabled")
-}
+
 
 
 /* function preencheTabelaAlbunsTodos() {    
