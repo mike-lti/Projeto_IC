@@ -759,4 +759,26 @@ nav a{
     text-align: center;
     
 }
+
+.popupFavoritosAplicado{
+
+    display: none;
+    position: absolute;
+    margin: auto;
+    left: 510px;
+    top: 88%;
+    width: 36%;
+    height: 8%;
+    background-color: rgb(253, 255, 157);
+    z-index: 9;
+    border-radius: 10px;
+}
+
+
+#botao-popup-favoritos-aplicados{
+
+    position: absolute;
+    margin-left: 30px;
+    width: 60px;
+}
 /*--------------------------------*/

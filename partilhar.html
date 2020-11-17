@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="styles/style.css">
         <link rel="icon" href="images/logo_Memento.png">
         <script src="scripts/partilhar_pageScripts.js"></script>
+        <script src="scripts/galeria_pageScripts.js"></script>
         <meta charset="utf-8">
     </head>
 
@@ -56,6 +57,10 @@
                 <div class="closeButton" onclick = "close_popup_link()"> &times; </div>
                 <button class="buttonLink" type="button" onclick="linkGenerate()">Gerar</button>
                 <a href="" class="linkParagraph"></a>
+            </div>
+            <div class="popupFavoritosAplicado"><p>As fotos selecionadas foram adicionadas ao favoritos com sucesso!
+                <button type="button" id="botao-popup-favoritos-aplicados" onclick="closePopupFavoritosAplicados()">OK</button>
+            </p>               
             </div>
 
             <div class="dimmer">

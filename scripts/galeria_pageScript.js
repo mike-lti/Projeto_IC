@@ -170,8 +170,19 @@ function nova_galeria_eliminada() {
     close_popup_eliminar_fotografias()
 }   
 
+function showPopupFavoritos(){
+    document.getElementsByClassName("popup")[0].style.display = "block";
+    $('.popup').fadeOut(7000);
+    
+}
+
 function guardarFavoritos() {
 
+    localStorage.setItem("showPopupFavoritos", "true")
+
+
+    
+    
     if (localStorage.getItem("fotosFavoritas") == null) {
         let srcList = [];
 
@@ -191,6 +202,12 @@ function guardarFavoritos() {
         }
     
         localStorage.setItem("fotosFavoritas", JSON.stringify(srcList))
+
+   
+        
+
+
+    
     }
 }
 

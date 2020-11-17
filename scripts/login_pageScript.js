@@ -10,8 +10,8 @@ function loginHandler(){
     dataPassword = formData.elements.password.value;
 
     if(dataUsername == tempUsername && tempPassword == dataPassword){
-        location.replace("file:///D:/GitHubRepositories/Projeto-IC/Projeto_IC/galeria.html");
-        location.replace("galeria.html")
+        
+        location.replace("galeria.html");
 
     } else {
         console.warn("Username ou palavra passe encontram-se incorretos");
