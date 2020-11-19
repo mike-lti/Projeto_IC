@@ -3,7 +3,7 @@
 
 a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 b{
@@ -66,6 +66,7 @@ b{
     background-color:rgb(4, 125, 154);
     border-radius: 5px;
     margin-top: 10px;
+    color: white;
 }
 
 .loginCancelationButton{
@@ -122,9 +123,9 @@ b{
     width: 30%;
     padding: 10px;
     background-color:rgb(4, 125, 154);
-    color: white;
     border-radius: 5px;
     margin-top: 10px;
+    color: white;
 }
 
 .registarCancelationButton{
@@ -257,8 +258,11 @@ b{
 
 #showPassButton{
     position: absolute;
-    top: 66%;
-    left: 7%;
+    top: 56%;
+    right: 1%;
+    width: 15px;
+    height: 15px;
+
 }
 
 

@@ -477,12 +477,18 @@ function selecionaTodos(input) {
             var obj = boxes[x];
             obj.checked = true;
             imagem_selecionada();
-            
+            document.getElementById("botao-criar-album").disabled = true;
         }
     } else {
         for (var x = 0; x < boxes.length; x++) {
             var obj = boxes[x];
             obj.checked = false;
+            $("#right-top-right-bar button img").addClass("disabled-image-button");
+            document.getElementById("botao-eliminar").disabled = true;   
+            document.getElementById("botao-adicionar").disabled = true;
+            document.getElementById("href-partilhar").disabled = true;
+            document.getElementById("botao-criar-album").disabled = false;
+            document.getElementById("href-partilhar").href = "";
         }
     }
 }
