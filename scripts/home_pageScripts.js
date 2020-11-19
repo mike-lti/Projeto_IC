@@ -14,9 +14,6 @@ function loginDimmerCloser() {
     let loginPopup = document.getElementsByClassName("loginDimmer")[0];
     loginPopup.style.display = "none";
     backgroundDimmer.style.opacity = "0";
-
-
-
 }
 
 function RegistarDimmerShower() {
