@@ -10,10 +10,12 @@ const loginPassword = "password";
 
 function userAcc(username, password, email){
 
-    this.username = username;
-    this.password = password;
-    this.email = email;
+    this.username = username,
+    this.password = password,
+    this.email = email
 
+
+    
 }
 
 
@@ -21,10 +23,11 @@ function usernameGetter(){
     return this.username;
 }
 
-
 function passGetter(){
     return this.password;
 }
+
+
 
 
 
@@ -48,10 +51,11 @@ function loginHandler(){
     let formData = document.forms.loginData;
     dataUsername = formData.elements.username.value;
     dataPassword = formData.elements.password.value;
-    let accToIterate = localStorage.getItem("accounts");
-    console.log(accToIterate)
+    let accToParse = localStorage.getItem("accounts");
+    let accToIterate = JSON.parse(accToParse);
+    console.log(accToIterate[0]["username"]);
     for(let i = 0; accToIterate.length; i++){        
-        if(dataUsername == accToIterate[i].usernameGetter() && accToIterate[i].passGetter() == dataPassword){
+        if(dataUsername == accToIterate[i]["username"] && accToIterate[i]["password"] == dataPassword){
             location.replace("galeria.html");
         }else{
             console.log("Errado")
