@@ -5,6 +5,9 @@
 $(document).ready(showPhotos());
 $(document).ready(preencheTabelaImagens());
 
+localStorage.removeItem("fotosPartilhar");
+localStorage.removeItem("fotosAlbum");
+
 $("#right-top-right-bar button img").addClass("disabled-image-button")
 document.getElementById("botao-eliminar").disabled = true;
 document.getElementById("botao-criar-galeria").disabled = true;
@@ -38,10 +41,6 @@ function showPhotos() {
     }
 }         
 
-function closePopup() {
-    document.getElementsByClassName("popup")[0].style.display = "none"
-}
-
 function showPopup() {
     document.getElementsByClassName("popup")[0].style.display = "block";
     $('.popup').fadeOut(7000);
@@ -55,6 +54,7 @@ function imagem_selecionada() {
         document.getElementById("botao-criar-galeria").disabled = false;
         document.getElementById("botao-adicionar").disabled = false;
         document.getElementById("href-partilhar").href = "partilhar.html";
+        document.getElementById("href-album").href = "album.html";
     } else {
         $("#right-top-right-bar button img").addClass("disabled-image-button");
         document.getElementById("botao-eliminar").disabled = true;    
@@ -62,6 +62,8 @@ function imagem_selecionada() {
         document.getElementById("botao-adicionar").disabled = true;
         document.getElementById("href-partilhar").disabled = true;
         document.getElementById("href-partilhar").href = "";
+        document.getElementById("href-album").disabled = true;
+        document.getElementById("href-album").href = "";
         
     
     }
@@ -90,6 +92,7 @@ function enable_galeria() {
         document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
         $("input[type=checkbox]").attr("disabled", false);
         document.getElementById("href-partilhar").href = "partilhar.html";
+        document.getElementById("href-album").href = "album.html";
     } else {
         document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
         $("input[type=checkbox]").attr("disabled", true);
@@ -98,7 +101,9 @@ function enable_galeria() {
         document.getElementById("botao-eliminar").disabled = true;
         document.getElementById("botao-partilhar").disabled = true;
         document.getElementById("href-partilhar").disabled = true;
+        document.getElementById("href-album").disabled = true;
         document.getElementById("href-partilhar").href = "";   
+        document.getElementById("href-album").href = "";   
         $("#right-top-right-bar button img").addClass("disabled-image-button");
         
 
@@ -170,6 +175,7 @@ function nova_galeria_eliminada() {
     close_popup_eliminar_fotografias()
 }   
 
+
 function guardarFavoritos() {
 
     if (localStorage.getItem("fotosFavoritas") == null) {
@@ -193,6 +199,45 @@ function guardarFavoritos() {
         localStorage.setItem("fotosFavoritas", JSON.stringify(srcList))
     }
 }
+
+function guardarFotosPartilhar() {
+
+    let srcList = [];
+
+    for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+        let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+        srcList.push(srcImagem)
+    }
+
+    localStorage.setItem("fotosPartilhar", JSON.stringify(srcList))
+    
+}
+
+function guardarFotosAlbum() {
+
+    if (localStorage.getItem("fotosAlbum") == null) {
+        let srcList = [];
+
+        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+            srcList.push(srcImagem)
+        }
+
+        localStorage.setItem("fotosAlbum", JSON.stringify(srcList))
+    } else {
+        let srcList = JSON.parse(localStorage.getItem("fotosAlbum"));
+
+        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+            srcList.push(srcImagem)
+        }
+    
+        localStorage.setItem("fotosAlbum", JSON.stringify(srcList))
+    }
+}
+
+
+
 
 function preencheTabelaImagens() {
 

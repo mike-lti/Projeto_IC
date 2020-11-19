@@ -6,7 +6,6 @@
         <title>Memento</title>
         <link rel="stylesheet" type="text/css" href="styles/style.css">
         <link rel="icon" href="images/logo_Memento.png">
-        <script src="scripts/partilhar_pageScripts.js"></script>
         <meta charset="utf-8">
     </head>
 
@@ -14,7 +13,7 @@
         
         <div class="container">
             <header>
-                <a href="home_page.html"><img src="https://fontmeme.com/permalink/201105/65accd916ad7ea7ffc6c7b7279901614.png" id="memento-top-left" alt="fonte-against-romance"></a>
+                <a id="homepage-href" href="home_page.html"><img src="https://fontmeme.com/permalink/201105/65accd916ad7ea7ffc6c7b7279901614.png" id="memento-top-left" alt="fonte-against-romance"></a>
             </header>
 
             <div id="top-right-bar">
@@ -38,28 +37,57 @@
             <div class="workspace_partilhar">
                 <p id="p-importar">Escolha o local para onde pretende partilhar as suas fotografias:</p>
                 <div id="top_row_icons">
-                    <input type="image" id="link_icon" width="230" height="270" src="img_icon_partilhar/link_icon.png" onclick="open_popup_link()">
-                    <img id="facebook_icon" src="img_icon_partilhar/facebook_icon.png" width="230" height="270" alt="facebook icon">
-                    <img id="insta_icon" src="img_icon_partilhar/insta_icon.png" width="230" height="270" alt="insta icon">
+                    <input type="image" id="link_icon" onclick="open_icon_partilha('link')" width="230" height="270" src="img_icon_partilhar/link_icon.png" onclick="open_popup_link()">
+                    <input type="image" id="link_icon" onclick="open_icon_partilha('facebook')" width="230" height="270" src="img_icon_partilhar/facebook_icon.png" onclick="open_icon_partilha()">
+                    <input type="image" id="link_icon" onclick="open_icon_partilha('insta')" width="230" height="270" src="img_icon_partilhar/insta_icon.png" onclick="open_icon_partilha()">
                 </div>
                 
                 <div id="bot_row_icons">
-                    <img id="flickr_icon" src="img_icon_partilhar/flickr_icon.png" width="230" height="270" alt="pinterest icon">
-                    <img id="pinterest_icon" src="img_icon_partilhar/pinterest_icon.png" width="230" height="270" alt="flickr icon">
-                    <img id="twitter_icon" src="img_icon_partilhar/twitter_icon.png" width="230" height="270" alt="icloud icon">
+                    <input type="image" id="link_icon" onclick="open_icon_partilha('flickr')" width="230" height="270" src="img_icon_partilhar/flickr_icon.png" onclick="open_popup_link()">
+                    <input type="image" id="link_icon" onclick="open_icon_partilha('pinterest')" width="230" height="270" src="img_icon_partilhar/pinterest_icon.png" onclick="open_icon_partilha()">
+                    <input type="image" id="link_icon" onclick="open_icon_partilha('twitter')" width="230" height="270" src="img_icon_partilhar/twitter_icon.png" onclick="open_icon_partilha()">
                 </div>
             </div>
 
+            <div class="popup-partilha">
+
+                <div class="closeButton" onclick = "close_icon_partilha()"> &times; </div>
+                <img id="partilha-icon" src="" width="40px" alt="">
+                <p id="texto-seleciona">Selecione as fotografias que deseja partilhar:</p>
+                <p id="descricao">Descrição:</p>
+                <textarea name="descricao" id="texto-descricao" cols="60" rows="2"></textarea>
+                <button id="botao-cancelar-partilha" onclick="close_icon_partilha()" >Cancelar</button>
+                <button id="botao-confirmar-partilha" onclick="popup_partilha_efetuada()">Partilhar</button>
+                <button id="botao-gerar-link" type="button" onclick="linkGenerate()">Gerar Link</button>
+                
+                <div id="fotos-partilha">
+                    <table id="tabela-fotos-partilha">
+                        <tbody>
+                        
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
 
             <div class="popup-link">
-                <p class="tituloLinkPopup">Deseja criar o link para poder partilhar as fotografias?</p>
+                <p class="tituloLinkPopup">O seu link para partilhar as fotografias!</p>
                 <div class="closeButton" onclick = "close_popup_link()"> &times; </div>
-                <button class="buttonLink" type="button" onclick="linkGenerate()">Gerar</button>
-                <a href="" class="linkParagraph"></a>
+                <a href="" id="link-gerado"></a>     
+                <button id="botao-copiar" onclick="copiar('#link-gerado')">Copiar</button>     
             </div>
-
+            <p id="link-copiado">Link copiado!</p> 
             <div class="dimmer">
             </div>
+
+
+            <div class="popup">
+                <p id="mensagem-sucesso-partilha">Fotografias partilhadas com sucesso!
+                    <button type="button" id="botao-popup" onclick="closePopup()">OK</button>
+                </p>    
+            </div>
         </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="scripts/partilhar_pageScripts.js"></script>
     </body>
 </html>
