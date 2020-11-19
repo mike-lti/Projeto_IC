@@ -50,7 +50,7 @@
                 </div>
                 
                 <div class="registarDimmer">
-                    <form class="registarFormStyle">
+                    <form name = "registerData" class="registarFormStyle">
                         <label for="username">
                             <p><b>Nome:</b></p>
                         </label>
@@ -74,7 +74,7 @@
                         </label>
                         <input type="password" size="45" placeholder="Insira a sua palavra passe"
                         name="confirmPassword" required>
-                        <input type="submit" value="Registar" class="registarConfirmationButton">
+                        <input type="submit" value="Registar" class="registarConfirmationButton" onclick = "registerHandler()">
                     </form>
                     
                     <div class="closeButton" onclick = "RegistarDimmerCloser()">&times;</div>
