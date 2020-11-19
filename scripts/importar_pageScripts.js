@@ -84,7 +84,22 @@ function selectFranca() {
     "img_franca/img_9.jpg", "img_franca/img_10.jpg", "img_franca/img_11.jpg", 
     "img_franca/img_12.jpg", "img_franca/img_13.jpg", "img_franca/img_14.jpg", 
     "img_franca/img_15.jpg", "img_franca/img_16.jpg", "img_franca/img_17.jpg", 
-    "img_franca/img_18.jpg", "img_franca/img_19.jpg", "img_franca/img_20.jpg"];
+    "img_franca/img_18.jpg", "img_franca/img_19.jpg", "img_franca/img_20.jpg"];    
+
+
+    var arrayTagsImgFranca = [["true", "true", "false"], ["true", "true", "false"],
+    ["false","true", "false"], ["false", "false", "false"], 
+    ["false", "true", "false"], ["true", "true", "false"],
+     ["true", "true", "false"], ["true", "true", "true"]
+    , ["true", "true", "false"], ["true", "true", "false"],
+     ["true", "true", "false"], ["true", "true", "false"]
+    , ["true", "true", "false"], ["false", "true", "false"],
+     ["false", "true", "false"], ["false", "true", "false"],
+     ["true", "true", "true"], ["false", "true", "true"],
+      ["false", "true", "false"], ["true", "true", "false"]];
+    
+
+    var objArray1 = objHandler(arrayImagensFranca, arrayTagsImgFranca);
 
     if (localStorage.getItem("imagensImportadas") == null) {
         arrayImagensImportadas = arrayImagensFranca;        
@@ -96,6 +111,15 @@ function selectFranca() {
         }
 
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
+    }
+
+    if(localStorage.getItem("imagensFiltros") == null) {        
+        localStorage.setItem("imagensFiltros", JSON.stringify(objArray1));
+
+    }else {
+        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros"));
+        objCheck.push(objArray1);
+        localStorage.setItem("imagensFiltros", JSON.stringify(objCheck));
     }
 
 }
@@ -142,6 +166,7 @@ function filterObj(src, filterBoolean){
     this.imgSrcObj = src;
     this.praia = filterBoolean[0];
     this.dia = filterBoolean[1];
+    this.desfocadas = filterBoolean[2];
 }
 
 
