@@ -1,9 +1,6 @@
-
 const registerPassword = "password";
-
 const loginUsername = "username";
 const loginPassword = "password";
-
 
 
 
