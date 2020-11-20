@@ -1,5 +1,4 @@
-const registerEmail = "email";
-const registerUsername = "username";
+
 const registerPassword = "password";
 
 const loginUsername = "username";
@@ -8,41 +7,54 @@ const loginPassword = "password";
 
 
 
-function userAcc(username, password, email){
-
-    this.username = username,
-    this.password = password,
-    this.email = email
-
-
-    
+function userAcc(password){
+    this.password = password    
 }
 
 
-function usernameGetter(){
-    return this.username;
+function accUse(){
+    formGetter = document.forms.registerData;
+    registerUserData = formGetter.elements.username.value;  
+    registerPassData= formGetter.elements.password.value;
+    registerConfirmData = formGetter.elements.confirmPassword.value; 
+    if(localStorage.getItem(registerUserData) == null){
+        return false
+
+    }else{
+        return true
+    }
+
 }
-
-function passGetter(){
-    return this.password;
-}
-
-
-
 
 
 function registerHandler(){
     let registredAcc = [];
+    localStorage.setItem("accounts", JSON.stringify(registredAcc))
     formGetter = document.forms.registerData;
-    registerUserData = formGetter.elements.username.value;
+    registerUserData = formGetter.elements.username.value;    
     registerPassData= formGetter.elements.password.value;
     registerEmailData= formGetter.elements.email.value;
+    registerConfirmData = formGetter.elements.confirmPassword.value;   
 
-    let accToApend = new userAcc(registerUserData, registerPassData, registerEmailData);
+    if(registerPassData != registerConfirmData){
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Os campos de palavra passe têm de ser iguais"
+        document.getElementsByClassName("homepageOperations")[0].style.display = "block"
+        $('.homepageOperations').fadeOut(7000);
+        formGetter.reset()
 
-    registredAcc.push(accToApend);
-    
-    localStorage.setItem("accounts", JSON.stringify(registredAcc));
+    }else if(accUse()){
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Username já se encontra ocupado"
+        document.getElementsByClassName("homepageOperations")[0].style.display = "block"
+        $('.homepageOperations').fadeOut(7000);
+        formGetter.reset()
+    }else{
+        let accToApend = new userAcc(registerPassData);
+        registredAcc.push(accToApend);        
+        localStorage.setItem(registerUserData, JSON.stringify(registredAcc));
+        formGetter.reset()
+
+
+    } 
 
 }
 
@@ -51,16 +63,15 @@ function loginHandler(){
     let formData = document.forms.loginData;
     dataUsername = formData.elements.username.value;
     dataPassword = formData.elements.password.value;
-    let accToParse = localStorage.getItem("accounts");
-    let accToIterate = JSON.parse(accToParse);
-    console.log(accToIterate[0]["username"]);
-    for(let i = 0; accToIterate.length; i++){        
-        if(dataUsername == accToIterate[i]["username"] && accToIterate[i]["password"] == dataPassword){
-            location.replace("galeria.html");
-        }else{
-            console.log("Errado")
-        }
+    if(localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword){
+        location.replace("galeria.html")
+        
+    }else{
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Esse utilizador não existe"
+        document.getElementsByClassName("homepageOperations")[0].style.display = "block"
+        $('.homepageOperations').fadeOut(7000);
     }
+       
 
 }
 
