@@ -74,18 +74,17 @@ function closePopupAlbumCriado() {
 
 function openFiltros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon1.png";
-    if ( document.getElementById("popup-filtros").style.display == "block" ) {
-        document.getElementById("popup-filtros").style.display = "none";
+    if ( document.getElementById("popup-filtros-album").style.display == "block" ) {
+        document.getElementById("popup-filtros-album").style.display = "none";
         document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     } else {
-        document.getElementById("popup-filtros").style.display = "block";
+        document.getElementById("popup-filtros-album").style.display = "block";
     }
-
 }
 
 function tiraFiltros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
-    document.getElementById("popup-filtros").style.display = "none";
+    document.getElementById("popup-filtros-album").style.display = "none";
 }
 
 function aplica_filtros() {
@@ -202,7 +201,7 @@ function aplica_filtros() {
     checkboxDia = document.getElementById("dia").checked = false;
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
-    document.getElementById("popup-filtros").style.display = "none" 
+    document.getElementById("popup-filtros-album").style.display = "none" 
     $('.popupFiltrosAplicados').fadeOut(7000);
 }
 

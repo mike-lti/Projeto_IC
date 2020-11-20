@@ -494,13 +494,16 @@ nav a{
 
 
 
-#botao-filtros {
-    position: absolute;
-    top: 13px;
+.botao-filtros {
     width: 30px;
     height: 30px;
-    left: 10px;
     cursor: pointer;
+}
+
+#botao-filtros-album {
+    position: absolute;
+    top: 13px;
+    left: 10px;
 }
 
 #botao-cancelar-filtros {
@@ -523,21 +526,24 @@ nav a{
     color: white;
 }
 
-#popup-filtros {
+.popup-filtros {
     display: none;
     font-size: Large;
-    position: absolute;
     position: fixed;
-    margin-top: 60px;
-    margin-left: 10px;
     padding-top: 10px;
     padding-left: 10px;
     background-color: lightgray;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 140px;
     height: 160px;
     text-align: left;
     z-index: 10;
+}
+
+#popup-filtros-album {
+    position: absolute;
+    margin-top: 90px;
+    margin-left: 60px;
 }
 
 .popupAlbum{
@@ -599,6 +605,7 @@ nav a{
 
 #href-album {
     text-decoration: none;
+    color: rgb(204, 204, 204);
 }
 
 .popup{
@@ -630,11 +637,11 @@ nav a{
 }
 
 #botao-selecionar-galeria {
-    left: 240px;
+    left: 300px;
 }
 
 #botao-selecionar-todas-galeria {
-    left: 360px;
+    left: 420px;
 }
 
 #botao-criar-galeria {
@@ -739,6 +746,19 @@ nav a{
     border-radius: 5px;
     position: relative;
     bottom: 40px;
+}
+
+#botao-filtros-galeria {
+    position: absolute;
+    top: 20px;
+    left: 220px;
+}
+
+#popup-filtros-galeria {
+    position: absolute;
+    top: 80px;
+    left: 205px;
+    background-color: white;
 }
 
 /*--------------------------------*/
@@ -913,7 +933,6 @@ nav a{
 }
 
 .popupFavoritosAplicado{
-
     display: none;
     position: absolute;
     margin: auto;
@@ -934,3 +953,22 @@ nav a{
 }
 /*--------------------------------*/
 
+/*----------------FAVORITOS-------------*/
+
+#botao-selecionar-favoritos {
+    left: 235px;
+}
+
+#botao-selecionar-todas-favoritos {
+    left: 345px;
+}
+
+
+
+
+
+
+
+
+
+/*--------------------------------*/

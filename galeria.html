@@ -21,6 +21,7 @@
             <div id="top-right-bar">
 
                 <div id="left-top-right-bar">
+                    <div class="botao-filtros" id="botao-filtros-galeria" onclick="openFiltros()" ><img id="imagem_filtros" src="images/filtros_icon.png" width="40" height="40"  alt=""></div>
                     <button id="botao-selecionar-galeria" onclick="enable_galeria()" >Selecionar</button>
                     <button id="botao-selecionar-todas-galeria" onclick="seleciona_todos()" >Selecionar Todas</button>
                 </div>
@@ -84,6 +85,27 @@
                 </p> 
                                   
             </div>
+            </div>
+
+            <div class="popup-filtros" id="popup-filtros-galeria">
+                <form name="filtros">
+                    <input type="checkbox" id="desfocadas" name="desfocadas" value="desfocadas">
+                    <label for="desfocadas"> Desfocadas</label><br>
+                    <input type="checkbox" id="localização" name="localizacao" value="localizacao">
+                    <label for="localização"> Localização</label><br>
+                    <input type="checkbox" id="qualidade" name="qualidade" value="qualidade">
+                    <label for="qualidade"> Qualidade</label><br>
+                    <input type="checkbox" id="praia" name="praia" value="praia">
+                    <label for="praia"> Praia </label><br>
+                    <input type="checkbox" id="dia" name="dia" value="dia">
+                    <label for="dia"> Dia </label><br><br>
+                </form>
+                <button onclick="aplica_filtros()" id="botao-confirmar-filtros">Confirmar</button>
+                <button id="botao-cancelar-filtros" onclick="tiraFiltros()">Cancelar</button>
+            </div>
+            <div class="popupFiltrosAplicados"><p>Os seus filtros foram aplicados com sucesso!
+                <button type="button" id="botao-popup-filtros-aplicados" onclick="closePopupFiltrosAplicados()">OK</button>
+            </p>               
             </div>
         </div>
 
