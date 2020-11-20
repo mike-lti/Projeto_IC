@@ -38,10 +38,11 @@
                         name="password" id="passShow" required>
 
                         <input type="checkbox" id = "showPassButton" onclick="showPass()"> 
-                        <input type="submit" value="Entrar" class="loginConfirmationButton" onclick="loginHandler()">
                     </form>
 
                     <div class="closeButton" onclick = "loginDimmerCloser()">&times;</div>
+
+                    <button class="loginButton" onclick="loginHandler()">Entrar</button>
                     <button class="loginCancelationButton" onclick ="loginDimmerCloser()">Cancelar</button>
                 </div> 
 
@@ -74,18 +75,19 @@
                         </label>
                         <input type="password" size="45" placeholder="Insira a sua palavra passe"
                         name="confirmPassword" required>
-                        <input type="submit" value="Registar" class="registarConfirmationButton" onclick = "registerHandler()">
                     </form>
                     
                     <div class="closeButton" onclick = "RegistarDimmerCloser()">&times;</div>
-                    
+                    <button class="registerButton" onclick="registerHandler()">Registar</button> 
                     <button class="registarCancelationButton" onclick = "RegistarDimmerCloser()">Cancelar</button>
                 </div>
                 
+
+                <div class="homepageOperations"><p>OLAAAAA</p></div>
             <div class="backgroudPopups">
             </div>
         </div>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="scripts/home_pageScripts.js"></script>
         <script src="scripts/login_pageScript.js"></script>
     </body>
