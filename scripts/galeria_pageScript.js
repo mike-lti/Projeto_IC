@@ -14,7 +14,7 @@ document.getElementById("botao-criar-galeria").disabled = true;
 document.getElementById("botao-adicionar").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
-if (localStorage.length == 0) {
+if (localStorage.getItem("imagensImportadas") == null) {
     document.getElementById("botao-selecionar-galeria").disabled = true;
     document.getElementById("botao-selecionar-todas-galeria").disabled = true;
     $("#botao-filtros-galeria").addClass("disabled-image-button");
@@ -491,4 +491,13 @@ function aplica_filtros() {
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
     document.getElementById("popup-filtros-galeria").style.display = "none" 
     $('.popupFiltrosAplicados').fadeOut(7000);
+}
+
+function closePopupFiltrosAplicados(){
+    document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "none"
+
+}
+
+function closePopup() {
+    document.getElementsByClassName("popup")[0].style.display = "none"
 }

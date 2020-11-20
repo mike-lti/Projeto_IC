@@ -83,6 +83,8 @@ function preencheTabelaImagensPartilhar() {
 
         document.getElementById("bot_row_icons").style.opacity = 1;
         document.getElementById("top_row_icons").style.opacity = 1; 
+        $("#top_row_icons").removeClass("disabled");
+        $("#bot_row_icons").removeClass("disabled");
         document.getElementById("p-importar").innerHTML = "Escolha o local para onde pretende partilhar as suas fotografias:"; 
 
         if (localStorage.getItem("fotosPartilhar") != null) {
@@ -148,6 +150,9 @@ function preencheTabelaImagensPartilhar() {
         document.getElementById("p-importar").innerHTML = "Ainda não tem nenhuma fotografia na sua galeria. Importe primeiro!";
         document.getElementById("bot_row_icons").style.opacity = 0.5;
         document.getElementById("top_row_icons").style.opacity = 0.5;
+        $("#top_row_icons").addClass("disabled");
+        $("#bot_row_icons").addClass("disabled");
+
     }
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
 }
