@@ -24,6 +24,8 @@ function accUse(){
 }
 
 
+
+
 function registerHandler(){
     let registredAcc = [];
     localStorage.setItem("accounts", JSON.stringify(registredAcc))
@@ -39,6 +41,13 @@ function registerHandler(){
         $('.homepageOperations').fadeOut(5000);
         formGetter.reset()
 
+    }else if(registerUserData == "" || registerPassData == "" || registerEmailData == "" || registerConfirmData == ""){
+
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Preencha todos os campos";
+        document.getElementsByClassName("homepageOperations")[0].style.display = "block";
+        $('.homepageOperations').fadeOut(7000);
+
+    
     }else if(accUse()){
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador já se encontra utilizado. Escolha outro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
