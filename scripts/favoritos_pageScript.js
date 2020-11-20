@@ -45,14 +45,14 @@ document.getElementById("botao-adicionar").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
 if (localStorage.getItem("fotosFavoritas") == null || localStorage.getItem("fotosFavoritas").length == 2 ) {
-    document.getElementById("botao-selecionar-galeria").disabled = true;
-    document.getElementById("botao-selecionar-todas-galeria").disabled = true;
+    document.getElementById("botao-selecionar-favoritos").disabled = true;
+    document.getElementById("botao-selecionar-todas-favoritos").disabled = true;
     for (let item of document.querySelectorAll('#tabela .option-item')) {
         item.style.display = "none";
     }
 } else {
-    document.getElementById("botao-selecionar-galeria").disabled = false;
-    document.getElementById("botao-selecionar-todas-galeria").disabled = false;
+    document.getElementById("botao-selecionar-favoritos").disabled = false;
+    document.getElementById("botao-selecionar-todas-favoritos").disabled = false;
 }
 
 var elementos = document.querySelectorAll('input[type=checkbox]');
@@ -99,10 +99,10 @@ function imagem_selecionada() {
 
 function enable_favoritos() {
     if ( $("input[type=checkbox]").attr("disabled")) {
-        document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
+        document.getElementById("botao-selecionar-favoritos").innerHTML = "Cancelar"
         $("input[type=checkbox]").attr("disabled", false);
     } else {
-        document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
+        document.getElementById("botao-selecionar-favoritos").innerHTML = "Selecionar"
         $("input[type=checkbox]").attr("disabled", true);
         for (let imagem of document.querySelectorAll('input[type=checkbox]:checked')) {
             imagem.checked = false; 

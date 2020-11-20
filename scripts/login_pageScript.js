@@ -34,13 +34,13 @@ function registerHandler(){
     registerConfirmData = formGetter.elements.confirmPassword.value;   
 
     if(registerPassData != registerConfirmData){
-        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Os campos de palavra passe têm de ser iguais"
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Os campos de palavra-passe têm de ser iguais"
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(7000);
         formGetter.reset()
 
     }else if(accUse()){
-        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Username já se encontra ocupado"
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador já se encontra utilizado. Escolha outro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(7000);
         formGetter.reset()
@@ -49,7 +49,7 @@ function registerHandler(){
         registredAcc.push(accToApend);        
         localStorage.setItem(registerUserData, JSON.stringify(registredAcc));
         formGetter.reset()
-
+        RegistarDimmerCloser();
 
     } 
 
@@ -63,12 +63,15 @@ function loginHandler(){
     if(localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword){
         location.replace("galeria.html")
         
-    }else{
-        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Esse utilizador não existe"
+    } else if (localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] != dataPassword) {
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Palavra-passe incorreta."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(7000);
-    }
-       
+    } else {
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador não existe. Registe-o primeiro."
+        document.getElementsByClassName("homepageOperations")[0].style.display = "block"
+        $('.homepageOperations').fadeOut(7000);
+    }     
 
 }
 
@@ -81,3 +84,9 @@ function showPass(){
     }
 }
 
+function RegistarDimmerCloser() {
+    let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
+    let registarPopup = document.getElementsByClassName("registarDimmer")[0];
+    registarPopup.style.display = "none";
+    backgroundDimmer.style.opacity = "0";
+}

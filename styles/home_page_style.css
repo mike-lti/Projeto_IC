@@ -96,11 +96,11 @@ b{
     position: absolute;
     padding: 2px;
     margin: auto;
-    left: 478px;
-    top: 100%;
+    left: 370px;
+    bottom: 100px;
     width: 40%;
-    height: 8%;
-    background-color: white;
+    height: 5%;
+    background-color: rgb(238, 148, 148);;
     z-index: 9;
     border-radius: 5px;
 }
@@ -153,7 +153,8 @@ b{
     font-size: large;
     left: 198px;
     width: 40%;
-    background-color: lightgray;
+    background-color: rgb(4, 125, 154);
+    color: white;
     border-radius: 5px;
     height: 40px;
     margin-top: 73px;
