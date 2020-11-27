@@ -2,12 +2,6 @@
 
 "use strict";
 
-$("#flickr_icon").addClass("disabled-image-button");
-$("#google_fotos_icon").addClass("disabled-image-button");
-$("#onedrive_icon").addClass("disabled-image-button");
-$("#dropbox_icon").addClass("disabled-image-button");
-$("#icloud_icon").addClass("disabled-image-button");
-
 var arrayImagensImportadas = []; 
 
 
@@ -190,3 +184,14 @@ function enableBackground() {
     $("#top_row_icons").removeClass("disabled")
     $("#bot_row_icons").removeClass("disabled")
 }
+
+function open_dropup() {
+    if (document.getElementsByClassName("dropup-content")[0].style.display == "none") {
+      document.getElementsByClassName("dropup-content")[0].style.display = "block";
+      $('.dropup-content').fadeIn(1000);
+    } else {
+      document.getElementsByClassName("dropup-content")[0].style.display = "none";
+      $('.dropup-content').fadeOut(1000);
+    }
+    
+  }
