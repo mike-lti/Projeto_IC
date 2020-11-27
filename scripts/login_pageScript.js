@@ -55,6 +55,8 @@ function registerHandler(){
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(5000);
         formGetter.reset()
+
+    
     }else{
         let accToApend = new userAcc(registerPassData);
         registredAcc.push(accToApend);        
@@ -76,14 +78,14 @@ function loginHandler(){
     dataUsername = formData.elements.username.value;
     dataPassword = formData.elements.password.value;
     if(localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword){
-
+        localStorage.setItem("currentAccount", JSON.stringify(dataUsername));
         location.replace("galeria.html")
         
-    } else if (localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] != dataPassword) {
+    }else if (localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] != dataPassword) {
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Palavra-passe incorreta."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(5000);
-    } else {
+    }else {
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador não existe. Registe-o primeiro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(5000);
