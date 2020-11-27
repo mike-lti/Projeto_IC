@@ -162,6 +162,7 @@ nav a{
 .dropup {
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .dropup-content {
