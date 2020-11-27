@@ -36,19 +36,21 @@ function registerHandler(){
     registerConfirmData = formGetter.elements.confirmPassword.value;   
 
     if(registerPassData != registerConfirmData){
+        document.getElementsByClassName("homepageOperations")[0].style.background = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Os campos de palavra-passe têm de ser iguais"
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(5000);
         formGetter.reset()
 
     }else if(registerUserData == "" || registerPassData == "" || registerEmailData == "" || registerConfirmData == ""){
-
+        document.getElementsByClassName("homepageOperations")[0].style.background = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Preencha todos os campos";
         document.getElementsByClassName("homepageOperations")[0].style.display = "block";
         $('.homepageOperations').fadeOut(7000);
 
     
     }else if(accUse()){
+        document.getElementsByClassName("homepageOperations")[0].style.background = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador já se encontra utilizado. Escolha outro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(5000);
@@ -58,8 +60,12 @@ function registerHandler(){
         registredAcc.push(accToApend);        
         localStorage.setItem(registerUserData, JSON.stringify(registredAcc));
         formGetter.reset()
+        document.getElementsByClassName("homepageOperations")[0].style.background = "rgb(4, 125, 154)";
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Conta criada com sucesso!";
+        document.getElementsByClassName("homepageOperations")[0].style.display = "block";
+        $('.homepageOperations').fadeOut(5000);
         RegistarDimmerCloser();
-
+       
     } 
 
 }
@@ -70,6 +76,7 @@ function loginHandler(){
     dataUsername = formData.elements.username.value;
     dataPassword = formData.elements.password.value;
     if(localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword){
+
         location.replace("galeria.html")
         
     } else if (localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] != dataPassword) {
