@@ -12,9 +12,15 @@ function filter(filter1, filter2) {
   }
 
 
-function showModal() {
-    document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
-    document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
+function showModal(disponibilidade) {
+    if (disponibilidade == "disponivel") {
+        document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
+        document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
+    } else {
+        document.getElementById("indisponivel-importar").style.display = "inline-block";
+        document.getElementById("indisponivel-importar").style.zIndex = "9";
+    }
+   
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
     document.getElementById("botao-confirmar").disabled = true;
     disableBackground()
@@ -23,6 +29,8 @@ function showModal() {
 function closeModal() {
     document.getElementsByClassName("importing_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+    document.getElementById("indisponivel-importar").style.display = "none";
+    document.getElementById("indisponivel-importar").style.zIndex = "0";
     enableBackground()
 }
 

@@ -44,15 +44,15 @@
             <div class="workspace_importar">
                 <p id="p-importar">Selecione o local de onde pretente importar as suas fotografias:</p>
                 <div id="top_row_icons">
-                    <input type="image" id="pc_icon" width="230" height="270" src="img_icon_importar/pc_icon.png" onclick="showModal()">
-                    <img id="flickr_icon" src="img_icon_importar/flickr_icon.png" width="230" height="270" alt="flickr icon">
-                    <img id="google_fotos_icon" src="img_icon_importar/google_fotos_icon.png" width="230" height="270" alt="google fotos icon">
+                    <input type="image" id="pc_icon" width="230" height="270" src="img_icon_importar/pc_icon.png" onclick="showModal('disponivel')">
+                    <input type="image" id="flickr_icon" width="230" height="270" src="img_icon_importar/flickr_icon.png" alt="flickr icon" onclick="showModal('indisponivel')">
+                    <input type="image" id="google_fotos_icon" width="230" height="270" src="img_icon_importar/google_fotos_icon.png" alt="google fotos icon" onclick="showModal('indisponivel')">
                 </div>
 
                 <div id="bot_row_icons">
-                    <img id="onedrive_icon" src="img_icon_importar/onedrive_icon.png" width="230" height="270" alt="onedrive icon">
-                    <img id="dropbox_icon" src="img_icon_importar/dropbox_icon.png" width="230" height="270" alt="dropbox icon">
-                    <img id="icloud_icon" src="img_icon_importar/icloud_icon.png" width="230" height="270" alt="icloud icon">
+                    <input type="image" id="onedrive_icon" width="230" height="270" src="img_icon_importar/onedrive_icon.png" alt="onedrive icon" onclick="showModal('indisponivel')">
+                    <input type="image" id="dropbox_icon" width="230" height="270" src="img_icon_importar/dropbox_icon.png" alt="dropbox icon" onclick="showModal('indisponivel')">
+                    <input type="image" id="icloud_icon" width="230" height="270" src="img_icon_importar/icloud_icon.png" alt="icloud icon" onclick="showModal('indisponivel')">
                 </div>
 
                 <div class="importing_modal">
@@ -66,6 +66,14 @@
                         </div>
                         <button id="botao-cancelar" onclick="cancelSelection()">Cancelar</button>
                         <a href="galeria.html"><button id="botao-confirmar" onclick="confirmSelection()"> Confirmar</button></a>
+                    </div>
+                </div>
+
+                <div id="indisponivel-importar" class="importing_modal">
+                    <div class="modal_content">
+                        <span class="close_button" onclick="closeModal()">&times;</span>
+                        <h2>Funcionalidade não disponível.</h2>
+                        <button id="botao-cancelar" onclick="cancelSelection()">Cancelar</button>
                     </div>
                 </div>
             </div>
