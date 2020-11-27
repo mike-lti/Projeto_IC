@@ -97,10 +97,10 @@ b{
     padding: 2px;
     margin: auto;
     left: 370px;
-    bottom: 100px;
+    bottom: 10px;
     width: 40%;
     height: 5%;
-    background-color: rgb(238, 148, 148);;
+    background-color:rgb(231, 84, 84);
     z-index: 9;
     border-radius: 5px;
 }
