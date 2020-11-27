@@ -12,6 +12,7 @@ $("#right-top-right-bar button img").addClass("disabled-image-button")
 document.getElementById("botao-eliminar").disabled = true;
 document.getElementById("botao-criar-galeria").disabled = true;
 document.getElementById("botao-adicionar").disabled = true;
+document.getElementById("botao-partilhar").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
 if (localStorage.getItem("imagensImportadas") == null) {

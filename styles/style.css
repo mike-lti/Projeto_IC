@@ -678,6 +678,8 @@ nav a{
     height: 40px;
     border-radius: 5px;
     font-size: large;
+    background-color: rgb(231, 84, 84);
+    color: white;
 }
 
 #popup-adicionar-fotos-galeria {

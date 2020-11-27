@@ -2,6 +2,12 @@
 
 "use strict";
 
+$("#flickr_icon").addClass("disabled-image-button");
+$("#google_fotos_icon").addClass("disabled-image-button");
+$("#onedrive_icon").addClass("disabled-image-button");
+$("#dropbox_icon").addClass("disabled-image-button");
+$("#icloud_icon").addClass("disabled-image-button");
+
 var arrayImagensImportadas = []; 
 
 
