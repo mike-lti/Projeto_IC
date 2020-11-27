@@ -220,7 +220,19 @@ function showNomeAlbum(){
 }
 
 function nomeAlbumDado(){
-    let ff = document.forms.nomeDoAlbum;
+
+    let arrayNomesAlbum = [];
+    let ff = document.forms.nomeDoAlbum.elements.aName.value;
+
+    if (localStorage.getItem("nomesAlbums") == null) {
+        arrayNomesAlbum.push(ff);
+        localStorage.setItem("nomesAlbums", JSON.stringify(arrayNomesAlbum)); 
+    } else {
+        let nomesAlbums = JSON.parse(localStorage.getItem("nomesAlbums"));
+
+        nomesAlbums.push(ff);
+        localStorage.setItem("nomesAlbums", JSON.stringify(nomesAlbums));
+    }
 
     preencheTabelaAlbum()
     document.getElementsByClassName('popup-album')[0].style.display ='block';
@@ -257,7 +269,6 @@ function preencheTabelaAlbum() {
                 }
 
         document.getElementsByClassName("dimmer")[0].style.opacity="0"
-  
     }
 }
 
@@ -354,55 +365,59 @@ function mostraCapaAlbunsWorkspace() {
 
     if (localStorage.getItem("arrayImagensDiferentesAlbuns") != null ) {
         
-        document.getElementById("botao-selecionar-album").disabled = false;
-        document.getElementById("botao-selecionar-todos-album").disabled = false;
-        document.getElementById("botao-adicionar").disabled = false;
-        document.getElementById("botao-eliminar").disabled = false;
-        document.getElementById("botao-partilhar").disabled = false;
-        var arrayImagensDiferentesAlbuns = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"));  
-        var tabela = document.querySelector("#disposicao-albuns-tabela tbody");
-        tabela.innerHTML = "";
-        var x = 0;
-        var i = 0;
-        let ff = document.forms.nomeDoAlbum;
-        var trElement;
-        var contador = 0;
-        for (let imagens of arrayImagensDiferentesAlbuns) {
-                if(i%4 == 0 || x == 0){
-                    trElement = document.createElement('tr');
-                    trElement.setAttribute('id', `tr${x}`);
-                    x++;
-                }
-                let linha = document.createElement("td");
-                linha.innerHTML = "<label class='option-item'>" +
-                                    "<input type='checkbox' class='checkbox'>" +
-                                    "<div class='option-inner' onclick='mostraAlbumSelecionado(" + contador + ")'>" +
-                                        "<img width='250px' height='155px' src='" + imagens[0] + "'>" +
-                                        ff.elements.aName.value +
-                                    "</div>" +
-                                "</label>";
-                trElement.appendChild(linha);
-                tabela.appendChild(trElement);
-                i++;
-                contador++;
+        let nomesAlbums = JSON.parse(localStorage.getItem("nomesAlbums"));
+        for(var i = 0; i < nomesAlbums.length; i++) {
 
-                }
-        
-        document.getElementsByClassName("dimmer")[0].style.opacity="0"
-        document.getElementsByClassName('popup-album')[0].style.display ='none';
-    } else {
-        document.getElementById("botao-selecionar-album").disabled = true;
-        document.getElementById("botao-selecionar-todos-album").disabled = true;
-        document.getElementById("botao-adicionar").disabled = true;
-        document.getElementById("botao-eliminar").disabled = true;
-        document.getElementById("botao-partilhar").disabled = true;
-    }
+            document.getElementById("botao-selecionar-album").disabled = false;
+            document.getElementById("botao-selecionar-todos-album").disabled = false;
+            document.getElementById("botao-adicionar").disabled = false;
+            document.getElementById("botao-eliminar").disabled = false;
+            document.getElementById("botao-partilhar").disabled = false;
+            var arrayImagensDiferentesAlbuns = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"));  
+            var tabela = document.querySelector("#disposicao-albuns-tabela tbody");
+            tabela.innerHTML = "";
+            var x = 0;
+            var i = 0;
+            var trElement;
+            var contador = 0;
+            for (let imagens of arrayImagensDiferentesAlbuns) {
+                let ff = nomesAlbums[i];
+                    if(i%4 == 0 || x == 0){
+                        trElement = document.createElement('tr');
+                        trElement.setAttribute('id', `tr${x}`);
+                        x++;
+                    }
+                    let linha = document.createElement("td");
+                    linha.innerHTML = "<label class='option-item'>" +
+                                        "<input type='checkbox' class='checkbox'>" +
+                                        "<div class='option-inner' onclick='mostraAlbumSelecionado(" + contador + ")'>" +
+                                            "<img width='250px' height='155px' src='" + imagens[0] + "'>" +
+                                            ff +
+                                        "</div>" +
+                                    "</label>";
+                    trElement.appendChild(linha);
+                    tabela.appendChild(trElement);
+                    i++;
+                    contador++;
+                    }
+            
+            document.getElementsByClassName("dimmer")[0].style.opacity="0"
+            document.getElementsByClassName('popup-album')[0].style.display ='none';
+        }
 
-    if (localStorage.getItem("imagensImportadas") != null) {
-        document.getElementById("botao-criar-album").disabled = false;
-    } else {
-        document.getElementById("botao-criar-album").disabled = true;
-    }
+        } else {
+            document.getElementById("botao-selecionar-album").disabled = true;
+            document.getElementById("botao-selecionar-todos-album").disabled = true;
+            document.getElementById("botao-adicionar").disabled = true;
+            document.getElementById("botao-eliminar").disabled = true;
+            document.getElementById("botao-partilhar").disabled = true;
+        }
+
+        if (localStorage.getItem("imagensImportadas") != null) {
+            document.getElementById("botao-criar-album").disabled = false;
+        } else {
+            document.getElementById("botao-criar-album").disabled = true;
+        }
     
 }
 
