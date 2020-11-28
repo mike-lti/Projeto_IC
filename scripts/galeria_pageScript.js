@@ -125,7 +125,6 @@ function enable_galeria() {
         $("#href-album").addClass("disabled");
         $("#href-partilhar").addClass("disabled");
         $("#right-top-right-bar button img").addClass("disabled-image-button");
-        
 
         for (let imagem of document.querySelectorAll('input[type=checkbox]:checked')) {
             imagem.checked = false; 
@@ -222,6 +221,7 @@ function showPopupFavoritos(){
 
 function guardarFotos(local) {
     if (local == "fotosPartilhar") {
+        
         let srcList = [];
 
         for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
@@ -229,7 +229,7 @@ function guardarFotos(local) {
             srcList.push(srcImagem)
         }
     
-        localStorage.setItem("local", JSON.stringify(srcList))
+        localStorage.setItem(local, JSON.stringify(srcList))
     } else {
         if (local == "fotosFavoritas") {
             localStorage.setItem("showPopupFavoritos", "true")
@@ -256,7 +256,7 @@ function guardarFotos(local) {
             localStorage.setItem(local, JSON.stringify(srcList));    
         }
     }
-        
+    
 }
 
 function preencheTabelaImagens() {

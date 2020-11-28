@@ -34,7 +34,7 @@
                     <button id="botao-criar-galeria" onclick="guardarFotos('fotosAlbum')"><a id="href-album">Criar Álbum</a></button>
                     <button id="botao-adicionar" onclick="open_popup_adicionar_fotografias()">Adicionar</button>
                     <button id="botao-eliminar" onclick="open_popup_eliminar_fotografias()"><img src="images/lixo4_icon.png" width="22px" alt=""></button>
-                    <button id="botao-partilhar" onclick="guardarFotos('fotosPartilhar')" ><a id="href-partilhar"><img src="images/partilhar4_icon.png" width="35px" alt=""></a></button>
+                    <button id="botao-partilhar"><a id="href-partilhar"><img onclick="guardarFotos('fotosPartilhar')" src="images/partilhar4_icon.png" width="35px" alt=""></a></button>
                 </div>
           
             </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div id="usernameCurrentAccount">ESTOU AQUI</div>
                 <div class="dropup">
-                    <div class="botao-dropup"><img src="images/utilizador_icon.png" width="50" alt="utilizador icon" onclick="open_dropup()"></div>
+                    <div class="botao-dropup" onclick="open_dropup()"><img src="images/utilizador_icon.png" width="50" alt="utilizador icon"></div>
                     <div class="dropup-content">
                       <a href="home_page.html">Sair</a>
                     </div>

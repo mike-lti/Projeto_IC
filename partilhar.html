@@ -58,12 +58,12 @@
 
             <div class="popup-partilha">
 
-                <div class="closeButton" onclick = "close_icon_partilha()"> &times; </div>
+                <div class="closeButton" onclick = "closePopup('popup-partilha')"> &times; </div>
                 <img id="partilha-icon" src="" width="40px" alt="">
                 <p id="texto-seleciona">Selecione as fotografias que deseja partilhar:</p>
                 <p id="descricao">Descrição:</p>
                 <textarea name="descricao" id="texto-descricao" cols="60" rows="2"></textarea>
-                <button id="botao-cancelar-partilha" onclick="close_icon_partilha()" >Cancelar</button>
+                <button id="botao-cancelar-partilha" onclick="closePopup('popup-partilha')" >Cancelar</button>
                 <button id="botao-confirmar-partilha" onclick="popup_partilha_efetuada()">Partilhar</button>
                 <button id="botao-gerar-link" type="button" onclick="linkGenerate()">Gerar Link</button>
                 
@@ -78,7 +78,7 @@
 
             <div class="popup-link">
                 <p class="tituloLinkPopup">O seu link para partilhar as fotografias!</p>
-                <div class="closeButton" onclick = "close_popup_link()"> &times; </div>
+                <div class="closeButton" onclick = "closePopup('popup-link')"> &times; </div>
                 <a href="" id="link-gerado"></a>     
                 <button id="botao-copiar" onclick="copiar('#link-gerado')">Copiar</button>     
             </div>
@@ -89,8 +89,14 @@
 
             <div class="popup">
                 <p id="mensagem-sucesso-partilha">Fotografias partilhadas com sucesso!
-                    <button type="button" id="botao-popup" onclick="closePopup()">OK</button>
+                    <button type="button" id="botao-popup" onclick="closePopup('popup')">OK</button>
                 </p>    
+            </div>
+
+            <div class="popupEstadoVisivel"><p> Tem fotografias selecionadas. Se quiser remova a seleção.
+                <button type="button" id="botao-popup-estado-visivel-remover" onclick="removerSelecao()">Remover</button>
+                <button type="button" id="botao-popup-estado-visivel-fechar" onclick="closePopup('popupEstadoVisivel')">Fechar</button>
+            </p>               
             </div>
         </div>
 

@@ -13,6 +13,13 @@ document.getElementById("botao-eliminar").disabled = true;
 document.getElementById("botao-adicionar").disabled = true;
 document.getElementById("href-partilhar").disabled = true;
 
+if (localStorage.getItem("imagensImportadas")) {
+    document.getElementById("p-album").innerHTML = ""; 
+} else {
+    document.getElementById("p-album").innerHTML = "Ainda não tem fotografias na galeria.\
+    Vá até à página <a href=importar.html>Importar</a> e descarregue as suas primeiras fotografias.";
+}
+
 function abreNomeAlbum() {
     $('input[type=checkbox]').prop('checked', false);
     disableBackground()
@@ -247,6 +254,7 @@ function nomeAlbumDado(){
     
 }
 
+<<<<<<< Updated upstream
 function preencheTabelaAlbum() {    
     if (JSON.parse(localStorage.getItem("imagensImportadas"))) {
         var tabela = document.querySelector("#tabela-album tbody");
@@ -275,14 +283,50 @@ function preencheTabelaAlbum() {
                 i++;
                 contador++;
                 }
+=======
+function preencheTabelaAlbum() {
 
-        document.getElementsByClassName("dimmer")[0].style.opacity="0"
+    if (JSON.parse(localStorage.getItem("fotosAlbum"))) {
+        var arrayImagens = JSON.parse(localStorage.getItem("fotosAlbum"))
+    } else {
+        var arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"))
     }
+   
+    var tabela = document.querySelector("#tabela-album tbody");
+    tabela.innerHTML = "";
+    var x = 0;
+    var i = 0;
+    var trElement;        
+    for (let imagens of arrayImagens) {
+            if(i%4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', `tr${x}`);
+                x++;
+            }
+
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item-album'>" +
+                                "<input type='checkbox' onclick='imagem_selecionada()' class='checkbox-album'>" +
+                                "<div class='option-inner-album'>" +
+                                    "<img width='220px' height='140px' src='" + imagens + "'>" +
+                                "</div>" +
+                            "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++;
+>>>>>>> Stashed changes
+
+            }
+
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"
+    
 }
 
 
 /* aqui cria cada album */
 function preencheTabelaAlbumCriado() {
+    
+    localStorage.removeItem("fotosAlbum");  
     var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked'); 
     var tabela = document.querySelector("#fotos-album tbody");
     tabela.innerHTML = "";
@@ -319,7 +363,6 @@ function preencheTabelaAlbumCriado() {
         trElement.appendChild(linha);
         tabela.appendChild(trElement);
         i++; 
-
          
     }
     arrayFotos.push(arrayImagensAlbuns);
