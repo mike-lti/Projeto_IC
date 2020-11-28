@@ -1,7 +1,7 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
 "use strict";
-
+$(document).ready(currentAccPlacer());
 var arrayImagensImportadas = []; 
 
 
@@ -10,6 +10,13 @@ function filter(filter1, filter2) {
     this.lastName = last;
     
   }
+
+function currentAccPlacer(){
+    var usernameLoggedInToParse = localStorage.getItem("currentAccount");
+    var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
+    document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
+}
+
 
 
 function showModal(disponibilidade) {

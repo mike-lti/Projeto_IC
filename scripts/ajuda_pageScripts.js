@@ -1,4 +1,11 @@
 "use strict";
+$(document).ready(currentAccPlacer());
+
+function currentAccPlacer(){
+  var usernameLoggedInToParse = localStorage.getItem("currentAccount");
+  var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
+  document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
+}
 
 
 function open_dropup() {

@@ -2,6 +2,16 @@
 
 "use strict";
 $(document).ready(preencheTabelaImagensPartilhar());
+$(document).ready(currentAccPlacer());
+
+
+function currentAccPlacer(){
+    var usernameLoggedInToParse = localStorage.getItem("currentAccount");
+    var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
+    document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
+}
+
+
 
 function open_popup_link(){
     document.getElementsByClassName("dimmer")[0].style.opacity="1";

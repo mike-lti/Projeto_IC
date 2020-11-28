@@ -5,6 +5,7 @@ var tabelaOrigin = document.querySelector("#tabela-cuba tbody");
 
 $(document).ready(showNomeAlbum());
 $(document).ready(mostraCapaAlbunsWorkspace());
+$(document).ready(currentAccPlacer());
 //$(document).ready(aplica_filtros());
 
 $("#right-top-right-bar button img").addClass("disabled-image-button")
@@ -25,6 +26,12 @@ function abreNomeAlbum() {
         document.getElementById("botao-confirmar").disabled = true;
         document.getElementById("popup-sem-fotos").style.display = "block";
     }
+}
+
+function currentAccPlacer(){
+    var usernameLoggedInToParse = localStorage.getItem("currentAccount");
+    var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
+    document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
 }
 
 function closeNomeAlbum() {

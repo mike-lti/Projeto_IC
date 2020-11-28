@@ -2,6 +2,7 @@
 
 "use strict";
 
+
 /* var tabela = document.querySelector("table#fotos-favoritas tbody");
 var favList = JSON.parse(localStorage.getItem("fotosFavoritas"));
 var favFotos = [];
@@ -33,7 +34,7 @@ function showFavoritos() {
     }
 } */
 
-
+$(document).ready(currentAccPlacer());
 $(document).ready(getFavoritos());
 
 
@@ -58,6 +59,14 @@ if (localStorage.getItem("fotosFavoritas") == null || localStorage.getItem("foto
 var elementos = document.querySelectorAll('input[type=checkbox]');
 for (let element of elementos) {
     element.addEventListener("change", imagem_selecionada);
+}
+
+
+
+function currentAccPlacer(){
+    var usernameLoggedInToParse = localStorage.getItem("currentAccount");
+    var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
+    document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
 }
 
 function open_popup_eliminar_fotografias() {
