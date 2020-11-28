@@ -254,36 +254,6 @@ function nomeAlbumDado(){
     
 }
 
-<<<<<<< Updated upstream
-function preencheTabelaAlbum() {    
-    if (JSON.parse(localStorage.getItem("imagensImportadas"))) {
-        var tabela = document.querySelector("#tabela-album tbody");
-        let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
-        tabela.innerHTML = "";
-        var x = 0;
-        var i = 0;
-        var trElement;      
-        let contador = 0;
-        for (let imagens of arrayImagens) {
-                if(i%4 == 0 || x == 0){
-                    trElement = document.createElement('tr');
-                    trElement.setAttribute('id', `tr${x}`);
-                    x++;
-                }
-
-                let linha = document.createElement("td");
-                linha.innerHTML = "<label class='option-item-album'>" +
-                                    "<input type='checkbox' onclick='imagem_selecionada()' id=" + contador + " class='checkbox-album'>" +
-                                    "<div class='option-inner-album'>" +
-                                        "<img width='220px' height='140px' src='" + imagens + "'>" +
-                                    "</div>" +
-                                "</label>";
-                trElement.appendChild(linha);
-                tabela.appendChild(trElement);
-                i++;
-                contador++;
-                }
-=======
 function preencheTabelaAlbum() {
 
     if (JSON.parse(localStorage.getItem("fotosAlbum"))) {
@@ -314,7 +284,6 @@ function preencheTabelaAlbum() {
             trElement.appendChild(linha);
             tabela.appendChild(trElement);
             i++;
->>>>>>> Stashed changes
 
             }
 
@@ -444,7 +413,7 @@ function mostraCapaAlbunsWorkspace() {
                     let linha = document.createElement("td");
                     linha.innerHTML = "<label class='option-item'>" +
                                         "<input type='checkbox' id=" + contador + " class='checkbox'>" +
-                                        "<div class='option-inner' onclick='mostraAlbumSelecionado(" + contador + ")'>" +
+                                        "<div class='option-inner margin-bottom-capa-album' onclick='mostraAlbumSelecionado(" + contador + ")'>" +
                                             "<img width='250px' height='155px' src='" + imagens[0] + "'>" +
                                             ff +
                                         "</div>" +
