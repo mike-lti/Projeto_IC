@@ -558,6 +558,8 @@ function delete_albums() {
     for (let album of document.querySelectorAll('#disposicao-albuns-tabela input[type=checkbox]:checked')) {
         album.checked = false; 
     }
+    
+    window.location.reload();
 }
 
 
