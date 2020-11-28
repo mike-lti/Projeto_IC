@@ -1,1 +1,2 @@
-FIX LOGOUT
+Adicionar carrosel para ver fotos
+Meter funcionalidade 
