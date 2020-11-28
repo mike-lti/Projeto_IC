@@ -334,38 +334,41 @@ function preencheTabelaAlbumCriado() {
 
 /* Aqui mostra o album selecionado no workspace */
 function mostraAlbumSelecionado(indice) {
-    var arrayImagensGuardadas = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"))[indice]; 
-    var tabela = document.querySelector("#fotos-album tbody");
-    tabela.innerHTML = "";
-    var x = 0;
-    var i = 0;
-    var trElement;
-    /* Cria tabela que vai conter as fotos que vão ficar no album */
-    for (let input of arrayImagensGuardadas) {
-            
-        if(i%4 == 0 || x == 0){
-            trElement = document.createElement('tr');
-            trElement.setAttribute('id', `tr${x}`);
-            x++;
-        }
-        
-        let linha = document.createElement("td");
-        linha.innerHTML = "<label class='option-item-album'>" +
-                                "<input type='checkbox' class='checkbox-album'>" +
-                                "<div class='option-inner-album'>" +
-                                    "<img width='220px' height='140px' src='" + input + "'>" +
-                                "</div>" +
-                            "</label>";
-        trElement.appendChild(linha);
-        tabela.appendChild(trElement);
-        i++; 
 
-         
+    if (document.getElementById("botao-selecionar-album").innerHTML == "Selecionar") {
+
+        var arrayImagensGuardadas = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"))[indice]; 
+        var tabela = document.querySelector("#fotos-album tbody");
+        tabela.innerHTML = "";
+        var x = 0;
+        var i = 0;
+        var trElement;
+        /* Cria tabela que vai conter as fotos que vão ficar no album */
+        for (let input of arrayImagensGuardadas) {
+                
+            if(i%4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', `tr${x}`);
+                x++;
+            }
+            
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item-album'>" +
+                                    "<input type='checkbox' class='checkbox-album'>" +
+                                    "<div class='option-inner-album'>" +
+                                        "<img width='220px' height='140px' src='" + input + "'>" +
+                                    "</div>" +
+                                "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++; 
+
+            
+        }
+        document.getElementsByClassName("dimmer")[0].style.opacity = "1";
+        document.getElementById("opcoes-album").style.display = "block";
+        document.getElementById("fundo-fotos-album").style.display = "block"; 
     }
-    document.getElementsByClassName("dimmer")[0].style.opacity = "1";
-    document.getElementById("opcoes-album").style.display = "block";
-    document.getElementById("fundo-fotos-album").style.display = "block"; 
-   
 }   
 
 function mostraCapaAlbunsWorkspace() {  
