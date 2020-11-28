@@ -24,6 +24,20 @@ function accUse(){
 }
 
 
+function ValidateEmail(){
+
+let mailValidFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+formGetterMail = document.forms.registerData;
+registerEmailDataValidation= formGetter.elements.email.value;
+ if (registerEmailDataValidation.match(mailValidFormat))
+  {
+    return (false)
+  }
+    
+    return (true)
+}
+
+
 
 
 function registerHandler(){
@@ -36,21 +50,29 @@ function registerHandler(){
     registerConfirmData = formGetter.elements.confirmPassword.value;   
 
     if(registerPassData != registerConfirmData){
-        document.getElementsByClassName("homepageOperations")[0].style.background = "rgb(231, 84, 84);";
+        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Os campos de palavra-passe têm de ser iguais"
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(5000);
         formGetter.reset()
 
+    }else if(ValidateEmail()){
+
+        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Forneça um mail válido";
+        document.getElementsByClassName("homepageOperations")[0].style.display = "block";
+        $('.homepageOperations').fadeOut(7000);
+
+
     }else if(registerUserData == "" || registerPassData == "" || registerEmailData == "" || registerConfirmData == ""){
-        document.getElementsByClassName("homepageOperations")[0].style.background = "rgb(231, 84, 84);";
+        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Preencha todos os campos";
         document.getElementsByClassName("homepageOperations")[0].style.display = "block";
         $('.homepageOperations').fadeOut(7000);
 
     
     }else if(accUse()){
-        document.getElementsByClassName("homepageOperations")[0].style.background = "rgb(231, 84, 84);";
+        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador já se encontra utilizado. Escolha outro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         $('.homepageOperations').fadeOut(5000);
@@ -62,11 +84,12 @@ function registerHandler(){
         registredAcc.push(accToApend);        
         localStorage.setItem(registerUserData, JSON.stringify(registredAcc));
         formGetter.reset()
-        document.getElementsByClassName("homepageOperations")[0].style.background = "rgb(4, 125, 154)";
+        RegistarDimmerCloser();
+        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(4, 125, 154)";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Conta criada com sucesso!";
         document.getElementsByClassName("homepageOperations")[0].style.display = "block";
         $('.homepageOperations').fadeOut(5000);
-        RegistarDimmerCloser();
+        
        
     } 
 
