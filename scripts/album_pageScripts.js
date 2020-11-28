@@ -254,7 +254,8 @@ function preencheTabelaAlbum() {
         tabela.innerHTML = "";
         var x = 0;
         var i = 0;
-        var trElement;        
+        var trElement;      
+        let contador = 0;
         for (let imagens of arrayImagens) {
                 if(i%4 == 0 || x == 0){
                     trElement = document.createElement('tr');
@@ -264,7 +265,7 @@ function preencheTabelaAlbum() {
 
                 let linha = document.createElement("td");
                 linha.innerHTML = "<label class='option-item-album'>" +
-                                    "<input type='checkbox' onclick='imagem_selecionada()' class='checkbox-album'>" +
+                                    "<input type='checkbox' onclick='imagem_selecionada()' id=" + contador + " class='checkbox-album'>" +
                                     "<div class='option-inner-album'>" +
                                         "<img width='220px' height='140px' src='" + imagens + "'>" +
                                     "</div>" +
@@ -272,7 +273,7 @@ function preencheTabelaAlbum() {
                 trElement.appendChild(linha);
                 tabela.appendChild(trElement);
                 i++;
-
+                contador++;
                 }
 
         document.getElementsByClassName("dimmer")[0].style.opacity="0"
@@ -399,7 +400,7 @@ function mostraCapaAlbunsWorkspace() {
                     }
                     let linha = document.createElement("td");
                     linha.innerHTML = "<label class='option-item'>" +
-                                        "<input type='checkbox' class='checkbox'>" +
+                                        "<input type='checkbox' id=" + contador + " class='checkbox'>" +
                                         "<div class='option-inner' onclick='mostraAlbumSelecionado(" + contador + ")'>" +
                                             "<img width='250px' height='155px' src='" + imagens[0] + "'>" +
                                             ff +
@@ -538,6 +539,26 @@ function open_dropup() {
     
   }
 
+function delete_albums() {
+    let arrayApagar = document.querySelectorAll('#disposicao-albuns-tabela input[type=checkbox]:checked');
+    let arrayAlbums = JSON.parse(localStorage.getItem('arrayImagensDiferentesAlbuns'));
+    let nomesAlbums = JSON.parse(localStorage.getItem('nomesAlbums'));
+
+    console.log(arrayApagar);
+
+    for (let albumApagado of arrayApagar) {
+       let indexApagar = albumApagado.getAttribute('id');
+       arrayAlbums.splice(indexApagar, 1);
+       nomesAlbums.splice(indexApagar, 1);
+    }
+
+    localStorage.setItem('arrayImagensDiferentesAlbuns', JSON.stringify(arrayAlbums));
+    localStorage.setItem('nomesAlbums', JSON.stringify(nomesAlbums));
+
+    for (let album of document.querySelectorAll('#disposicao-albuns-tabela input[type=checkbox]:checked')) {
+        album.checked = false; 
+    }
+}
 
 
 /* if (document.querySelectorAll('input[type=checkbox]:checked').length > 0) {
