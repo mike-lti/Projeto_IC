@@ -211,66 +211,43 @@ function showPopupFavoritos(){
     
 }
 
-function guardarFavoritos() {
-
-    localStorage.setItem("showPopupFavoritos", "true")
-
-    if (localStorage.getItem("fotosFavoritas") == null) {
+function guardarFotos(local) {
+    if (local == "fotosPartilhar") {
         let srcList = [];
 
         for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
             let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
             srcList.push(srcImagem)
         }
-
-        localStorage.setItem("fotosFavoritas", JSON.stringify(srcList))
+    
+        localStorage.setItem("local", JSON.stringify(srcList))
     } else {
-
-        let srcList = JSON.parse(localStorage.getItem("fotosFavoritas"));
-
-        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
-            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
-            srcList.push(srcImagem)
+        if (local == "fotosFavoritas") {
+            localStorage.setItem("showPopupFavoritos", "true")
         }
-    
-        localStorage.setItem("fotosFavoritas", JSON.stringify(srcList));    
-    }
-}
+        
+        if (localStorage.getItem(local) == null) {
+            let srcList = [];
 
-function guardarFotosPartilhar() {
+            for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+                let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+                srcList.push(srcImagem)
+            }
 
-    let srcList = [];
+            localStorage.setItem(local, JSON.stringify(srcList))
+        } else {
 
-    for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
-        let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
-        srcList.push(srcImagem)
-    }
+            let srcList = JSON.parse(localStorage.getItem(local));
 
-    localStorage.setItem("fotosPartilhar", JSON.stringify(srcList))
-    
-}
-
-function guardarFotosAlbum() {
-
-    if (localStorage.getItem("fotosAlbum") == null) {
-        let srcList = [];
-
-        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
-            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
-            srcList.push(srcImagem)
+            for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+                let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+                srcList.push(srcImagem)
+            }
+        
+            localStorage.setItem(local, JSON.stringify(srcList));    
         }
-
-        localStorage.setItem("fotosAlbum", JSON.stringify(srcList))
-    } else {
-        let srcList = JSON.parse(localStorage.getItem("fotosAlbum"));
-
-        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
-            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
-            srcList.push(srcImagem)
-        }
-    
-        localStorage.setItem("fotosAlbum", JSON.stringify(srcList))
     }
+        
 }
 
 function preencheTabelaImagens() {
