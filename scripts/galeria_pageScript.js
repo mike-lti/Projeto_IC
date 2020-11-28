@@ -150,23 +150,25 @@ function nova_galeria_eliminada() {
     var arrayFicar = document.querySelectorAll('input[type=checkbox]:not(:checked)');
     var arrayApagar = document.querySelectorAll('input[type=checkbox]:checked');
     var tabela = document.querySelector("#tabela tbody");
-    var arraySrc = [];
+
     tabela.innerHTML = "";
+
+    var arraySrc = [];
     var x = 0;
     var i = 0;
     var trElement;
+    var arrayFicarlength = arrayFicar.length
+
+
     /* Cria tabela que vai conter as fotos que vão ficar no album */
-    var arrayFicarlength = arrayFicar.length;
-    console.log(arrayFicarlength)
     for (let input of arrayFicar ) {
         if (x <= arrayFicarlength - 6) {
             if(i%4 == 0 || x == 0){
                 trElement = document.createElement('tr');
                 trElement.setAttribute('id', `tr${x}`);
             }
+
             let src = input.parentElement.children[1].children[0].getAttribute('src');
-            
-    
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item'>" +
                                     "<input type='checkbox'  class='checkbox'>" +
@@ -174,10 +176,12 @@ function nova_galeria_eliminada() {
                                         "<img width='250px' height='155px' src='" + src + "'>" +
                                     "</div>" +
                                 "</label>";
+
             trElement.appendChild(linha);
             tabela.appendChild(trElement);
+
             i++;
-            x++;$("input[type=checkbox]").attr("disabled", true);
+            x++;
         }
     }
     
@@ -185,24 +189,20 @@ function nova_galeria_eliminada() {
     close_popup_eliminar_fotografias()
     
     var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas")); 
-    var index = 0;
+
     for (let imagemApagada of arrayApagar) {
         let srcApagada = imagemApagada.parentElement.children[1].children[0].getAttribute('src');
-        index = 0;
+        let index = 0;
         for ( let srcImportadas of arrayImagensImportadas) {
             if (srcApagada == srcImportadas) {
-                delete JSON.parse(localStorage.getItem("imagensImportadas"))[index];
-                console.log(index)
-            } else if (arrayImagensImportadas.includes(srcImportadas) == true) {  
-                arraySrc.push(srcImportadas);
-            } 
+                arrayImagensImportadas.splice (index, 1);
+            }
+
             index++;
         }
     }
-    console.log(arraySrc)
-    localStorage.setItem("imagensImportadas", JSON.stringify(arraySrc));
-    console.log(localStorage.getItem("imagensImportadas"))
-    
+   
+    localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));    
 }   
 
 function showPopupFavoritos(){
