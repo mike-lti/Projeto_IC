@@ -1,2 +1,5 @@
 Adicionar carrosel para ver fotos
-Meter funcionalidade 
+Meter funcionalidade de adicionar fotos a um album
+Meter func. de criar um album a partir da galeria
+FIX galeria botoes disabled qnd se apaga
+FIX Filtros
