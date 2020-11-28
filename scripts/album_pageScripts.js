@@ -400,7 +400,7 @@ function mostraCapaAlbunsWorkspace() {
                     let linha = document.createElement("td");
                     linha.innerHTML = "<label class='option-item'>" +
                                         "<input type='checkbox' class='checkbox'>" +
-                                        "<div class='option-inner' onclick='mostraAlbumSelecionado(" + contador + ")'>" +
+                                        "<div id='album-foto' class='option-inner' onclick='mostraAlbumSelecionado(" + contador + ")'>" +
                                             "<img width='250px' height='155px' src='" + imagens[0] + "'>" +
                                             ff +
                                         "</div>" +

@@ -422,6 +422,10 @@ nav a{
     text-align: center;
 }
 
+#album-foto{
+    margin-bottom: 6%;
+}
+
 .option-item .checkbox {
     position: absolute;
     top: 10px;
