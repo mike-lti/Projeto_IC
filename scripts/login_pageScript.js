@@ -22,6 +22,8 @@ function loginDimmerShower() {
     let loginPopup = document.getElementsByClassName("loginDimmer")[0];
     loginPopup.style.display = "block";
     backgroundDimmer.style.opacity = "1";
+    $(".registarHandler").addClass("disabled");
+    $(".loginHandler").addClass("disabled");
 }
 
 function loginDimmerCloser() {
@@ -29,26 +31,34 @@ function loginDimmerCloser() {
     let loginPopup = document.getElementsByClassName("loginDimmer")[0];
     loginPopup.style.display = "none";
     backgroundDimmer.style.opacity = "0";
+    $(".registarHandler").removeClass("disabled");
+    $(".loginHandler").removeClass("disabled");
 }
 
 function RegistarDimmerShower() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let registarPopup = document.getElementsByClassName("registarDimmer")[0];
+    $(".registarHandler").addClass("disabled");
     $(".loginHandler").addClass("disabled");
     
     registarPopup.style.display = "block";
     backgroundDimmer.style.opacity = "1";
+    
+
 }
+
 
 function RegistarDimmerCloser() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let registarPopup = document.getElementsByClassName("registarDimmer")[0];
     registarPopup.style.display = "none";
     backgroundDimmer.style.opacity = "0";
-    $(".loginHandler").removeClass("disabled"); 
-
+    $(".registarHandler").removeClass("disabled");
+    $(".loginHandler").removeClass("disabled");
     
 }
+
+
 
 function accUse(){
     formGetter = document.forms.registerData;
@@ -75,8 +85,6 @@ registerEmailDataValidation= formGetter.elements.email.value;
     
     return (true)
 }
-
-
 
 
 function registerHandler(){
@@ -123,8 +131,10 @@ function registerHandler(){
         let accToApend = new userAcc(registerPassData);
         registredAcc.push(accToApend);        
         localStorage.setItem(registerUserData, JSON.stringify(registredAcc));
-        formGetter.reset()
+        formGetter.reset();
         RegistarDimmerCloser();
+        $(".registarHandler").removeClass("disabled");
+        $(".loginHandler").removeClass("disabled");
         document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(4, 125, 154)";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Conta criada com sucesso!";
         document.getElementsByClassName("homepageOperations")[0].style.display = "block";
@@ -166,9 +176,3 @@ function showPass(){
     }
 }
 
-function RegistarDimmerCloser() {
-    let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
-    let registarPopup = document.getElementsByClassName("registarDimmer")[0];
-    registarPopup.style.display = "none";
-    backgroundDimmer.style.opacity = "0";
-}
