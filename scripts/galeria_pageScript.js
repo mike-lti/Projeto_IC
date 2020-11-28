@@ -4,6 +4,7 @@
 
 $(document).ready(showPhotos());
 $(document).ready(preencheTabelaImagens());
+$(document).ready(currentAccPlacer());
 
 localStorage.removeItem("fotosPartilhar");
 localStorage.removeItem("fotosAlbum");
@@ -36,6 +37,14 @@ var elementos = document.querySelectorAll('input[type=checkbox]');
 for (let element of elementos) {
     element.addEventListener("change", imagem_selecionada);
 }
+
+
+function currentAccPlacer(){
+    var usernameLoggedInToParse = localStorage.getItem("currentAccount");
+    var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
+    document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
+}
+
 
 function showPhotos() {
     $("#tabela").find(".option-item").css( "display", "block");

@@ -1,3 +1,9 @@
+//Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
+
+
+
+
+
 const registerPassword = "password";
 const loginUsername = "username";
 const loginPassword = "password";
@@ -8,6 +14,41 @@ function userAcc(password){
     this.password = password    
 }
 
+
+
+
+function loginDimmerShower() {
+    let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
+    let loginPopup = document.getElementsByClassName("loginDimmer")[0];
+    loginPopup.style.display = "block";
+    backgroundDimmer.style.opacity = "1";
+}
+
+function loginDimmerCloser() {
+    let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
+    let loginPopup = document.getElementsByClassName("loginDimmer")[0];
+    loginPopup.style.display = "none";
+    backgroundDimmer.style.opacity = "0";
+}
+
+function RegistarDimmerShower() {
+    let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
+    let registarPopup = document.getElementsByClassName("registarDimmer")[0];
+    $(".loginHandler").addClass("disabled");
+    
+    registarPopup.style.display = "block";
+    backgroundDimmer.style.opacity = "1";
+}
+
+function RegistarDimmerCloser() {
+    let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
+    let registarPopup = document.getElementsByClassName("registarDimmer")[0];
+    registarPopup.style.display = "none";
+    backgroundDimmer.style.opacity = "0";
+    $(".loginHandler").removeClass("disabled"); 
+
+    
+}
 
 function accUse(){
     formGetter = document.forms.registerData;
@@ -23,9 +64,7 @@ function accUse(){
 
 }
 
-
 function ValidateEmail(){
-
 let mailValidFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 formGetterMail = document.forms.registerData;
 registerEmailDataValidation= formGetter.elements.email.value;
@@ -47,7 +86,8 @@ function registerHandler(){
     registerUserData = formGetter.elements.username.value;    
     registerPassData= formGetter.elements.password.value;
     registerEmailData= formGetter.elements.email.value;
-    registerConfirmData = formGetter.elements.confirmPassword.value;   
+    registerConfirmData = formGetter.elements.confirmPassword.value; 
+    
 
     if(registerPassData != registerConfirmData){
         document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
@@ -102,6 +142,7 @@ function loginHandler(){
     dataPassword = formData.elements.password.value;
     if(localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword){
         localStorage.setItem("currentAccount", JSON.stringify(dataUsername));
+        
         location.replace("galeria.html")
         
     }else if (localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] != dataPassword) {

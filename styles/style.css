@@ -28,6 +28,7 @@ header {
     background-size: cover;
 }
 
+
 header h1 {
     padding: 0px 20px;
     color: black;
@@ -38,6 +39,15 @@ header a {
     text-decoration: none;
 }
 
+
+#usernameCurrentAccount{
+    position: relative;
+    left: 40%;
+    top: 103%;
+
+
+
+}
 #top-right-bar {
     grid-area: 1 / 2 / span 1 / span 3;
     display: grid;
