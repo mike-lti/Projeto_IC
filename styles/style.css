@@ -362,6 +362,13 @@ nav a{
     text-align: center;
 }
 
+#text-creation-filtros{
+    
+    text-decoration: solid;
+    top: 40%;
+}
+
+
 #botao-criar-album {
     left: 235px;
 }

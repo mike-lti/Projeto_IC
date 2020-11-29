@@ -122,9 +122,7 @@ function aplica_filtros() {
     localStorage.setItem("dia", checkboxDia)
 
     if(localStorage.getItem("desfocadas") == "true"){    
-        filtrosDesejados.push("desfocadas")
-        console.log(filtrosDesejados)
-        console.log(listFiltrosImgs)
+        filtrosDesejados.push(" desfocadas")
         for(let img = 0; img < listFiltrosImgs.length; img++) {
             let imageToCheck = listFiltrosImgs[img]["desfocadas"];
             if(imageToCheck == "true"){
@@ -134,13 +132,14 @@ function aplica_filtros() {
         }
     }
         if(localStorage.getItem("localização") == "true"){
-            filtrosDesejados.push("localização")
+            filtrosDesejados.push(" localização")
         }
             if(localStorage.getItem("qualidade") == "true"){
-               filtrosDesejados.push("qualidade")
+               filtrosDesejados.push(" qualidade")
             }
                 if(localStorage.getItem("praia") == "true"){
-                    filtrosDesejados.push("praia")
+                    filtrosDesejados.push(" praia")
+                    console.log(filtrosDesejados)
                     for(let img = 0; img < listFiltrosImgs.length; img++) {
                         let imageToCheck = listFiltrosImgs[img]["praia"];
                         if(imageToCheck == "true"){
@@ -149,7 +148,7 @@ function aplica_filtros() {
                     }                       
                 }
                     if(localStorage.getItem("dia") == "true"){
-                        filtrosDesejados.push("dia")
+                        filtrosDesejados.push(" dia")
                         for(let img = 0; img < listFiltrosImgs.length; img++) {
                             let imageToCheck = listFiltrosImgs[img]["dia"];
                             if(imageToCheck == "true"){
@@ -157,8 +156,11 @@ function aplica_filtros() {
                             }
                         }
                     }
+    localStorage.setItem("filtrosSelecionados", filtrosDesejados);
 
     if(filtrosDesejados.length != 0) {
+        var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
+        document.getElementById("text-creation-filtros").innerHTML = "Os filtros selecionados são" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela-album tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -183,6 +185,8 @@ function aplica_filtros() {
             tabela.appendChild(trElement);
         }
     }else{
+        var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
+        document.getElementById("text-creation-filtros").innerHTML = "Os filtros selecionados são" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela-album tbody");
         tabela.innerHTML=" ";   
         var x = 0
