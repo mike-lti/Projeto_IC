@@ -150,7 +150,6 @@ function nova_galeria_eliminada() {
     var arrayFicar = document.querySelectorAll('input[type=checkbox]:not(:checked)');
     var arrayApagar = document.querySelectorAll('input[type=checkbox]:checked');
     var tabela = document.querySelector("#tabela tbody");
-    console.log(arrayFicar)
     tabela.innerHTML = "";
 
     var arraySrc = [];
@@ -314,8 +313,6 @@ function aplica_filtros() {
     let filtrosDesejados = [] 
     var listFiltrosToParse = localStorage.getItem("imagensFiltros")
     var listFiltrosImgs = JSON.parse(listFiltrosToParse);
-    console.log(listFiltrosImgs)
-    //variavel tem o valor de true ou false consoante esteja selecionada ou nao
     var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
     var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
     var checkboxLocalização = document.getElementById("localização").checked;
@@ -332,25 +329,21 @@ function aplica_filtros() {
 
     if(localStorage.getItem("desfocadas") == "true"){    
         filtrosDesejados.push(" Desfocadas")
-        console.log(filtrosDesejados)
-        console.log(listFiltrosImgs)
         for(let img = 0; img < listFiltrosImgs.length; img++) {
             let imageToCheck = listFiltrosImgs[img]["desfocadas"];
             if(imageToCheck == "true"){
                 imagensFiltradas.push(listFiltrosImgs[img])
-                console.log(imagensFiltradas)
+                
             }
         }
     }
         if(localStorage.getItem("jack_russell") == "true"){
             filtrosDesejados.push(" Jack Russell")
-            console.log(listFiltrosImgs);
             for(let img = 0; img < listFiltrosImgs.length; img++) {
                 let imageToCheck = listFiltrosImgs[img]["jack_russell"];
-                console.log(imageToCheck);
                 if(imageToCheck == "true"){
                     imagensFiltradas.push(listFiltrosImgs[img])
-                    console.log(imagensFiltradas)
+                    
                 }
             }
         }
