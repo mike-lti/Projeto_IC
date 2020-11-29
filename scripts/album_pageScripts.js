@@ -160,7 +160,7 @@ function aplica_filtros() {
 
     if(filtrosDesejados.length != 0) {
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
-        document.getElementById("text-creation-filtros").innerHTML = "Os filtros selecionados são" + toPLaceInHtml;
+        document.getElementById("text-creation-filtros").innerHTML = "Filtros selecionados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela-album tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -186,7 +186,7 @@ function aplica_filtros() {
         }
     }else{
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
-        document.getElementById("text-creation-filtros").innerHTML = "Os filtros selecionados são" + toPLaceInHtml;
+        document.getElementById("text-creation-filtros").innerHTML = "Filtros selecionados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela-album tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -545,7 +545,8 @@ function selecionaTodos(input) {
 }
 
 function open_dropup() {
-    if (document.getElementsByClassName("dropup-content")[0].style.display == "none") {
+    if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
+    document.getElementsByClassName("dropup-content")[0].style.display == "") {
       document.getElementsByClassName("dropup-content")[0].style.display = "block";
       $('.dropup-content').fadeIn(1000);
     } else {
@@ -553,7 +554,7 @@ function open_dropup() {
       $('.dropup-content').fadeOut(1000);
     }
     
-  }
+}
 
 function delete_albums() {
     let arrayApagar = document.querySelectorAll('#disposicao-albuns-tabela input[type=checkbox]:checked');

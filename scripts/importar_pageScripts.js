@@ -149,6 +149,19 @@ function selectSpike() {
      "img_spike/img_15.jpg", "img_spike/img_16.jpg", "img_spike/img_17.jpg", 
      "img_spike/img_18.jpg", "img_spike/img_19.jpg", "img_spike/img_20.jpg"];
 
+    var arrayTagsImgSpike = [["false", "true", "false", "false"], ["false", "true", "false", "false"],
+    ["false", "true", "false", "false"], ["false", "true", "false", "true"], 
+    ["false", "true", "false", "false"], ["false", "true", "false", "true"],
+    ["false", "true", "false", "false"], ["false", "true", "false", "false"],
+    ["false", "true", "false", "false"], ["false", "true", "false", "true"],
+    ["false", "true", "false", "false"], ["false", "true", "false", "true"]
+    , ["false", "true", "false", "false"], ["false", "true", "false", "false"],
+    ["false", "true", "false", "true"], ["false", "true", "false", "true"],
+    ["true", "true", "false", "false"], ["false", "true", "false", "false"],
+    ["false", "true", "false", "false"], ["false", "true", "false", "true"]];
+
+    var objArray2 = objHandler(arrayImagensSpike, arrayTagsImgSpike);
+
     if (localStorage.getItem("imagensImportadas") == null) {
         arrayImagensImportadas = arrayImagensSpike;
     } else {
@@ -160,6 +173,16 @@ function selectSpike() {
 
         localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
     }
+
+    if(localStorage.getItem("imagensFiltros") == null) {        
+        localStorage.setItem("imagensFiltros", JSON.stringify(objArray2));
+
+    }else {
+        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros"));
+        objCheck.push(objArray2);
+        localStorage.setItem("imagensFiltros", JSON.stringify(objCheck));
+    }
+
 }
 
 
@@ -170,8 +193,6 @@ function objHandler(arrayImagens, arrayTagsImg) {
         let imgSrc = arrayImagens[i];      
         var objToAdd = new filterObj(imgSrc, filterImg); 
         listObj.push(objToAdd);
-
-        
     }  
     return (listObj) 
 }
@@ -182,6 +203,7 @@ function filterObj(src, filterBoolean){
     this.praia = filterBoolean[0];
     this.dia = filterBoolean[1];
     this.desfocadas = filterBoolean[2];
+    this.jack_russell = filterBoolean[3];
 }
 
 
@@ -201,7 +223,8 @@ function enableBackground() {
 }
 
 function open_dropup() {
-    if (document.getElementsByClassName("dropup-content")[0].style.display == "none") {
+    if (document.getElementsByClassName("dropup-content")[0].style.display == "none" ||
+    document.getElementsByClassName("dropup-content")[0].style.display == "") {
       document.getElementsByClassName("dropup-content")[0].style.display = "block";
       $('.dropup-content').fadeIn(1000);
     } else {
@@ -209,4 +232,4 @@ function open_dropup() {
       $('.dropup-content').fadeOut(1000);
     }
     
-  }
+}

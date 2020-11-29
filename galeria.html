@@ -32,8 +32,8 @@
 
                 <div id="right-top-right-bar">
                     <button id="botao-criar-galeria" onclick="guardarFotos('fotosAlbum')"><a id="href-album">Criar Álbum</a></button>
-                    <button id="botao-adicionar" onclick="open_popup_adicionar_fotografias()">Adicionar</button>
-                    <button id="botao-eliminar" onclick="open_popup_eliminar_fotografias()"><img src="images/lixo4_icon.png" width="22px" alt=""></button>
+                    <button id="botao-adicionar" onclick="open_popup('popup-adicionar-fotos-galeria')">Adicionar</button>
+                    <button id="botao-eliminar" onclick="open_popup('popup-eliminar-fotos-galeria')"><img src="images/lixo4_icon.png" width="22px" alt=""></button>
                     <button id="botao-partilhar"><a id="href-partilhar"><img onclick="guardarFotos('fotosPartilhar')" src="images/partilhar4_icon.png" width="35px" alt=""></a></button>
                 </div>
           
@@ -62,7 +62,7 @@
             </div>
            
             <div class="workspace">
-
+                <p id="p-album"></p>
                 <table id="tabela">
                     
                     <tbody>
@@ -73,31 +73,42 @@
 
                 <div id="popup-adicionar-fotos-galeria">
                     Para onde deseja adicionar as fotografias selecionadas? <br>
-                    <a href="album.html"><div id="botao-popup-adicionar-album"> <img src="images/album3_icon.png" width="70px" height="70px" alt=""> Álbum </div></a>
-                    <a href="favoritos.html"><div id="botao-popup-adicionar-favoritos" onclick="guardarFotos('fotosFavoritas')"> <img src="images/favoritos3_icon.png" width="70px" height="70px" alt="">Favoritos</div></a>
-                    <button id="botao-popup-adicionar-cancelar" onclick="close_popup_adicionar_fotografias()">Cancelar</button>
-                    <button id="botao-popup-adicionar-confirmar" onclick="" >Confirmar</button>
+                    <div id="botao-popup-adicionar-album"><a href="album.html"></a><img src="images/album3_icon.png" width="70px" height="70px" alt=""></a> Álbum </div>
+                    <div id="botao-popup-adicionar-favoritos" onclick="guardarFotos('fotosFavoritas')"><a href="favoritos.html"><img src="images/favoritos3_icon.png" width="70px" height="70px" alt=""> </a>Favoritos</div>
+                    <button id="botao-popup-adicionar-cancelar" onclick="close_popup('popup-adicionar-fotos-galeria')">Cancelar</button>
+                    <div class="closeButton" onclick = "close_popup('popup-adicionar-fotos-galeria')"> &times; </div>
                 </div>
 
                 <div id="popup-eliminar-fotos-galeria">
                     Tem a certeza que pretente eliminar as fotografias selecionadas? <br>
-                    <button id="botao-popup-eliminar-cancelar" onclick="close_popup_eliminar_fotografias()">Cancelar</button>
+                    <button id="botao-popup-eliminar-cancelar" onclick="close_popup('popup-eliminar-fotos-galeria')">Cancelar</button>
                     <button id="botao-popup-eliminar-confirmar" onclick="nova_galeria_eliminada()" >Confirmar</button>
+                    <div class="closeButton" onclick = "close_popup('popup-eliminar-fotos-galeria')"> &times; </div>
                 </div>
                 
                     
             <div class="popup">
                 <p>As suas fotos foram importadas com sucesso!
-                    <button type="button" id="botao-popup" onclick="closePopup()">OK</button>
-                </p> 
-                                  
+                    <button type="button" class="botao-popup" onclick="closePopup()">OK</button>
+                </p>              
+            </div>
+
+            <div class="slideShow">
+                    <img id="imagemCarrossel" width="800" height="480" alt="">
+                    <img onclick="slideShow('direita')" id="seta-direita" src="images/seta_direita.png" width="30" alt="">
+                    <img onclick="slideShow('esquerda')" id="seta-esquerda" src="images/seta_esquerda.png" width="30" alt="">
+                    <div class="closeButton" onclick = "close_open_slideShow('fechar', '')"> &times; </div>
             </div>
             </div>
 
             <div class="popup-filtros" id="popup-filtros-galeria">
                 <form name="filtros">
+                    <input type="checkbox" id="todas" name="todas" value="todas">
+                    <label for="todas"> Todas</label><br>
                     <input type="checkbox" id="desfocadas" name="desfocadas" value="desfocadas">
                     <label for="desfocadas"> Desfocadas</label><br>
+                    <input type="checkbox" id="jack_russell" name="jack_russell" value="jack_russell">
+                    <label for="jack_russell"> Jack Russell</label><br>
                     <input type="checkbox" id="localização" name="localizacao" value="localizacao">
                     <label for="localização"> Localização</label><br>
                     <input type="checkbox" id="qualidade" name="qualidade" value="qualidade">
@@ -111,7 +122,12 @@
                 <button id="botao-cancelar-filtros" onclick="tiraFiltros()">Cancelar</button>
             </div>
             <div class="popupFiltrosAplicados"><p>Os seus filtros foram aplicados com sucesso!
-                <button type="button" id="botao-popup-filtros-aplicados" onclick="closePopupFiltrosAplicados()">OK</button>
+                <button type="button" class="botao-popup" onclick="closePopupFiltrosAplicados()">OK</button>
+            </p>               
+            </div>
+
+            <div class="popupTextoFiltrosAplicados"><p id="p-filtros-aplicados">
+                <button type="button" class="botao-popup" onclick="closePopupFiltrosAplicados()">OK</button>
             </p>               
             </div>
         </div>

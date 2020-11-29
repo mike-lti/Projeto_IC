@@ -228,7 +228,8 @@ function getFavoritos() {
 
 
 function open_dropup() {
-    if (document.getElementsByClassName("dropup-content")[0].style.display == "none") {
+    if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
+    document.getElementsByClassName("dropup-content")[0].style.display == "") {
       document.getElementsByClassName("dropup-content")[0].style.display = "block";
       $('.dropup-content').fadeIn(1000);
     } else {
@@ -236,4 +237,4 @@ function open_dropup() {
       $('.dropup-content').fadeOut(1000);
     }
     
-  }
+}

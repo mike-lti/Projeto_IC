@@ -363,9 +363,9 @@ nav a{
 }
 
 #text-creation-filtros{
-    
+    position: absolute;
     text-decoration: solid;
-    top: 40%;
+    top: 88%;
 }
 
 
@@ -614,7 +614,7 @@ nav a{
     background-color: lightgray;
     border-radius: 5px;
     width: 140px;
-    height: 160px;
+    height: 220px;
     text-align: left;
     z-index: 10;
 }
@@ -643,6 +643,10 @@ nav a{
     position: absolute;
     margin-left: 30px;
     width: 60px;
+    background-color: rgb(4, 125, 154);
+    color: white;
+    border-radius: 5px;
+    font-size: large;
 }
 
 .popupFiltrosAplicados{
@@ -650,19 +654,12 @@ nav a{
     position: absolute;
     margin: auto;
     left: 510px;
-    top: 88%;
+    top: 95%;
     width: 36%;
     height: 8%;
-    background-color: rgb(253, 255, 157);
+    background-color: white;
     z-index: 9;
-    border-radius: 10px;
-}
-
-#botao-popup-filtros-aplicados {
-    position: absolute;
-    margin-left: 30px;
-    width: 60px;
-
+    border-radius: 5px;
 }
 
 #popup-sem-fotos{
@@ -702,7 +699,7 @@ nav a{
     padding: 2px;
     margin: auto;
     left: 478px;
-    top: 88%;
+    top: 95%;
     width: 40%;
     height: 8%;
     background-color: white;
@@ -716,12 +713,6 @@ nav a{
     font-size: 110%;
     padding-left: 10px;
     padding-bottom: 10px;
-}
-
-#botao-popup {
-    position: absolute;
-    margin-left: 30px;
-    width: 60px;
 }
 
 #botao-selecionar-galeria {
@@ -851,6 +842,45 @@ nav a{
     background-color: white;
 }
 
+.slideShow {
+    display: none;
+    position: absolute;
+    width: 800px;
+    height: 480px;
+    z-index: 20;
+    left: 330px;
+    top: 170px;
+}
+
+#seta-direita {
+    position: absolute;
+    left: 810px;
+    top: 215px;
+}
+
+#seta-esquerda {
+    position: absolute;
+    right: 810px;
+    top: 215px;
+}
+
+#p-filtros-aplicados {
+    text-align: center;
+}
+
+.popupTextoFiltrosAplicados{
+    display: none;
+    position: absolute;
+    margin: auto;
+    left: 510px;
+    top: 98%;
+    width: 36%;
+    height: 8%;
+    background-color: white;
+    z-index: 9;
+    border-radius: 5px;
+    text-align: center;
+}
 /*--------------------------------*/
 
 /*----------------PARTILHAR-------------*/
@@ -1022,6 +1052,7 @@ nav a{
     margin-left: 35px;
 }
 
+/* A classe seguinte e o id nao estao iddentificados em nenhum lado */
 .popupFavoritosAplicado{
     display: none;
     position: absolute;
