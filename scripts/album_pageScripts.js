@@ -250,6 +250,7 @@ function showNomeAlbum(){
 function nomeAlbumDado(){
 
     let arrayNomesAlbum = [];
+    let toResetForm = document.forms.nomeDoAlbum;
     let ff = document.forms.nomeDoAlbum.elements.aName.value;
 
     if (localStorage.getItem("nomesAlbums") == null) {
@@ -261,11 +262,11 @@ function nomeAlbumDado(){
         nomesAlbums.push(ff);
         localStorage.setItem("nomesAlbums", JSON.stringify(nomesAlbums));
     }
-
+    
     preencheTabelaAlbum()
     document.getElementsByClassName('popup-album')[0].style.display ='block';
     document.getElementsByClassName("album_modal")[0].style.display = "none";
-    
+    toResetForm.reset();
 }
 
 function preencheTabelaAlbum() {
