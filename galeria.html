@@ -109,7 +109,7 @@
                     <label for="desfocadas"> Desfocadas</label><br>
                     <input type="checkbox" id="jack_russell" name="jack_russell" value="jack_russell">
                     <label for="jack_russell"> Jack Russell</label><br>
-                    <input type="checkbox" id="localização" name="localizacao" value="localizacao">
+                    <input type="checkbox" id="localização" name="localizacao" value="localizacao" onclick="abreLocalizacao()">
                     <label for="localização"> Localização</label><br>
                     <input type="checkbox" id="qualidade" name="qualidade" value="qualidade">
                     <label for="qualidade"> Qualidade</label><br>
@@ -117,6 +117,12 @@
                     <label for="praia"> Praia </label><br>
                     <input type="checkbox" id="dia" name="dia" value="dia">
                     <label for="dia"> Dia </label><br><br>
+                    <div id="filtros-localizacao">  
+                        <input type="checkbox" id="franca" name="franca" value="franca">
+                        <label for="franca"> França </label><br>
+                        <input type="checkbox" id="cuba" name="cuba" value="cuba">
+                        <label for="cuba"> Cuba </label><br><br>
+                    </div>
                 </form>
                 <button onclick="aplica_filtros()" id="botao-confirmar-filtros">Confirmar</button>
                 <button id="botao-cancelar-filtros" onclick="tiraFiltros()">Cancelar</button>

@@ -17,7 +17,7 @@ document.getElementById("botao-adicionar").disabled = true;
 document.getElementById("botao-partilhar").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
-if (localStorage.getItem("imagensImportadas") == null) {
+if (localStorage.getItem("imagensImportadas") == null || localStorage.getItem("imagensImportadas") == "[]   ") {
     document.getElementById("p-album").innerHTML = "Ainda não tem fotografias na galeria.\
     Vá até à página <a href=importar.html>Importar</a> e descarregue as suas primeiras fotografias.";
     document.getElementById("botao-selecionar-galeria").disabled = true;
@@ -160,7 +160,7 @@ function nova_galeria_eliminada() {
 
     /* Cria tabela que vai conter as fotos que vão ficar no album */
     for (let input of arrayFicar ) {
-        if (x <= arrayFicarlength - 8) {
+        if (x <= arrayFicarlength - 10) {
             if(i%4 == 0 || x == 0){
                 trElement = document.createElement('tr');
                 trElement.setAttribute('id', `tr${x}`);
@@ -290,11 +290,19 @@ function trocaCSS() {
 
 function openFiltros() {
     
+    
     document.getElementById("imagem_filtros").src = "images/filtros_icon1.png";
     if ( document.getElementById("popup-filtros-galeria").style.display == "block" ) {
         document.getElementById("popup-filtros-galeria").style.display = "none";
         document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
         $("input[type=checkbox]").attr("disabled", true);
+        document.getElementById("desfocadas").checked = false;
+        document.getElementById("localização").checked = false;
+        document.getElementById("jack_russell").checked = false;
+        document.getElementById("qualidade").checked = false;
+        document.getElementById("praia").checked = false;
+        document.getElementById("dia").checked = false;
+        document.getElementById("filtros-localizacao").style.display = "none";
     } else {
         document.getElementById("popup-filtros-galeria").style.display = "block";
         $("input[type=checkbox]").attr("disabled", false);
@@ -305,27 +313,47 @@ function tiraFiltros() {
     $("input[type=checkbox]").attr("disabled", false);
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     document.getElementById("popup-filtros-galeria").style.display = "none";
+    document.getElementById("desfocadas").checked = false;
+    document.getElementById("localização").checked = false;
+    document.getElementById("jack_russell").checked = false;
+    document.getElementById("qualidade").checked = false;
+    document.getElementById("praia").checked = false;
+    document.getElementById("dia").checked = false;
+    document.getElementById("filtros-localizacao").style.display = "none";
+}
+
+function abreLocalizacao() {
+    if (document.getElementById("localização").checked == true) {
+        document.getElementById("filtros-localizacao").style.display = "block";
+    } else {
+        document.getElementById("filtros-localizacao").style.display = "none";
+        document.getElementById("cuba").checked = false;
+        document.getElementById("franca").checked = false;
+    }
 }
 
 function aplica_filtros() {
-
+    
     let imagensFiltradas = []  
     let filtrosDesejados = [] 
     var listFiltrosToParse = localStorage.getItem("imagensFiltros")
     var listFiltrosImgs = JSON.parse(listFiltrosToParse);
     var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
     var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
-    var checkboxLocalização = document.getElementById("localização").checked;
     var checkboxQualidade = document.getElementById("qualidade").checked;
     var checkboxPraia = document.getElementById("praia").checked;
     var checkboxDia = document.getElementById("dia").checked;
+    var checkboxFranca = document.getElementById("franca").checked;
+    var checkboxCuba = document.getElementById("cuba").checked;
+    var checkboxLocalizacao = document.getElementById("localização").checked;
 
     localStorage.setItem("desfocadas", checkboxDesfocadas)
     localStorage.setItem("jack_russell", checkboxJack_Russell)
-    localStorage.setItem("localização", checkboxLocalização)
     localStorage.setItem("qualidade", checkboxQualidade)
     localStorage.setItem("praia", checkboxPraia)
     localStorage.setItem("dia", checkboxDia)
+    localStorage.setItem("franca", checkboxFranca)
+    localStorage.setItem("cuba", checkboxCuba)
 
     if(localStorage.getItem("desfocadas") == "true"){    
         filtrosDesejados.push(" Desfocadas")
@@ -346,31 +374,52 @@ function aplica_filtros() {
                     
                 }
             }
-        }
-            if(localStorage.getItem("localização") == "true"){
-                filtrosDesejados.push(" Localização")
-            }
-                if(localStorage.getItem("qualidade") == "true"){
-                filtrosDesejados.push(" Qualidade")
-                }
-                    if(localStorage.getItem("praia") == "true"){
-                        filtrosDesejados.push(" praia")
-                        for(let img = 0; img < listFiltrosImgs.length; img++) {
-                            let imageToCheck = listFiltrosImgs[img]["praia"];
-                            if(imageToCheck == "true"){
-                                imagensFiltradas.push(listFiltrosImgs[img]);
-                            }
-                        }                       
+        } 
+            if(localStorage.getItem("cuba") == "true"){
+                filtrosDesejados.push(" Cuba")
+                console.log(listFiltrosImgs);
+                for(let img = 0; img < listFiltrosImgs.length; img++) {
+                    let imageToCheck = listFiltrosImgs[img]["cuba"];
+                    console.log(imageToCheck);
+                    if(imageToCheck == "true"){
+                        imagensFiltradas.push(listFiltrosImgs[img])
+                        console.log(imagensFiltradas)
                     }
-                        if(localStorage.getItem("dia") == "true"){
-                            filtrosDesejados.push(" Dia")
+                }
+            }
+                if(localStorage.getItem("franca") == "true"){
+                    filtrosDesejados.push(" Franca")
+                    console.log(listFiltrosImgs);
+                    for(let img = 0; img < listFiltrosImgs.length; img++) {
+                        let imageToCheck = listFiltrosImgs[img]["franca"];
+                        console.log(imageToCheck);
+                        if(imageToCheck == "true"){
+                            imagensFiltradas.push(listFiltrosImgs[img])
+                            console.log(imagensFiltradas)
+                        }
+                    }
+                }
+                    if(localStorage.getItem("qualidade") == "true"){
+                    filtrosDesejados.push(" Qualidade")
+                    }
+                        if(localStorage.getItem("praia") == "true"){
+                            filtrosDesejados.push(" praia")
                             for(let img = 0; img < listFiltrosImgs.length; img++) {
-                                let imageToCheck = listFiltrosImgs[img]["dia"];
+                                let imageToCheck = listFiltrosImgs[img]["praia"];
                                 if(imageToCheck == "true"){
-                                    imagensFiltradas.push(listFiltrosImgs[img])
+                                    imagensFiltradas.push(listFiltrosImgs[img]);
+                                }
+                            }                       
+                        }
+                            if(localStorage.getItem("dia") == "true"){
+                                filtrosDesejados.push(" Dia")
+                                for(let img = 0; img < listFiltrosImgs.length; img++) {
+                                    let imageToCheck = listFiltrosImgs[img]["dia"];
+                                    if(imageToCheck == "true"){
+                                        imagensFiltradas.push(listFiltrosImgs[img])
+                                    }
                                 }
                             }
-                        }
 
     
     localStorage.setItem("filtrosSelecionados", filtrosDesejados);
@@ -435,7 +484,9 @@ function aplica_filtros() {
     }
     localStorage.setItem("imagensFiltradas", JSON.stringify(srcImagensFiltradas));
     checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
-    checkboxLocalização = document.getElementById("localização").checked = false;
+    checkboxFranca = document.getElementById("franca").checked = false;
+    checkboxCuba = document.getElementById("cuba").checked = false;
+    checkboxLocalizacao = document.getElementById("localização").checked = false;
     checkboxJack_Russell = document.getElementById("jack_russell").checked = false;
     checkboxQualidade = document.getElementById("qualidade").checked = false;
     checkboxPraia = document.getElementById("praia").checked = false;
@@ -446,6 +497,7 @@ function aplica_filtros() {
     document.getElementById("popup-filtros-galeria").style.display = "none" 
     document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "block"
     $('.popupFiltrosAplicados').fadeOut(7000);
+    document.getElementById("filtros-localizacao").style.display = "none";
 }
 
 function closePopupFiltrosAplicados(){

@@ -881,6 +881,23 @@ nav a{
     border-radius: 5px;
     text-align: center;
 }
+
+#filtros-localizacao {
+    display: none;
+    background-color: rgb(4, 125, 154);
+    color: white;
+    position: absolute;
+    font-size: Large;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    text-align: left;
+    left: 150px;
+    bottom: 90px;
+    width: 120px;
+    height: 60px;
+}
+
 /*--------------------------------*/
 
 /*----------------PARTILHAR-------------*/
