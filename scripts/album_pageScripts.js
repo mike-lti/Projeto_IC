@@ -167,7 +167,7 @@ function aplica_filtros() {
     var srcImagensFiltradas = []; 
     if(filtrosDesejados.length != 0) {
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
-        document.getElementById("text-creation-filtros").innerHTML = "Filtros selecionados:" + toPLaceInHtml;
+        document.getElementById("text-creation-filtros").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela-album tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -194,7 +194,7 @@ function aplica_filtros() {
         }
     }else{
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
-        document.getElementById("text-creation-filtros").innerHTML = "Filtros selecionados:" + toPLaceInHtml;
+        document.getElementById("text-creation-filtros").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela-album tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -218,7 +218,7 @@ function aplica_filtros() {
             trElement.appendChild(linha);
             tabela.appendChild(trElement)
         }
-        
+    
     }
     localStorage.setItem("imagensFiltradas", JSON.stringify(srcImagensFiltradas));
     checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
@@ -231,6 +231,7 @@ function aplica_filtros() {
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
     document.getElementById("popup-filtros-album").style.display = "none" 
     $('.popupFiltrosAplicados').fadeOut(7000);
+    console.log(listFiltrosImgs);
 }
 
 function closePopupFiltrosAplicados(){

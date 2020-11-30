@@ -2,6 +2,8 @@
 
 "use strict";
 
+
+var utilizador = localStorage.getItem("currentAccount")
 $(document).ready(showPhotos());
 $(document).ready(preencheTabelaImagens());
 $(document).ready(currentAccPlacer());
@@ -426,7 +428,7 @@ function aplica_filtros() {
     var srcImagensFiltradas = []; 
     if(filtrosDesejados.length != 0) {
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
-        document.getElementById("p-filtros-aplicados").innerHTML = "Filtros selecionados:" + toPLaceInHtml;
+        document.getElementById("p-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -453,7 +455,7 @@ function aplica_filtros() {
         }
     }else{
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
-        document.getElementById("p-filtros-aplicados").innerHTML = "Filtros selecionados:" + toPLaceInHtml;
+        document.getElementById("p-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML = "";
         let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
@@ -495,8 +497,10 @@ function aplica_filtros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
     document.getElementById("popup-filtros-galeria").style.display = "none" 
+    $('.popupTextoFiltrosAplicados').fadeIn(9000);
     document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "block"
     $('.popupFiltrosAplicados').fadeOut(7000);
+    
     document.getElementById("filtros-localizacao").style.display = "none";
 }
 

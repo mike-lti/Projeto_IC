@@ -14,9 +14,6 @@ function userAcc(password){
     this.password = password    
 }
 
-
-
-
 function loginDimmerShower() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let loginPopup = document.getElementsByClassName("loginDimmer")[0];
@@ -33,6 +30,7 @@ function loginDimmerCloser() {
     backgroundDimmer.style.opacity = "0";
     $(".registarHandler").removeClass("disabled");
     $(".loginHandler").removeClass("disabled");
+    document.getElementsByClassName("homepageOperations")[0].style.display = "none"
 }
 
 function RegistarDimmerShower() {
@@ -55,6 +53,7 @@ function RegistarDimmerCloser() {
     backgroundDimmer.style.opacity = "0";
     $(".registarHandler").removeClass("disabled");
     $(".loginHandler").removeClass("disabled");
+    document.getElementsByClassName("homepageOperations")[0].style.display = "none"
     
 }
 
@@ -101,21 +100,25 @@ function registerHandler(){
         document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Os campos de palavra-passe têm de ser iguais"
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
-        $('.homepageOperations').fadeOut(5000);
+        document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
+        $('.homepageOperations').fadeOut(7000);
         formGetter.reset()
 
-    }else if(ValidateEmail()){
-
-        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
-        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Forneça um mail válido";
-        document.getElementsByClassName("homepageOperations")[0].style.display = "block";
-        $('.homepageOperations').fadeOut(7000);
-
-
     }else if(registerUserData == "" || registerPassData == "" || registerEmailData == "" || registerConfirmData == ""){
+
+        
         document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Preencha todos os campos";
         document.getElementsByClassName("homepageOperations")[0].style.display = "block";
+        document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
+        $('.homepageOperations').fadeOut(7000);
+
+
+    }else if(ValidateEmail()){
+        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
+        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Forneça um mail válido (ex. nome@email.pt)";
+        document.getElementsByClassName("homepageOperations")[0].style.display = "block";
+        document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
         $('.homepageOperations').fadeOut(7000);
 
     
@@ -123,6 +126,7 @@ function registerHandler(){
         document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador já se encontra utilizado. Escolha outro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
+        document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
         $('.homepageOperations').fadeOut(5000);
         formGetter.reset()
 
@@ -138,6 +142,7 @@ function registerHandler(){
         document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(4, 125, 154)";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Conta criada com sucesso!";
         document.getElementsByClassName("homepageOperations")[0].style.display = "block";
+        document.getElementsByClassName("homepageOperations")[0].style.bottom = "170px";
         $('.homepageOperations').fadeOut(5000);
         
        
@@ -158,11 +163,13 @@ function loginHandler(){
     }else if (localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] != dataPassword) {
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Palavra-passe incorreta."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
-        $('.homepageOperations').fadeOut(5000);
+        document.getElementsByClassName("homepageOperations")[0].style.bottom = "170px";
+        $('.homepageOperations').fadeOut(7000);
     }else {
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador não existe. Registe-o primeiro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
-        $('.homepageOperations').fadeOut(5000);
+        document.getElementsByClassName("homepageOperations")[0].style.bottom = "170px";
+        $('.homepageOperations').fadeOut(7000);
     }     
 
 }

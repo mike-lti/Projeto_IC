@@ -41,12 +41,10 @@ header a {
 
 
 #usernameCurrentAccount{
-    position: relative;
-    left: 40%;
-    top: 103%;
-
-
-
+    position: absolute;
+    left: 6%;
+    top: 730px;
+    font-size: large;
 }
 #top-right-bar {
     grid-area: 1 / 2 / span 1 / span 3;
@@ -654,7 +652,7 @@ nav a{
     position: absolute;
     margin: auto;
     left: 510px;
-    top: 95%;
+    top: 98%;
     width: 36%;
     height: 8%;
     background-color: white;

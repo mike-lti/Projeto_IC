@@ -59,15 +59,15 @@ function selectCuba() {
     "img_cuba/img_16.jpg", "img_cuba/img_17.jpg", "img_cuba/img_18.jpg", "img_cuba/img_19.jpg", 
     "img_cuba/img_20.jpg"];
     
-    var arrayTagsImg = [["true", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
-    ["false","true", "false", "false", "false", "true"], ["false", "false", "false", "false", "false", "true"], 
+    var arrayTagsImg = [["true", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
+    ["false","true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
     ["false", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
     ["true", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
-    ["true", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
-    ["true", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
+    ["false", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
     ["true", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
-    ["false", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"],
     ["true", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
+    ["true", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"],
+    ["false", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
     ["false", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"]];
 
     var objArray = objHandler(arrayImagensCuba, arrayTagsImg);
@@ -157,8 +157,8 @@ function selectSpike() {
     ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"],
     ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false"],
     ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"],
-    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"]
-    , ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false"],
+    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"], 
+    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false"],
     ["false", "true", "false", "true", "false", "false"], ["false", "true", "false", "true", "false", "false"],
     ["true", "true", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false"],
     ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"]];
