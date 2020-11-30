@@ -2,37 +2,8 @@
 
 "use strict";
 
-
-/* var tabela = document.querySelector("table#fotos-favoritas tbody");
-var favList = JSON.parse(localStorage.getItem("fotosFavoritas"));
-var favFotos = [];
-
-$(document).ready(getFavoritos());
-
-function getFavoritos() {
-    for (let srcFoto of favList) {
-        let newImg = document.createElement("img");
-        newImg.setAttribute("src", srcFoto);
-        newImg.setAttribute("width", "255px");
-        newImg.setAttribute("height", "145px");
-        favFotos.push(newImg)
-    }
-    
-    showFavoritos();
-}
-
-function showFavoritos() {
-    var trElement;
-    
-    for (var i = 0; i < favFotos.length; i++) {
-        if(i%4 == 0 || i == 0) {
-            trElement = document.createElement('tr');
-        }
-
-        trElement.appendChild(favFotos[i]);
-        tabela.appendChild(trElement);
-    }
-} */
+var utilizador = localStorage.getItem("currentAccount")
+.slice(1,localStorage.getItem("currentAccount").length -1);
 
 $(document).ready(currentAccPlacer());
 $(document).ready(getFavoritos());
@@ -45,7 +16,7 @@ document.getElementById("botao-criar-galeria").disabled = true;
 document.getElementById("botao-adicionar").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
-if (localStorage.getItem("fotosFavoritas") == null || localStorage.getItem("fotosFavoritas").length == 2 ) {
+if (localStorage.getItem("fotosFavoritas" + utilizador) == null || localStorage.getItem("fotosFavoritas" + utilizador).length == 2 ) {
     document.getElementById("botao-selecionar-favoritos").disabled = true;
     document.getElementById("botao-selecionar-todas-favoritos").disabled = true;
     for (let item of document.querySelectorAll('#tabela .option-item')) {
@@ -110,8 +81,10 @@ function enable_favoritos() {
     if ( $("input[type=checkbox]").attr("disabled")) {
         document.getElementById("botao-selecionar-favoritos").innerHTML = "Cancelar"
         $("input[type=checkbox]").attr("disabled", false);
+       
     } else {
         document.getElementById("botao-selecionar-favoritos").innerHTML = "Selecionar"
+        document.getElementById("botao-selecionar-todas-favoritos").innerHTML = "Selecionar Todas"
         $("input[type=checkbox]").attr("disabled", true);
         for (let imagem of document.querySelectorAll('input[type=checkbox]:checked')) {
             imagem.checked = false; 
@@ -121,19 +94,62 @@ function enable_favoritos() {
 
 function seleciona_todos() {
     
-    var boxes = document.getElementsByClassName("checkbox");
-    if (document.querySelectorAll('input[type=checkbox]:checked').length == 0) {
-        for (var x = 0; x < boxes.length; x++) {
-            var obj = boxes[x];
-                obj.checked = true;
-                imagem_selecionada();
+    if ( $("input[type=checkbox]").attr("disabled")) {
+        document.getElementById("botao-selecionar-todas-favoritos").innerHTML = "Desselecionar Todas"
+        document.getElementById("botao-selecionar-favoritos").innerHTML = "Cancelar"
+        $("input[type=checkbox]").attr("disabled", false);
+        var boxes = document.getElementsByClassName("checkbox");
+        if (document.querySelectorAll('input[type=checkbox]:checked').length == 0 || 
+        document.querySelectorAll('input[type=checkbox]:checked').length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
+            for (var x = 0; x < boxes.length; x++) {
+                var obj = boxes[x];
+                    obj.checked = true;
+                    imagem_selecionada();
+            }
+        } else {
+            for (var x = 0; x < boxes.length; x++) {
+                var obj = boxes[x];
+                    obj.checked = false;
+                    imagem_selecionada();
+            }
         }
     } else {
-        for (var x = 0; x < boxes.length; x++) {
-            var obj = boxes[x];
-                obj.checked = false;
-                imagem_selecionada();
+        
+        if (document.getElementById("botao-selecionar-favoritos").innerHTML == "Cancelar") {
+
+            if (document.querySelectorAll('input[type=checkbox]:checked').length == 0) {
+                document.getElementById("botao-selecionar-todas-favoritos").innerHTML = "Desselecionar Todas"
+            } else {
+                document.getElementById("botao-selecionar-todas-favoritos").innerHTML = "Selecionar Todas"
+            }
+            var boxes = document.getElementsByClassName("checkbox");
+            if (document.querySelectorAll('input[type=checkbox]:checked').length == 0 || 
+            document.querySelectorAll('input[type=checkbox]:checked').length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
+                for (var x = 0; x < boxes.length; x++) {
+                    var obj = boxes[x];
+                        obj.checked = true;
+                        imagem_selecionada();
+                }
+            } else {
+                for (var x = 0; x < boxes.length; x++) {
+                    var obj = boxes[x];
+                        obj.checked = false;
+                        imagem_selecionada();
+                }
+            }
+            
+
+        } else {
+            document.getElementById("botao-selecionar-todas-favoritos").innerHTML = "Selecionar Todas"
+            document.getElementById("botao-selecionar-favoritos").innerHTML = "Selecionar"
+            $("input[type=checkbox]").attr("disabled", true);
+            for (let imagem of document.querySelectorAll('input[type=checkbox]:checked')) {
+                imagem.checked = false; 
+            }
         }
+        
+        
+        
     }
 }
 
@@ -161,7 +177,7 @@ function nova_galeria_eliminada() {
         let linha = document.createElement("td");
         linha.innerHTML = "<label class='option-item'>" +
                                 "<input type='checkbox' class='checkbox'>" +
-                                "<div class='option-inner'>" +
+                                "<div class='option-inner' onclick=close_open_slideShow('abrir','" + src + "')>" +
                                     "<img width='250px' height='155px' src='" + src + "'>" +
                                 "</div>" +
                             "</label>";
@@ -170,13 +186,13 @@ function nova_galeria_eliminada() {
         i++;  
     }
 
-    localStorage.setItem("fotosFavoritas", JSON.stringify(arrayFotosRestantesFavoritos));
+    localStorage.setItem("fotosFavoritas" + utilizador, JSON.stringify(arrayFotosRestantesFavoritos));
     if ( document.querySelector("#fotos-favoritas tbody tr") == null) {
         document.getElementById("botao-eliminar").disabled = true;
         document.getElementById("botao-criar-galeria").disabled = true;
         document.getElementById("botao-adicionar").disabled = true;
-        document.getElementById("botao-selecionar-galeria").disabled = true;
-        document.getElementById("botao-selecionar-todas-galeria").disabled = true;
+        document.getElementById("botao-selecionar-favoritos").disabled = true;
+        document.getElementById("botao-selecionar-todas-favoritos").disabled = true;
     }
     
     
@@ -190,8 +206,8 @@ function nova_galeria_eliminada() {
 
 
 function getFavoritos() {
-    if (localStorage.getItem("fotosFavoritas") != null ) {
-        var arrayImagensFavoritas = JSON.parse(localStorage.getItem("fotosFavoritas"));
+    if (localStorage.getItem("fotosFavoritas" + utilizador) != null ) {
+        var arrayImagensFavoritas = JSON.parse(localStorage.getItem("fotosFavoritas" + utilizador));
         var tabela = document.querySelector("#fotos-favoritas tbody");
         tabela.innerHTML = "";
         var x = 0;
@@ -208,24 +224,19 @@ function getFavoritos() {
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item'>" +
                                     "<input type='checkbox' class='checkbox'>" +
-                                    "<div class='option-inner'>" +
+                                    "<div class='option-inner' onclick=close_open_slideShow('abrir','" + srcFoto + "')>" +
                                         "<img width='250px' height='155px' src='" + srcFoto + "'>" +
                                     "</div>" +
                                 "</label>";
             trElement.appendChild(linha);
             tabela.appendChild(trElement);
             i++; 
-    
-            
-             
+                 
         }
-
 
     }
     
-   
 }  
-
 
 function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
@@ -237,4 +248,106 @@ function open_dropup() {
       $('.dropup-content').fadeOut(1000);
     }
     
+}
+
+
+function slideShow(direcao) {
+    
+    
+    var arrayImagensImportadas = JSON.parse(localStorage.getItem("fotosFavoritas" + utilizador));
+    var tamanhoArray = arrayImagensImportadas.length;
+    var imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
+    var indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
+        
+    if (direcao == "direita") {  
+        if (arrayImagensImportadas.indexOf
+        (arrayImagensImportadas[indiceImagemAtual + 1]) == tamanhoArray - 1) {
+            document.getElementById("seta-direita").style.display = "none";
+        } else {
+            document.getElementById("seta-direita").style.display = "block";
+        }
+        var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagensImportadas[indiceImagemAtual + 1 ];
+    } else {
+        if (arrayImagensImportadas.indexOf
+        (arrayImagensImportadas[indiceImagemAtual - 1]) == 0) {
+            document.getElementById("seta-esquerda").style.display = "none";
+        } else {
+            document.getElementById("seta-esquerda").style.display = "block";
+        }
+
+        var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagensImportadas[indiceImagemAtual - 1];   
+        
+    }
+    
+    var indiceImagemAlterada = arrayImagensImportadas.indexOf(imagemAlterada);
+
+    if (indiceImagemAlterada == 0) {
+        document.getElementById("seta-esquerda").style.display = "none";
+        document.getElementById("seta-direita").style.display = "block";
+    } else if (indiceImagemAlterada == tamanhoArray -1) {
+        document.getElementById("seta-esquerda").style.display = "block";
+        document.getElementById("seta-direita").style.display = "none";
+    } else {
+        document.getElementById("seta-esquerda").style.display = "block";
+        document.getElementById("seta-direita").style.display = "block";
+    }
+   
+
+    
+}
+
+function close_open_slideShow(funcao, imagem) {
+
+    document.getElementsByClassName("dimmer")[0].disabled = true;
+    document.getElementById("fotos-favoritas").disabled = true;
+
+    document.getElementById("imagemCarrossel").src = imagem;
+    let arrayImagensImportadas = JSON.parse(localStorage.getItem("fotosFavoritas" + utilizador));
+    var tamanhoArray = arrayImagensImportadas.length;
+    let imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
+    let indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
+
+    if($("input[type=checkbox]").attr("disabled")) {
+        if (funcao == "fechar") {
+            document.getElementsByClassName("slideShow")[0].style.display = "none";
+            document.getElementsByClassName("dimmer")[0].style.opacity="0";
+            enableBackground();
+            
+    } else {
+        document.getElementsByClassName("slideShow")[0].style.display = "block";
+        document.getElementsByClassName("dimmer")[0].style.opacity="1";
+        document.getElementById("imagemCarrossel").src = imagem;
+        disableBackground();
+
+        }
+    }
+
+    if (arrayImagensImportadas.indexOf
+    (arrayImagensImportadas[indiceImagemAtual]) == tamanhoArray - 1) {
+        document.getElementById("seta-direita").style.display = "none";
+    } else {
+        document.getElementById("seta-direita").style.display = "block";
+    }
+
+    if (arrayImagensImportadas.indexOf
+        (arrayImagensImportadas[indiceImagemAtual]) == 0) {
+            document.getElementById("seta-esquerda").style.display = "none";
+    } else {
+        document.getElementById("seta-esquerda").style.display = "block";
+    }
+    
+}
+
+function disableBackground() {
+    $("#side-bar").addClass("disabled")
+    $("#tabela").addClass("disabled")
+    $("#top-right-bar").addClass("disabled")
+
+
+}
+
+function enableBackground() {
+    $("#side-bar").removeClass("disabled")
+    $("#tabela").removeClass("disabled")
+    $("#top-right-bar").removeClass("disabled")
 }

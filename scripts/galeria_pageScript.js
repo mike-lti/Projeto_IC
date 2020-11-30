@@ -4,13 +4,15 @@
 
 
 var utilizador = localStorage.getItem("currentAccount")
+.slice(1,localStorage.getItem("currentAccount").length -1);
+
 $(document).ready(showPhotos());
 $(document).ready(preencheTabelaImagens());
 $(document).ready(currentAccPlacer());
 
-localStorage.removeItem("fotosPartilhar");
-localStorage.removeItem("fotosAlbum");
-localStorage.removeItem("imagensFiltradas");
+localStorage.removeItem("fotosPartilhar" + utilizador);
+localStorage.removeItem("fotosAlbum" + utilizador);
+localStorage.removeItem("imagensFiltradas" + utilizador);
 
 $("#right-top-right-bar button img").addClass("disabled-image-button")
 document.getElementById("botao-eliminar").disabled = true;
@@ -19,7 +21,7 @@ document.getElementById("botao-adicionar").disabled = true;
 document.getElementById("botao-partilhar").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
-if (localStorage.getItem("imagensImportadas") == null || localStorage.getItem("imagensImportadas") == "[]   ") {
+if (localStorage.getItem("imagensImportadas" + utilizador) == null || localStorage.getItem("imagensImportadas" + utilizador) == "[]") {
     document.getElementById("p-album").innerHTML = "Ainda não tem fotografias na galeria.\
     Vá até à página <a href=importar.html>Importar</a> e descarregue as suas primeiras fotografias.";
     document.getElementById("botao-selecionar-galeria").disabled = true;
@@ -52,9 +54,9 @@ function currentAccPlacer(){
 
 function showPhotos() {
     $("#tabela").find(".option-item").css( "display", "block");
-    if (localStorage.getItem("showPopup") == "true") {
+    if (localStorage.getItem("showPopup" + utilizador) == "true") {
         showPopup();
-        localStorage.setItem("showPopup", "false")
+        localStorage.setItem("showPopup" + utilizador, "false")
     }
 }         
 
@@ -94,19 +96,63 @@ function imagem_selecionada() {
 
 function seleciona_todos() {
     
-    var boxes = document.getElementsByClassName("checkbox");
-    if (document.querySelectorAll('input[type=checkbox]:checked').length == 0) {
-        for (var x = 0; x < boxes.length; x++) {
-            var obj = boxes[x];
-                obj.checked = true;
-                imagem_selecionada();
+    var arrayImagensSelecionadas = document.querySelectorAll('input[type=checkbox]:checked');
+
+    if ( $("input[type=checkbox]").attr("disabled")) {
+        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas"
+        document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
+        $("input[type=checkbox]").attr("disabled", false);
+        var boxes = document.getElementsByClassName("checkbox");
+        if (arrayImagensSelecionadas.length == 0 || 
+        arrayImagensSelecionadas.length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
+            for (var x = 0; x < boxes.length; x++) {
+                var obj = boxes[x];
+                    obj.checked = true;
+                    imagem_selecionada();
+            }
+        } else {
+            for (var x = 0; x < boxes.length; x++) {
+                var obj = boxes[x];
+                    obj.checked = false;
+                    imagem_selecionada();
+            }
         }
     } else {
-        for (var x = 0; x < boxes.length; x++) {
-            var obj = boxes[x];
-                obj.checked = false;
-                imagem_selecionada();
+        
+        if (document.getElementById("botao-selecionar-galeria").innerHTML == "Cancelar") {
+
+            if (arrayImagensSelecionadas.length == 0) {
+                document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas"
+            } else {
+                document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
+            }
+            var boxes = document.getElementsByClassName("checkbox");
+            if (arrayImagensSelecionadas.length == 0 || arrayImagensSelecionadas.length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
+                for (var x = 0; x < boxes.length; x++) {
+                    var obj = boxes[x];
+                        obj.checked = true;
+                        imagem_selecionada();
+                }
+            } else {
+                for (var x = 0; x < boxes.length; x++) {
+                    var obj = boxes[x];
+                        obj.checked = false;
+                        imagem_selecionada();
+                }
+            }
+            
+
+        } else {
+            document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
+            document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
+            $("input[type=checkbox]").attr("disabled", true);
+            for (let imagem of arrayImagensSelecionadas) {
+                imagem.checked = false; 
+            }
         }
+        
+        
+        
     }
 }
 
@@ -118,6 +164,7 @@ function enable_galeria() {
         document.getElementById("href-album").href = "album.html";
     } else {
         document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
+        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
         $("input[type=checkbox]").attr("disabled", true);
         document.getElementById("botao-criar-galeria").disabled = true;
         document.getElementById("botao-adicionar").disabled = true;
@@ -188,7 +235,7 @@ function nova_galeria_eliminada() {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"  
     close_popup("popup-eliminar-fotos-galeria");
     
-    var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas")); 
+    var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador)); 
 
     for (let imagemApagada of arrayApagar) {
         let srcApagada = imagemApagada.parentElement.children[1].children[0].getAttribute('src');
@@ -202,7 +249,7 @@ function nova_galeria_eliminada() {
         }
     }
    
-    localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));    
+    localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas));    
 }   
 
 function showPopupFavoritos(){
@@ -212,7 +259,8 @@ function showPopupFavoritos(){
 }
 
 function guardarFotos(local) {
-    if (local == "fotosPartilhar") {
+    var local = local + utilizador;
+    if (local == "fotosPartilhar" + utilizador) {
         
         let srcList = [];
 
@@ -223,8 +271,8 @@ function guardarFotos(local) {
     
         localStorage.setItem(local, JSON.stringify(srcList))
     } else {
-        if (local == "fotosFavoritas") {
-            localStorage.setItem("showPopupFavoritos", "true")
+        if (local == "fotosFavoritas" + utilizador) {
+            localStorage.setItem("showPopupFavoritos" + utilizador, "true")
         }
         
         if (localStorage.getItem(local) == null) {
@@ -253,8 +301,8 @@ function guardarFotos(local) {
 
 function preencheTabelaImagens() {
 
-    if (JSON.parse(localStorage.getItem("imagensImportadas"))) {
-        let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+    if (JSON.parse(localStorage.getItem("imagensImportadas" + utilizador))) {
+        let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML = "";
         var x = 0;
@@ -321,6 +369,8 @@ function tiraFiltros() {
     document.getElementById("qualidade").checked = false;
     document.getElementById("praia").checked = false;
     document.getElementById("dia").checked = false;
+    document.getElementById("cuba").checked = false;
+    document.getElementById("franca").checked = false;
     document.getElementById("filtros-localizacao").style.display = "none";
 }
 
@@ -338,7 +388,7 @@ function aplica_filtros() {
     
     let imagensFiltradas = []  
     let filtrosDesejados = [] 
-    var listFiltrosToParse = localStorage.getItem("imagensFiltros")
+    var listFiltrosToParse = localStorage.getItem("imagensFiltros" + utilizador)
     var listFiltrosImgs = JSON.parse(listFiltrosToParse);
     var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
     var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
@@ -349,15 +399,15 @@ function aplica_filtros() {
     var checkboxCuba = document.getElementById("cuba").checked;
     var checkboxLocalizacao = document.getElementById("localização").checked;
 
-    localStorage.setItem("desfocadas", checkboxDesfocadas)
-    localStorage.setItem("jack_russell", checkboxJack_Russell)
-    localStorage.setItem("qualidade", checkboxQualidade)
-    localStorage.setItem("praia", checkboxPraia)
-    localStorage.setItem("dia", checkboxDia)
-    localStorage.setItem("franca", checkboxFranca)
-    localStorage.setItem("cuba", checkboxCuba)
+    localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
+    localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
+    localStorage.setItem("qualidade" + utilizador, checkboxQualidade)
+    localStorage.setItem("praia" + utilizador, checkboxPraia)
+    localStorage.setItem("dia" + utilizador, checkboxDia)
+    localStorage.setItem("franca" + utilizador, checkboxFranca)
+    localStorage.setItem("cuba" + utilizador, checkboxCuba)
 
-    if(localStorage.getItem("desfocadas") == "true"){    
+    if(localStorage.getItem("desfocadas" + utilizador) == "true"){    
         filtrosDesejados.push(" Desfocadas")
         for(let img = 0; img < listFiltrosImgs.length; img++) {
             let imageToCheck = listFiltrosImgs[img]["desfocadas"];
@@ -367,7 +417,7 @@ function aplica_filtros() {
             }
         }
     }
-        if(localStorage.getItem("jack_russell") == "true"){
+        if(localStorage.getItem("jack_russell" + utilizador) == "true"){
             filtrosDesejados.push(" Jack Russell")
             for(let img = 0; img < listFiltrosImgs.length; img++) {
                 let imageToCheck = listFiltrosImgs[img]["jack_russell"];
@@ -377,7 +427,7 @@ function aplica_filtros() {
                 }
             }
         } 
-            if(localStorage.getItem("cuba") == "true"){
+            if(localStorage.getItem("cuba" + utilizador) == "true"){
                 filtrosDesejados.push(" Cuba")
                 console.log(listFiltrosImgs);
                 for(let img = 0; img < listFiltrosImgs.length; img++) {
@@ -389,7 +439,7 @@ function aplica_filtros() {
                     }
                 }
             }
-                if(localStorage.getItem("franca") == "true"){
+                if(localStorage.getItem("franca" + utilizador) == "true"){
                     filtrosDesejados.push(" Franca")
                     console.log(listFiltrosImgs);
                     for(let img = 0; img < listFiltrosImgs.length; img++) {
@@ -401,7 +451,7 @@ function aplica_filtros() {
                         }
                     }
                 }
-                    if(localStorage.getItem("qualidade") == "true"){
+                    if(localStorage.getItem("qualidade" + utilizador) == "true"){
                     filtrosDesejados.push(" Qualidade")
                     }
                         if(localStorage.getItem("praia") == "true"){
@@ -413,7 +463,7 @@ function aplica_filtros() {
                                 }
                             }                       
                         }
-                            if(localStorage.getItem("dia") == "true"){
+                            if(localStorage.getItem("dia" + utilizador) == "true"){
                                 filtrosDesejados.push(" Dia")
                                 for(let img = 0; img < listFiltrosImgs.length; img++) {
                                     let imageToCheck = listFiltrosImgs[img]["dia"];
@@ -424,10 +474,10 @@ function aplica_filtros() {
                             }
 
     
-    localStorage.setItem("filtrosSelecionados", filtrosDesejados);
+    localStorage.setItem("filtrosSelecionados" + utilizador, filtrosDesejados);
     var srcImagensFiltradas = []; 
     if(filtrosDesejados.length != 0) {
-        var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
+        var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("p-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML=" ";   
@@ -454,11 +504,11 @@ function aplica_filtros() {
             tabela.appendChild(trElement);
         }
     }else{
-        var toPLaceInHtml = localStorage.getItem("filtrosSelecionados")
+        var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("p-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML = "";
-        let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+        let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         var x = 0;
         var i = 0;
         var trElement;
@@ -484,7 +534,7 @@ function aplica_filtros() {
     }
         
     }
-    localStorage.setItem("imagensFiltradas", JSON.stringify(srcImagensFiltradas));
+    localStorage.setItem("imagensFiltradas" + utilizador, JSON.stringify(srcImagensFiltradas));
     checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
     checkboxFranca = document.getElementById("franca").checked = false;
     checkboxCuba = document.getElementById("cuba").checked = false;
@@ -527,13 +577,13 @@ function open_dropup() {
 
 function slideShow(direcao) {
     
-    if (localStorage.getItem("imagensFiltradas") == "[]" || localStorage.getItem("imagensFiltradas") == null) { 
-        var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
+    if (localStorage.getItem("imagensFiltradas" + utilizador) == "[]" || localStorage.getItem("imagensFiltradas" + utilizador) == null) { 
+        var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         var tamanhoArray = arrayImagensImportadas.length;
         var imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
         var indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
     } else {
-        var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensFiltradas"));
+        var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensFiltradas" + utilizador));
         var tamanhoArray = arrayImagensImportadas.length;
         var imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
         var indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
@@ -578,17 +628,13 @@ function slideShow(direcao) {
     
 }
 
-function slideShowImagem(src) {
-    console.log(src);
-}
-
 function close_open_slideShow(funcao, imagem) {
 
     document.getElementsByClassName("dimmer")[0].disabled = true;
     document.getElementById("tabela").disabled = true;
 
     document.getElementById("imagemCarrossel").src = imagem;
-    let arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
+    let arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
     var tamanhoArray = arrayImagensImportadas.length;
     let imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
     let indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
@@ -628,16 +674,13 @@ function close_open_slideShow(funcao, imagem) {
 
 function disableBackground() {
     $("#side-bar").addClass("disabled")
-    $("#memento-top-left").addClass("disabled")
     $("#tabela").addClass("disabled")
     $("#top-right-bar").addClass("disabled")
-
 
 }
 
 function enableBackground() {
     $("#side-bar").removeClass("disabled")
-    $("#memento-top-left").removeClass("disabled")
     $("#tabela").removeClass("disabled")
     $("#top-right-bar").removeClass("disabled")
 }

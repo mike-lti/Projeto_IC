@@ -1,9 +1,13 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
 "use strict";
+var utilizador = localStorage.getItem("currentAccount")
+.slice(1,localStorage.getItem("currentAccount").length -1);
 $(document).ready(preencheTabelaImagensPartilhar());
 $(document).ready(currentAccPlacer());
 $(document).ready(popupAlbum());
+
+
 
 function currentAccPlacer(){
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
@@ -19,7 +23,7 @@ function open_popup_link(){
 
 function linkGenerate(){
     document.getElementsByClassName("dimmer")[0].style.opacity="1";
-    localStorage.removeItem("fotosPartilhar");
+    localStorage.removeItem("fotosPartilhar" + utilizador);
     let randomNumber = Math.floor(Math.random() * 100000001);
     let tempLink = "https://memento_" + randomNumber + ".com";
     document.getElementById("link-gerado").innerHTML = tempLink;
@@ -40,20 +44,23 @@ function copiar(element) {
 function closePopup(popup) {
     document.getElementsByClassName("dimmer")[0].style.opacity="0";
     document.getElementsByClassName(popup)[0].style.display = "none"
+    enableBackground();
 }
 
 function popup_partilha_efetuada() {
-    localStorage.removeItem("fotosPartilhar");
+    localStorage.removeItem("fotosPartilhar" + utilizador);
     document.getElementsByClassName("dimmer")[0].style.opacity="0";
     document.getElementsByClassName("popup")[0].style.display = "block"
     document.getElementsByClassName("popup-partilha")[0].style.display="none";
     $('.popup').fadeOut(7000);
+    enableBackground();
 }
 
 function open_icon_partilha(icon) {
     
+    disableBackground();
     document.getElementsByClassName("popup-partilha")[0].style.display="block";
-    preencheTabelaImagensPartilhar()
+    preencheTabelaImagensPartilhar();
 
     if(icon == "link") {
         document.getElementById("botao-gerar-link").style.display = "block";
@@ -76,7 +83,7 @@ function open_icon_partilha(icon) {
 
 function preencheTabelaImagensPartilhar() {
 
-    if (localStorage.getItem("imagensImportadas")) {
+    if (localStorage.getItem("imagensImportadas" + utilizador) != null) {
 
         document.getElementById("bot_row_icons").style.opacity = 1;
         document.getElementById("top_row_icons").style.opacity = 1; 
@@ -84,12 +91,12 @@ function preencheTabelaImagensPartilhar() {
         $("#bot_row_icons").removeClass("disabled");
         document.getElementById("p-importar").innerHTML = "Escolha o local para onde pretende partilhar as suas fotografias:"; 
 
-        if (localStorage.getItem("fotosPartilhar") != null) {
+        if (localStorage.getItem("fotosPartilhar" + utilizador) != null) {
             document.getElementById("texto-seleciona").innerHTML = "Fotografias selecionadas para partilhar:";
             document.getElementById("texto-seleciona").style.left = "320px";
-            var arrayImagens = JSON.parse(localStorage.getItem("fotosPartilhar"));
+            var arrayImagens = JSON.parse(localStorage.getItem("fotosPartilhar" + utilizador));
         } else {
-            var arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas"));
+            var arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         }
         var tabela = document.querySelector("#tabela-fotos-partilha tbody");
         tabela.innerHTML = "";
@@ -143,7 +150,7 @@ function open_dropup() {
 
 function popupAlbum() {
 
-    if (localStorage.getItem("fotosPartilhar")) {
+    if (localStorage.getItem("fotosPartilhar" + utilizador)) {
         document.getElementsByClassName("popupEstadoVisivel")[0].style.display = "block";
     } else {
         document.getElementsByClassName("popupEstadoVisivel")[0].style.display = "none";
@@ -152,6 +159,18 @@ function popupAlbum() {
 }
 
 function removerSelecao() {
-    localStorage.removeItem("fotosPartilhar");
+    localStorage.removeItem("fotosPartilhar" + utilizador);
     closePopup("popupEstadoVisivel");
+}
+
+function disableBackground() {
+    $("#side-bar").addClass("disabled");
+    $("#top_row_icons").addClass("disabled");
+    $(".workspace_partilhar").addClass("disabled");
+}
+
+function enableBackground() {
+    $("#side-bar").removeClass("disabled")
+    $("#top_row_icons").removeClass("disabled")
+    $(".workspace_partilhar").removeClass("disabled");
 }

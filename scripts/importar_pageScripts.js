@@ -1,6 +1,10 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
 "use strict";
+
+var utilizador = localStorage.getItem("currentAccount")
+.slice(1,localStorage.getItem("currentAccount").length -1);
+
 $(document).ready(currentAccPlacer());
 var arrayImagensImportadas = []; 
 
@@ -46,8 +50,8 @@ function cancelSelection() {
 }
 
 function confirmSelection() {
-    localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas))
-    localStorage.setItem("showPopup", "true");
+    localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas))
+    localStorage.setItem("showPopup" + utilizador, "true");
 }
 
 function selectCuba() {
@@ -72,26 +76,26 @@ function selectCuba() {
 
     var objArray = objHandler(arrayImagensCuba, arrayTagsImg);
 
-    if (localStorage.getItem("imagensImportadas") == null) {        
+    if (localStorage.getItem("imagensImportadas" + utilizador) == null) {        
         arrayImagensImportadas = arrayImagensCuba;   
         
     }else {        
-        arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
+        arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
 
         for (let imgSrc of arrayImagensCuba) {
             arrayImagensImportadas.push(imgSrc);
         }
 
-        localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
+        localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas));
     }
 
-    if(localStorage.getItem("imagensFiltros") == null) {        
-        localStorage.setItem("imagensFiltros", JSON.stringify(objArray));
+    if(localStorage.getItem("imagensFiltros" + utilizador) == null) {        
+        localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objArray));
 
     }else {
-        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros"));
+        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));
         objCheck.push(objArray);
-        localStorage.setItem("imagensFiltros", JSON.stringify(objCheck));
+        localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
 
 }
@@ -119,25 +123,25 @@ function selectFranca() {
 
     var objArray1 = objHandler(arrayImagensFranca, arrayTagsImgFranca);
 
-    if (localStorage.getItem("imagensImportadas") == null) {
+    if (localStorage.getItem("imagensImportadas" + utilizador) == null) {
         arrayImagensImportadas = arrayImagensFranca;        
     } else {
-        arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
+        arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         
         for (let imgSrc of arrayImagensFranca) {
             arrayImagensImportadas.push(imgSrc);
         }
 
-        localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
+        localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas));
     }
 
-    if(localStorage.getItem("imagensFiltros") == null) {        
-        localStorage.setItem("imagensFiltros", JSON.stringify(objArray1));
+    if(localStorage.getItem("imagensFiltros" + utilizador) == null) {        
+        localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objArray1));
 
     }else {
-        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros"));
+        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));
         objCheck.push(objArray1);
-        localStorage.setItem("imagensFiltros", JSON.stringify(objCheck));
+        localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
 
 }
@@ -165,25 +169,25 @@ function selectSpike() {
 
     var objArray2 = objHandler(arrayImagensSpike, arrayTagsImgSpike);
 
-    if (localStorage.getItem("imagensImportadas") == null) {
+    if (localStorage.getItem("imagensImportadas" + utilizador) == null) {
         arrayImagensImportadas = arrayImagensSpike;
     } else {
-        arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas"));
+        arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         
         for (let imgSrc of arrayImagensSpike) {
             arrayImagensImportadas.push(imgSrc);
         }
 
-        localStorage.setItem("imagensImportadas", JSON.stringify(arrayImagensImportadas));
+        localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas));
     }
 
-    if(localStorage.getItem("imagensFiltros") == null) {        
-        localStorage.setItem("imagensFiltros", JSON.stringify(objArray2));
+    if(localStorage.getItem("imagensFiltros" + utilizador) == null) {        
+        localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objArray2));
 
     }else {
-        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros"));
+        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));
         objCheck.push(objArray2);
-        localStorage.setItem("imagensFiltros", JSON.stringify(objCheck));
+        localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
 
 }
@@ -215,14 +219,12 @@ function filterObj(src, filterBoolean){
 
 function disableBackground() {
     $("#side-bar").addClass("disabled")
-    $("#memento-top-left").addClass("disabled")
     $("#top_row_icons").addClass("disabled")
     $("#bot_row_icons").addClass("disabled")
 }
 
 function enableBackground() {
     $("#side-bar").removeClass("disabled")
-    $("#memento-top-left").removeClass("disabled")
     $("#top_row_icons").removeClass("disabled")
     $("#bot_row_icons").removeClass("disabled")
 }

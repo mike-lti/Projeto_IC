@@ -95,6 +95,12 @@
 
                 </div>
 
+                <div class="slideShow">
+                    <img id="imagemCarrossel" width="800" height="480" alt="">
+                    <img onclick="slideShow('direita')" id="seta-direita" src="images/seta_direita.png" width="30" alt="">
+                    <img onclick="slideShow('esquerda')" id="seta-esquerda" src="images/seta_esquerda.png" width="30" alt="">
+                    <div class="closeButton" id="x-slideShow" onclick = "close_open_slideShow('fechar', '')"> &times; </div>
+                </div>
                 
 
                 <div class="popup-filtros" id="popup-filtros-album">
@@ -105,7 +111,7 @@
                             <label for="desfocadas"> Desfocadas</label><br>
                             <input type="checkbox" id="jack_russell" name="jack_russell" value="jack_russell">
                             <label for="jack_russell"> Jack Russell</label><br>
-                            <input type="checkbox" id="localização" name="localizacao" value="localizacao">
+                            <input type="checkbox" id="localização" name="localizacao" value="localizacao" onclick="abreLocalizacao()">
                             <label for="localização"> Localização</label><br>
                             <input type="checkbox" id="qualidade" name="qualidade" value="qualidade">
                             <label for="qualidade"> Qualidade</label><br>
@@ -113,6 +119,12 @@
                             <label for="praia"> Praia </label><br>
                             <input type="checkbox" id="dia" name="dia" value="dia">
                             <label for="dia"> Dia </label><br><br>
+                            <div id="filtros-localizacao">  
+                                <input type="checkbox" id="franca" name="franca" value="franca">
+                                <label for="franca"> França </label><br>
+                                <input type="checkbox" id="cuba" name="cuba" value="cuba">
+                                <label for="cuba"> Cuba </label><br><br>
+                            </div>
                         </form>
                         <button onclick="aplica_filtros()" id="botao-confirmar-filtros">Confirmar</button>
                         <button id="botao-cancelar-filtros" onclick="tiraFiltros()">Cancelar</button>
@@ -125,7 +137,7 @@
                     
                     <button id="botao-cancelar-selecao" onclick="closeCriaAlbum()" >Cancelar</button>
                     <button id="botao-confirmar-selecao" onclick="preencheTabelaAlbumCriado()">Confirmar</button>
-                    <p id="text-creation-filtros">TESTE PARA CSS</p>
+                    <p id="text-creation-filtros"></p>
                     <div class="botao-filtros" id="botao-filtros-album" onclick="openFiltros()" ><img id="imagem_filtros" src="images/filtros_icon.png" width="40" height="40"  alt=""></div>
                     <div id="fotos-adicionar-album">
                         <table id="tabela-album">

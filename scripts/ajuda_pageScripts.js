@@ -1,5 +1,9 @@
 "use strict";
+
+var utilizador = localStorage.getItem("currentAccount")
+.slice(1,localStorage.getItem("currentAccount").length -1);
 $(document).ready(currentAccPlacer());
+
 
 function currentAccPlacer(){
   var usernameLoggedInToParse = localStorage.getItem("currentAccount");
