@@ -4,14 +4,90 @@
 <html lang="pt-pt">
     <head>
         <title>Memento</title>
-        <link id="estilos-css" rel="stylesheet" type="text/css" href="styles/style.css">
+        <link rel="stylesheet" type="text/css" href="styles/home_page_style.css">
         <link rel="icon" href="images/logo_Memento1.png">
         <meta charset="utf-8">
     </head>
+    
+    <body class="welcomeUserPage">
+        <div class="container">
+            <div class="backgroundPopups"></div>      
+                <div class="imageContainer"> 
+                    <img src="images/logo_Memento1.png" id="mementoLogo" width="250px" ><img src="https://fontmeme.com/permalink/201116/08015d2756cb3d731af02b7bde578ccd.png" id="letras-memento" alt="fonte-against-romance">
+                    <p id="mensagem-abertura"><strong>Bem-vindo(a) à Memento</strong> <br>
+                        Junta-te ao mundo das fotografias na melhor maneira. <br> Cria os teus álbuns, adiciona os teus filtros e partilha <br> com os teus amigos e família.
+                    </p>    
+                </div>
+                
+                <div class="loginHandler" onclick="loginDimmerShower()">            
+                    Entrar           
+                </div>
 
-    <body>
+                <div class="loginDimmer">
+                    <form name = "loginData" class="loginFormStyle">
+                        <label for="username">
+                            <p><b>Nome de utilizador:</b></p>
+                        </label>
+                        <input type="text" size="30" placeholder="Insira o seu nome de utilizador"
+                        name="username" required>
+                        
+                        <label for="password">
+                            <p class=""><b>Palavra-passe:</b></p>
+                        </label>
+                        <input type="password" size="30" placeholder="Insira a sua palavra passe"
+                        name="password" id="passShow" required>
 
-        <a href="home_page.html">ddddddd</a>
-        
+                        <input type="checkbox" id = "showPassButton" onclick="showPass()"> 
+                    </form>
+
+                    <div class="closeButton" onclick = "loginDimmerCloser()">&times;</div>
+
+                    <button class="loginButton" onclick="loginHandler()">Entrar</button>
+                    <button class="loginCancelationButton" onclick ="loginDimmerCloser()">Cancelar</button>
+                </div> 
+
+                <div class="registarHandler" onclick="RegistarDimmerShower()">
+                    Registar        
+                </div>
+                
+                <div class="registarDimmer">
+                    <form name = "registerData" class="registarFormStyle">
+                        <label for="username">
+                            <p><b>Nome de utilizador:</b></p>
+                        </label>
+                        <input type="text" size="48" maxlength="14" placeholder="Insira o seu nome de utilizador (máx. 14 caracteres)"
+                        name="username" required>
+                        
+                        <label for="email">
+                            <p><b>Endereço de Correio Eletrónico:</b></p>
+                        </label>
+                        <input type="text" size="48" placeholder="Insira o seu Endereço de Correio Eletrónico"
+                        name="email" required>
+                        
+                        <label for="password">
+                            <p><b>Palavra Passe:</b></p>
+                        </label>
+                        <input type="password" size="48" placeholder="Insira a sua palavra passe"
+                        name="password" required>
+                        
+                        <label for="confirmPassword">
+                            <p><b>Confirmar Palavra-passe:</b></p>
+                        </label>
+                        <input type="password" size="48" placeholder="Insira a sua palavra passe"
+                        name="confirmPassword" required>
+                    </form>
+                    
+                    <div class="closeButton" onclick = "RegistarDimmerCloser()">&times;</div>
+                    <button class="registerButton" onclick="registerHandler()">Registar</button> 
+                    <button class="registarCancelationButton" onclick = "RegistarDimmerCloser()">Cancelar</button>
+                </div>
+                
+
+                <div class="homepageOperations"><p></p></div>
+            <div class="backgroudPopups">
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="scripts/login_pageScript.js"></script>
     </body>
 </html>
