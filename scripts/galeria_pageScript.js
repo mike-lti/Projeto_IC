@@ -597,6 +597,7 @@ function slideShow(direcao) {
             document.getElementById("seta-direita").style.display = "block";
         }
         var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagensImportadas[indiceImagemAtual + 1 ];
+        document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual + 2) + "/" + tamanhoArray;
     } else {
         if (arrayImagensImportadas.indexOf
         (arrayImagensImportadas[indiceImagemAtual - 1]) == 0) {
@@ -604,8 +605,8 @@ function slideShow(direcao) {
         } else {
             document.getElementById("seta-esquerda").style.display = "block";
         }
-
         var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagensImportadas[indiceImagemAtual - 1];   
+        document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual) + "/" + tamanhoArray;
         
     }
     
@@ -630,7 +631,6 @@ function close_open_slideShow(funcao, imagem) {
 
     document.getElementsByClassName("dimmer")[0].disabled = true;
     document.getElementById("tabela").disabled = true;
-
     document.getElementById("imagemCarrossel").src = imagem;
     let arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
     var tamanhoArray = arrayImagensImportadas.length;
@@ -641,12 +641,15 @@ function close_open_slideShow(funcao, imagem) {
         if (funcao == "fechar") {
             document.getElementsByClassName("slideShow")[0].style.display = "none";
             document.getElementsByClassName("dimmer")[0].style.opacity="0";
+            document.getElementsByClassName("numero-fotografias")[0].style.display = "none";
             enableBackground();
             
     } else {
         document.getElementsByClassName("slideShow")[0].style.display = "block";
         document.getElementsByClassName("dimmer")[0].style.opacity="1";
+        document.getElementsByClassName("numero-fotografias")[0].style.display = "block";
         document.getElementById("imagemCarrossel").src = imagem;
+        document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual + 1) + "/" + tamanhoArray;
         disableBackground();
 
         }

@@ -218,6 +218,16 @@ nav a{
     border-radius: 5px;
 }
 
+.numero-fotografias {
+    display: none;
+    position: absolute;
+    z-index: 9;
+    font-size: x-large;
+    top: 640px;
+    left: 700px;
+    color: white;
+}
+
 /*--------------------------------*/
 
 /*----------------IMPORTAR-----------------------*/
