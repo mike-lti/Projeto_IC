@@ -353,7 +353,6 @@ function preencheTabelaAlbum() {
 
             }
 
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"
     
 }
 
@@ -436,7 +435,6 @@ function mostraAlbumSelecionado(indice) {
             
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item-album'>" +
-                                    "<input type='checkbox' class='checkbox-album'>" +
                                     "<div class='option-inner-album' onclick=close_open_slideShow('abrir','" + input + "')>" +
                                         "<img width='220px' height='140px' src='" + input + "'>" +
                                     "</div>" +
@@ -690,7 +688,6 @@ function close_open_slideShow(funcao, imagem) {
 
 
     document.getElementById("disposicao-albuns").disabled = true;   
-    
     document.getElementById("imagemCarrossel").src = imagem;
     let indiceAlbumAMostrar = localStorage.getItem("indiceAlbumAMostrar" + utilizador);
     var arrayImagensImportadas = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))[indiceAlbumAMostrar];
@@ -700,11 +697,16 @@ function close_open_slideShow(funcao, imagem) {
 
     if($("input[type=checkbox]").attr("disabled")) {
         if (funcao == "fechar") {
+            document.getElementById('fundo-fotos-album').style.display ='block';
+            document.getElementById('fotos-album').style.display ='block';
+            document.getElementById('opcoes-album').style.display ='block';
             document.getElementsByClassName("slideShow")[0].style.display = "none";
-            document.getElementsByClassName("dimmer")[0].style.opacity="0";
             enableBackground();
             
     } else {
+        document.getElementById('fundo-fotos-album').style.display ='none';
+        document.getElementById('fotos-album').style.display ='none';
+        document.getElementById('opcoes-album').style.display ='none';
         document.getElementsByClassName("slideShow")[0].style.display = "block";
         document.getElementsByClassName("dimmer")[0].style.opacity="1";
         document.getElementById("imagemCarrossel").src = imagem;

@@ -38,7 +38,6 @@ if (localStorage.getItem("imagensImportadas" + utilizador) == null || localStora
     document.getElementById("p-album").innerHTML = ""; 
 }
 
-
 var elementos = document.querySelectorAll('input[type=checkbox]');
 for (let element of elementos) {
     element.addEventListener("change", imagem_selecionada);
@@ -151,8 +150,7 @@ function seleciona_todos() {
             }
         }
         
-        
-        
+                
     }
 }
 
