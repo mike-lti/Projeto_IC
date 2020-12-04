@@ -139,7 +139,7 @@ function preencheTabelaAlbumPartilhar() {
 
 function preencheTabelaImagensPartilhar() {
 
-    if (localStorage.getItem("imagensImportadas" + utilizador) != null || localStorage.getItem("imagensImportadas" + utilizador) != "[]") {
+    if (localStorage.getItem("imagensImportadas" + utilizador) != null || localStorage.getItem("imagensImportadas" + utilizador) == "[]") {
 
         document.getElementById("bot_row_icons").style.opacity = 1;
         document.getElementById("top_row_icons").style.opacity = 1; 
