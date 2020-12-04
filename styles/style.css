@@ -43,7 +43,7 @@ header a {
 #usernameCurrentAccount{
     position: absolute;
     left: 6%;
-    top: 730px;
+    top: 725px;
     font-size: large;
 }
 #top-right-bar {
@@ -1114,6 +1114,47 @@ nav a{
 }
 
 
+
+
+
+
+
+
+
+/*--------------------------------*/
+
+/*----------------FAVORITOS-------------*/
+
+.criadores {
+    margin-top: 60px;
+}
+
+.criadores-espaco-img {
+    margin-left: 30px;
+}
+
+.criadores-espaco-nome {
+    position: absolute;
+    margin-left: 30px;  
+}
+
+#criador1 {
+    margin-left: 110px;  
+}
+
+#criador2 {
+    margin-left: 350px;  
+}
+#criador3 {
+    margin-left: 570px;  
+}
+#criador4 {
+    margin-left: 780px;  
+}
+
+#p-criador {
+    margin-left: 480px;
+}
 
 
 
