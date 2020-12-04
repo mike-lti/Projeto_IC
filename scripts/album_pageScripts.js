@@ -24,6 +24,7 @@ if (localStorage.getItem("imagensImportadas" + utilizador)) {
 
 if (localStorage.getItem("criarAlbum") == "True") {
     abreNomeAlbum();
+    
     localStorage.setItem("criarAlbum", "False");
 }
 

@@ -291,9 +291,17 @@ function guardarFotos(local) {
         }
     
     } else if (local == "fotosAlbum" + utilizador) {
-        localStorage.setItem("criarAlbum", "True");        
+        localStorage.setItem("criarAlbum", "True");
+
+        let srcList = [];
+
+        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+            let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+            srcList.push(srcImagem);
+        }
+
+        localStorage.setItem(local, JSON.stringify(srcList));
     }
-    
 }
 
 function preencheTabelaImagens() {
