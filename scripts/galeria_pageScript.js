@@ -266,11 +266,9 @@ function guardarFotos(local) {
         }
     
         localStorage.setItem(local, JSON.stringify(srcList))
-    } else {
-        if (local == "fotosFavoritas" + utilizador) {
-            localStorage.setItem("showPopupFavoritos" + utilizador, "true")
-        }
-        
+    } else if (local == "fotosFavoritas" + utilizador) {
+        localStorage.setItem("showPopupFavoritos" + utilizador, "true")
+
         if (localStorage.getItem(local) == null) {
             let srcList = [];
 
@@ -291,6 +289,9 @@ function guardarFotos(local) {
         
             localStorage.setItem(local, JSON.stringify(srcList));    
         }
+    
+    } else if (local == "fotosAlbum" + utilizador) {
+        localStorage.setItem("criarAlbum", "True");        
     }
     
 }

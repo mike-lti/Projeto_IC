@@ -22,7 +22,10 @@ if (localStorage.getItem("imagensImportadas" + utilizador)) {
     Vá até à página <a href=importar.html>Importar</a> e descarregue as suas primeiras fotografias.";
 }
 
-
+if (localStorage.getItem("criarAlbum") == "True") {
+    abreNomeAlbum();
+    localStorage.setItem("criarAlbum", "False");
+}
 
 function abreNomeAlbum() {
     $('input[type=checkbox]').prop('checked', false);
