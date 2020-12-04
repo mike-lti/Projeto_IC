@@ -2,7 +2,6 @@
 
 "use strict";
 
-
 var utilizador = localStorage.getItem("currentAccount")
 .slice(1,localStorage.getItem("currentAccount").length -1);
 
@@ -370,6 +369,7 @@ function tiraFiltros() {
     document.getElementById("cuba").checked = false;
     document.getElementById("franca").checked = false;
     document.getElementById("filtros-localizacao").style.display = "none";
+    document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "none";
 }
 
 function abreLocalizacao() {

@@ -22,6 +22,8 @@ if (localStorage.getItem("imagensImportadas" + utilizador)) {
     Vá até à página <a href=importar.html>Importar</a> e descarregue as suas primeiras fotografias.";
 }
 
+
+
 function abreNomeAlbum() {
     $('input[type=checkbox]').prop('checked', false);
     disableBackground()
@@ -34,6 +36,12 @@ function abreNomeAlbum() {
     } else {
         document.getElementById("botao-confirmar").disabled = true;
         document.getElementById("popup-sem-fotos").style.display = "block";
+    }
+
+    if (document.forms.nomeDoAlbum.elements.aName.value = "") {
+        document.getElementById("botao-confirmar").disabled = true;  
+    } else {
+        document.getElementById("botao-confirmar").disabled = false;
     }
 }
 
@@ -360,64 +368,72 @@ function preencheTabelaAlbum() {
 /* aqui cria cada album */
 function preencheTabelaAlbumCriado() {
     
-    localStorage.removeItem("fotosAlbum" + utilizador);  
-    var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked'); 
-    var tabela = document.querySelector("#fotos-album tbody");
-    tabela.innerHTML = "";
-    var x = 0;
-    var i = 0;
-    var trElement;
-    var arrayFotos;
-    var arrayImagensAlbuns = [];
+    if (document.querySelectorAll('input[type=checkbox]:checked').length != 0) {
 
-    if ( JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador)) == null) {
-        arrayFotos = [];
-    } else {
-        arrayFotos = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))
-    }
-
-    /* Cria tabela que vai conter as fotos que vão ficar no album */
-    for (let input of arrayImagensGuardadas) {
-            
-        if(i%4 == 0 || x == 0){
-            trElement = document.createElement('tr');
-            trElement.setAttribute('id', `tr${x}`);
-            x++;
+        localStorage.removeItem("fotosAlbum" + utilizador);  
+        var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked'); 
+        var tabela = document.querySelector("#fotos-album tbody");
+        tabela.innerHTML = "";
+        var x = 0;
+        var i = 0;
+        var trElement;
+        var arrayFotos;
+        var arrayImagensAlbuns = [];
+    
+        if ( JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador)) == null) {
+            arrayFotos = [];
+        } else {
+            arrayFotos = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))
         }
-        let src = input.parentElement.children[1].children[0].getAttribute('src');
-        arrayImagensAlbuns.push(src);
-        
-        let linha = document.createElement("td");
-        linha.innerHTML = "<label class='option-item-album'>" +
-                                "<input type='checkbox' class='checkbox-album'>" +
-                                "<div class='option-inner-album'>" +
-                                    "<img width='220px' height='140px' src='" + src + "'>" +
-                                "</div>" +
-                            "</label>";
-        trElement.appendChild(linha);
-        tabela.appendChild(trElement);
-        i++; 
-         
+    
+        /* Cria tabela que vai conter as fotos que vão ficar no album */
+        for (let input of arrayImagensGuardadas) {
+                
+            if(i%4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                trElement.setAttribute('id', `tr${x}`);
+                x++;
+            }
+            let src = input.parentElement.children[1].children[0].getAttribute('src');
+            arrayImagensAlbuns.push(src);
+            
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item-album'>" +
+                                    "<input type='checkbox' class='checkbox-album'>" +
+                                    "<div class='option-inner-album'>" +
+                                        "<img width='220px' height='140px' src='" + src + "'>" +
+                                    "</div>" +
+                                "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++; 
+             
+        }
+        arrayFotos.push(arrayImagensAlbuns);
+        localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayFotos));
+        enableBackground()
+        document.getElementsByClassName('popup-album')[0].style.display ='none';
+        document.getElementsByClassName('dimmer')[0].style.opacity = '0';
+        document.getElementsByClassName('popupAlbum')[0].style.display ='block';
+        $('.popupAlbum').fadeOut(7000);
+        mostraCapaAlbunsWorkspace();
+
+
     }
-    arrayFotos.push(arrayImagensAlbuns);
-    localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayFotos));
-    enableBackground()
-    document.getElementsByClassName('popup-album')[0].style.display ='none';
-    document.getElementsByClassName('dimmer')[0].style.opacity = '0';
-    document.getElementsByClassName('popupAlbum')[0].style.display ='block';
-    $('.popupAlbum').fadeOut(7000);
-    mostraCapaAlbunsWorkspace();
+    
    
 }  
 
 /* Aqui mostra o album selecionado no workspace */
 function mostraAlbumSelecionado(indice) {
 
-    disableBackground();
-    localStorage.setItem("indiceAlbumAMostrar" + utilizador, indice)
-    $("input[type=checkbox]").attr("disabled", true);
+   
+    
+    
     if (document.getElementById("botao-selecionar-album").innerHTML == "Selecionar") {
-
+        localStorage.setItem("indiceAlbumAMostrar" + utilizador, indice)
+        $("input[type=checkbox]").attr("disabled", true);
+        disableBackground();
         var arrayImagensGuardadas = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))[indice]; 
         var tabela = document.querySelector("#fotos-album tbody");
         tabela.innerHTML = "";

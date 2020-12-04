@@ -637,14 +637,14 @@ nav a{
     position: absolute;
     margin: auto;
     left: 530px;
-    top: 88%;
+    top: 98%;
     width: 32%;
     height: 8%;
-    background-color: rgb(253, 255, 157);
+    background-color: white;
     z-index: 9;
     padding-left: 10px;
     display: none;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .botao-popup {
