@@ -81,6 +81,26 @@ function open_icon_partilha(icon) {
 
 }
 
+function preencheTabelaAlbumPartilhar() {
+
+    document.getElementById("bot_row_icons").style.opacity = 1;
+    document.getElementById("top_row_icons").style.opacity = 1; 
+    $("#top_row_icons").removeClass("disabled");
+    $("#bot_row_icons").removeClass("disabled");
+    document.getElementById("p-importar").innerHTML = "Escolha o local para onde pretende partilhar as suas fotografias:";
+    
+    if (localStorage.getItem("albumPartilhar" + utilizador) != null) {
+        document.getElementById("texto-seleciona").innerHTML = "Álbuns selecionados para partilhar:";
+        document.getElementById("texto-seleciona").style.left = "320px";
+        var arrayAlbum = JSON.parse(localStorage.getItem("fotosPartilhar" + utilizador));
+    } else {
+        var arrayAlbum = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador));
+    }
+
+    
+
+}
+
 function preencheTabelaImagensPartilhar() {
 
     if (localStorage.getItem("imagensImportadas" + utilizador) != null) {
