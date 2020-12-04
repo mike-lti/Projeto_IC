@@ -864,12 +864,14 @@ nav a{
     position: absolute;
     left: 810px;
     top: 215px;
+    cursor: pointer;
 }
 
 #seta-esquerda {
     position: absolute;
     right: 810px;
     top: 215px;
+    cursor: pointer;
 }
 
 #p-filtros-aplicados {
