@@ -426,7 +426,7 @@ function aplica_filtros() {
 
             for(let img = 0; img < listFiltrosImgs.length; img++) {
                 let imageToCheck = listFiltrosImgs[img]["desfocadas"];
-                
+
                 if(imageToCheck == "true"){
                     imagensFiltradas.push(listFiltrosImgs[img])                    
                 }
@@ -478,7 +478,7 @@ function aplica_filtros() {
 
                                     if(imageToCheck == "true"){
                                         imagensFiltradas.push(listFiltrosImgs[img]);
-                                        console.log(imagensFiltradas)
+                                        
                                     }
                                 }                       
                             }
