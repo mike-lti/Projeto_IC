@@ -198,7 +198,6 @@ function nova_galeria_eliminada() {
     var tabela = document.querySelector("#tabela tbody");
     tabela.innerHTML = "";
 
-    var arraySrc = [];
     var x = 0;
     var i = 0;
     var trElement;

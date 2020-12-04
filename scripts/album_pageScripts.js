@@ -427,13 +427,11 @@ function preencheTabelaAlbumCriado() {
 /* Aqui mostra o album selecionado no workspace */
 function mostraAlbumSelecionado(indice) {
 
-   
-    
-    
     if (document.getElementById("botao-selecionar-album").innerHTML == "Selecionar") {
-        localStorage.setItem("indiceAlbumAMostrar" + utilizador, indice)
-        $("input[type=checkbox]").attr("disabled", true);
+
         disableBackground();
+        $("input[type=checkbox]").attr("disabled", true);
+        localStorage.setItem("indiceAlbumAMostrar" + utilizador, indice)
         var arrayImagensGuardadas = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))[indice]; 
         var tabela = document.querySelector("#fotos-album tbody");
         tabela.innerHTML = "";
@@ -469,7 +467,7 @@ function mostraAlbumSelecionado(indice) {
 
 function mostraCapaAlbunsWorkspace() {  
 
-    if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) != null ) {
+    if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) != null & localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) != [] ) {
         
         let nomesAlbums = JSON.parse(localStorage.getItem("nomesAlbums" + utilizador));
         for(var i = 0; i < nomesAlbums.length; i++) {
@@ -547,7 +545,6 @@ function enable_galeria() {
         $("input[type=checkbox]").attr("disabled", false);
         document.getElementById("href-partilhar").href = "partilhar.html";
         document.getElementById("botao-criar-album").disabled = true;
-        
 
     } else {
         document.getElementById("botao-selecionar-album").innerHTML = "Selecionar"
@@ -637,23 +634,41 @@ function delete_albums() {
     let arrayApagar = document.querySelectorAll('#disposicao-albuns-tabela input[type=checkbox]:checked');
     let arrayAlbums = JSON.parse(localStorage.getItem('arrayImagensDiferentesAlbuns' + utilizador));
     let nomesAlbums = JSON.parse(localStorage.getItem('nomesAlbums' + utilizador));
+    let indexesApagar = [];
+    let arrayAlbumsFicar = [];
+    let arrayNomesFicar = [];
 
     for (let albumApagado of arrayApagar) {
        let indexApagar = albumApagado.getAttribute('id');
-       arrayAlbums.splice(indexApagar, 1);
-       nomesAlbums.splice(indexApagar, 1);
+       indexesApagar.push(indexApagar);
     }
 
-    localStorage.setItem('arrayImagensDiferentesAlbuns' + utilizador, JSON.stringify(arrayAlbums));
-    localStorage.setItem('nomesAlbums' + utilizador, JSON.stringify(nomesAlbums));
+    for (let index of indexesApagar) {
+        delete arrayAlbums[index];
+        delete nomesAlbums[index]; 
+    }
+
+    for (let album of arrayAlbums) {
+        if (album != undefined) {
+            arrayAlbumsFicar.push(album);
+        } 
+    }
+
+    for (let nome of nomesAlbums) {
+        if (nome != undefined) {
+            arrayNomesFicar.push(nome);
+        } 
+    }
+
+    localStorage.setItem('arrayImagensDiferentesAlbuns' + utilizador, JSON.stringify(arrayAlbumsFicar));
+    localStorage.setItem('nomesAlbums' + utilizador, JSON.stringify(arrayNomesFicar));
 
     for (let album of document.querySelectorAll('#disposicao-albuns-tabela input[type=checkbox]:checked')) {
         album.checked = false; 
     }
-    
-    window.location.reload();
-}
 
+    window.location.reload()
+}
 
 function slideShow(direcao) {
     
