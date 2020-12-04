@@ -396,6 +396,7 @@ function aplica_filtros() {
     let filtrosDesejados = [] 
     var listFiltrosToParse = localStorage.getItem("imagensFiltros" + utilizador)
     var listFiltrosImgs = JSON.parse(listFiltrosToParse);
+    var checkboxTodas = document.getElementById("todas").checked; 
     var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
     var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
     var checkboxQualidade = document.getElementById("qualidade").checked;
@@ -405,6 +406,7 @@ function aplica_filtros() {
     var checkboxCuba = document.getElementById("cuba").checked;
     var checkboxLocalizacao = document.getElementById("localização").checked;
 
+    localStorage.setItem("todas" + utilizador, checkboxTodas)
     localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
     localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
     localStorage.setItem("qualidade" + utilizador, checkboxQualidade)
@@ -413,73 +415,86 @@ function aplica_filtros() {
     localStorage.setItem("franca" + utilizador, checkboxFranca)
     localStorage.setItem("cuba" + utilizador, checkboxCuba)
 
-    if(localStorage.getItem("desfocadas" + utilizador) == "true"){    
-        filtrosDesejados.push(" Desfocadas")
-        for(let img = 0; img < listFiltrosImgs.length; img++) {
-            let imageToCheck = listFiltrosImgs[img]["desfocadas"];
-            if(imageToCheck == "true"){
-                imagensFiltradas.push(listFiltrosImgs[img])
+
+    if(localStorage.getItem("todas" + utilizador) == "true"){
+        filtrosDesejados.push(" todas")
+        imagensFiltradas = listFiltrosImgs
+    }
+
+        if(localStorage.getItem("desfocadas" + utilizador) == "true"){    
+            filtrosDesejados.push(" Desfocadas")
+
+            for(let img = 0; img < listFiltrosImgs.length; img++) {
+                let imageToCheck = listFiltrosImgs[img]["desfocadas"];
                 
+                if(imageToCheck == "true"){
+                    imagensFiltradas.push(listFiltrosImgs[img])                    
+                }
             }
         }
-    }
-        if(localStorage.getItem("jack_russell" + utilizador) == "true"){
-            filtrosDesejados.push(" Jack Russell")
-            for(let img = 0; img < listFiltrosImgs.length; img++) {
-                let imageToCheck = listFiltrosImgs[img]["jack_russell"];
-                if(imageToCheck == "true"){
-                    imagensFiltradas.push(listFiltrosImgs[img])
-                    
-                }
-            }
-        } 
-            if(localStorage.getItem("cuba" + utilizador) == "true"){
-                filtrosDesejados.push(" Cuba")
-                
+            if(localStorage.getItem("jack_russell" + utilizador) == "true"){
+                filtrosDesejados.push(" Jack Russell")
+
                 for(let img = 0; img < listFiltrosImgs.length; img++) {
-                    let imageToCheck = listFiltrosImgs[img]["cuba"];
-                    
+                    let imageToCheck = listFiltrosImgs[img]["jack_russell"];
+
                     if(imageToCheck == "true"){
-                        imagensFiltradas.push(listFiltrosImgs[img])
-                        
+                        imagensFiltradas.push(listFiltrosImgs[img])                        
                     }
                 }
-            }
-                if(localStorage.getItem("franca" + utilizador) == "true"){
-                    filtrosDesejados.push(" Franca")
+            } 
+                if(localStorage.getItem("cuba" + utilizador) == "true"){
+                    filtrosDesejados.push(" Cuba")
                     
                     for(let img = 0; img < listFiltrosImgs.length; img++) {
-                        let imageToCheck = listFiltrosImgs[img]["franca"];
+                        let imageToCheck = listFiltrosImgs[img]["cuba"];
                         
                         if(imageToCheck == "true"){
-                            imagensFiltradas.push(listFiltrosImgs[img])
-                            
+                            imagensFiltradas.push(listFiltrosImgs[img])                            
                         }
                     }
                 }
-                    if(localStorage.getItem("qualidade" + utilizador) == "true"){
-                    filtrosDesejados.push(" Qualidade")
-                    }
-
-
-                        if(localStorage.getItem("praia" + utilizador) == "true"){
-                            filtrosDesejados.push(" praia")
-                            for(let img = 0; img < listFiltrosImgs.length; img++) {
-                                let imageToCheck = listFiltrosImgs[img]["praia"];
-                                if(imageToCheck == "true"){
-                                    imagensFiltradas.push(listFiltrosImgs[img]);
-                                }
-                            }                       
+                    if(localStorage.getItem("franca" + utilizador) == "true"){
+                        filtrosDesejados.push(" Franca")
+                        
+                        for(let img = 0; img < listFiltrosImgs.length; img++) {
+                            let imageToCheck = listFiltrosImgs[img]["franca"];
+                            
+                            if(imageToCheck == "true"){
+                                imagensFiltradas.push(listFiltrosImgs[img])                                
+                            }
                         }
-                            if(localStorage.getItem("dia" + utilizador) == "true"){
-                                filtrosDesejados.push(" Dia")
+                    }
+                        if(localStorage.getItem("qualidade" + utilizador) == "true"){
+                            filtrosDesejados.push(" Qualidade")
+                        }
+
+
+                            if(localStorage.getItem("praia" + utilizador) == "true"){
+                                filtrosDesejados.push(" praia")
+
                                 for(let img = 0; img < listFiltrosImgs.length; img++) {
-                                    let imageToCheck = listFiltrosImgs[img]["dia"];
+                                    let imageToCheck = listFiltrosImgs[img]["praia"];
+
                                     if(imageToCheck == "true"){
-                                        imagensFiltradas.push(listFiltrosImgs[img])
+                                        imagensFiltradas.push(listFiltrosImgs[img]);
+                                        console.log(imagensFiltradas)
+                                    }
+                                }                       
+                            }
+                                if(localStorage.getItem("dia" + utilizador) == "true"){
+                                    filtrosDesejados.push(" Dia")
+
+                                    for(let img = 0; img < listFiltrosImgs.length; img++) {                                        
+                                        let imageToCheck = listFiltrosImgs[img]["dia"];
+
+                                        if(imageToCheck == "true"){
+                                            imagensFiltradas.push(listFiltrosImgs[img])
+                                               
+                                        }
+                                        
                                     }
                                 }
-                            }
 
     
     localStorage.setItem("filtrosSelecionados" + utilizador, filtrosDesejados);
@@ -543,6 +558,7 @@ function aplica_filtros() {
         
     }
     localStorage.setItem("imagensFiltradas" + utilizador, JSON.stringify(srcImagensFiltradas));
+    checkboxTodas = document.getElementById("todas").checked = false;
     checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
     checkboxFranca = document.getElementById("franca").checked = false;
     checkboxCuba = document.getElementById("cuba").checked = false;
