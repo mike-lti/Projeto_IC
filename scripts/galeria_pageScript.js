@@ -426,25 +426,25 @@ function aplica_filtros() {
         } 
             if(localStorage.getItem("cuba" + utilizador) == "true"){
                 filtrosDesejados.push(" Cuba")
-                console.log(listFiltrosImgs);
+                
                 for(let img = 0; img < listFiltrosImgs.length; img++) {
                     let imageToCheck = listFiltrosImgs[img]["cuba"];
-                    console.log(imageToCheck);
+                    
                     if(imageToCheck == "true"){
                         imagensFiltradas.push(listFiltrosImgs[img])
-                        console.log(imagensFiltradas)
+                        
                     }
                 }
             }
                 if(localStorage.getItem("franca" + utilizador) == "true"){
                     filtrosDesejados.push(" Franca")
-                    console.log(listFiltrosImgs);
+                    
                     for(let img = 0; img < listFiltrosImgs.length; img++) {
                         let imageToCheck = listFiltrosImgs[img]["franca"];
-                        console.log(imageToCheck);
+                        
                         if(imageToCheck == "true"){
                             imagensFiltradas.push(listFiltrosImgs[img])
-                            console.log(imagensFiltradas)
+                            
                         }
                     }
                 }

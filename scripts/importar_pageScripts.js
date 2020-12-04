@@ -75,6 +75,7 @@ function selectCuba() {
     ["false", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"]];
 
     var objArray = objHandler(arrayImagensCuba, arrayTagsImg);
+    
 
     if (localStorage.getItem("imagensImportadas" + utilizador) == null) {        
         arrayImagensImportadas = arrayImagensCuba;   
@@ -94,7 +95,9 @@ function selectCuba() {
 
     }else {
         var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));
-        objCheck.push(objArray);
+        for (let element of objArray){
+            objCheck.push(element);
+        }
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
 
@@ -122,6 +125,7 @@ function selectFranca() {
     ["false", "true", "false", "false", "true", "false"], ["false", "true", "false", "false", "true", "false"]];
 
     var objArray1 = objHandler(arrayImagensFranca, arrayTagsImgFranca);
+    
 
     if (localStorage.getItem("imagensImportadas" + utilizador) == null) {
         arrayImagensImportadas = arrayImagensFranca;        
@@ -140,7 +144,9 @@ function selectFranca() {
 
     }else {
         var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));
-        objCheck.push(objArray1);
+        for (let element of objArray1){
+            objCheck.push(element);          
+        }
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
 
@@ -168,7 +174,6 @@ function selectSpike() {
     ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"]];
 
     var objArray2 = objHandler(arrayImagensSpike, arrayTagsImgSpike);
-
     if (localStorage.getItem("imagensImportadas" + utilizador) == null) {
         arrayImagensImportadas = arrayImagensSpike;
     } else {
@@ -185,8 +190,10 @@ function selectSpike() {
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objArray2));
 
     }else {
-        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));
-        objCheck.push(objArray2);
+        var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));        
+        for (let element of objArray2){
+            objCheck.push(element);
+        }
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
 
