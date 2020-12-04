@@ -24,9 +24,25 @@ function currentAccPlacer(){
 
 
 function showModal(disponibilidade) {
-    if (disponibilidade == "disponivel") {
+
+    let div = document.getElementsByClassName("files_row")[0];
+    let local = document.createElement("div");
+    div.innerHTML = "";
+    if (disponibilidade == "disponivel-pc") {
         document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
         document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
+        local.innerHTML = "<input type='image' id='file_cuba' width='180' height='235' src='img_icon_importar/ferias_cuba.png' onclick='selectCuba()'>";
+        div.appendChild(local);
+    } else if (disponibilidade == "disponivel-google-fotos") {
+        document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
+        document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
+        local.innerHTML ="<input type='image' id='file_franca' width='180' height='235' src='img_icon_importar/fotos_frança.png' onclick='selectFranca()'>";
+        div.appendChild(local);
+    } else if (disponibilidade == "disponivel-icloud") {
+        document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
+        document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
+        local.innerHTML = "<input type='image' id='file_spike' width='180' height='235' src='img_icon_importar/fotos_spike.png' onclick='selectSpike()'>";
+        div.appendChild(local);
     } else {
         document.getElementById("indisponivel-importar").style.display = "inline-block";
         document.getElementById("indisponivel-importar").style.zIndex = "9";
