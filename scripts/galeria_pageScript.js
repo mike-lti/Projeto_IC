@@ -417,7 +417,7 @@ function aplica_filtros() {
 
 
     if(localStorage.getItem("todas" + utilizador) == "true"){
-        filtrosDesejados.push(" todas")
+        filtrosDesejados.push(" Todas")
         imagensFiltradas = listFiltrosImgs
     }
 
@@ -471,7 +471,7 @@ function aplica_filtros() {
 
 
                             if(localStorage.getItem("praia" + utilizador) == "true"){
-                                filtrosDesejados.push(" praia")
+                                filtrosDesejados.push(" Praia")
 
                                 for(let img = 0; img < listFiltrosImgs.length; img++) {
                                     let imageToCheck = listFiltrosImgs[img]["praia"];
