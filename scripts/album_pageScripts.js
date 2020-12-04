@@ -82,7 +82,7 @@ function closeAlbumPhotos() {
     document.getElementById("opcoes-album").style.display = "none";
     document.getElementById("fundo-fotos-album").style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
-    enableBackground
+    enableBackground()
 }
 
 function closePopupAlbumCriado() {

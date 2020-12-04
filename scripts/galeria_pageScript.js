@@ -23,7 +23,7 @@ $("input[type=checkbox]").attr("disabled", true);
 
 if (localStorage.getItem("imagensImportadas" + utilizador) == null || localStorage.getItem("imagensImportadas" + utilizador) == "[]") {
     document.getElementById("p-album").innerHTML = "Ainda não tem fotografias na galeria.\
-    Vá até à página <a href=importar.html>Importar</a> e descarregue as suas primeiras fotografias.";
+    Vá até à página <a href=importar.html>Importar</a> e importe as suas primeiras fotografias.";
     document.getElementById("botao-selecionar-galeria").disabled = true;
     document.getElementById("botao-selecionar-todas-galeria").disabled = true;
     $("#botao-filtros-galeria").addClass("disabled-image-button");
