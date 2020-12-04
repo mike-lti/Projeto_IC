@@ -735,7 +735,6 @@ function close_open_slideShow(funcao, imagem) {
             document.getElementById('opcoes-album').style.display ='block';
             document.getElementsByClassName("slideShow")[0].style.display = "none";
             document.getElementsByClassName("numero-fotografias")[0].style.display = "none";
-            enableBackground();
             
     } else {
         document.getElementById('fundo-fotos-album').style.display ='none';
@@ -746,7 +745,6 @@ function close_open_slideShow(funcao, imagem) {
         document.getElementById("imagemCarrossel").src = imagem;
         document.getElementsByClassName("numero-fotografias")[0].style.display = "block";
         document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual + 1) + "/" + tamanhoArray;
-        disableBackground();
 
         }
     }

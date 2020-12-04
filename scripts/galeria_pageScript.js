@@ -564,7 +564,10 @@ function aplica_filtros() {
 
 function closePopupFiltrosAplicados(){
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "none";
+}
 
+function closePopupTextoFiltrosAplicados() {
+    document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "none";
 }
 
 function closePopup() {
