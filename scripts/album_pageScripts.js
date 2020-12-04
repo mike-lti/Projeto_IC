@@ -162,11 +162,11 @@ function aplica_filtros() {
     localStorage.setItem("cuba" + utilizador, checkboxCuba)
 
     if(localStorage.getItem("todas" + utilizador) == "true"){
-        filtrosDesejados.push(" todas")
+        filtrosDesejados.push(" Todas")
         imagensFiltradas = listFiltrosImgs
     }
         if(localStorage.getItem("desfocadas" + utilizador) == "true"){    
-            filtrosDesejados.push(" desfocadas")
+            filtrosDesejados.push(" Desfocadas")
             for(let img = 0; img < listFiltrosImgs.length; img++) {
                 let imageToCheck = listFiltrosImgs[img]["desfocadas"];
                 if(imageToCheck == "true"){
@@ -208,7 +208,7 @@ function aplica_filtros() {
                         }
                     }
                         if(localStorage.getItem("qualidade" + utilizador) == "true"){
-                        filtrosDesejados.push(" qualidade")
+                        filtrosDesejados.push(" Qualidade")
                         }
                             if(localStorage.getItem("praia" + utilizador) == "true"){
                                 filtrosDesejados.push(" praia")
@@ -220,7 +220,7 @@ function aplica_filtros() {
                                 }                       
                             }
                                 if(localStorage.getItem("dia" + utilizador) == "true"){
-                                    filtrosDesejados.push(" dia")
+                                    filtrosDesejados.push(" D   ia")
                                     for(let img = 0; img < listFiltrosImgs.length; img++) {
                                         let imageToCheck = listFiltrosImgs[img]["dia"];
                                         if(imageToCheck == "true"){
