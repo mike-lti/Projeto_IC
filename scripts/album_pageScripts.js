@@ -411,17 +411,15 @@ function preencheTabelaAlbumCriado() {
         }
         arrayFotos.push(arrayImagensAlbuns);
         localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayFotos));
-        enableBackground()
         document.getElementsByClassName('popup-album')[0].style.display ='none';
         document.getElementsByClassName('dimmer')[0].style.opacity = '0';
         document.getElementsByClassName('popupAlbum')[0].style.display ='block';
         $('.popupAlbum').fadeOut(7000);
         mostraCapaAlbunsWorkspace();
-
-
+        enableBackground()
     }
     
-   
+    window.location.reload()
 }  
 
 /* Aqui mostra o album selecionado no workspace */
