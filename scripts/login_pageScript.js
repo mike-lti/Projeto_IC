@@ -97,17 +97,15 @@ function registerHandler(){
     
 
     if(registerPassData != registerConfirmData){
-        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
+        
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Os campos de palavra-passe têm de ser iguais"
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
         $('.homepageOperations').fadeOut(7000);
         formGetter.reset()
 
-    }else if(registerUserData == "" || registerPassData == "" || registerEmailData == "" || registerConfirmData == ""){
-
-        
-        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
+    }else if(registerUserData == "" || registerPassData == "" || registerEmailData == "" || registerConfirmData == ""){       
+  
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Preencha todos os campos";
         document.getElementsByClassName("homepageOperations")[0].style.display = "block";
         document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
@@ -115,7 +113,6 @@ function registerHandler(){
 
 
     }else if(ValidateEmail()){
-        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Forneça um mail válido (ex. nome@email.pt)";
         document.getElementsByClassName("homepageOperations")[0].style.display = "block";
         document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
@@ -123,7 +120,6 @@ function registerHandler(){
 
     
     }else if(accUse()){
-        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(231, 84, 84);";
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador já se encontra utilizado. Escolha outro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
@@ -135,15 +131,13 @@ function registerHandler(){
         let accToApend = new userAcc(registerPassData);
         registredAcc.push(accToApend);        
         localStorage.setItem(registerUserData, JSON.stringify(registredAcc));
+        localStorage.setItem("currentAccount", JSON.stringify(registerUserData));        
+        location.replace("galeria.html")
         formGetter.reset();
         RegistarDimmerCloser();
         $(".registarHandler").removeClass("disabled");
         $(".loginHandler").removeClass("disabled");
-        document.getElementsByClassName("homepageOperations")[0].style.backgroundColor = "rgb(4, 125, 154)";
-        document.getElementsByClassName("homepageOperations")[0].innerHTML = "Conta criada com sucesso!";
-        document.getElementsByClassName("homepageOperations")[0].style.display = "block";
-        document.getElementsByClassName("homepageOperations")[0].style.bottom = "170px";
-        $('.homepageOperations').fadeOut(5000);
+        
         
        
     } 

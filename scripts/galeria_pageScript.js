@@ -452,7 +452,9 @@ function aplica_filtros() {
                     if(localStorage.getItem("qualidade" + utilizador) == "true"){
                     filtrosDesejados.push(" Qualidade")
                     }
-                        if(localStorage.getItem("praia") == "true"){
+
+
+                        if(localStorage.getItem("praia" + utilizador) == "true"){
                             filtrosDesejados.push(" praia")
                             for(let img = 0; img < listFiltrosImgs.length; img++) {
                                 let imageToCheck = listFiltrosImgs[img]["praia"];
