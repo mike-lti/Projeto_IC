@@ -79,16 +79,16 @@ function selectCuba() {
     "img_cuba/img_16.jpg", "img_cuba/img_17.jpg", "img_cuba/img_18.jpg", "img_cuba/img_19.jpg", 
     "img_cuba/img_20.jpg"];
     
-    var arrayTagsImg = [["true", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
-    ["false","true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
-    ["false", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
-    ["true", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
-    ["false", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"], 
-    ["true", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
-    ["true", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
-    ["true", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"],
-    ["false", "true", "false", "false", "false", "true"], ["false", "true", "false", "false", "false", "true"], 
-    ["false", "true", "false", "false", "false", "true"], ["true", "true", "false", "false", "false", "true"]];
+    var arrayTagsImg = [["true", "true", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "false", "true", "false"], 
+    ["false","true", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "false", "true", "false"], 
+    ["false", "true", "false", "false", "false", "true", "false"], ["true", "true", "false", "false", "false", "true", "false"], 
+    ["true", "true", "false", "false", "false", "true", "false"], ["true", "true", "false", "false", "false", "true", "false"], 
+    ["false", "true", "false", "false", "false", "true", "false"], ["true", "true", "false", "false", "false", "true", "false"], 
+    ["true", "true", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "false", "true", "false"], 
+    ["true", "true", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "false", "true", "false"], 
+    ["true", "true", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "false", "true", "false"],
+    ["false", "true", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "false", "true", "false"], 
+    ["false", "true", "false", "false", "false", "true", "false"], ["true", "true", "false", "false", "false", "true", "false"]];
 
     var objArray = objHandler(arrayImagensCuba, arrayTagsImg);
     
@@ -129,16 +129,16 @@ function selectFranca() {
     "img_franca/img_15.jpg", "img_franca/img_16.jpg", "img_franca/img_17.jpg", 
     "img_franca/img_18.jpg", "img_franca/img_19.jpg", "img_franca/img_20.jpg"];    
 
-    var arrayTagsImgFranca = [["false", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "true", "false"],
-    ["false","false", "false", "false", "true", "false"], ["false", "true", "false", "false", "true", "false"], 
-    ["false", "true", "false", "false", "true", "false"], ["false", "true", "false", "false", "true", "false"],
-    ["false", "false", "false", "false", "true", "false"], ["false", "false", "true", "false", "true", "false"], 
-    ["false", "true", "false", "false", "true", "false"], ["false", "false", "true", "false", "true", "false"],
-    ["false", "true", "false", "false", "true", "false"], ["false", "false", "false", "false", "true", "false"], 
-    ["false", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "true", "false"],
-    ["false", "false", "false", "false", "true", "false"], ["false", "true", "false", "false", "true", "false"],
-    ["false", "true", "true", "false", "true", "false"], ["false", "true", "true", "false", "true", "false"],
-    ["false", "true", "false", "false", "true", "false"], ["false", "true", "false", "false", "true", "false"]];
+    var arrayTagsImgFranca = [["false", "false", "false", "false", "true", "false", "true"], ["false", "true", "false", "false", "true", "false", "true"],
+    ["false","false", "false", "false", "true", "false", "true"], ["false", "true", "false", "false", "true", "false", "false"], 
+    ["false", "true", "false", "false", "true", "false", "false"], ["false", "true", "false", "false", "true", "false", "false"],
+    ["false", "false", "false", "false", "true", "false", "true"], ["false", "false", "true", "false", "true", "false", "true"], 
+    ["false", "true", "false", "false", "true", "false", "true"], ["false", "false", "true", "false", "true", "false", "true"],
+    ["false", "true", "false", "false", "true", "false", "false"], ["false", "false", "false", "false", "true", "false", "true"], 
+    ["false", "false", "false", "false", "true", "false", "true"], ["false", "true", "false", "false", "true", "false", "true"],
+    ["false", "false", "false", "false", "true", "false", "false"], ["false", "true", "false", "false", "true", "false", "false"],
+    ["false", "true", "true", "false", "true", "false", "false"], ["false", "true", "true", "false", "true", "false", "false"],
+    ["false", "true", "false", "false", "true", "false", "true"], ["false", "true", "false", "false", "true", "false", "true"]];
 
     var objArray1 = objHandler(arrayImagensFranca, arrayTagsImgFranca);
     
@@ -178,16 +178,16 @@ function selectSpike() {
      "img_spike/img_15.jpg", "img_spike/img_16.jpg", "img_spike/img_17.jpg", 
      "img_spike/img_18.jpg", "img_spike/img_19.jpg", "img_spike/img_20.jpg"];
 
-    var arrayTagsImgSpike = [["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false"],
-    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"], 
-    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"],
-    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false"],
-    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"],
-    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"], 
-    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false"],
-    ["false", "true", "false", "true", "false", "false"], ["false", "true", "false", "true", "false", "false"],
-    ["true", "true", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false"],
-    ["false", "true", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false"]];
+    var arrayTagsImgSpike = [["false", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false", "false"],
+    ["false", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false", "false"], 
+    ["false", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false", "false"],
+    ["false", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false", "false"],
+    ["false", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false", "false"],
+    ["false", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false", "false"], 
+    ["false", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false", "false"],
+    ["false", "true", "false", "true", "false", "false", "false"], ["false", "true", "false", "true", "false", "false", "false"],
+    ["true", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "false", "false", "false", "false"],
+    ["false", "true", "false", "false", "false", "false", "false"], ["false", "true", "false", "true", "false", "false", "false"]];
 
     var objArray2 = objHandler(arrayImagensSpike, arrayTagsImgSpike);
     if (localStorage.getItem("imagensImportadas" + utilizador) == null) {
@@ -236,6 +236,7 @@ function filterObj(src, filterBoolean){
     this.jack_russell = filterBoolean[3];
     this.franca = filterBoolean[4];
     this.cuba = filterBoolean[5];
+    this.monumentos = filterBoolean[6];
 }
 
 

@@ -361,7 +361,7 @@ function openFiltros() {
         document.getElementById("desfocadas").checked = false;
         document.getElementById("localização").checked = false;
         document.getElementById("jack_russell").checked = false;
-        document.getElementById("qualidade").checked = false;
+        document.getElementById("monumentos").checked = false;
         document.getElementById("praia").checked = false;
         document.getElementById("dia").checked = false;
         document.getElementById("filtros-localizacao").style.display = "none";
@@ -378,7 +378,7 @@ function tiraFiltros() {
     document.getElementById("desfocadas").checked = false;
     document.getElementById("localização").checked = false;
     document.getElementById("jack_russell").checked = false;
-    document.getElementById("qualidade").checked = false;
+    document.getElementById("monumentos").checked = false;
     document.getElementById("praia").checked = false;
     document.getElementById("dia").checked = false;
     document.getElementById("cuba").checked = false;
@@ -406,7 +406,7 @@ function aplica_filtros() {
     var checkboxTodas = document.getElementById("todas").checked; 
     var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
     var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
-    var checkboxQualidade = document.getElementById("qualidade").checked;
+    var checkboxMonumentos = document.getElementById("monumentos").checked;
     var checkboxPraia = document.getElementById("praia").checked;
     var checkboxDia = document.getElementById("dia").checked;
     var checkboxFranca = document.getElementById("franca").checked;
@@ -416,7 +416,7 @@ function aplica_filtros() {
     localStorage.setItem("todas" + utilizador, checkboxTodas)
     localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
     localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
-    localStorage.setItem("qualidade" + utilizador, checkboxQualidade)
+    localStorage.setItem("monumentos" + utilizador, checkboxMonumentos)
     localStorage.setItem("praia" + utilizador, checkboxPraia)
     localStorage.setItem("dia" + utilizador, checkboxDia)
     localStorage.setItem("franca" + utilizador, checkboxFranca)
@@ -472,10 +472,17 @@ function aplica_filtros() {
                             }
                         }
                     }
-                        if(localStorage.getItem("qualidade" + utilizador) == "true"){
-                            filtrosDesejados.push(" Qualidade")
-                        }
+                        if(localStorage.getItem("monumentos" + utilizador) == "true"){
+                            filtrosDesejados.push(" Monumentos")
+                            for(let img = 0; img < listFiltrosImgs.length; img++) {
+                                let imageToCheck = listFiltrosImgs[img]["monumentos"];
 
+                                if(imageToCheck == "true"){
+                                    imagensFiltradas.push(listFiltrosImgs[img]);
+                                    
+                                }
+                            }
+                        }
 
                             if(localStorage.getItem("praia" + utilizador) == "true"){
                                 filtrosDesejados.push(" Praia")
@@ -503,9 +510,30 @@ function aplica_filtros() {
                                     }
                                 }
 
-    
     localStorage.setItem("filtrosSelecionados" + utilizador, filtrosDesejados);
     var srcImagensFiltradas = []; 
+    for(let i = 0; i < imagensFiltradas.length; i++){
+        let srcImg = imagensFiltradas[i]["imgSrcObj"];
+        srcImagensFiltradas.push(srcImg);
+    }
+    var arrayImgFicar = [];
+    
+    for (var x = 0; x < srcImagensFiltradas.length; x++ ) {
+        var imgComparada = srcImagensFiltradas[x];
+        for (var y = x + 1; y < srcImagensFiltradas.length; y++ ) {
+            var imgComparar = srcImagensFiltradas[y];
+            if (imgComparada == imgComparar) {
+                delete srcImagensFiltradas[y];
+            } 
+        }
+    }   
+
+    for (let img of srcImagensFiltradas) {
+        if (img != undefined) {
+            arrayImgFicar.push(img);
+        } 
+    }
+
     if(filtrosDesejados.length != 0) {
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("p-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
@@ -513,15 +541,13 @@ function aplica_filtros() {
         tabela.innerHTML=" ";   
         var x = 0
         var trElement;
-        for(var i = 0; i < imagensFiltradas.length; i++){
+        for(var i = 0; i < arrayImgFicar.length; i++){
             if(i % 4 == 0 || x == 0){
                 trElement = document.createElement('tr');
                 trElement.setAttribute('id', "tr${x}");
                 x++
             }
-
-            let srcImg = imagensFiltradas[i]["imgSrcObj"];
-            srcImagensFiltradas.push(srcImg);
+            let srcImg = arrayImgFicar[i];
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item'>" +
                                 "<input type='checkbox' class='checkbox'>" +
@@ -564,14 +590,14 @@ function aplica_filtros() {
     }
         
     }
-    localStorage.setItem("imagensFiltradas" + utilizador, JSON.stringify(srcImagensFiltradas));
+    localStorage.setItem("imagensFiltradas" + utilizador, JSON.stringify(arrayImgFicar));
     checkboxTodas = document.getElementById("todas").checked = false;
     checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
     checkboxFranca = document.getElementById("franca").checked = false;
     checkboxCuba = document.getElementById("cuba").checked = false;
     checkboxLocalizacao = document.getElementById("localização").checked = false;
     checkboxJack_Russell = document.getElementById("jack_russell").checked = false;
-    checkboxQualidade = document.getElementById("qualidade").checked = false;
+    checkboxMonumentos = document.getElementById("monumentos").checked = false;
     checkboxPraia = document.getElementById("praia").checked = false;
     checkboxDia = document.getElementById("dia").checked = false;
     $("input[type=checkbox]").attr("disabled", true);
