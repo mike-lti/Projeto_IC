@@ -7,8 +7,7 @@ var utilizador = localStorage.getItem("currentAccount")
 
 $(document).ready(currentAccPlacer());
 $(document).ready(getFavoritos());
-
-
+localStorage.removeItem("fotosFavortitosAlbum" + utilizador);
 
 $("#right-top-right-bar button img").addClass("disabled-image-button")
 document.getElementById("botao-eliminar").disabled = true;
@@ -32,6 +31,13 @@ for (let element of elementos) {
     element.addEventListener("change", imagem_selecionada);
 }
 
+if (localStorage.getItem("fotosFavoritas" + utilizador) == null || localStorage.getItem("fotosFavoritas" + utilizador) == "[]") {
+    document.getElementById("p-album").innerHTML = "Não tem fotografias favoritas. Vá até à <a href=galeria.html>Galeria</a> e\
+    selecione as fotografias que deseja adicionar aos favoritos!"; 
+} else {
+    document.getElementById("p-album").innerHTML = "";
+}
+
 
 
 function currentAccPlacer(){
@@ -40,7 +46,17 @@ function currentAccPlacer(){
     document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
 }
 
+function closePopup() {
+    document.getElementsByClassName("popup")[0].style.display = "none";
+}
+
 function open_popup_eliminar_fotografias() {
+    let numeroAlbunsEliminados = document.querySelectorAll('input[type=checkbox]:checked').length
+    if (numeroAlbunsEliminados > 1) {
+        document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar " + numeroAlbunsEliminados + " fotografias?"
+    } else {
+        document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar a fotografia selecionada?"
+    }
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
     document.getElementById("popup-eliminar-fotos-galeria").style.display = "block";   
 }
@@ -68,11 +84,20 @@ function imagem_selecionada() {
         document.getElementById("botao-eliminar").disabled = false;    
         document.getElementById("botao-criar-galeria").disabled = false;
         document.getElementById("botao-adicionar").disabled = false;
+        document.getElementById("href-album").style.color = "black";
+        document.getElementById("href-album").href = "album.html";
+        document.getElementById("href-partilhar").disabled = false;
+        document.getElementById("href-partilhar").href = "partilhar.html";
     } else {
         $("#right-top-right-bar button img").addClass("disabled-image-button");
         document.getElementById("botao-eliminar").disabled = true;    
         document.getElementById("botao-criar-galeria").disabled = true;
         document.getElementById("botao-adicionar").disabled = true;
+        document.getElementById("href-album").style.color = "rgb(204, 204, 204)";
+        document.getElementById("href-album").disabled = true;
+        document.getElementById("href-album").href = "";
+        document.getElementById("href-partilhar").disabled = true;
+        document.getElementById("href-partilhar").href = "";
     
     }
 }  
@@ -155,6 +180,7 @@ function seleciona_todos() {
 
 
 function nova_galeria_eliminada() {
+    
     var arrayFicar = document.querySelectorAll('input[type=checkbox]:not(:checked)');
     var tabela = document.querySelector("#fotos-favoritas tbody");
     tabela.innerHTML = "";
@@ -195,7 +221,12 @@ function nova_galeria_eliminada() {
         document.getElementById("botao-selecionar-todas-favoritos").disabled = true;
     }
     
-    
+    if (localStorage.getItem("fotosFavoritas" + utilizador) == "[]") {
+        document.getElementById("p-album").innerHTML = "Não tem fotografias favoritas. Vá até à <a href=galeria.html>Galeria</a> e\
+        selecione as fotografias que deseja adicionar aos favoritos!"; 
+    } else {
+        document.getElementById("p-album").innerHTML = "";
+    }
 
     document.getElementsByClassName("dimmer")[0].style.opacity="0"  
     
@@ -206,7 +237,8 @@ function nova_galeria_eliminada() {
 
 
 function getFavoritos() {
-    if (localStorage.getItem("fotosFavoritas" + utilizador) != null ) {
+    if (localStorage.getItem("fotosFavoritas" + utilizador) != null) {
+        document.getElementById("p-album").innerHTML = ""; 
         var arrayImagensFavoritas = JSON.parse(localStorage.getItem("fotosFavoritas" + utilizador));
         var tabela = document.querySelector("#fotos-favoritas tbody");
         tabela.innerHTML = "";
@@ -234,6 +266,9 @@ function getFavoritos() {
                  
         }
 
+    } else {
+        document.getElementById("p-album").innerHTML = "Não tem fotografias favoritas. Vá até à <a href=galeria.html>Galeria</a> e\
+        selecione as fotografias que deseja adicionar aos favoritos!"; 
     }
     
 }  
@@ -345,12 +380,34 @@ function disableBackground() {
     $("#side-bar").addClass("disabled")
     $("#fotos-favoritas").addClass("disabled")
     $("#top-right-bar").addClass("disabled")
-
-
+    $("#memento").addClass("disabled");
 }
 
 function enableBackground() {
     $("#side-bar").removeClass("disabled")
     $("#fotos-favoritas").removeClass("disabled")
     $("#top-right-bar").removeClass("disabled")
+    $("#memento").removeClass("disabled");
+}
+
+function guardarFotos(local) {
+    var local = local + utilizador;
+        
+    let srcList = [];
+
+    for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+        let srcImagem = input.parentElement.children[1].children[0].getAttribute('src');
+        srcList.push(srcImagem)
+    }
+
+    if (local != "fotosFavoritosPartilhar" + utilizador) {
+        localStorage.setItem("criarAlbum", "True");
+    }
+    
+    localStorage.setItem(local, JSON.stringify(srcList))
+}
+
+function indisponivel() {
+    document.getElementById("indisponivel").style.display = "block";
+    $('#indisponivel').fadeOut(7000);
 }

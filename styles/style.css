@@ -14,7 +14,7 @@
     height: 720px;
     background-color: white;
     display: grid;
-    grid-template: 80px  auto / 200px auto auto;
+    grid-template: 80px auto / 200px auto auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 #memento-top-left {
@@ -43,7 +43,7 @@ header a {
 #usernameCurrentAccount{
     position: absolute;
     left: 6%;
-    top: 725px;
+    top: 675px;
     font-size: large;
 }
 #top-right-bar {
@@ -110,7 +110,7 @@ header a {
     background-color: white;
     grid-area: 2 / 1 / span 2 / span 1;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 390px auto;
 }
 
 .menu {
@@ -168,7 +168,8 @@ nav a{
   }
 
 .dropup {
-    position: relative;
+    position: absolute;
+    top: 660px;
     display: inline-block;
     cursor: pointer;
     width: 50px;
@@ -196,7 +197,7 @@ nav a{
     display: none;
     position: absolute;
     background-color: white;
-    top: 710px;
+    top: 660px;
     left: 420px;
     height: 50px;
     border-radius: 5px;
@@ -228,6 +229,23 @@ nav a{
     color: white;
 }
 
+.numero-albuns-eliminar {
+    text-align: center;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+#x-slideShow {
+    color:white;
+    float: right;
+    font-size: 40px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 480px;
+    left: 760px;
+}
 /*--------------------------------*/
 
 /*----------------IMPORTAR-----------------------*/
@@ -257,8 +275,10 @@ nav a{
 .importing_modal {
     display: none;
     position: absolute;
-    top: 230px;
-    right: 230px;
+    top: 200px;
+    left: 200px;
+    right: 0;
+    margin: auto;
     width: 640px;
     height: 380px;
 }
@@ -312,8 +332,10 @@ nav a{
 .album_modal {
     display: none;
     position: absolute;
-    top: 230px;
-    right: 355px;
+    top: 300px;
+    left: 200px;
+    right: 0;
+    margin: auto;
     width: 400px;
     height: 170px;
 }
@@ -332,6 +354,8 @@ nav a{
     font-size: 30px;
     cursor: pointer;
 }
+
+
 
 .dimmer {
     position: relative;
@@ -635,7 +659,7 @@ nav a{
     position: absolute;
     margin: auto;
     left: 530px;
-    top: 98%;
+    top: 91%;
     width: 32%;
     height: 8%;
     background-color: white;
@@ -653,6 +677,7 @@ nav a{
     color: white;
     border-radius: 5px;
     font-size: large;
+    bottom: 13px;
 }
 
 .popupFiltrosAplicados{
@@ -660,7 +685,7 @@ nav a{
     position: absolute;
     margin: auto;
     left: 510px;
-    top: 98%;
+    top: 91%;
     width: 36%;
     height: 8%;
     background-color: white;
@@ -699,26 +724,38 @@ nav a{
     color: rgb(204, 204, 204);
 }
 
-.popup{
+.popup {
     display: none;
     position: absolute;
-    padding: 2px;
-    margin: auto;
-    left: 478px;
-    top: 95%;
+    left: 200px; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    top: 90%;
     width: 40%;
-    height: 8%;
     background-color: white;
     z-index: 9;
     border-radius: 5px;
 }
 
-.popup, p{
+.popup-indisponivel {
+    display: none;
+    position: absolute;
+    left: 200px; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    top: 90%;
+    width: 40%;
+    background-color: white;
+    z-index: 9;
+    border-radius: 5px;
+}
+.popup, p {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: left;
     font-size: 110%;
     padding-left: 10px;
-    padding-bottom: 10px;
 }
 
 #botao-selecionar-galeria {
@@ -742,14 +779,14 @@ nav a{
     bottom: 290px;
     background-color: white;
     width: 440px;
-    height: 130px;
+    height: 150px;
     border-radius: 5px;
     padding-top: 20px;
 
 }
 
 #botao-popup-eliminar-cancelar {
-    margin-top: 20px;
+    
     font-size: large;
     height: 40px;
     border-radius: 5px;
@@ -759,7 +796,7 @@ nav a{
 }
 
 #botao-popup-eliminar-confirmar {
-    margin-top: 20px;
+  
     height: 40px;
     border-radius: 5px;
     font-size: large;
@@ -787,9 +824,9 @@ nav a{
 
 
 #botao-popup-adicionar-cancelar {
-    margin-top: 20px;
+    position: relative;
+    bottom: 20px;
     font-size: large;
-    margin-right: 20px;
     height: 40px;
     border-radius: 5px;
     color: white;
@@ -822,11 +859,23 @@ nav a{
     text-decoration: none;
 }
 
-#botao-popup-adicionar-cancelar {
-    border-radius: 5px;
+#botao-popup-adicionar-album p {
+    position: absolute;
+    left: 70px;
+    top: 60px;
+}
+
+#botao-popup-adicionar-cancelar-indisponivel {
+    margin-top: 40px;
     font-size: large;
-    position: relative;
-    bottom: 40px;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    background-color:rgb(4, 125, 154);
+}
+
+#img-album {
+    margin-left: 70px;
 }
 
 #botao-popup-adicionar-confirmar {
@@ -883,7 +932,7 @@ nav a{
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
-    top: 98%;
+    top: 91%;
     width: fit-content;
     max-width: 66%;
     height: 8%;
@@ -911,9 +960,6 @@ nav a{
     height: 60px;
 }
 
-#x-slideShow {
-    font-size: 40px;
-}
 
 #botao-popup-filtros-selecionados {
     position: absolute;
@@ -925,6 +971,19 @@ nav a{
     color: white;
     border-radius: 5px;
     font-size: large;
+}
+
+#indisponivel {
+    background-color: rgb(238, 148, 148);
+}
+
+#indisponivel p {
+    margin-left: 80px;
+}
+
+#indisponivel button {
+    background-color: rgb(252,252,252);
+    color: black;
 }
 
 
@@ -1072,9 +1131,11 @@ nav a{
     left: 70px;
     font-size: large;
     border-radius: 5px;
-    width: 100px;
+    width: 110px;
     height: 40px;
     top: 10px;
+    background-color:rgb(4, 125, 154);
+    color: white;
 }
 
 

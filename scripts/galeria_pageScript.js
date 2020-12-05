@@ -181,6 +181,13 @@ function enable_galeria() {
 }
 
 function open_popup(popup) {
+    
+    let numeroAlbunsEliminados = document.querySelectorAll('input[type=checkbox]:checked').length
+    if (numeroAlbunsEliminados > 1) {
+        document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar " + numeroAlbunsEliminados + " fotografias?"
+    } else {
+        document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar a fotografia selecionada?"
+    }
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
     document.getElementById(popup).style.display = "block";
     disableBackground();   
@@ -405,7 +412,7 @@ function aplica_filtros() {
     var checkboxFranca = document.getElementById("franca").checked;
     var checkboxCuba = document.getElementById("cuba").checked;
     var checkboxLocalizacao = document.getElementById("localização").checked;
-
+    document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "none"
     localStorage.setItem("todas" + utilizador, checkboxTodas)
     localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
     localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
@@ -586,8 +593,8 @@ function closePopupTextoFiltrosAplicados() {
     document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "none";
 }
 
-function closePopup() {
-    document.getElementsByClassName("popup")[0].style.display = "none";
+function closePopup(disponibilidade) {
+        document.getElementsByClassName(disponibilidade)[0].style.display = "none";
 }
 
 function open_dropup() {
@@ -706,11 +713,18 @@ function disableBackground() {
     $("#side-bar").addClass("disabled")
     $("#tabela").addClass("disabled")
     $("#top-right-bar").addClass("disabled")
-
+    $("#memento").addClass("disabled");
 }
 
 function enableBackground() {
     $("#side-bar").removeClass("disabled")
     $("#tabela").removeClass("disabled")
     $("#top-right-bar").removeClass("disabled")
+    $("#memento").removeClass("disabled");
+}
+
+
+function indisponivel() {
+    document.getElementById("indisponivel").style.display = "block";
+    $('#indisponivel').fadeOut(7000);
 }

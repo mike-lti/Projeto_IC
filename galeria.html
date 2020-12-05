@@ -47,11 +47,11 @@
                     <a href="partilhar.html">Partilhar <img src="images/partilhar4_icon.png" style="vertical-align:middle" width="45px"></a>
                     <a href="favoritos.html">Favoritos <img src="images/favoritos3_icon.png" style="vertical-align:middle" width="45px"></a>
                     <a  href="ajuda.html">Ajuda <img src="images/ajuda3_icon.png" style="vertical-align:middle" width="40px"></a>
-                    <!-- <a href="sobre.html">Sobre <img src="images/sobre_icon.png" style="vertical-align:middle" width="45px"></a> -->
+                    <a href="sobre.html">Sobre <img src="images/sobre_icon.png" style="vertical-align:middle" width="45px"></a>
                 </nav>
 
                 <div id="memento">
-                    <img src="images/logo_Memento1.png" width="180px" alt="">
+                    <img src="images/logo_Memento1.png" width="130px" alt="">
                 </div>
                 <div id="usernameCurrentAccount"></div>
                 <div class="dropup">
@@ -74,14 +74,20 @@
 
                 <div id="popup-adicionar-fotos-galeria">
                     Para onde deseja adicionar as fotografias selecionadas? <br>
-                    <div id="botao-popup-adicionar-album"><a href="album.html"></a><img src="images/album3_icon.png" width="70px" height="70px" alt=""> Álbum </div>
+                    <div id="botao-popup-adicionar-album"><img src="images/album3_icon.png" width="70px" height="70px" alt="" onclick="indisponivel()"> Álbum </div>
                     <div id="botao-popup-adicionar-favoritos" onclick="guardarFotos('fotosFavoritas')"><a href="favoritos.html"><img src="images/favoritos3_icon.png" width="70px" height="70px" alt=""> </a>Favoritos</div>
                     <button id="botao-popup-adicionar-cancelar" onclick="close_popup('popup-adicionar-fotos-galeria')">Cancelar</button>
                     <div class="closeButton" onclick = "close_popup('popup-adicionar-fotos-galeria')"> &times; </div>
                 </div>
 
+                <div class="popup-indisponivel" id="indisponivel">
+                    <p> Funcionalidade não disponível.
+                        <button type="button" class="botao-popup" onclick="closePopup('popup-indisponivel')">OK</button>
+                    </p>              
+                </div>
+
                 <div id="popup-eliminar-fotos-galeria">
-                    Tem a certeza que pretente eliminar as fotografias selecionadas? <br>
+                    <p class="numero-albuns-eliminar"></p> <br>
                     <button id="botao-popup-eliminar-cancelar" onclick="close_popup('popup-eliminar-fotos-galeria')">Cancelar</button>
                     <button id="botao-popup-eliminar-confirmar" onclick="nova_galeria_eliminada()" >Confirmar</button>
                     <div class="closeButton" onclick = "close_popup('popup-eliminar-fotos-galeria')"> &times; </div>
@@ -90,7 +96,7 @@
                     
             <div class="popup">
                 <p>As suas fotos foram importadas com sucesso!
-                    <button type="button" class="botao-popup" onclick="closePopup()">OK</button>
+                    <button type="button" class="botao-popup" onclick="closePopup('popup')">OK</button>
                 </p>              
             </div>
 
@@ -98,7 +104,7 @@
                     <img id="imagemCarrossel" width="800" height="480" alt="">
                     <img onclick="slideShow('direita')" id="seta-direita" src="images/seta_direita.png" width="30" alt="">
                     <img onclick="slideShow('esquerda')" id="seta-esquerda" src="images/seta_esquerda.png" width="30" alt="">
-                    <div class="closeButton" id="x-slideShow" onclick = "close_open_slideShow('fechar', '')"> &times; </div>
+                    <div id="x-slideShow" onclick = "close_open_slideShow('fechar', '')"> &times; </div>
             </div>
             <p class="numero-fotografias"></p>
             </div>

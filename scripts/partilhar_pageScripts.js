@@ -60,6 +60,7 @@ function open_icon_partilha(icon) {
     
     disableBackground();
     document.getElementsByClassName("popup-partilha")[0].style.display="block";
+    /* document.getElementById("botao-confirmar-partilha").disabled = true; */
     preencheTabelaImagensPartilhar();
 
     if(icon == "link") {
@@ -80,6 +81,18 @@ function open_icon_partilha(icon) {
     document.getElementById("partilha-icon").src = "img_icon_partilhar/" + icon + ".png";
 
 }
+
+function verifica() {
+    /* var len = document.querySelectorAll('input[type=checkbox]:checked').length
+    console.log(len)
+    if (document.querySelectorAll('input[type=checkbox]:checked').length != 0) {
+        document.getElementById("botao-confirmar-partilha").disabled = false;
+    } else {
+        document.getElementById("botao-confirmar-partilha").disabled = true;
+    } */
+}
+
+
 
 function preencheTabelaAlbumPartilhar() {
    
@@ -116,7 +129,7 @@ function preencheTabelaAlbumPartilhar() {
                     let linha = document.createElement("td");
                     linha.innerHTML = "<label class='option-item-album'>" +
                                         "<input type='checkbox' class='checkbox-album'>" +
-                                        "<div class='option-inner-album'>" +
+                                        "<div class='option-inner-album' onclick='verifica()'>" +
                                             "<img width='220px' height='140px' src='" + imagemCapa + "'>" +
                                             nomesAlbum[i] +
                                         "</div>" +
@@ -148,10 +161,12 @@ function preencheTabelaImagensPartilhar() {
         document.getElementById("p-importar").innerHTML = "Escolha o local para onde pretende partilhar as suas fotografias:"; 
 
         if (localStorage.getItem("fotosPartilhar" + utilizador) != null) {
-           c
+
             document.getElementById("texto-seleciona").style.left = "320px";
             var arrayImagens = JSON.parse(localStorage.getItem("fotosPartilhar" + utilizador));
-        } else {
+        } else if (localStorage.getItem("fotosFavoritosPartilhar" + utilizador) != null)
+            var arrayImagens = JSON.parse(localStorage.getItem("fotosFavoritosPartilhar" + utilizador));
+        else {
             var arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         }
         var tabela = document.querySelector("#tabela-fotos-partilha tbody");
@@ -169,7 +184,7 @@ function preencheTabelaImagensPartilhar() {
                 let linha = document.createElement("td");
                 linha.innerHTML = "<label class='option-item-album'>" +
                                     "<input type='checkbox' class='checkbox-album'>" +
-                                    "<div class='option-inner-album'>" +
+                                    "<div class='option-inner-album' onclick='verifica()'>" +
                                         "<img width='220px' height='140px' src='" + imagens + "'>" +
                                     "</div>" +
                                 "</label>";
@@ -205,16 +220,16 @@ function open_dropup() {
 
 function popupAlbum() {
 
-    if (localStorage.getItem("fotosPartilhar" + utilizador)) {
+    if (localStorage.getItem("fotosPartilhar" + utilizador) || localStorage.getItem("fotosFavoritosPartilhar" + utilizador)) {
         document.getElementsByClassName("popupEstadoVisivel")[0].style.display = "block";
     } else {
         document.getElementsByClassName("popupEstadoVisivel")[0].style.display = "none";
     }
-    
 }
 
 function removerSelecao() {
     localStorage.removeItem("fotosPartilhar" + utilizador);
+    localStorage.removeItem("fotosFavoritosPartilhar" + utilizador);
     closePopup("popupEstadoVisivel");
 }
 
@@ -222,10 +237,12 @@ function disableBackground() {
     $("#side-bar").addClass("disabled");
     $("#top_row_icons").addClass("disabled");
     $(".workspace_partilhar").addClass("disabled");
+    $("#memento").addClass("disabled");
 }
 
 function enableBackground() {
     $("#side-bar").removeClass("disabled")
     $("#top_row_icons").removeClass("disabled")
     $(".workspace_partilhar").removeClass("disabled");
+    $("#memento").removeClass("disabled");
 }

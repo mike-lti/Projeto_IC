@@ -244,12 +244,14 @@ function disableBackground() {
     $("#side-bar").addClass("disabled")
     $("#top_row_icons").addClass("disabled")
     $("#bot_row_icons").addClass("disabled")
+    $("#memento").addClass("disabled");
 }
 
 function enableBackground() {
     $("#side-bar").removeClass("disabled")
     $("#top_row_icons").removeClass("disabled")
     $("#bot_row_icons").removeClass("disabled")
+    $("#memento").removeClass("disabled");
 }
 
 function open_dropup() {
