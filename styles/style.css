@@ -467,6 +467,7 @@ nav a{
 }
 
 #tabela {
+    margin-top: 0px;
     display: none;
     padding-top: 15px;
     display: flex;
@@ -986,6 +987,14 @@ nav a{
     color: black;
 }
 
+#div-filtros-aplicados {
+    position: absolute;
+    position: relative;
+    font-size: 20px;
+    top: 10px;
+    text-align: left;
+    margin-left: 10px;
+}
 
 /*--------------------------------*/
 

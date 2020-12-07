@@ -99,17 +99,17 @@ function closePopupAlbumCriado() {
 }
 
 function openFiltros() {
-    document.getElementById("imagem_filtros").src = "images/filtros_icon1.png";
+    document.getElementById("imagem_filtros").src = "images/filtros_icon_black1.png";
     if ( document.getElementById("popup-filtros-album").style.display == "block" ) {
         document.getElementById("popup-filtros-album").style.display = "none";
-        document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
+        document.getElementById("imagem_filtros").src = "images/filtros_icon_black.png";
     } else {
         document.getElementById("popup-filtros-album").style.display = "block";
     }
 }
 
 function tiraFiltros() {
-    document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
+    document.getElementById("imagem_filtros").src = "images/filtros_icon_black.png";
     document.getElementById("popup-filtros-album").style.display = "none";
     document.getElementById("desfocadas").checked = false;
     document.getElementById("localização").checked = false;
@@ -192,7 +192,7 @@ function aplica_filtros() {
                     }
                 }
                     if(localStorage.getItem("franca" + utilizador) == "true"){
-                        filtrosDesejados.push(" Franca")
+                        filtrosDesejados.push(" França")
                         console.log(listFiltrosImgs);
                         for(let img = 0; img < listFiltrosImgs.length; img++) {
                             let imageToCheck = listFiltrosImgs[img]["franca"];
@@ -322,7 +322,7 @@ function aplica_filtros() {
     checkboxMonumentos = document.getElementById("monumentos").checked = false;
     checkboxPraia = document.getElementById("praia").checked = false;
     checkboxDia = document.getElementById("dia").checked = false;
-    document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
+    document.getElementById("imagem_filtros").src = "images/filtros_icon_black.png";
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
     document.getElementById("popup-filtros-album").style.display = "none" 
     $('.popupFiltrosAplicados').fadeOut(7000);

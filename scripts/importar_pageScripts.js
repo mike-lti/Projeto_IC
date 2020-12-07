@@ -223,7 +223,7 @@ function objHandler(arrayImagens, arrayTagsImg) {
         let imgSrc = arrayImagens[i];      
         var objToAdd = new filterObj(imgSrc, filterImg); 
         listObj.push(objToAdd);
-    }  
+    } 
     return (listObj) 
 }
 

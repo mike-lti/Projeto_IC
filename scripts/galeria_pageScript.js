@@ -215,7 +215,6 @@ function nova_galeria_eliminada() {
         if (x <= arrayFicarlength - 10) {
             if(i%4 == 0 || x == 0){
                 trElement = document.createElement('tr');
-                trElement.setAttribute('id', `tr${x}`);
             }
 
             let src = input.parentElement.children[1].children[0].getAttribute('src');
@@ -251,8 +250,32 @@ function nova_galeria_eliminada() {
             index++;
         }
     }
-   
-    localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas));    
+    
+    localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas));
+    
+    var indexArray = [];
+    var listFiltros = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));  
+
+    for (var x = 0; x < listFiltros.length; x++ ) {
+        var imgComparada = listFiltros[x]["imgSrcObj"];
+        var cont =  0;
+        for (var y = 0; y < listFiltros.length; y++ ) {
+            var imgComparar = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador))[y];
+            
+            if (imgComparada == imgComparar) {
+                cont =  1                
+            }
+        }
+        if (cont == 0) {
+            indexArray.push(x);
+        }
+    }  
+
+    for (let index of indexArray) {
+        listFiltros.splice(index,1);
+    }
+    localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(listFiltros)) 
+    
 }   
 
 function showPopupFavoritos(){
@@ -324,7 +347,6 @@ function preencheTabelaImagens() {
         for (let imagens of arrayImagens) {
                 if(i%4 == 0 || x == 0){
                     trElement = document.createElement('tr');
-                    trElement.setAttribute('id', `tr${x}`);
                     x++;
                 }
 
@@ -384,7 +406,7 @@ function tiraFiltros() {
     document.getElementById("cuba").checked = false;
     document.getElementById("franca").checked = false;
     document.getElementById("filtros-localizacao").style.display = "none";
-    document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "none";
+    document.getElementById("filtros-localizacao").style.marginTop = "0px";
 }
 
 function abreLocalizacao() {
@@ -412,7 +434,6 @@ function aplica_filtros() {
     var checkboxFranca = document.getElementById("franca").checked;
     var checkboxCuba = document.getElementById("cuba").checked;
     var checkboxLocalizacao = document.getElementById("localização").checked;
-    document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "none"
     localStorage.setItem("todas" + utilizador, checkboxTodas)
     localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
     localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
@@ -462,7 +483,7 @@ function aplica_filtros() {
                     }
                 }
                     if(localStorage.getItem("franca" + utilizador) == "true"){
-                        filtrosDesejados.push(" Franca")
+                        filtrosDesejados.push(" França")
                         
                         for(let img = 0; img < listFiltrosImgs.length; img++) {
                             let imageToCheck = listFiltrosImgs[img]["franca"];
@@ -536,7 +557,7 @@ function aplica_filtros() {
 
     if(filtrosDesejados.length != 0) {
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
-        document.getElementById("p-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
+        document.getElementById("div-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -544,7 +565,6 @@ function aplica_filtros() {
         for(var i = 0; i < arrayImgFicar.length; i++){
             if(i % 4 == 0 || x == 0){
                 trElement = document.createElement('tr');
-                trElement.setAttribute('id', "tr${x}");
                 x++
             }
             let srcImg = arrayImgFicar[i];
@@ -559,9 +579,10 @@ function aplica_filtros() {
             trElement.appendChild(linha);
             tabela.appendChild(trElement);
         }
-    }else{
+    } else {
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
-        document.getElementById("p-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
+        document.getElementById("div-filtros-aplicados").innerHTML = ""
+        document.getElementById("tabela").style.marginTop = "0px"
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML = "";
         let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
@@ -572,7 +593,6 @@ function aplica_filtros() {
         for (let imagens of arrayImagens) {
                 if(i%4 == 0 || x == 0){
                     trElement = document.createElement('tr');
-                    trElement.setAttribute('id', `tr${x}`);
                     x++;
                 }
 
@@ -604,19 +624,12 @@ function aplica_filtros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
     document.getElementById("popup-filtros-galeria").style.display = "none" 
-    $('.popupTextoFiltrosAplicados').fadeIn(9000);
-    document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "block"
     $('.popupFiltrosAplicados').fadeOut(7000);
-    
     document.getElementById("filtros-localizacao").style.display = "none";
 }
 
 function closePopupFiltrosAplicados(){
     document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "none";
-}
-
-function closePopupTextoFiltrosAplicados() {
-    document.getElementsByClassName("popupTextoFiltrosAplicados")[0].style.display = "none";
 }
 
 function closePopup(disponibilidade) {
