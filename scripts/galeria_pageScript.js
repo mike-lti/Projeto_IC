@@ -377,7 +377,7 @@ function openFiltros() {
     
     document.getElementById("imagem_filtros").src = "images/filtros_icon1.png";
     if ( document.getElementById("popup-filtros-galeria").style.display == "block" ) {
-        document.getElementById("popup-filtros-galeria").style.display = "none";
+        $("#popup-filtros-galeria").slideUp();
         document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
         $("input[type=checkbox]").attr("disabled", true);
         document.getElementById("desfocadas").checked = false;
@@ -388,7 +388,7 @@ function openFiltros() {
         document.getElementById("dia").checked = false;
         document.getElementById("filtros-localizacao").style.display = "none";
     } else {
-        document.getElementById("popup-filtros-galeria").style.display = "block";
+        $("#popup-filtros-galeria").slideDown();
         $("input[type=checkbox]").attr("disabled", false);
     }
 }
@@ -396,7 +396,7 @@ function openFiltros() {
 function tiraFiltros() {
     $("input[type=checkbox]").attr("disabled", false);
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
-    document.getElementById("popup-filtros-galeria").style.display = "none";
+    $("#popup-filtros-galeria").slideUp();
     document.getElementById("desfocadas").checked = false;
     document.getElementById("localização").checked = false;
     document.getElementById("jack_russell").checked = false;
@@ -419,35 +419,29 @@ function abreLocalizacao() {
     }
 }
 
-function aplica_filtros() {
+function aplica_filtros(funcao) {
     
-    let imagensFiltradas = []  
-    let filtrosDesejados = [] 
-    var listFiltrosToParse = localStorage.getItem("imagensFiltros" + utilizador)
-    var listFiltrosImgs = JSON.parse(listFiltrosToParse);
-    var checkboxTodas = document.getElementById("todas").checked; 
-    var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
-    var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
-    var checkboxMonumentos = document.getElementById("monumentos").checked;
-    var checkboxPraia = document.getElementById("praia").checked;
-    var checkboxDia = document.getElementById("dia").checked;
-    var checkboxFranca = document.getElementById("franca").checked;
-    var checkboxCuba = document.getElementById("cuba").checked;
-    var checkboxLocalizacao = document.getElementById("localização").checked;
-    localStorage.setItem("todas" + utilizador, checkboxTodas)
-    localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
-    localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
-    localStorage.setItem("monumentos" + utilizador, checkboxMonumentos)
-    localStorage.setItem("praia" + utilizador, checkboxPraia)
-    localStorage.setItem("dia" + utilizador, checkboxDia)
-    localStorage.setItem("franca" + utilizador, checkboxFranca)
-    localStorage.setItem("cuba" + utilizador, checkboxCuba)
-
-
-    if(localStorage.getItem("todas" + utilizador) == "true"){
-        filtrosDesejados.push(" Todas")
-        imagensFiltradas = listFiltrosImgs
-    }
+    if (funcao == "filtros") {
+        let imagensFiltradas = []  
+        let filtrosDesejados = [] 
+        var listFiltrosToParse = localStorage.getItem("imagensFiltros" + utilizador)
+        var listFiltrosImgs = JSON.parse(listFiltrosToParse);
+        var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
+        var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
+        var checkboxMonumentos = document.getElementById("monumentos").checked;
+        var checkboxPraia = document.getElementById("praia").checked;
+        var checkboxDia = document.getElementById("dia").checked;
+        var checkboxFranca = document.getElementById("franca").checked;
+        var checkboxCuba = document.getElementById("cuba").checked;
+        var checkboxLocalizacao = document.getElementById("localização").checked;
+        localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
+        localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
+        localStorage.setItem("monumentos" + utilizador, checkboxMonumentos)
+        localStorage.setItem("praia" + utilizador, checkboxPraia)
+        localStorage.setItem("dia" + utilizador, checkboxDia)
+        localStorage.setItem("franca" + utilizador, checkboxFranca)
+        localStorage.setItem("cuba" + utilizador, checkboxCuba)
+        document.getElementById("remover-filtros").style.display = "block";
 
         if(localStorage.getItem("desfocadas" + utilizador) == "true"){    
             filtrosDesejados.push(" Desfocadas")
@@ -525,37 +519,36 @@ function aplica_filtros() {
 
                                         if(imageToCheck == "true"){
                                             imagensFiltradas.push(listFiltrosImgs[img])
-                                               
+                                                
                                         }
                                         
                                     }
                                 }
 
-    localStorage.setItem("filtrosSelecionados" + utilizador, filtrosDesejados);
-    var srcImagensFiltradas = []; 
-    for(let i = 0; i < imagensFiltradas.length; i++){
-        let srcImg = imagensFiltradas[i]["imgSrcObj"];
-        srcImagensFiltradas.push(srcImg);
-    }
-    var arrayImgFicar = [];
-    
-    for (var x = 0; x < srcImagensFiltradas.length; x++ ) {
-        var imgComparada = srcImagensFiltradas[x];
-        for (var y = x + 1; y < srcImagensFiltradas.length; y++ ) {
-            var imgComparar = srcImagensFiltradas[y];
-            if (imgComparada == imgComparar) {
-                delete srcImagensFiltradas[y];
+        localStorage.setItem("filtrosSelecionados" + utilizador, filtrosDesejados);
+        var srcImagensFiltradas = []; 
+        for(let i = 0; i < imagensFiltradas.length; i++){
+            let srcImg = imagensFiltradas[i]["imgSrcObj"];
+            srcImagensFiltradas.push(srcImg);
+        }
+        var arrayImgFicar = [];
+        
+        for (var x = 0; x < srcImagensFiltradas.length; x++ ) {
+            var imgComparada = srcImagensFiltradas[x];
+            for (var y = x + 1; y < srcImagensFiltradas.length; y++ ) {
+                var imgComparar = srcImagensFiltradas[y];
+                if (imgComparada == imgComparar) {
+                    delete srcImagensFiltradas[y];
+                } 
+            }
+        }   
+
+        for (let img of srcImagensFiltradas) {
+            if (img != undefined) {
+                arrayImgFicar.push(img);
             } 
         }
-    }   
 
-    for (let img of srcImagensFiltradas) {
-        if (img != undefined) {
-            arrayImgFicar.push(img);
-        } 
-    }
-
-    if(filtrosDesejados.length != 0) {
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("div-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela tbody");
@@ -575,14 +568,30 @@ function aplica_filtros() {
                                     "<img width='250px' height='155px' src='" + srcImg + "'>" +
                                 "</div>" +
                             "</label>";
-                       
+                        
             trElement.appendChild(linha);
             tabela.appendChild(trElement);
         }
+
+        localStorage.setItem("imagensFiltradas" + utilizador, JSON.stringify(arrayImgFicar));
+        checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
+        checkboxFranca = document.getElementById("franca").checked = false;
+        checkboxCuba = document.getElementById("cuba").checked = false;
+        checkboxLocalizacao = document.getElementById("localização").checked = false;
+        checkboxJack_Russell = document.getElementById("jack_russell").checked = false;
+        checkboxMonumentos = document.getElementById("monumentos").checked = false;
+        checkboxPraia = document.getElementById("praia").checked = false;
+        checkboxDia = document.getElementById("dia").checked = false;
+        $("input[type=checkbox]").attr("disabled", true);
+        document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
+        document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
+        document.getElementById("popup-filtros-galeria").style.display = "none" 
+        $('.popupFiltrosAplicados').fadeOut(7000);
+        document.getElementById("filtros-localizacao").style.display = "none";
     } else {
+        document.getElementById("remover-filtros").style.display = "none";
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("div-filtros-aplicados").innerHTML = ""
-        document.getElementById("tabela").style.marginTop = "0px"
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML = "";
         let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
@@ -591,41 +600,26 @@ function aplica_filtros() {
         var trElement;
 
         for (let imagens of arrayImagens) {
-                if(i%4 == 0 || x == 0){
-                    trElement = document.createElement('tr');
-                    x++;
-                }
+            if(i%4 == 0 || x == 0){
+                trElement = document.createElement('tr');
+                x++;
+            }
 
-                let linha = document.createElement("td");
-                linha.innerHTML = "<label class='option-item'>" +
-                                    "<input type='checkbox' class='checkbox'>" +
-                                    "<div class='option-inner' onclick=close_open_slideShow('abrir','" + imagens + "')>" +
-                                        "<img width='250px' height='155px' src='" + imagens + "'>" +
-                                    "</div>" +
-                                "</label>";
-                trElement.appendChild(linha);
-                tabela.appendChild(trElement);
-                i++;
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item'>" +
+                                "<input type='checkbox' class='checkbox'>" +
+                                "<div class='option-inner' onclick=close_open_slideShow('abrir','" + imagens + "')>" +
+                                    "<img width='250px' height='155px' src='" + imagens + "'>" +
+                                "</div>" +
+                            "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++;
 
-    }
+        }
         
     }
-    localStorage.setItem("imagensFiltradas" + utilizador, JSON.stringify(arrayImgFicar));
-    checkboxTodas = document.getElementById("todas").checked = false;
-    checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
-    checkboxFranca = document.getElementById("franca").checked = false;
-    checkboxCuba = document.getElementById("cuba").checked = false;
-    checkboxLocalizacao = document.getElementById("localização").checked = false;
-    checkboxJack_Russell = document.getElementById("jack_russell").checked = false;
-    checkboxMonumentos = document.getElementById("monumentos").checked = false;
-    checkboxPraia = document.getElementById("praia").checked = false;
-    checkboxDia = document.getElementById("dia").checked = false;
-    $("input[type=checkbox]").attr("disabled", true);
-    document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
-    document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
-    document.getElementById("popup-filtros-galeria").style.display = "none" 
-    $('.popupFiltrosAplicados').fadeOut(7000);
-    document.getElementById("filtros-localizacao").style.display = "none";
+    
 }
 
 function closePopupFiltrosAplicados(){
@@ -640,10 +634,9 @@ function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
     document.getElementsByClassName("dropup-content")[0].style.display == "") {
       document.getElementsByClassName("dropup-content")[0].style.display = "block";
-      $('.dropup-content').fadeIn(1000);
+      $('.dropup-content').fadeIn(100);
     } else {
-      document.getElementsByClassName("dropup-content")[0].style.display = "none";
-      $('.dropup-content').fadeOut(1000);
+      $('.dropup-content').fadeOut(100);
     }
     
 }
@@ -671,7 +664,7 @@ function slideShow(direcao) {
         } else {
             document.getElementById("seta-direita").style.display = "block";
         }
-        var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagensImportadas[indiceImagemAtual + 1 ];
+        var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagensImportadas[indiceImagemAtual + 1];
         document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual + 2) + "/" + tamanhoArray;
     } else {
         if (arrayImagensImportadas.indexOf
@@ -686,6 +679,7 @@ function slideShow(direcao) {
     }
     
     var indiceImagemAlterada = arrayImagensImportadas.indexOf(imagemAlterada);
+    localStorage.setItem("imagemAtual", arrayImagensImportadas[indiceImagemAtual + 1]);
 
     if (indiceImagemAlterada == 0) {
         document.getElementById("seta-esquerda").style.display = "none";
@@ -704,6 +698,7 @@ function slideShow(direcao) {
 
 function close_open_slideShow(funcao, imagem) {
 
+    
     document.getElementsByClassName("dimmer")[0].disabled = true;
     document.getElementById("tabela").disabled = true;
     document.getElementById("imagemCarrossel").src = imagem;
@@ -713,18 +708,21 @@ function close_open_slideShow(funcao, imagem) {
     let indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
 
     if($("input[type=checkbox]").attr("disabled")) {
-        if (funcao == "fechar") {
-            document.getElementsByClassName("slideShow")[0].style.display = "none";
+        if (funcao == "fechar") {       
+            document.getElementById("imagemCarrossel").src = localStorage.getItem("imagemAtual");  
+            $(".slideShow").fadeToggle(200)           
+            /* document.getElementsByClassName("slideShow")[0].style.display = "none"; */
             document.getElementsByClassName("dimmer")[0].style.opacity="0";
             document.getElementsByClassName("numero-fotografias")[0].style.display = "none";
             enableBackground();
             
     } else {
-        document.getElementsByClassName("slideShow")[0].style.display = "block";
+        $(".slideShow").fadeToggle(200)
         document.getElementsByClassName("dimmer")[0].style.opacity="1";
         document.getElementsByClassName("numero-fotografias")[0].style.display = "block";
         document.getElementById("imagemCarrossel").src = imagem;
         document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual + 1) + "/" + tamanhoArray;
+        localStorage.setItem("imagemAtual", imagem);
         disableBackground();
 
         }

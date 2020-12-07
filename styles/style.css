@@ -246,6 +246,19 @@ nav a{
     bottom: 480px;
     left: 760px;
 }
+
+#botao-popup-filtros-aplicados {
+    position: absolute;
+    right: 10px;
+    bottom: 13px;
+    margin-left: 30px;
+    width: 60px;
+    background-color: rgb(4, 125, 154);
+    color: white;
+    border-radius: 5px;
+    font-size: large;
+}
+
 /*--------------------------------*/
 
 /*----------------IMPORTAR-----------------------*/
@@ -397,6 +410,7 @@ nav a{
 #text-creation-filtros{
     position: absolute;
     text-decoration: solid;
+    font-size: 20px;
     top: 88%;
 }
 
@@ -467,7 +481,6 @@ nav a{
 }
 
 #tabela {
-    margin-top: 0px;
     display: none;
     padding-top: 15px;
     display: flex;
@@ -535,11 +548,12 @@ nav a{
 
 #botao-selecionar-todas-album {
     position: absolute;
-    right: 70px;
+    right: 43px;
     top: 6px;
-    width: 115px;
+    font-size: large;
+    width: 150px;
     height: 45px;
-    background-color:rgb(4, 125, 154);
+    background-color: rgb(4, 125, 154);
     color: white;
     border-radius: 5px;
 }
@@ -564,12 +578,13 @@ nav a{
 
 #texto-cria-album {
     position: absolute;
-    left: 250px;
+    left: 240px;
+    font-size: large;
 }
 
 #botao-confirmar-selecao{
     position: absolute;
-    right: 40px;
+    right: 43px;
     color: white;
     font-size: large;
     background-color:rgb(4, 125, 154);
@@ -645,15 +660,15 @@ nav a{
     background-color: lightgray;
     border-radius: 5px;
     width: 140px;
-    height: 220px;
+    height: 190px;
     text-align: left;
     z-index: 10;
 }
 
 #popup-filtros-album {
     position: absolute;
-    margin-top: 90px;
-    margin-left: 60px;
+    top: 175px;
+    left: 260px;
 }
 
 .popupAlbum{
@@ -681,12 +696,12 @@ nav a{
     bottom: 13px;
 }
 
-.popupFiltrosAplicados{
+.popupFiltrosAplicados{ 
     display: none;
     position: absolute;
     margin: auto;
     left: 510px;
-    top: 91%;
+    top: 88%;
     width: 36%;
     height: 8%;
     background-color: white;
@@ -707,6 +722,7 @@ nav a{
     border-radius: 10px;
 }
 
+
 #p-album{
     position: absolute;
     margin-left: 110px;
@@ -714,6 +730,21 @@ nav a{
     height: 10px;
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#remover-filtros-album {
+    display: none;
+    position: absolute;
+    left: 319px;
+    color: white;
+    font-size: large;
+    background-color: rgb(4, 125, 154);
+    border-color: rgb(4, 125, 154);
+    border-radius: 5px;
+    width: 140px;
+    height: 40px;
+    top: 126px;
+    z-index: 10;
 }
 
 /*--------------------------------*/
@@ -994,6 +1025,33 @@ nav a{
     top: 10px;
     text-align: left;
     margin-left: 10px;
+}
+
+#remover-filtros {
+    display: none;
+    background-color:rgb(4, 125, 154);
+    color: white;
+    position: absolute;
+    top: 90px;
+    right: 33px;
+    height: 30px;
+    width: auto;
+    border-radius: 5px;
+    font-size: 16px;
+    
+}
+
+.popupFiltrosAplicados-album{ 
+    display: none;
+    position: absolute;
+    margin: auto;
+    left: 510px;
+    top: 77%;
+    width: 36%;
+    height: 8%;
+    background-color: white;
+    z-index: 9;
+    border-radius: 5px;
 }
 
 /*--------------------------------*/

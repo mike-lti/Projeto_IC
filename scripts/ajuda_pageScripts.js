@@ -16,10 +16,9 @@ function open_dropup() {
   if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
   document.getElementsByClassName("dropup-content")[0].style.display == "") {
     document.getElementsByClassName("dropup-content")[0].style.display = "block";
-    $('.dropup-content').fadeIn(1000);
+    $('.dropup-content').fadeIn(100);
   } else {
-    document.getElementsByClassName("dropup-content")[0].style.display = "none";
-    $('.dropup-content').fadeOut(1000);
+    $('.dropup-content').fadeOut(100);
   }
   
 }

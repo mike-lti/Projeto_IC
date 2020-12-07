@@ -74,6 +74,7 @@ function albumCriado() {
 function closeCriaAlbum() {
     document.getElementsByClassName('popup-album')[0].style.display ='none';
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
+    document.getElementById("remover-filtros-album").style.display = "none";
     enableBackground()
     tiraFiltros();
 }
@@ -101,10 +102,10 @@ function closePopupAlbumCriado() {
 function openFiltros() {
     document.getElementById("imagem_filtros").src = "images/filtros_icon_black1.png";
     if ( document.getElementById("popup-filtros-album").style.display == "block" ) {
-        document.getElementById("popup-filtros-album").style.display = "none";
+        $("#popup-filtros-album").slideUp();
         document.getElementById("imagem_filtros").src = "images/filtros_icon_black.png";
     } else {
-        document.getElementById("popup-filtros-album").style.display = "block";
+        $("#popup-filtros-album").slideDown();
     }
 }
 
@@ -132,35 +133,31 @@ function abreLocalizacao() {
     }
 }
 
-function aplica_filtros() {
+function aplica_filtros(funcao) {
 
-    let imagensFiltradas = []  
-    let filtrosDesejados = [] 
-    var listFiltrosToParse = localStorage.getItem("imagensFiltros" + utilizador)
-    var listFiltrosImgs = JSON.parse(listFiltrosToParse);
-    var checkboxTodas = document.getElementById("todas").checked; 
-    var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
-    var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
-    var checkboxMonumentos = document.getElementById("monumentos").checked;
-    var checkboxPraia = document.getElementById("praia").checked;
-    var checkboxDia = document.getElementById("dia").checked;
-    var checkboxFranca = document.getElementById("franca").checked;
-    var checkboxCuba = document.getElementById("cuba").checked;
-    var checkboxLocalizacao = document.getElementById("localização").checked;
+    if (funcao == "filtros") {
+        let imagensFiltradas = []  
+        let filtrosDesejados = [] 
+        var listFiltrosToParse = localStorage.getItem("imagensFiltros" + utilizador)
+        var listFiltrosImgs = JSON.parse(listFiltrosToParse); 
+        var checkboxDesfocadas = document.getElementById("desfocadas").checked; 
+        var checkboxJack_Russell = document.getElementById("jack_russell").checked; 
+        var checkboxMonumentos = document.getElementById("monumentos").checked;
+        var checkboxPraia = document.getElementById("praia").checked;
+        var checkboxDia = document.getElementById("dia").checked;
+        var checkboxFranca = document.getElementById("franca").checked;
+        var checkboxCuba = document.getElementById("cuba").checked;
+        var checkboxLocalizacao = document.getElementById("localização").checked;
+        document.getElementById("remover-filtros-album").style.display = "block";
 
-    localStorage.setItem("todas" + utilizador, checkboxTodas)
-    localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
-    localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
-    localStorage.setItem("monumentos" + utilizador, checkboxMonumentos)
-    localStorage.setItem("praia" + utilizador, checkboxPraia)
-    localStorage.setItem("dia" + utilizador, checkboxDia)
-    localStorage.setItem("franca" + utilizador, checkboxFranca)
-    localStorage.setItem("cuba" + utilizador, checkboxCuba)
+        localStorage.setItem("desfocadas" + utilizador, checkboxDesfocadas)
+        localStorage.setItem("jack_russell" + utilizador, checkboxJack_Russell)
+        localStorage.setItem("monumentos" + utilizador, checkboxMonumentos)
+        localStorage.setItem("praia" + utilizador, checkboxPraia)
+        localStorage.setItem("dia" + utilizador, checkboxDia)
+        localStorage.setItem("franca" + utilizador, checkboxFranca)
+        localStorage.setItem("cuba" + utilizador, checkboxCuba)
 
-    if(localStorage.getItem("todas" + utilizador) == "true"){
-        filtrosDesejados.push(" Todas")
-        imagensFiltradas = listFiltrosImgs
-    }
         if(localStorage.getItem("desfocadas" + utilizador) == "true"){    
             filtrosDesejados.push(" Desfocadas")
             for(let img = 0; img < listFiltrosImgs.length; img++) {
@@ -213,7 +210,7 @@ function aplica_filtros() {
                             }
                         }
                             if(localStorage.getItem("praia" + utilizador) == "true"){
-                                filtrosDesejados.push(" praia")
+                                filtrosDesejados.push(" Praia")
                                 for(let img = 0; img < listFiltrosImgs.length; img++) {
                                     let imageToCheck = listFiltrosImgs[img]["praia"];
                                     if(imageToCheck == "true"){
@@ -230,32 +227,31 @@ function aplica_filtros() {
                                         }
                                     }
                                 }
-    localStorage.setItem("filtrosSelecionados" + utilizador, filtrosDesejados);
-    var srcImagensFiltradas = []; 
+        localStorage.setItem("filtrosSelecionados" + utilizador, filtrosDesejados);
+        var srcImagensFiltradas = []; 
 
-    var srcImagensFiltradas = []; 
-    for(let i = 0; i < imagensFiltradas.length; i++){
-        let srcImg = imagensFiltradas[i]["imgSrcObj"];
-        srcImagensFiltradas.push(srcImg);
-    }
-    var arrayImgFicar = [];
-    
-    for (var x = 0; x < srcImagensFiltradas.length; x++ ) {
-        var imgComparada = srcImagensFiltradas[x];
-        for (var y = x + 1; y < srcImagensFiltradas.length; y++ ) {
-            var imgComparar = srcImagensFiltradas[y];
-            if (imgComparada == imgComparar) {
-                delete srcImagensFiltradas[y];
+        var srcImagensFiltradas = []; 
+        for(let i = 0; i < imagensFiltradas.length; i++){
+            let srcImg = imagensFiltradas[i]["imgSrcObj"];
+            srcImagensFiltradas.push(srcImg);
+        }
+        var arrayImgFicar = [];
+        
+        for (var x = 0; x < srcImagensFiltradas.length; x++ ) {
+            var imgComparada = srcImagensFiltradas[x];
+            for (var y = x + 1; y < srcImagensFiltradas.length; y++ ) {
+                var imgComparar = srcImagensFiltradas[y];
+                if (imgComparada == imgComparar) {
+                    delete srcImagensFiltradas[y];
+                } 
+            }
+        }   
+
+        for (let img of srcImagensFiltradas) {
+            if (img != undefined) {
+                arrayImgFicar.push(img);
             } 
         }
-    }   
-
-    for (let img of srcImagensFiltradas) {
-        if (img != undefined) {
-            arrayImgFicar.push(img);
-        } 
-    }
-    if(filtrosDesejados.length != 0) {
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("text-creation-filtros").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
         var tabela = document.querySelector("#tabela-album tbody");
@@ -277,13 +273,31 @@ function aplica_filtros() {
                                     "<img width='220px' height='140px' src='" + srcImg + "'>" +
                                 "</div>" +
                             "</label>";
-                       
+                    
             trElement.appendChild(linha);
             tabela.appendChild(trElement);
         }
-    }else{
-        var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
-        document.getElementById("text-creation-filtros").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
+
+        localStorage.setItem("imagensFiltradas" + utilizador, JSON.stringify(arrayImgFicar));
+        checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
+        checkboxFranca = document.getElementById("franca").checked = false;
+        checkboxCuba = document.getElementById("cuba").checked = false;
+        checkboxLocalizacao = document.getElementById("localização").checked = false;
+        checkboxJack_Russell = document.getElementById("jack_russell").checked = false;
+        checkboxMonumentos = document.getElementById("monumentos").checked = false;
+        checkboxPraia = document.getElementById("praia").checked = false;
+        checkboxDia = document.getElementById("dia").checked = false;
+        document.getElementById("imagem_filtros").src = "images/filtros_icon_black.png";
+        document.getElementsByClassName("popupFiltrosAplicados-album")[0].style.display = "block";
+        document.getElementById("popup-filtros-album").style.display = "none";
+        $('.popupFiltrosAplicados-album').fadeOut(7000);
+        console.log(listFiltrosImgs);
+        tiraFiltros();
+
+    } else{
+        document.getElementById("remover-filtros-album").style.display = "none";
+        var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador);
+        document.getElementById("text-creation-filtros").innerHTML = "";
         var tabela = document.querySelector("#tabela-album tbody");
         let arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         tabela.innerHTML=" ";   
@@ -305,33 +319,18 @@ function aplica_filtros() {
                                     "<img width='220px' height='140px' src='" + srcImg + "'>" +
                                 "</div>" +
                             "</label>";
-                       
+                    
             trElement.appendChild(linha);
             tabela.appendChild(trElement)
             i++;
         }
     
     }
-    localStorage.setItem("imagensFiltradas" + utilizador, JSON.stringify(arrayImgFicar));
-    checkboxTodas = document.getElementById("todas").checked = false;
-    checkboxDesfocadas = document.getElementById("desfocadas").checked = false;
-    checkboxFranca = document.getElementById("franca").checked = false;
-    checkboxCuba = document.getElementById("cuba").checked = false;
-    checkboxLocalizacao = document.getElementById("localização").checked = false;
-    checkboxJack_Russell = document.getElementById("jack_russell").checked = false;
-    checkboxMonumentos = document.getElementById("monumentos").checked = false;
-    checkboxPraia = document.getElementById("praia").checked = false;
-    checkboxDia = document.getElementById("dia").checked = false;
-    document.getElementById("imagem_filtros").src = "images/filtros_icon_black.png";
-    document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "block"
-    document.getElementById("popup-filtros-album").style.display = "none" 
-    $('.popupFiltrosAplicados').fadeOut(7000);
-    console.log(listFiltrosImgs);
-    tiraFiltros();
+        
 }
 
 function closePopupFiltrosAplicados(){
-    document.getElementsByClassName("popupFiltrosAplicados")[0].style.display = "none"
+    document.getElementsByClassName("popupFiltrosAplicados-album")[0].style.display = "none"
 
 }
 
@@ -486,7 +485,7 @@ function preencheTabelaAlbumCriado() {
         mostraCapaAlbunsWorkspace();
         enableBackground()
     }
-    
+    document.getElementById("remover-filtros-album").style.display = "none";
     window.location.reload()
 }  
 
@@ -684,10 +683,9 @@ function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
     document.getElementsByClassName("dropup-content")[0].style.display == "") {
       document.getElementsByClassName("dropup-content")[0].style.display = "block";
-      $('.dropup-content').fadeIn(1000);
+      $('.dropup-content').fadeIn(100);
     } else {
-      document.getElementsByClassName("dropup-content")[0].style.display = "none";
-      $('.dropup-content').fadeOut(1000);
+      $('.dropup-content').fadeOut(100);
     }
     
 }
@@ -761,6 +759,7 @@ function slideShow(direcao) {
     }
     
     var indiceImagemAlterada = arrayImagensImportadas.indexOf(imagemAlterada);
+    localStorage.setItem("imagemAtual", arrayImagensImportadas[indiceImagemAtual + 1 ]);
 
     if (indiceImagemAlterada == 0) {
         document.getElementById("seta-esquerda").style.display = "none";
@@ -790,7 +789,9 @@ function close_open_slideShow(funcao, imagem) {
 
     if($("input[type=checkbox]").attr("disabled")) {
         if (funcao == "fechar") {
+            document.getElementById("imagemCarrossel").src = localStorage.getItem("imagemAtual");
             document.getElementById('fundo-fotos-album').style.display ='block';
+            $(".slideShow").fadeToggle(200)  
             document.getElementById('fotos-album').style.display ='block';
             document.getElementById('opcoes-album').style.display ='block';
             document.getElementsByClassName("slideShow")[0].style.display = "none";
@@ -801,12 +802,12 @@ function close_open_slideShow(funcao, imagem) {
         document.getElementById('fundo-fotos-album').style.display ='none';
         document.getElementById('fotos-album').style.display ='none';
         document.getElementById('opcoes-album').style.display ='none';
-        document.getElementsByClassName("slideShow")[0].style.display = "block";
+        $(".slideShow").fadeToggle(200);
         document.getElementsByClassName("dimmer")[0].style.opacity="1";
         document.getElementById("imagemCarrossel").src = imagem;
         document.getElementsByClassName("numero-fotografias")[0].style.display = "block";
         document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual + 1) + "/" + tamanhoArray;
-        
+        localStorage.setItem("imagemAtual", imagem);
 
         }
     }

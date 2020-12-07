@@ -277,10 +277,9 @@ function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
     document.getElementsByClassName("dropup-content")[0].style.display == "") {
       document.getElementsByClassName("dropup-content")[0].style.display = "block";
-      $('.dropup-content').fadeIn(1000);
+      $('.dropup-content').fadeIn(100);
     } else {
-      document.getElementsByClassName("dropup-content")[0].style.display = "none";
-      $('.dropup-content').fadeOut(1000);
+      $('.dropup-content').fadeOut(100);
     }
     
 }
@@ -315,6 +314,7 @@ function slideShow(direcao) {
     }
     
     var indiceImagemAlterada = arrayImagensImportadas.indexOf(imagemAlterada);
+    localStorage.setItem("imagemAtual", arrayImagensImportadas[indiceImagemAtual + 1 ]);
 
     if (indiceImagemAlterada == 0) {
         document.getElementById("seta-esquerda").style.display = "none";
@@ -344,17 +344,20 @@ function close_open_slideShow(funcao, imagem) {
 
     if($("input[type=checkbox]").attr("disabled")) {
         if (funcao == "fechar") {
+            document.getElementById("imagemCarrossel").src = localStorage.getItem("imagemAtual");  
+            $(".slideShow").fadeToggle();
             document.getElementsByClassName("slideShow")[0].style.display = "none";
             document.getElementsByClassName("dimmer")[0].style.opacity="0";
             document.getElementsByClassName("numero-fotografias")[0].style.display = "none";
             enableBackground();
             
     } else {
-        document.getElementsByClassName("slideShow")[0].style.display = "block";
+        $(".slideShow").fadeToggle();
         document.getElementsByClassName("dimmer")[0].style.opacity="1";
         document.getElementsByClassName("numero-fotografias")[0].style.display = "block";
         document.getElementById("imagemCarrossel").src = imagem;
         document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual + 1) + "/" + tamanhoArray;
+        localStorage.setItem("imagemAtual", imagem);
         disableBackground();
 
         }

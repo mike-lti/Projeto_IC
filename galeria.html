@@ -109,11 +109,9 @@
             </div>
             <p class="numero-fotografias"></p>
             </div>
-
+            <button id="remover-filtros" onclick="aplica_filtros('remover-filtros')">Remover Filtros</button>
             <div class="popup-filtros" id="popup-filtros-galeria">
                 <form name="filtros">
-                    <input type="checkbox" id="todas" name="todas" value="todas">
-                    <label for="todas"> Todas</label><br>
                     <input type="checkbox" id="desfocadas" name="desfocadas" value="desfocadas">
                     <label for="desfocadas"> Desfocadas</label><br>
                     <input type="checkbox" id="jack_russell" name="jack_russell" value="jack_russell">
@@ -133,7 +131,7 @@
                         <label for="cuba"> Cuba </label><br><br>
                     </div>
                 </form>
-                <button onclick="aplica_filtros()" id="botao-confirmar-filtros">Confirmar</button>
+                <button onclick="aplica_filtros('filtros')" id="botao-confirmar-filtros">Confirmar</button>
                 <button id="botao-cancelar-filtros" onclick="tiraFiltros()">Cancelar</button>
             </div>
             <div class="popupFiltrosAplicados"><p>Os seus filtros foram aplicados com sucesso!

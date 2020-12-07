@@ -108,11 +108,9 @@
                 </div>
                 <p class="numero-fotografias"></p>
                 
-
+                <button id="remover-filtros-album" onclick="aplica_filtros('remover-filtros')">Remover Filtros</button>
                 <div class="popup-filtros" id="popup-filtros-album">
                         <form name="filtros">
-                            <input type="checkbox" id="todas" name="todas" value="todas">
-                            <label for="todas"> Todas</label><br>
                             <input type="checkbox" id="desfocadas" name="desfocadas" value="desfocadas">
                             <label for="desfocadas"> Desfocadas</label><br>
                             <input type="checkbox" id="jack_russell" name="jack_russell" value="jack_russell">
@@ -132,7 +130,7 @@
                                 <label for="cuba"> Cuba </label><br><br>
                             </div>
                         </form>
-                        <button onclick="aplica_filtros()" id="botao-confirmar-filtros">Confirmar</button>
+                        <button onclick="aplica_filtros('filtros')" id="botao-confirmar-filtros">Confirmar</button>
                         <button id="botao-cancelar-filtros" onclick="tiraFiltros()">Cancelar</button>
                 </div>
 
@@ -140,9 +138,9 @@
                     <button id="botao-selecionar-todas-album" onclick="selecionaTodos('popup')">Selecionar Todas</button>
                     <div class="closeButton" onclick = "closeCriaAlbum()"> &times; </div>
                     <p id="texto-cria-album">Selecione as fotografias que deseja adicionar ao seu álbum:</p>
-                    
                     <button id="botao-cancelar-selecao" onclick="closeCriaAlbum()" >Cancelar</button>
                     <button id="botao-confirmar-selecao" onclick="preencheTabelaAlbumCriado()">Confirmar</button>
+                    <button id="remover-filtros-album" onclick="aplica_filtros('remover-filtros')">Remover Filtros</button>
                     <p id="text-creation-filtros"></p>
                     <div class="botao-filtros" id="botao-filtros-album" onclick="openFiltros()" ><img id="imagem_filtros" src="images/filtros_icon_black.png" width="40" height="40"  alt=""></div>
                     <div id="fotos-adicionar-album">
@@ -154,7 +152,7 @@
                     </div>
                 </div>
     
-                <div class="popupFiltrosAplicados"><p>Os seus filtros foram aplicados com sucesso!
+                <div class="popupFiltrosAplicados-album"><p>Os seus filtros foram aplicados com sucesso!
                     <button type="button" id="botao-popup-filtros-aplicados" onclick="closePopupFiltrosAplicados()">OK</button>
                 </p>               
                 </div>
