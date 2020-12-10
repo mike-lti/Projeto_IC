@@ -1,4 +1,5 @@
 Retirar o passo de voltar a selecionar as fotos sempre que involve passar de uma página para a outra (Criar albums na galeria)
+Erros HTML
 
 ---10/12/2020----
 Fotos Spike(erros):
