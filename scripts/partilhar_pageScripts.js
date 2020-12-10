@@ -152,7 +152,7 @@ function preencheTabelaAlbumPartilhar() {
 
 function preencheTabelaImagensPartilhar() {
 
-    if (localStorage.getItem("imagensImportadas" + utilizador) != null || localStorage.getItem("imagensImportadas" + utilizador) == "[]") {
+    if (localStorage.getItem("imagensImportadas" + utilizador) != null && localStorage.getItem("imagensImportadas" + utilizador) != "[]") {
 
         document.getElementById("bot_row_icons").style.opacity = 1;
         document.getElementById("top_row_icons").style.opacity = 1; 
@@ -192,12 +192,10 @@ function preencheTabelaImagensPartilhar() {
                 tabela.appendChild(trElement);
                 i++;
 
-                }
-
-    
+                }    
         
         } else {
-        document.getElementById("p-importar").innerHTML = "Ainda não tem nenhuma fotografia na sua galeria. Importe primeiro!";
+        document.getElementById("p-importar").innerHTML = "Não tem nenhuma fotografia na sua galeria. Importe primeiro!";
         document.getElementById("bot_row_icons").style.opacity = 0.5;
         document.getElementById("top_row_icons").style.opacity = 0.5;
         $("#top_row_icons").addClass("disabled");

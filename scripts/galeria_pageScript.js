@@ -644,17 +644,13 @@ function open_dropup() {
 function slideShow(direcao) {
     
     if (localStorage.getItem("imagensFiltradas" + utilizador) == "[]" || localStorage.getItem("imagensFiltradas" + utilizador) == null) { 
-        var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
-        var tamanhoArray = arrayImagensImportadas.length;
-        var imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
-        var indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
+        var arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
     } else {
-        var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensFiltradas" + utilizador));
-        var tamanhoArray = arrayImagensImportadas.length;
-        var imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
-        var indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
+        var arrayImagens = JSON.parse(localStorage.getItem("imagensFiltradas" + utilizador));        
     }
-    
+    var tamanhoArray = arrayImagensImportadas.length;
+    var imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
+    var indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
     
     
     if (direcao == "direita") {  
@@ -702,9 +698,15 @@ function close_open_slideShow(funcao, imagem) {
     document.getElementsByClassName("dimmer")[0].disabled = true;
     document.getElementById("tabela").disabled = true;
     document.getElementById("imagemCarrossel").src = imagem;
-    let arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
+
+    if (localStorage.getItem("imagensFiltradas" + utilizador) == "[]" || localStorage.getItem("imagensFiltradas" + utilizador) == null) { 
+        var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
+    } else {
+        var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensFiltradas" + utilizador));         
+    }
+    
     var tamanhoArray = arrayImagensImportadas.length;
-    let imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
+    var imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
     let indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
 
     if($("input[type=checkbox]").attr("disabled")) {
@@ -728,8 +730,7 @@ function close_open_slideShow(funcao, imagem) {
         }
     }
 
-    if (arrayImagensImportadas.indexOf
-    (arrayImagensImportadas[indiceImagemAtual]) == tamanhoArray - 1) {
+    if (arrayImagensImportadas.indexOf(arrayImagensImportadas[indiceImagemAtual]) == tamanhoArray - 1) {
         document.getElementById("seta-direita").style.display = "none";
     } else {
         document.getElementById("seta-direita").style.display = "block";
