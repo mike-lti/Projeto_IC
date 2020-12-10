@@ -7,7 +7,7 @@ $(document).ready(preencheTabelaImagensPartilhar());
 $(document).ready(currentAccPlacer());
 $(document).ready(popupAlbum());
 
-
+document.getElementById("botao-confirmar-partilha").disabled = true;
 
 function currentAccPlacer(){
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
@@ -83,13 +83,12 @@ function open_icon_partilha(icon) {
 }
 
 function verifica() {
-    /* var len = document.querySelectorAll('input[type=checkbox]:checked').length
-    console.log(len)
+   
     if (document.querySelectorAll('input[type=checkbox]:checked').length != 0) {
         document.getElementById("botao-confirmar-partilha").disabled = false;
     } else {
         document.getElementById("botao-confirmar-partilha").disabled = true;
-    } */
+    }
 }
 
 
@@ -128,8 +127,8 @@ function preencheTabelaAlbumPartilhar() {
     
                     let linha = document.createElement("td");
                     linha.innerHTML = "<label class='option-item-album'>" +
-                                        "<input type='checkbox' class='checkbox-album'>" +
-                                        "<div class='option-inner-album' onclick='verifica()'>" +
+                                        "<input type='checkbox' class='checkbox-album' onclick='verifica()'>" +
+                                        "<div class='option-inner-album' >" +
                                             "<img width='220px' height='140px' src='" + imagemCapa + "'>" +
                                             nomesAlbum[i] +
                                         "</div>" +
@@ -183,8 +182,8 @@ function preencheTabelaImagensPartilhar() {
 
                 let linha = document.createElement("td");
                 linha.innerHTML = "<label class='option-item-album'>" +
-                                    "<input type='checkbox' class='checkbox-album'>" +
-                                    "<div class='option-inner-album' onclick='verifica()'>" +
+                                    "<input type='checkbox' class='checkbox-album' onclick='verifica()'>" +
+                                    "<div class='option-inner-album'>" +
                                         "<img width='220px' height='140px' src='" + imagens + "'>" +
                                     "</div>" +
                                 "</label>";
