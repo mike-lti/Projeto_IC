@@ -144,12 +144,11 @@ function registerHandler(){
 
 }
 
-
 function loginHandler(){
     let formData = document.forms.loginData;
     dataUsername = formData.elements.username.value;
     dataPassword = formData.elements.password.value;
-    if(localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword || "admin" == dataUsername && "admin" == dataPassword){
+    if(localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword || "a" == dataUsername && "a" == dataPassword){
 
         localStorage.setItem("currentAccount", JSON.stringify(dataUsername));
         
@@ -166,8 +165,8 @@ function loginHandler(){
         document.getElementsByClassName("homepageOperations")[0].style.bottom = "170px";
         $('.homepageOperations').fadeOut(7000);
     }     
-
 }
+
 
 function showPass(){
     var checkShow = document.getElementById("passShow");
@@ -177,8 +176,6 @@ function showPass(){
         checkShow.type = "password";
     }
 }
-
-
 
 
 history.pushState(null, null, location.href); 
