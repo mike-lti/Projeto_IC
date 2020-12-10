@@ -27,6 +27,13 @@ if (localStorage.getItem("criarAlbum") == "True") {
     localStorage.setItem("criarAlbum", "False");
 }
 
+if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) == "[]") {
+    document.getElementById("botao-selecionar-album").disabled = true;
+    document.getElementById("botao-selecionar-todos-album").disabled = true;
+} else {
+    document.getElementById("botao-selecionar-album").disabled = false;
+    document.getElementById("botao-selecionar-todos-album").disabled = false;
+}
 
 function abreNomeAlbum() {
     $("#botao-confirmar").addClass("disabled");

@@ -1,8 +1,5 @@
-Meter funcionalidade de adicionar fotos a um album
 Retirar o passo de voltar a selecionar as fotos sempre que involve passar de uma página para a outra (Criar albums na galeria)
-O botão de selecionar continua ativo nos albuns quando eu nao tenho fotos ou albuns para selecionar
-Os icones da barra lateral deveriam estar alinhados
-O partilhar também não deveria ser visivel , sem haver fotos ou pastas selecionadas
+Na página partilhar o botão deveria estar disabled, sem haver fotos ou pastas selecionadas
 
 ---10/12/2020----
 Fotos Spike(erros):
