@@ -1,11 +1,4 @@
-Adicionar carrosel para ver fotos
 Meter funcionalidade de adicionar fotos a um album
-Meter func. de criar um album a partir da galeria
-FIX galeria botoes disabled qnd se apaga
-FIX Filtros
-
-
-
 
 ---10/12/2020----
 Fotos Spike(erros):
