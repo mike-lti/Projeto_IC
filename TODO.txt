@@ -10,6 +10,9 @@ FIX Filtros
 ---10/12/2020----
 Fotos Spike(erros):
 - apos selecionar filtro "jack russell" o carrossel de imagens aparece com o numero errado na primeira imagem selecionada.
-- depois de remover o filtro o botao selecionar aparece desativado mas a sua funcao encontra se ativa
+- depois de remover o filtro o botao selecionar aparece desativado mas a sua funcao encontra se ativa.
 - depois de remover o filtro e entra no carrossel de imagens a segunda imagem a aparecer e a primeira q aparecia no filtro e so mostra as fotos do filtro no carrossel.
+- botao criar albuns e os outros por vezes ficam desativados permanentemente ao remover filtros.
+- botao criar albuns por vezes necessita de duplo click.
 Possivel soluçao: Refresh page(location.reload())?
+- depois de partilhar, ao criar album so aparecem disponiveis as fotos partilhadas.(so acontece sem outro Import)
