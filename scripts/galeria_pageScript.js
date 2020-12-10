@@ -200,6 +200,7 @@ function close_popup(popup) {
 }
 
 function nova_galeria_eliminada() {
+
     var arrayFicar = document.querySelectorAll('input[type=checkbox]:not(:checked)');
     var arrayApagar = document.querySelectorAll('input[type=checkbox]:checked');
     var tabela = document.querySelector("#tabela tbody");
@@ -212,7 +213,7 @@ function nova_galeria_eliminada() {
 
     /* Cria tabela que vai conter as fotos que vão ficar no album */
     for (let input of arrayFicar ) {
-        if (x <= arrayFicarlength - 10) {
+        if (x <= arrayFicarlength - 9) {
             if(i%4 == 0 || x == 0){
                 trElement = document.createElement('tr');
             }
@@ -238,13 +239,15 @@ function nova_galeria_eliminada() {
     close_popup("popup-eliminar-fotos-galeria");
     
     var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador)); 
-
+    var listFiltros = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));  
+    
     for (let imagemApagada of arrayApagar) {
         let srcApagada = imagemApagada.parentElement.children[1].children[0].getAttribute('src');
         let index = 0;
         for ( let srcImportadas of arrayImagensImportadas) {
             if (srcApagada == srcImportadas) {
                 arrayImagensImportadas.splice (index, 1);
+                listFiltros.splice(index, 1);
             }
 
             index++;
@@ -252,29 +255,9 @@ function nova_galeria_eliminada() {
     }
     
     localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas));
-    
-    var indexArray = [];
-    var listFiltros = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));  
-
-    for (var x = 0; x < listFiltros.length; x++ ) {
-        var imgComparada = listFiltros[x]["imgSrcObj"];
-        var cont =  0;
-        for (var y = 0; y < listFiltros.length; y++ ) {
-            var imgComparar = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador))[y];
-            
-            if (imgComparada == imgComparar) {
-                cont =  1                
-            }
-        }
-        if (cont == 0) {
-            indexArray.push(x);
-        }
-    }  
-
-    for (let index of indexArray) {
-        listFiltros.splice(index,1);
-    }
     localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(listFiltros)) 
+    
+    location.reload();
     
 }   
 
