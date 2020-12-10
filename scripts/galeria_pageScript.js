@@ -66,7 +66,96 @@ function showPopup() {
 
 function imagem_selecionada() {
     
-    if (document.querySelectorAll('input[type=checkbox]:checked').length > 0) {
+    /* if (document.querySelectorAll('input[type=checkbox]:checked').length > 0) {
+        $("#right-top-right-bar button img").removeClass("disabled-image-button");
+        $("#href-album").removeClass("disabled");
+        $("#href-partilhar").removeClass("disabled");
+        document.getElementById("botao-eliminar").disabled = false;    
+        document.getElementById("botao-criar-galeria").disabled = false;
+        document.getElementById("botao-adicionar").disabled = false;
+        document.getElementById("href-album").style.color = "black";
+        document.getElementById("href-partilhar").href = "partilhar.html";
+        document.getElementById("href-album").href = "album.html";
+        
+    } else {
+        $("#right-top-right-bar button img").addClass("disabled-image-button");
+        $("#href-album").addClass("disabled");
+        $("#href-partilhar").addClass("disabled");
+        document.getElementById("botao-eliminar").disabled = true;    
+        document.getElementById("botao-criar-galeria").disabled = true;
+        document.getElementById("href-album").style.color = "rgb(204, 204, 204)";
+        document.getElementById("botao-adicionar").disabled = true;
+        document.getElementById("href-partilhar").disabled = true;
+        document.getElementById("href-partilhar").href = "";
+        document.getElementById("href-album").disabled = true;
+        document.getElementById("href-album").href = "";
+    } */
+}  
+
+function seleciona_todos() {
+    
+    var arrayImagensSelecionadas = document.querySelectorAll('input[type=checkbox]:checked');
+
+    if ( $("input[type=checkbox]").attr("disabled")) {
+        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas"
+        document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
+        $("input[type=checkbox]").attr("disabled", false);
+        var boxes = document.getElementsByClassName("checkbox");
+        if (arrayImagensSelecionadas.length == 0 || 
+        arrayImagensSelecionadas.length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
+            for (var x = 0; x < boxes.length; x++) {
+                var obj = boxes[x];
+                    obj.checked = true;
+                    verifica();
+            }
+        } else {
+            for (var x = 0; x < boxes.length; x++) {
+                var obj = boxes[x];
+                    obj.checked = false;
+                    verifica();
+            }
+        }
+    } else {
+        
+        if (document.getElementById("botao-selecionar-galeria").innerHTML == "Cancelar") {
+
+            if (arrayImagensSelecionadas.length == 0) {
+                document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas"
+            } else {
+                document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
+            }
+            var boxes = document.getElementsByClassName("checkbox");
+            if (arrayImagensSelecionadas.length == 0 || arrayImagensSelecionadas.length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
+                for (var x = 0; x < boxes.length; x++) {
+                    var obj = boxes[x];
+                        obj.checked = true;
+                        verifica();
+                }
+            } else {
+                for (var x = 0; x < boxes.length; x++) {
+                    var obj = boxes[x];
+                        obj.checked = false;
+                        verifica();
+                }
+            }
+            
+
+        } else {
+            document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
+            document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
+            $("input[type=checkbox]").attr("disabled", true);
+            for (let imagem of arrayImagensSelecionadas) {
+                imagem.checked = false; 
+            }
+        }
+        
+                
+    }
+}
+
+function verifica() {
+  
+    if (document.querySelectorAll('input[type=checkbox]:checked').length != 0) {
         $("#right-top-right-bar button img").removeClass("disabled-image-button");
         $("#href-album").removeClass("disabled");
         $("#href-partilhar").removeClass("disabled");
@@ -90,94 +179,23 @@ function imagem_selecionada() {
         document.getElementById("href-album").disabled = true;
         document.getElementById("href-album").href = "";
     }
-}  
-
-function seleciona_todos() {
-    
-    var arrayImagensSelecionadas = document.querySelectorAll('input[type=checkbox]:checked');
-
-    if ( $("input[type=checkbox]").attr("disabled")) {
-        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas"
-        document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
-        $("input[type=checkbox]").attr("disabled", false);
-        var boxes = document.getElementsByClassName("checkbox");
-        if (arrayImagensSelecionadas.length == 0 || 
-        arrayImagensSelecionadas.length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
-            for (var x = 0; x < boxes.length; x++) {
-                var obj = boxes[x];
-                    obj.checked = true;
-                    imagem_selecionada();
-            }
-        } else {
-            for (var x = 0; x < boxes.length; x++) {
-                var obj = boxes[x];
-                    obj.checked = false;
-                    imagem_selecionada();
-            }
-        }
-    } else {
-        
-        if (document.getElementById("botao-selecionar-galeria").innerHTML == "Cancelar") {
-
-            if (arrayImagensSelecionadas.length == 0) {
-                document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas"
-            } else {
-                document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
-            }
-            var boxes = document.getElementsByClassName("checkbox");
-            if (arrayImagensSelecionadas.length == 0 || arrayImagensSelecionadas.length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
-                for (var x = 0; x < boxes.length; x++) {
-                    var obj = boxes[x];
-                        obj.checked = true;
-                        imagem_selecionada();
-                }
-            } else {
-                for (var x = 0; x < boxes.length; x++) {
-                    var obj = boxes[x];
-                        obj.checked = false;
-                        imagem_selecionada();
-                }
-            }
-            
-
-        } else {
-            document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
-            document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
-            $("input[type=checkbox]").attr("disabled", true);
-            for (let imagem of arrayImagensSelecionadas) {
-                imagem.checked = false; 
-            }
-        }
-        
-                
-    }
 }
 
 function enable_galeria() {
-    if ($("input[type=checkbox]").attr("disabled")) {
+    if (document.getElementById("botao-selecionar-galeria").innerHTML == "Selecionar") {
         document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
         $("input[type=checkbox]").attr("disabled", false);
-        document.getElementById("href-partilhar").href = "partilhar.html";
-        document.getElementById("href-album").href = "album.html";
     } else {
         document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
         document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
         $("input[type=checkbox]").attr("disabled", true);
-        document.getElementById("botao-criar-galeria").disabled = true;
-        document.getElementById("botao-adicionar").disabled = true;
-        document.getElementById("botao-eliminar").disabled = true;
-        document.getElementById("botao-partilhar").disabled = true;
-        document.getElementById("href-partilhar").disabled = true;
-        document.getElementById("href-album").disabled = true; 
-        document.getElementById("href-album").style.color = "rgb(204, 204, 204)";
-        $("#href-album").addClass("disabled");
-        $("#href-partilhar").addClass("disabled");
-        $("#right-top-right-bar button img").addClass("disabled-image-button");
-
+        
         for (let imagem of document.querySelectorAll('input[type=checkbox]:checked')) {
             imagem.checked = false; 
         }   
     }
+
+    verifica();
 }
 
 function open_popup(popup) {
@@ -221,7 +239,7 @@ function nova_galeria_eliminada() {
             let src = input.parentElement.children[1].children[0].getAttribute('src');
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item'>" +
-                                    "<input type='checkbox' class='checkbox'>" +
+                                    "<input type='checkbox' class='checkbox' onclick='verifica()'>" +
                                     "<div class='option-inner' onclick=close_open_slideShow('abrir','" + src + "')>" +
                                         "<img width='250px' height='155px' src='" + src + "'>" +
                                     "</div>" +
@@ -335,7 +353,7 @@ function preencheTabelaImagens() {
 
                 let linha = document.createElement("td");
                 linha.innerHTML = "<label class='option-item'>" +
-                                    "<input type='checkbox'  class='checkbox'>" +
+                                    "<input type='checkbox' class='checkbox' onclick='verifica()'>" +
                                     "<div class='option-inner' onclick=close_open_slideShow('abrir','" + imagens + "')  >" +
                                         "<img width='250px' height='155px' src='" + imagens + "'>" +
                                     "</div>" +
@@ -546,7 +564,7 @@ function aplica_filtros(funcao) {
             let srcImg = arrayImgFicar[i];
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
+                                "<input type='checkbox' class='checkbox' onclick='verifica()'>" +
                                 "<div class='option-inner' onclick=close_open_slideShow('abrir','" + srcImg + "')>" +
                                     "<img width='250px' height='155px' src='" + srcImg + "'>" +
                                 "</div>" +
@@ -590,7 +608,7 @@ function aplica_filtros(funcao) {
 
             let linha = document.createElement("td");
             linha.innerHTML = "<label class='option-item'>" +
-                                "<input type='checkbox' class='checkbox'>" +
+                                "<input type='checkbox' class='checkbox' onclick='verifica()'>" +
                                 "<div class='option-inner' onclick=close_open_slideShow('abrir','" + imagens + "')>" +
                                     "<img width='250px' height='155px' src='" + imagens + "'>" +
                                 "</div>" +
@@ -602,6 +620,17 @@ function aplica_filtros(funcao) {
         }
         
     }
+
+    document.getElementById("botao-criar-galeria").disabled = true;
+    document.getElementById("botao-adicionar").disabled = true;
+    document.getElementById("botao-eliminar").disabled = true;
+    document.getElementById("botao-partilhar").disabled = true;
+    document.getElementById("href-partilhar").disabled = true;
+    document.getElementById("href-album").disabled = true; 
+    document.getElementById("href-album").style.color = "rgb(204, 204, 204)";
+    $("#href-album").addClass("disabled");
+    $("#href-partilhar").addClass("disabled");
+    $("#right-top-right-bar button img").addClass("disabled-image-button");
     
 }
 
@@ -631,34 +660,34 @@ function slideShow(direcao) {
     } else {
         var arrayImagens = JSON.parse(localStorage.getItem("imagensFiltradas" + utilizador));        
     }
-    var tamanhoArray = arrayImagensImportadas.length;
+    var tamanhoArray = arrayImagens.length;
     var imagemInicial = document.getElementById("imagemCarrossel").getAttribute("src");
-    var indiceImagemAtual = (arrayImagensImportadas.indexOf(imagemInicial));
+    var indiceImagemAtual = (arrayImagens.indexOf(imagemInicial));
     
     
     if (direcao == "direita") {  
-        if (arrayImagensImportadas.indexOf
-        (arrayImagensImportadas[indiceImagemAtual + 1]) == tamanhoArray - 1) {
+        if (arrayImagens.indexOf
+        (arrayImagens[indiceImagemAtual + 1]) == tamanhoArray - 1) {
             document.getElementById("seta-direita").style.display = "none";
         } else {
             document.getElementById("seta-direita").style.display = "block";
         }
-        var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagensImportadas[indiceImagemAtual + 1];
+        var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagens[indiceImagemAtual + 1];
         document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual + 2) + "/" + tamanhoArray;
     } else {
-        if (arrayImagensImportadas.indexOf
-        (arrayImagensImportadas[indiceImagemAtual - 1]) == 0) {
+        if (arrayImagens.indexOf
+        (arrayImagens[indiceImagemAtual - 1]) == 0) {
             document.getElementById("seta-esquerda").style.display = "none";
         } else {
             document.getElementById("seta-esquerda").style.display = "block";
         }
-        var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagensImportadas[indiceImagemAtual - 1];   
+        var imagemAlterada = document.getElementById("imagemCarrossel").src = arrayImagens[indiceImagemAtual - 1];   
         document.getElementsByClassName("numero-fotografias")[0].innerHTML = (indiceImagemAtual) + "/" + tamanhoArray;
         
     }
     
-    var indiceImagemAlterada = arrayImagensImportadas.indexOf(imagemAlterada);
-    localStorage.setItem("imagemAtual", arrayImagensImportadas[indiceImagemAtual + 1]);
+    var indiceImagemAlterada = arrayImagens.indexOf(imagemAlterada);
+    localStorage.setItem("imagemAtual", arrayImagens[indiceImagemAtual + 1]);
 
     if (indiceImagemAlterada == 0) {
         document.getElementById("seta-esquerda").style.display = "none";
