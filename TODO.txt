@@ -1,4 +1,7 @@
 Meter funcionalidade de adicionar fotos a um album
+Quando se clica em "Link" para partilhar, sou redirecionado para um ecrã onde tenho que escolher que fotografias partilhar, mas não existe botão de selecionar todas as fotografias.
+Retirar o passo de voltar a selecionar as fotos sempre que involve passar de uma página para a outra (Criar albums na galeria)
+
 
 ---10/12/2020----
 Fotos Spike(erros):
