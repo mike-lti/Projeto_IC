@@ -119,6 +119,35 @@ header a {
     grid-area: 1 / 1 / span 1 / span 1;
 }
 
+#gal_icon {
+    margin-left: 32px;
+}
+
+#imp_icon {
+    margin-left: 16px;
+}
+
+#alb_icon {
+    margin-left: 30px;
+}
+
+#par_icon {
+    margin-left: 18px;
+}
+
+#fav_icon {
+    margin-left: 10px;
+}
+
+#aju_icon {
+    margin-left: 45px;
+}
+
+#sob_icon {
+    margin-left: 43px;
+}
+
+
 #memento {
     grid-area: 2 / 1 / span 1 / span 1;
     text-align: center;
