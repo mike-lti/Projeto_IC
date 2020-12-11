@@ -86,7 +86,6 @@ function recuperarFotos() {
     location.replace("galeria.html")   
 }
 
-
 function disableBackground() {
     $("#side-bar").addClass("disabled")
     $("#tabela").addClass("disabled")
@@ -101,7 +100,6 @@ function enableBackground() {
     $("#memento").removeClass("disabled");
 }
 
-
 function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
     document.getElementsByClassName("dropup-content")[0].style.display == "") {
@@ -109,8 +107,7 @@ function open_dropup() {
       $('.dropup-content').fadeIn(100);
     } else {
       $('.dropup-content').fadeOut(100);
-    }
-    
+    }    
 }
 
 function enable_favoritos() {
@@ -184,13 +181,9 @@ function seleciona_todos() {
             for (let imagem of document.querySelectorAll('input[type=checkbox]:checked')) {
                 imagem.checked = false; 
             }
-        }
-        
-        
-        
+        }       
     }
 }
-
 
 function open_popup() {
     

@@ -40,11 +40,9 @@ function RegistarDimmerShower() {
     $(".loginHandler").addClass("disabled");
     
     registarPopup.style.display = "block";
-    backgroundDimmer.style.opacity = "1";
-    
+    backgroundDimmer.style.opacity = "1";   
 
 }
-
 
 function RegistarDimmerCloser() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
@@ -57,8 +55,6 @@ function RegistarDimmerCloser() {
     
 }
 
-
-
 function accUse(){
     formGetter = document.forms.registerData;
     registerUserData = formGetter.elements.username.value;  
@@ -70,7 +66,6 @@ function accUse(){
     }else{
         return true
     }
-
 }
 
 function ValidateEmail(){
@@ -84,7 +79,6 @@ registerEmailDataValidation= formGetter.elements.email.value;
     
     return (true)
 }
-
 
 function registerHandler(){
     let registredAcc = [];
@@ -136,12 +130,8 @@ function registerHandler(){
         formGetter.reset();
         RegistarDimmerCloser();
         $(".registarHandler").removeClass("disabled");
-        $(".loginHandler").removeClass("disabled");
-        
-        
-       
+        $(".loginHandler").removeClass("disabled");      
     } 
-
 }
 
 function loginHandler(){
@@ -166,7 +156,6 @@ function loginHandler(){
         $('.homepageOperations').fadeOut(7000);
     }     
 }
-
 
 function showPass(){
     var checkShow = document.getElementById("passShow");

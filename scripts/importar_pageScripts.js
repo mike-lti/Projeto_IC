@@ -11,17 +11,14 @@ var arrayImagensImportadas = [];
 
 function filter(filter1, filter2) {
     this.firstName = first;
-    this.lastName = last;
-    
-  }
+    this.lastName = last;    
+}
 
 function currentAccPlacer(){
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
     var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
     document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
 }
-
-
 
 function showModal(disponibilidade) {
 
@@ -130,7 +127,6 @@ function selectCuba() {
         }
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
-
 }
 
 function selectFranca() {
@@ -179,7 +175,6 @@ function selectFranca() {
         }
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
-
 }
 
 function selectSpike() {
@@ -226,7 +221,6 @@ function selectSpike() {
         }
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objCheck));
     }
-
 }
 
 
@@ -275,8 +269,7 @@ function open_dropup() {
       $('.dropup-content').fadeIn(100);
     } else {
       $('.dropup-content').fadeOut(100);
-    }
-    
+    }    
 }
 
 function verifica() {

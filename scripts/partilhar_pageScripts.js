@@ -233,7 +233,6 @@ function preencheTabelaImagensPartilhar() {
         }
 }
 
-
 function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
     document.getElementsByClassName("dropup-content")[0].style.display == "") {
