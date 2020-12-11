@@ -53,9 +53,9 @@ function closePopup() {
 function open_popup_eliminar_fotografias() {
     let numeroAlbunsEliminados = document.querySelectorAll('input[type=checkbox]:checked').length
     if (numeroAlbunsEliminados > 1) {
-        document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar " + numeroAlbunsEliminados + " fotografias?"
+        document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende remover " + numeroAlbunsEliminados + " fotografias dos Favoritos?"
     } else {
-        document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar a fotografia selecionada?"
+        document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende remover a fotografia selecionada dos Favoritos?"
     }
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
     document.getElementById("popup-eliminar-fotos-galeria").style.display = "block";   

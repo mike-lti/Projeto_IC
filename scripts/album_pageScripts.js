@@ -27,7 +27,7 @@ if (localStorage.getItem("criarAlbum") == "True") {
     localStorage.setItem("criarAlbum", "False");
 }
 
-if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) == "[]") {
+if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) == "[]" || localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) == null) {
     document.getElementById("botao-selecionar-album").disabled = true;
     document.getElementById("botao-selecionar-todos-album").disabled = true;
 } else {
@@ -63,6 +63,7 @@ function closeNomeAlbum() {
     document.getElementsByClassName("album_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     document.getElementById("popup-sem-fotos").style.display = "none";
+    localStorage.removeItem("fotosAlbum" + utilizador);
     enableBackground();
 }
 
@@ -95,8 +96,10 @@ function openAlbumPhotos() {
 }
 
 function closeAlbumPhotos() {
+    $("#opcoes-album").fadeToggle(200);
+        $("#fundo-fotos-album").fadeToggle(200);/* 
     document.getElementById("opcoes-album").style.display = "none";
-    document.getElementById("fundo-fotos-album").style.display = "none";
+    document.getElementById("fundo-fotos-album").style.display = "none"; */
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     enableBackground()
 }
@@ -351,11 +354,12 @@ function showNomeAlbum(){
 }
 
 function nomeAlbumDado(){
-    
+
+    var arrayFotos;
     let arrayNomesAlbum = [];
     let toResetForm = document.forms.nomeDoAlbum;
     let ff = document.forms.nomeDoAlbum.elements.aName.value;
-
+    toResetForm.reset();
     if (localStorage.getItem("nomesAlbums" + utilizador) == null) {
         arrayNomesAlbum.push(ff);
         localStorage.setItem("nomesAlbums" + utilizador, JSON.stringify(arrayNomesAlbum)); 
@@ -365,11 +369,27 @@ function nomeAlbumDado(){
         nomesAlbums.push(ff);
         localStorage.setItem("nomesAlbums" + utilizador, JSON.stringify(nomesAlbums));
     }
-    
-    preencheTabelaAlbum()
-    document.getElementsByClassName('popup-album')[0].style.display ='block';
+
+    if (localStorage.getItem("fotosAlbum" + utilizador)) {
+        if ( JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador)) == null) {
+            arrayFotos = [];
+        } else {
+            arrayFotos = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))
+        }
+        document.getElementsByClassName("dimmer")[0].style.display = 0;
+        arrayFotos.push(JSON.parse(localStorage.getItem("fotosAlbum" + utilizador)))
+        localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayFotos));
+        mostraCapaAlbunsWorkspace();
+        enableBackground();
+        location.reload();
+    } else {
+        preencheTabelaAlbum();
+        document.getElementsByClassName('popup-album')[0].style.display ='block';
+    }
+
+    localStorage.removeItem("fotosAlbum" + utilizador)
     document.getElementsByClassName("album_modal")[0].style.display = "none";
-    toResetForm.reset();
+    
 }
 
 function verificaCampo(){
@@ -443,8 +463,7 @@ function preencheTabelaAlbum() {
 function preencheTabelaAlbumCriado() {
     
     if (document.querySelectorAll('input[type=checkbox]:checked').length != 0) {
-
-        localStorage.removeItem("fotosAlbum" + utilizador);  
+  
         var arrayImagensGuardadas = document.querySelectorAll('input[type=checkbox]:checked'); 
         var tabela = document.querySelector("#fotos-album tbody");
         tabela.innerHTML = "";
@@ -532,8 +551,10 @@ function mostraAlbumSelecionado(indice) {
             
         }
         document.getElementsByClassName("dimmer")[0].style.opacity = "1";
-        document.getElementById("opcoes-album").style.display = "block";
-        document.getElementById("fundo-fotos-album").style.display = "block"; 
+        $("#opcoes-album").fadeToggle(200);
+        $("#fundo-fotos-album").fadeToggle(200);
+        /* document.getElementById("opcoes-album").style.display = "block";
+        document.getElementById("fundo-fotos-album").style.display = "block"; */ 
     }
 }   
 
@@ -833,4 +854,16 @@ function close_open_slideShow(funcao, imagem) {
         document.getElementById("seta-esquerda").style.display = "block";
     }
     
+}
+
+function guardarFotosAlbum() {
+
+    let albunsList = [];
+
+        for (let input of document.querySelectorAll('input[type=checkbox]:checked')) {
+            let srcAlbum = input.parentElement.children[1].children[0].getAttribute('src');
+            albunsList.push(srcAlbum)
+        }
+    
+        localStorage.setItem("albunsPartilhar" + utilizador, JSON.stringify(albunsList))
 }

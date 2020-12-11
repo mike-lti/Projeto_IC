@@ -57,27 +57,50 @@ function popup_partilha_efetuada() {
 }
 
 function open_icon_partilha(icon) {
-    
+       
     disableBackground();
     document.getElementsByClassName("popup-partilha")[0].style.display="block";
-    /* document.getElementById("botao-confirmar-partilha").disabled = true; */
     preencheTabelaImagensPartilhar();
+    document.getElementById("botao-confirmar-partilha").disabled = true;
+    if (localStorage.getItem("fotosPartilhar" + utilizador) || localStorage.getItem("fotosFavoritosPartilhar" + utilizador)) {
+        document.getElementById("texto-seleciona").innerHTML = "As fotos selecionadas para partilhar:";
+        document.getElementById("botao-trocar-tipo").style.display = "none";  
+        preencheTabelaImagensPartilhar();    
+        $("input[type=checkbox]").attr("disabled", true);
+        document.getElementById("botao-confirmar-partilha").disabled = false;
+        var numeroFotos = JSON.parse(localStorage.getItem("albunsPartilhar" + utilizador)).length
+        if (numeroFotos > 1) {
+            document.getElementById("mensagem-sucesso-partilha").innerHTML = numeroFotos + "fotografias partilhadas com sucesso";
+        } else {
+            document.getElementById("mensagem-sucesso-partilha").innerHTML = "Fotografia partilhada com sucesso";
+        }
+    } else if (localStorage.getItem("albunsPartilhar" + utilizador)){
+        document.getElementById("botao-trocar-tipo").style.display = "none";  
+        preencheTabelaAlbumPartilhar();
+        document.getElementById("texto-seleciona").innerHTML = "Os álbuns selecionados para partilhar:";
+        $("input[type=checkbox]").attr("disabled", true);
+        document.getElementById("botao-confirmar-partilha").disabled = false;
+        var numeroAlbuns = JSON.parse(localStorage.getItem("albunsPartilhar" + utilizador)).length
+        if (numeroAlbuns> 1) {
+            document.getElementById("mensagem-sucesso-partilha").innerHTML = numeroAlbuns + "álbuns partilhados com sucesso";
+        } else {
+            document.getElementById("mensagem-sucesso-partilha").innerHTML = "Álbum partilhado com sucesso";
+        }
+        
+    }
 
     if(icon == "link") {
-        document.getElementById("botao-gerar-link").style.display = "block";
-        
-        document.getElementsByClassName("dimmer")[0].style.opacity="1";
+        document.getElementById("botao-gerar-link").style.display = "block";       
         document.getElementById("botao-confirmar-partilha").style.display = "none";
         document.getElementById("descricao").style.display = "none";
         document.getElementById("texto-descricao").style.display = "none";
     } else {
-        document.getElementsByClassName("dimmer")[0].style.opacity="1";
         document.getElementById("botao-confirmar-partilha").style.display = "block";
         document.getElementById("descricao").style.display = "block";
         document.getElementById("texto-descricao").style.display = "block";
         document.getElementById("botao-gerar-link").style.display = "none";
     }
-    
+    document.getElementsByClassName("dimmer")[0].style.opacity="1";
     document.getElementById("partilha-icon").src = "img_icon_partilhar/" + icon + ".png";
 
 }
@@ -90,8 +113,6 @@ function verifica() {
         document.getElementById("botao-confirmar-partilha").disabled = true;
     }
 }
-
-
 
 function preencheTabelaAlbumPartilhar() {
    

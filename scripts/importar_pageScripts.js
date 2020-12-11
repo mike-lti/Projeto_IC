@@ -50,7 +50,7 @@ function showModal(disponibilidade) {
    
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
     document.getElementById("botao-confirmar").disabled = true;
-    disableBackground()
+    disableBackground();
 }
 
 function closeModal() {
@@ -58,11 +58,11 @@ function closeModal() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     document.getElementById("indisponivel-importar").style.display = "none";
     document.getElementById("indisponivel-importar").style.zIndex = "0";
-    enableBackground()
+    enableBackground();
 }
 
 function cancelSelection() {
-    closeModal()
+    closeModal();
 }
 
 function confirmSelection() {

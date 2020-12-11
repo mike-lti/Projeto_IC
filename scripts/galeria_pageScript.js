@@ -103,6 +103,7 @@ function seleciona_todos() {
         var boxes = document.getElementsByClassName("checkbox");
         if (arrayImagensSelecionadas.length == 0 || 
         arrayImagensSelecionadas.length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
+
             for (var x = 0; x < boxes.length; x++) {
                 var obj = boxes[x];
                     obj.checked = true;
@@ -141,8 +142,8 @@ function seleciona_todos() {
             
 
         } else {
-            document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
-            document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar"
+            document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas";
+            document.getElementById("botao-selecionar-galeria").innerHTML = "Selecionar";
             $("input[type=checkbox]").attr("disabled", true);
             for (let imagem of arrayImagensSelecionadas) {
                 imagem.checked = false; 
@@ -253,6 +254,27 @@ function nova_galeria_eliminada() {
         }
     }
     
+    /* var arrayImagensApagadas = [];
+    var imagensApagadas = [];
+    for (let srcImgApagada of arrayApagar) {
+        let src = srcImgApagada.parentElement.children[1].children[0].getAttribute('src'); 
+        imagensApagadas.push(src);
+    }
+
+    if (localStorage.getItem("ImagensApagadas" + utilizador) == null) {        
+        arrayImagensApagadas = imagensApagadas;   
+        
+    }else {        
+        arrayImagensApagadas = JSON.parse(localStorage.getItem("imagensApagadas" + utilizador));
+
+        for (let imgSrc of arrayApagar) {
+            let src = srcImgApagada.parentElement.children[1].children[0].getAttribute('src'); 
+            imagensApagadas.push(src);
+        }
+
+        localStorage.setItem("imagensApagadas" + utilizador, JSON.stringify(arrayImagensApagadas));
+    } */
+
     document.getElementsByClassName("dimmer")[0].style.opacity="0"  
     close_popup("popup-eliminar-fotos-galeria");
     
@@ -618,7 +640,8 @@ function aplica_filtros(funcao) {
             i++;
 
         }
-        
+        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
+        verifica();
     }
 
     document.getElementById("botao-criar-galeria").disabled = true;
