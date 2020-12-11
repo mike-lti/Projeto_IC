@@ -365,9 +365,7 @@ function nomeAlbumDado(){
             }else{
 
                 inUseChecker = false;
-
             }
-
         }
     }
 
@@ -401,7 +399,6 @@ function nomeAlbumDado(){
             }
             
             document.getElementsByClassName("dimmer")[0].style.display = 0;
-            arrayFotos.push(JSON.parse(localStorage.getItem("fotosAlbum" + utilizador)))
             localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayFotos));
             mostraCapaAlbunsWorkspace();
             enableBackground();
@@ -413,9 +410,8 @@ function nomeAlbumDado(){
 
         localStorage.removeItem("fotosAlbum" + utilizador)
         document.getElementsByClassName("album_modal")[0].style.display = "none";
-
-}
-    
+        
+    }
 }
 
 function verificaCampo(){
