@@ -38,6 +38,10 @@ if (localStorage.getItem("imagensImportadas" + utilizador) == null ||
     document.getElementById("p-album").innerHTML = ""; 
 }
 
+
+/**
+ * Esta funcao coloca o nome do utilizador visivel nas páginas da aplicação.
+ */
 function currentAccPlacer(){
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
     var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);

@@ -9,6 +9,9 @@ $(document).ready(currentAccPlacer());
 document.getElementById("botao-recuperar-fotografias").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
+/**
+ * Esta funcao coloca o nome do utilizador visivel nas páginas da aplicação.
+ */
 function currentAccPlacer(){
   var usernameLoggedInToParse = localStorage.getItem("currentAccount");
   var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);

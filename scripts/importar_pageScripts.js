@@ -12,7 +12,9 @@ function filter(filter1, filter2) {
     this.firstName = first;
     this.lastName = last;    
 }
-
+/**
+ * Esta funcao coloca o nome do utilizador visivel nas páginas da aplicação.
+ */
 function currentAccPlacer(){
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
     var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);

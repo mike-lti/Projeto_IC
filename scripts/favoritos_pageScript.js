@@ -38,17 +38,26 @@ if (localStorage.getItem("fotosFavoritas" + utilizador) == null || localStorage.
     document.getElementById("p-album").innerHTML = "";
 }
 
+/**
+ * Esta funcao coloca o nome do utilizador visivel nas páginas da aplicação.
+ */
 function currentAccPlacer(){
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
     var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
     document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
 }
 
+/**
+ * Esta funcao fecha popups.
+ */
 function closePopup() {
     document.getElementsByClassName("popup-indisponivel")[0].style.display = "none";
     document.getElementsByClassName("botao-popup")[0].style.display = "none";
 }
 
+/**
+ * Esta funcao abre popups.
+ */
 function open_popup_eliminar_fotografias() {
     let numeroAlbunsEliminados = document.querySelectorAll('input[type=checkbox]:checked').length
     if (numeroAlbunsEliminados > 1) {
@@ -60,16 +69,25 @@ function open_popup_eliminar_fotografias() {
     document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "block";   
 }
 
+/**
+ * Esta funcao fecha popups.
+ */
 function close_popup_eliminar_fotografias() {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
     document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "none";
 }
 
+/**
+ * Esta funcao abre popups.
+ */
 function open_popup_adicionar_fotografias() {
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
     document.getElementById("popup-adicionar-fotos-galeria").style.display = "block";   
 }
 
+/**
+ * Esta funcao fecha popups.
+ */
 function close_popup_adicionar_fotografias() {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
     document.getElementById("popup-adicionar-fotos-galeria").style.display = "none";
@@ -101,6 +119,9 @@ function imagem_selecionada() {
     }
 }  
 
+/**
+ * 
+ */
 function enable_favoritos() {
     if ( $("input[type=checkbox]").attr("disabled")) {
         document.getElementById("botao-selecionar-favoritos").innerHTML = "Cancelar"
@@ -116,6 +137,9 @@ function enable_favoritos() {
     }
 }
 
+/**
+ * Esta funcao seleciona ou desseleciona todas as fotos mostradas quando o utilizador carrega no botão de "Selecionar Todas/Desselecionar Todas".
+ */
 function seleciona_todos() {
     
     if ( $("input[type=checkbox]").attr("disabled")) {
@@ -175,6 +199,10 @@ function seleciona_todos() {
 }
 
 
+/**
+ * Esta funcao apaga as fotografias selecionadas pelo utilizador e 
+ * mostra a nova galeria de favoritos correspondente.
+ */
 function nova_galeria_eliminada() {
     
     var arrayFicar = document.querySelectorAll('input[type=checkbox]:not(:checked)');
@@ -277,6 +305,9 @@ function open_dropup() {
     
 }
 
+/**
+ * Esta funcao abre o slideShow para mostrar as fotografias.
+ */
 function slideShow(direcao) {
     
     var arrayImagensImportadas = JSON.parse(localStorage.getItem("fotosFavoritas" + utilizador));

@@ -8,6 +8,9 @@ $(document).ready(popupAlbum());
 
 document.getElementById("botao-confirmar-partilha").disabled = true;
 
+/**
+ * Esta funcao coloca o nome do utilizador visivel nas páginas da aplicação.
+ */
 function currentAccPlacer() {
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
     var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
@@ -86,7 +89,7 @@ function open_icon_partilha(icon) {
             document.getElementById("mensagem-sucesso-partilha").innerHTML = "Fotografia partilhada com sucesso";
         }
 
-    } else if (localStorage.getItem("albunsPartilhar" + utilizador) != ""){
+    } else if (localStorage.getItem("albunsPartilhar" + utilizador) != null){
 
         document.getElementById("botao-trocar-tipo").style.display = "none";  
         preencheTabelaAlbumPartilhar();

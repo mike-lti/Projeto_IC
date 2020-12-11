@@ -3,7 +3,9 @@
 var utilizador = localStorage.getItem("currentAccount").slice(1,localStorage.getItem("currentAccount").length -1);
 $(document).ready(currentAccPlacer());
 
-/* Coloca o nome do utilizador na sidebar */
+/**
+ * Esta funcao coloca o nome do utilizador visivel nas páginas da aplicação.
+ */
 function currentAccPlacer(){
   var usernameLoggedInToParse = localStorage.getItem("currentAccount");
   var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);

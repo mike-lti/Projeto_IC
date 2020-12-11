@@ -800,7 +800,7 @@ function delete_albums() {
     } else if (document.querySelectorAll('#imagens-album-tabela input[type=checkbox]:checked').length != 0) {
         
         var arrayApagar = document.querySelectorAll('#imagens-album-tabela input[type=checkbox]:checked');
-        var indiceAlbumAApagar = localStorage.getItem("indiceAlbumAMostrar");
+        var indiceAlbumAApagar = localStorage.getItem("indiceAlbumAMostrar" + utilizador);
         var arrayImagensAlbum = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))[indiceAlbumAApagar];
         var arrayTodosAlbuns =  JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador));
         for (let imagemApagada of arrayApagar) {
