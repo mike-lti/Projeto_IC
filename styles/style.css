@@ -1164,6 +1164,22 @@ p {
   border-radius: 5px;
 }
 
+.popupMesmoNomeAlbum{
+  display: none;
+  position: absolute;
+  background-color: red;
+  margin: auto;
+  left: 510px;
+  top: 87%;
+  width: 36%;
+  height: 8%;
+  z-index: 9;
+  border-radius: 5px;
+
+}
+
+
+
 /*--------------------------------*/
 
 /*----------------PARTILHAR-------------*/
