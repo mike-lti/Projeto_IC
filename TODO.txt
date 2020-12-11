@@ -1,4 +1,3 @@
-Adicionar fotos a album pela galeria
-Adicionar Trash bin
-Mudar cenários de tarefas
-Adicionar fotos a album pelo album
+Adicionar função de adicionar e apagar fotos no album
+
+NAO ESQUECER DE VOLTAR A METER PASSE PARA ENTRAR

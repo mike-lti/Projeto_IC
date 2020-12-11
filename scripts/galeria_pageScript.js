@@ -37,10 +37,10 @@ if (localStorage.getItem("imagensImportadas" + utilizador) == null || localStora
     document.getElementById("p-album").innerHTML = ""; 
 }
 
-var elementos = document.querySelectorAll('input[type=checkbox]');
+/* var elementos = document.querySelectorAll('input[type=checkbox]');
 for (let element of elementos) {
     element.addEventListener("change", imagem_selecionada);
-}
+} */
 
 
 function currentAccPlacer(){
@@ -140,7 +140,8 @@ function verifica() {
         document.getElementById("href-album").style.color = "black";
         document.getElementById("href-partilhar").href = "partilhar.html";
         document.getElementById("href-album").href = "album.html";
-        
+        $("#botao-popup-confirmar").removeClass("disabled-confirm-button");
+
     } else {
         $("#right-top-right-bar button img").addClass("disabled-image-button");
         $("#href-album").addClass("disabled");
@@ -153,6 +154,7 @@ function verifica() {
         document.getElementById("href-partilhar").href = "";
         document.getElementById("href-album").disabled = true;
         document.getElementById("href-album").href = "";
+        $("#botao-popup-confirmar").addClass("disabled-confirm-button");
     }
 }
 
@@ -717,13 +719,10 @@ function slideShow(direcao) {
         document.getElementById("seta-direita").style.display = "block";
     }
    
-
-    
 }
 
 function close_open_slideShow(funcao, imagem) {
 
-    
     document.getElementsByClassName("dimmer")[0].disabled = true;
     document.getElementById("tabela").disabled = true;
     document.getElementById("imagemCarrossel").src = imagem;
@@ -791,7 +790,80 @@ function enableBackground() {
 }
 
 
-function indisponivel() {
-    document.getElementById("indisponivel").style.display = "block";
-    $('#indisponivel').fadeOut(7000);
+function open_addFotosAlbum() {
+    document.getElementById("botao-popup-cancelar").style.display = "block";
+    document.getElementById("botao-popup-confirmar").style.display = "block";
+    document.getElementById("popup-adicionar-fotos-album").style.display = "block";
+    close_popup("popup-adicionar-fotos-galeria");
+    $("#botao-popup-confirmar").addClass("disabled-confirm-button");
+    document.getElementsByClassName("dimmer")[0].style.opacity="1";
+
+    if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) != null) {
+
+        let imagensCapa = [];
+        let arrayAlbum = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador));
+        let nomesAlbum = JSON.parse(localStorage.getItem("nomesAlbums" + utilizador));
+        let tabela = document.querySelector("#tabela-adicionar-fotos-album tbody");
+
+        tabela.innerHTML = "";
+
+        for (let album of arrayAlbum) {
+            let imgCapa = album[0];
+            imagensCapa.push(imgCapa);
+        }
+
+        let x = 0;
+        let i = 0;
+        let trElement;
+
+        for (let imagemCapa of imagensCapa) {
+            if (i % 4 == 0 || x == 0) {
+                trElement = document.createElement('tr');
+                x++;
+            }
+
+            let linha = document.createElement("td");
+            linha.innerHTML = "<label class='option-item-album'>" +
+                "<input type='checkbox' id='" + i + "'class='checkbox-album' onclick='verifica()'>" +
+                "<div class='option-inner-album' >" +
+                "<img width='220px' height='140px' src='" + imagemCapa + "'>" +
+                nomesAlbum[i] +
+                "</div>" +
+                "</label>";
+            trElement.appendChild(linha);
+            tabela.appendChild(trElement);
+            i++;
+
+        }
+
+    } else {
+        document.getElementById("botao-popup-cancelar").style.display = "none";
+        document.getElementById("botao-popup-confirmar").style.display = "none";
+        document.getElementById("texto-seleciona").style.left = "280px";
+        document.getElementById("texto-seleciona").innerHTML = "Ainda não tem nenhum álbum. Crie um primeiro!";
+    }
+}
+
+function add_fotos_album() {
+
+    var arrayImagensAdicionar = document.querySelectorAll('#tabela input[type=checkbox]:checked');
+    var arrayAlbumsAdicionar = document.querySelectorAll('#tabela-adicionar-fotos-album input[type=checkbox]:checked');
+    var arrayIdAlbumAdicionar = [];
+    var albuns = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador));
+
+    for (let album of arrayAlbumsAdicionar) {
+        let id = album.id;
+        arrayIdAlbumAdicionar.push(id);
+    }
+
+    for (let id of arrayIdAlbumAdicionar) {
+        for (let imagem of arrayImagensAdicionar) {
+            let src = imagem.parentElement.children[1].children[0].getAttribute('src');
+            albuns[id].push(src);
+        }         
+    }
+
+    localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(albuns));
+    close_popup('popup-adicionar-fotos-album');
+    location.replace("album.html");
 }
