@@ -1,7 +1,4 @@
-Visualizar albúm a partir do workspace na página album
 Adicionar função de adicionar e apagar fotos no album
 Na galeria a página nos lados está a sair do container
-imagem_selecionada error na galeria
-meter icon lixo a preto
 
 NAO ESQUECER DE VOLTAR A METER PASSE PARA ENTRAR

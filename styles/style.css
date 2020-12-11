@@ -87,8 +87,6 @@ header a {
     background-color:white;
 }
 
-/* rgb(4, 125, 154) */
-
 .disabled-image-button {
     opacity: 0.5;
     pointer-events: none;
@@ -1430,4 +1428,9 @@ nav a{
 .numero-fotografias-recuperar {
     text-align: center;
     height: 20px;
+}
+
+.disabled-confirm-button {
+    background-color: rgb(225, 225, 225);
+    pointer-events: none;
 }

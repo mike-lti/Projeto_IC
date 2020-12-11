@@ -37,10 +37,10 @@ if (localStorage.getItem("imagensImportadas" + utilizador) == null || localStora
     document.getElementById("p-album").innerHTML = ""; 
 }
 
-var elementos = document.querySelectorAll('input[type=checkbox]');
+/* var elementos = document.querySelectorAll('input[type=checkbox]');
 for (let element of elementos) {
     element.addEventListener("change", imagem_selecionada);
-}
+} */
 
 
 function currentAccPlacer(){
@@ -138,7 +138,8 @@ function verifica() {
         document.getElementById("href-album").style.color = "black";
         document.getElementById("href-partilhar").href = "partilhar.html";
         document.getElementById("href-album").href = "album.html";
-        
+        $("#botao-popup-confirmar").removeClass("disabled-confirm-button");
+
     } else {
         $("#right-top-right-bar button img").addClass("disabled-image-button");
         $("#href-album").addClass("disabled");
@@ -151,6 +152,7 @@ function verifica() {
         document.getElementById("href-partilhar").href = "";
         document.getElementById("href-album").disabled = true;
         document.getElementById("href-album").href = "";
+        $("#botao-popup-confirmar").addClass("disabled-confirm-button");
     }
 }
 
@@ -712,13 +714,10 @@ function slideShow(direcao) {
         document.getElementById("seta-direita").style.display = "block";
     }
    
-
-    
 }
 
 function close_open_slideShow(funcao, imagem) {
 
-    
     document.getElementsByClassName("dimmer")[0].disabled = true;
     document.getElementById("tabela").disabled = true;
     document.getElementById("imagemCarrossel").src = imagem;
@@ -791,6 +790,7 @@ function open_addFotosAlbum() {
     document.getElementById("botao-popup-confirmar").style.display = "block";
     document.getElementById("popup-adicionar-fotos-album").style.display = "block";
     close_popup("popup-adicionar-fotos-galeria");
+    $("#botao-popup-confirmar").addClass("disabled-confirm-button");
     document.getElementsByClassName("dimmer")[0].style.opacity="1";
 
     if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) != null) {
