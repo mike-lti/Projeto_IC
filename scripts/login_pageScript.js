@@ -8,6 +8,8 @@ function userAcc(password){
     this.password = password    
 }
 
+
+//Esta função mostra o div do login para o utilizador preencher com os seus dados
 function loginDimmerShower() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let loginPopup = document.getElementsByClassName("loginDimmer")[0];
@@ -16,7 +18,7 @@ function loginDimmerShower() {
     $(".registarHandler").addClass("disabled");
     $(".loginHandler").addClass("disabled");
 }
-
+//Esta função fecha o div do login
 function loginDimmerCloser() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let loginPopup = document.getElementsByClassName("loginDimmer")[0];
@@ -26,7 +28,7 @@ function loginDimmerCloser() {
     $(".loginHandler").removeClass("disabled");
     document.getElementsByClassName("homepageOperations")[0].style.display = "none"
 }
-
+//Esta função mostra o div do registar para o utilizador preencher com os seus dados
 function RegistarDimmerShower() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let registarPopup = document.getElementsByClassName("registarDimmer")[0];
@@ -34,10 +36,9 @@ function RegistarDimmerShower() {
     $(".loginHandler").addClass("disabled");
     
     registarPopup.style.display = "block";
-    backgroundDimmer.style.opacity = "1";   
-
+    backgroundDimmer.style.opacity = "1"; 
 }
-
+//Esta função fecha o div do register
 function RegistarDimmerCloser() {
     let backgroundDimmer = document.getElementsByClassName("backgroundPopups")[0];
     let registarPopup = document.getElementsByClassName("registarDimmer")[0];
@@ -48,7 +49,7 @@ function RegistarDimmerCloser() {
     document.getElementsByClassName("homepageOperations")[0].style.display = "none"
     
 }
-
+//Esta função dá return de um boolean consoante a existência prévia das credênciais do utilizador
 function accUse(){
     formGetter = document.forms.registerData;
     registerUserData = formGetter.elements.username.value;  
@@ -61,19 +62,18 @@ function accUse(){
         return true
     }
 }
-
+//Esta função verifica se o email tem um formato válido
 function ValidateEmail(){
     let mailValidFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     formGetterMail = document.forms.registerData;
     registerEmailDataValidation= formGetter.elements.email.value;
     if (registerEmailDataValidation.match(mailValidFormat)){
         return (false);
-    }else{
-    
+    }else{    
         return (true);
     }
 }
-
+//Esta função verifica se as credências do utilizador são fornecidas de maneira correta, criando contas com as mesmas
 function registerHandler(){
     let registredAcc = [];
     localStorage.setItem("accounts", JSON.stringify(registredAcc))
@@ -125,7 +125,7 @@ function registerHandler(){
         $(".loginHandler").removeClass("disabled");      
     } 
 }
-
+//Esta função trata da verificação da existência da conta e login na mesma
 function loginHandler(){
     let formData = document.forms.loginData;
     dataUsername = formData.elements.username.value;
@@ -161,7 +161,7 @@ function showPass(){
     }
 }
 
-
+//Impede que a seguir do logout o utilizador passa retroceder através
 history.pushState(null, null, location.href); 
 history.back(); 
 history.forward(); 

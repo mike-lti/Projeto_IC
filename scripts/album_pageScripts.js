@@ -1,6 +1,7 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
 "use strict";
+
 var tabelaOrigin = document.querySelector("#tabela-cuba tbody");
 var utilizador = localStorage.getItem("currentAccount").slice(1,localStorage.getItem("currentAccount").length -1);
 
@@ -8,9 +9,11 @@ $(document).ready(showNomeAlbum());
 $(document).ready(mostraCapaAlbunsWorkspace());
 $(document).ready(currentAccPlacer());
 
+/* Dá load à página com alguns elementos já desativados */
 $("#right-top-right-bar button img").addClass("disabled-image-button")
 document.getElementById("botao-eliminar").disabled = true;    
 
+/* Verifica se o utilizador já importou fotos para a galeria */
 if (localStorage.getItem("imagensImportadas" + utilizador)) {
     document.getElementById("p-album").innerHTML = ""; 
 } else {
@@ -18,11 +21,13 @@ if (localStorage.getItem("imagensImportadas" + utilizador)) {
     Vá até à página <a href=importar.html>Importar</a> e descarregue as suas primeiras fotografias.";
 }
 
+/* Verifica se o utilizador clicou no botão Criar Album na galeria */
 if (localStorage.getItem("criarAlbum") == "True") {
     abreNomeAlbum();
     localStorage.setItem("criarAlbum", "False");
 }
 
+/* Verifica se há albuns para selecionar e ativa e destaiva os botões para selecionar de acordo */
 if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) == "[]" || 
     localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) == null) {
     document.getElementById("botao-selecionar-album").disabled = true;
@@ -32,6 +37,7 @@ if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) == "[]" ||
     document.getElementById("botao-selecionar-todos-album").disabled = false;
 }
 
+/* Pede o nome do album ao utilizador */
 function abreNomeAlbum() {
     $("#botao-confirmar").addClass("disabled");
     $('input[type=checkbox]').prop('checked', false);
@@ -49,14 +55,15 @@ function abreNomeAlbum() {
     
 }
 
+/* Coloca o nome do utilizador na sidebar */
 function currentAccPlacer(){
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
     var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
     document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
 }
 
+/* Fecha o popup a pedir o nome do album */
 function closeNomeAlbum() {
-    enableBackground()
     document.getElementsByClassName("album_modal")[0].style.display = "none";
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
     document.getElementById("popup-sem-fotos").style.display = "none";
@@ -64,17 +71,7 @@ function closeNomeAlbum() {
     enableBackground();
 }
 
-function albumCriado() {
-    enableBackground()
-    document.getElementsByClassName('popup-partilha')[0].style.display ='none';
-    document.getElementsByClassName('dimmer')[0].style.opacity = '0';
-    document.getElementsByClassName('popupAlbum')[0].style.display ='block';
-    document.getElementsByClassName('popup-partilha')[0].style.display ='none';
-    $('.popupAlbum').fadeOut(7000);
-
-    localStorage.setItem('album-criado' + utilizador, 'true');
-}
-
+/* Fecha o popup que pede ao utilizador para selecionar as fotos para criar o album */
 function closeCriaAlbum() {
     document.getElementsByClassName('popup-album')[0].style.display ='none';
     document.getElementsByClassName("dimmer")[0].style.opacity = "0";
@@ -83,6 +80,7 @@ function closeCriaAlbum() {
     enableBackground()
     tiraFiltros();
 }
+
 
 function openAlbumPhotos() {
     document.getElementsByClassName("dimmer")[0].style.opacity = "1";
