@@ -1,7 +1,7 @@
 Browser a usar:
 Este projeto foi testado nos browsers Opera, Google Chrome, Mozilla Firefox e Microsoft Edge.
 A nossa interface começa pelo index.html, esta é a nossa página de html com a criação de conta e a opção de entrar já com uma conta criada.
-por predefinição, o nosso utilizador criado consiste nos espaços do Nome de utilizador e de Palavra-Passe vazios, sendo só necessário carregar no botão de entrar sem inserir os dados da conta.
+Por predefinição, a conta de utilizador criada consiste no Nome de Utilizador: admin e Palavra-Passe: admin.
 Auto-avaliação do Projeto:
 -
 
