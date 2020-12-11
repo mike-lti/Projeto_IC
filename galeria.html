@@ -33,7 +33,7 @@
                 <div id="right-top-right-bar">
                     <button id="botao-criar-galeria" onclick="guardarFotos('fotosAlbum')"><a id="href-album">Criar Álbum</a></button>
                     <button id="botao-adicionar" onclick="open_popup('popup-adicionar-fotos-galeria')">Adicionar</button>
-                    <button id="botao-eliminar" onclick="open_popup('popup-eliminar-fotos-galeria')"><img src="images/lixo4_icon.png" width="22px" alt=""></button>
+                    <button id="botao-eliminar" onclick="open_popup('popup-eliminar-fotos-geral')"><img src="images/lixo4_icon.png" width="22px" alt=""></button>
                     <button id="botao-partilhar"><a id="href-partilhar"><img onclick="guardarFotos('fotosPartilhar')" src="images/partilhar4_icon.png" width="35px" alt=""></a></button>
                 </div>
           
@@ -88,11 +88,11 @@
                     </p>              
                 </div>
 
-                <div id="popup-eliminar-fotos-galeria">
+                <div class="popup-eliminar-fotos-geral">
                     <p class="numero-albuns-eliminar"></p> <br>
-                    <button id="botao-popup-eliminar-cancelar" onclick="close_popup('popup-eliminar-fotos-galeria')">Cancelar</button>
+                    <button id="botao-popup-eliminar-cancelar" onclick="close_popup('popup-eliminar-fotos-geral')">Cancelar</button>
                     <button id="botao-popup-eliminar-confirmar" onclick="nova_galeria_eliminada()" >Confirmar</button>
-                    <div class="closeButton" onclick = "close_popup('popup-eliminar-fotos-galeria')"> &times; </div>
+                    <div class="closeButton" onclick = "close_popup('popup-eliminar-fotos-geral')"> &times; </div>
                 </div>
                 
                     
