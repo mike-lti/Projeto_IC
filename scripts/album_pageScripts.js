@@ -801,8 +801,8 @@ function delete_albums() {
         
         var arrayApagar = document.querySelectorAll('#imagens-album-tabela input[type=checkbox]:checked');
         var indiceAlbumAApagar = localStorage.getItem("indiceAlbumAMostrar");
-        var arrayImagensAlbum = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"))[indiceAlbumAApagar];
-        var arrayTodosAlbuns =  JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns"));
+        var arrayImagensAlbum = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))[indiceAlbumAApagar];
+        var arrayTodosAlbuns =  JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador));
         for (let imagemApagada of arrayApagar) {
             let srcApagada = imagemApagada.parentElement.children[1].children[0].getAttribute('src');
             let index = 0;
@@ -814,7 +814,7 @@ function delete_albums() {
             }
         }
         arrayTodosAlbuns[indiceAlbumAApagar] = arrayImagensAlbum;
-        localStorage.setItem("arrayImagensDiferentesAlbuns", JSON.stringify(arrayTodosAlbuns));
+        localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayTodosAlbuns));
         document.getElementById("botao-selecionar-album").innerHTML = "Selecionar";
     }
     mostraAlbumSelecionado(indiceAlbumAApagar);
