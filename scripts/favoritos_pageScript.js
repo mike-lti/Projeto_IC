@@ -45,7 +45,8 @@ function currentAccPlacer(){
 }
 
 function closePopup() {
-    document.getElementsByClassName("popup")[0].style.display = "none";
+    document.getElementsByClassName("popup-indisponivel")[0].style.display = "none";
+    document.getElementsByClassName("botao-popup")[0].style.display = "none";
 }
 
 function open_popup_eliminar_fotografias() {
