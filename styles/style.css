@@ -562,13 +562,13 @@ nav a {
 /* POPUP PARA SELECIONAR AS FOTOGRAFIAS DO ALBUM CRIADO ALBUM.HTML*/
 
 .option-item-album .option-inner-album {
-    width: 220px;
-    height: 140px;
-    border-radius: 5px;
-    border: 5px solid transparent;
-    text-align: center;
-    margin-top: 5px;
-    margin-left: 2px;
+  width: 220px;
+  height: 140px;
+  border-radius: 5px;
+  border: 5px solid transparent;
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 2px;
 }
 
 .option-item-album .checkbox-album {
@@ -607,12 +607,12 @@ nav a {
 }
 
 #fotos-adicionar-album {
-    position: absolute;
-    top: 55px;
-    height: 450px;
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  position: absolute;
+  top: 55px;
+  height: 450px;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #texto-cria-album {
@@ -794,20 +794,20 @@ nav a {
 }
 
 .voltar {
-    display: none;
-    position: absolute;
-    position: fixed;
-    right: 40px;
-    background-color: rgb(4, 125, 154);
-    color: white;
-    top: 90px;
-    height: 40px;
-    font-size: large;
-    border-radius: 5px;
+  display: none;
+  position: absolute;
+  position: fixed;
+  right: 40px;
+  background-color: rgb(4, 125, 154);
+  color: white;
+  top: 90px;
+  height: 40px;
+  font-size: large;
+  border-radius: 5px;
 }
 
 #tabela-album {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 /*--------------------------------*/
 

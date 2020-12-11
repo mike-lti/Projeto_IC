@@ -12,12 +12,16 @@ function currentAccPlacer(){
 
 
 function open_dropup() {
-  if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
-  document.getElementsByClassName("dropup-content")[0].style.display == "") {
-    document.getElementsByClassName("dropup-content")[0].style.display = "block";
-    $('.dropup-content').fadeIn(100);
+  if (
+    document.getElementsByClassName("dropup-content")[0].style.display ==
+      "none" ||
+    document.getElementsByClassName("dropup-content")[0].style.display == ""
+  ) {
+    document.getElementsByClassName("dropup-content")[0].style.display =
+      "block";
+    $(".dropup-content").fadeIn(100);
   } else {
-    $('.dropup-content').fadeOut(100);
+    $(".dropup-content").fadeOut(100);
   }
   
 }
