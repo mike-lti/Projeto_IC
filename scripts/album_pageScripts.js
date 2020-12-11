@@ -188,25 +188,19 @@ function aplica_filtros(funcao) {
             }
                 if(localStorage.getItem("cuba" + utilizador) == "true"){
                     filtrosDesejados.push(" Cuba")
-                    console.log(listFiltrosImgs);
                     for(let img = 0; img < listFiltrosImgs.length; img++) {
                         let imageToCheck = listFiltrosImgs[img]["cuba"];
-                        console.log(imageToCheck);
                         if(imageToCheck == "true"){
                             imagensFiltradas.push(listFiltrosImgs[img])
-                            console.log(imagensFiltradas)
                         }
                     }
                 }
                     if(localStorage.getItem("franca" + utilizador) == "true"){
                         filtrosDesejados.push(" França")
-                        console.log(listFiltrosImgs);
                         for(let img = 0; img < listFiltrosImgs.length; img++) {
                             let imageToCheck = listFiltrosImgs[img]["franca"];
-                            console.log(imageToCheck);
                             if(imageToCheck == "true"){
                                 imagensFiltradas.push(listFiltrosImgs[img])
-                                console.log(imagensFiltradas)
                             }
                         }
                     }
@@ -302,7 +296,7 @@ function aplica_filtros(funcao) {
         document.getElementsByClassName("popupFiltrosAplicados-album")[0].innerHTML = "Os seus filtros foram aplicados com sucesso!";
         document.getElementById("popup-filtros-album").style.display = "none";
         $('.popupFiltrosAplicados-album').fadeOut(7000);
-        console.log(listFiltrosImgs);
+        
         tiraFiltros();
 
     } else{
