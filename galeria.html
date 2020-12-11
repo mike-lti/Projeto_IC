@@ -76,22 +76,34 @@
 
                 <div id="popup-adicionar-fotos-galeria">
                     Para onde deseja adicionar as fotografias selecionadas? <br>
-                    <div id="botao-popup-adicionar-album"><img src="images/album3_icon.png" width="70px" height="70px" alt="" onclick="indisponivel()"> Álbum </div>
+                    <div id="botao-popup-adicionar-album"><img src="images/album3_icon.png" width="70px" height="70px" alt="" onclick=" open_addFotosAlbum()"> Álbum </div>
                     <div id="botao-popup-adicionar-favoritos" onclick="guardarFotos('fotosFavoritas')"><a href="favoritos.html"><img src="images/favoritos3_icon.png" width="70px" height="70px" alt=""> </a>Favoritos</div>
                     <button id="botao-popup-adicionar-cancelar" onclick="close_popup('popup-adicionar-fotos-galeria')">Cancelar</button>
                     <div class="closeButton" onclick = "close_popup('popup-adicionar-fotos-galeria')"> &times; </div>
                 </div>
 
-                <div class="popup-indisponivel" id="indisponivel">
-                    <p> Funcionalidade não disponível.
-                        <button type="button" class="botao-popup" onclick="closePopup('popup-indisponivel')">OK</button>
-                    </p>              
+                <div id="popup-adicionar-fotos-album">
+                    <div class="closeButton" onclick="close_popup('popup-adicionar-fotos-album')"> &times; </div>
+                    <p id="texto-seleciona">Escolha o albúm para o qual quer adicionar as fotos selecionadas:</p> <br>
+
+                    <div id="adicionar-album">
+                        <table id="tabela-adicionar-fotos-album">
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button id="botao-popup-cancelar" onclick="close_popup('popup-adicionar-fotos-album')">Cancelar</button>
+                    <button id="botao-popup-confirmar" onclick="add_fotos_album()">Confirmar</button>
+                    
+                    
                 </div>
 
                 <div id="popup-eliminar-fotos-galeria">
                     <p class="numero-albuns-eliminar"></p> <br>
-                    <button id="botao-popup-eliminar-cancelar" onclick="close_popup('popup-eliminar-fotos-galeria')">Cancelar</button>
-                    <button id="botao-popup-eliminar-confirmar" onclick="nova_galeria_eliminada()" >Confirmar</button>
+                    <button class="botao-popup-eliminar-cancelar" onclick="close_popup('popup-eliminar-fotos-galeria')">Cancelar</button>
+                    <button class="botao-popup-eliminar-confirmar" onclick="nova_galeria_eliminada()" >Confirmar</button>
                     <div class="closeButton" onclick = "close_popup('popup-eliminar-fotos-galeria')"> &times; </div>
                 </div>
                 
@@ -139,7 +151,6 @@
                 <button type="button" class="botao-popup" onclick="closePopupFiltrosAplicados()">OK</button>
             </p>               
             </div>
-
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

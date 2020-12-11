@@ -1,4 +1,7 @@
-Adicionar fotos a album pela galeria
-Adicionar Trash bin
-Mudar cenários de tarefas
-Adicionar fotos a album pelo album
+Visualizar albúm a partir do workspace na página album
+Adicionar função de adicionar e apagar fotos no album
+Na galeria a página nos lados está a sair do container
+imagem_selecionada error na galeria
+meter icon lixo a preto
+
+NAO ESQUECER DE VOLTAR A METER PASSE PARA ENTRAR

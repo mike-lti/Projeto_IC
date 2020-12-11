@@ -864,7 +864,7 @@ nav a{
 
 }
 
-#botao-popup-eliminar-cancelar {
+.botao-popup-eliminar-cancelar {
     
     font-size: large;
     height: 40px;
@@ -874,7 +874,7 @@ nav a{
     color: white;
 }
 
-#botao-popup-eliminar-confirmar {
+.botao-popup-eliminar-confirmar {
   
     height: 40px;
     border-radius: 5px;
@@ -901,6 +901,51 @@ nav a{
     text-decoration: none;
 }
 
+#popup-adicionar-fotos-album {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    right: 50px;
+    display: none;
+    flex-wrap: wrap;
+    width: 970px;
+    height: 80%;
+    margin-left: 255px;
+    z-index: 10;
+    bottom: 26px;
+}
+
+#adicionar-album {
+    position: absolute;
+    top: 50px;
+    height: 450px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#botao-popup-confirmar {
+    position: absolute;
+    right: 40px;
+    color: white;
+    font-size: large;
+    background-color:rgb(4, 125, 154);
+    border-color:rgb(4, 125, 154);
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    bottom: 20px;
+}
+
+#botao-popup-cancelar {
+    position: absolute;
+    right: 160px;
+    font-size: large;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    bottom: 20px;
+}
 
 #botao-popup-adicionar-cancelar {
     position: relative;
@@ -1266,7 +1311,7 @@ nav a{
 
 #texto-seleciona {
     position: absolute;
-    left: 300px;
+    left: 210px;
 }
 
 #popup-partilha-efetuada {
