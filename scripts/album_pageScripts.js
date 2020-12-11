@@ -363,9 +363,9 @@ function nomeAlbumDado(){
 
     
     if (inUseChecker){
-        document.getElementsByClassName('popupFiltrosAplicados-album')[0].innerHTML = "O nome que deseja já está a ser usado!";
-        document.getElementsByClassName('popupFiltrosAplicados-album')[0].style.display ='block';
-        $('.popupFiltrosAplicados-album').fadeOut(7000);
+        document.getElementsByClassName('popupMesmoNomeAlbum')[0].innerHTML = "O nome que deseja já está a ser usado!";
+        document.getElementsByClassName('popupMesmoNomeAlbum')[0].style.display ='block';
+        $('.popupMesmoNomeAlbum').fadeOut(5000);
 
     }else{
         if (localStorage.getItem("nomesAlbums" + utilizador) == null) {
