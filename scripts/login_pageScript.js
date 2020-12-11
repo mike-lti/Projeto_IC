@@ -66,11 +66,13 @@ function ValidateEmail(){
     let mailValidFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     formGetterMail = document.forms.registerData;
     registerEmailDataValidation= formGetter.elements.email.value;
-    if (registerEmailDataValidation.match(mailValidFormat)) {
+    if (registerEmailDataValidation.match(mailValidFormat)){
         return (false);
+    }else{
+    
+        return (true);
     }
-        return (true)
-    }
+}
 
 function registerHandler(){
     let registredAcc = [];
