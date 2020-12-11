@@ -123,6 +123,7 @@ function enable_favoritos() {
         document.getElementById("botao-selecionar-favoritos").innerHTML = "Selecionar"
         document.getElementById("botao-selecionar-todas-favoritos").innerHTML = "Selecionar Todas"
         $("input[type=checkbox]").attr("disabled", true);
+        document.getElementById("botao-recuperar-fotografias").disabled = true;
         for (let imagem of document.querySelectorAll('input[type=checkbox]:checked')) {
             imagem.checked = false; 
         }   
@@ -142,11 +143,13 @@ function seleciona_todos() {
             for (var x = 0; x < boxes.length; x++) {
                 var obj = boxes[x];
                     obj.checked = true;
+                    verifica();
             }
         } else {
             for (var x = 0; x < boxes.length; x++) {
                 var obj = boxes[x];
                     obj.checked = false;
+                    verifica();
             }
         }
     } else {
@@ -164,11 +167,13 @@ function seleciona_todos() {
                 for (var x = 0; x < boxes.length; x++) {
                     var obj = boxes[x];
                         obj.checked = true;
+                        verifica();
                 }
             } else {
                 for (var x = 0; x < boxes.length; x++) {
                     var obj = boxes[x];
                         obj.checked = false;
+                        verifica();
                 }
             }
             
@@ -185,4 +190,27 @@ function seleciona_todos() {
         
         
     }
+}
+
+
+function open_popup() {
+    
+    var recuperarTamanho = document.querySelectorAll('input[type=checkbox]:checked').length;
+
+    if (recuperarTamanho > 1) {
+        document.getElementsByClassName("numero-fotografias-recuperar")[0].innerHTML = "Tem a certeza que quer recuperar <br>" + recuperarTamanho + " fotografias?";
+    } else {
+        document.getElementsByClassName("numero-fotografias-recuperar")[0].innerHTML = "Tem a certeza que quer recuperar a fotografia selecionada?";
+    }
+    
+    document.getElementsByClassName("dimmer")[0].style.opacity="1"
+    document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "block";
+    disableBackground();   
+}
+
+function close_popup() {
+    document.getElementsByClassName("dimmer")[0].style.opacity="0"
+    document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "none";
+
+    enableBackground();
 }

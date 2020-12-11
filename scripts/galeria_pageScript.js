@@ -180,13 +180,21 @@ function open_popup(popup) {
         document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar a fotografia selecionada?"
     }
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
-    document.getElementById(popup).style.display = "block";
+    if (popup = "popup-eliminar-fotos-geral") {
+        document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "block";
+    } else {
+        document.getElementById(popup).style.display = "block";
+    }
     disableBackground();   
 }
 
 function close_popup(popup) {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
-    document.getElementById(popup).style.display = "none";
+    if (popup = "popup-eliminar-fotos-geral") {
+        document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "none";
+    } else {
+        document.getElementById(popup).style.display = "none";
+    }
     enableBackground();
 }
 
@@ -252,7 +260,7 @@ function nova_galeria_eliminada() {
 
 
     document.getElementsByClassName("dimmer")[0].style.opacity="0";  
-    close_popup("popup-eliminar-fotos-galeria");
+    close_popup("popup-eliminar-fotos-geral");
     
     var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador)); 
     var listFiltros = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));  

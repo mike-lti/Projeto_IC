@@ -58,12 +58,12 @@ function open_popup_eliminar_fotografias() {
         document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende remover a fotografia selecionada dos Favoritos?"
     }
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
-    document.getElementById("popup-eliminar-fotos-galeria").style.display = "block";   
+    document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "block";   
 }
 
 function close_popup_eliminar_fotografias() {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
-    document.getElementById("popup-eliminar-fotos-galeria").style.display = "none";
+    document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "none";
 }
 
 function open_popup_adicionar_fotografias() {
