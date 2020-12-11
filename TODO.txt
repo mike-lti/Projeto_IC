@@ -1,4 +1,3 @@
 Adicionar função de adicionar e apagar fotos no album
-Na galeria a página nos lados está a sair do container
 
 NAO ESQUECER DE VOLTAR A METER PASSE PARA ENTRAR

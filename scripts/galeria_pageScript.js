@@ -62,15 +62,17 @@ function showPhotos() {
 function showPopup() {
     document.getElementsByClassName("popup")[0].style.display = "block";
     $('.popup').fadeOut(10000);
-} 
+}
+
+ 
 
 function seleciona_todos() {
     
     var arrayImagensSelecionadas = document.querySelectorAll('input[type=checkbox]:checked');
 
     if ( $("input[type=checkbox]").attr("disabled")) {
-        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas"
-        document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
+        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas";
+        document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar";
         $("input[type=checkbox]").attr("disabled", false);
         var boxes = document.getElementsByClassName("checkbox");
         if (arrayImagensSelecionadas.length == 0 || 
@@ -187,6 +189,7 @@ function open_popup(popup) {
     } else {
         document.getElementById(popup).style.display = "block";
     }
+    document.getElementsByClassName("dimmer")[0].style.opacity="1"
     disableBackground();   
 }
 
@@ -562,6 +565,7 @@ function aplica_filtros(funcao) {
 
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("div-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
+        document.getElementById("tabela").style.marginTop = "10px";
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -600,6 +604,7 @@ function aplica_filtros(funcao) {
         $('.popupFiltrosAplicados').fadeOut(7000);
         document.getElementById("filtros-localizacao").style.display = "none";
     } else {
+        document.getElementById("tabela").style.marginTop = "0px";
         document.getElementById("remover-filtros").style.display = "none";
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("div-filtros-aplicados").innerHTML = ""
