@@ -5,8 +5,15 @@ var utilizador = localStorage.getItem("currentAccount")
 .slice(1,localStorage.getItem("currentAccount").length -1);
 
 $(document).ready(preencheTabelaApagadas());
+$(document).ready(currentAccPlacer());
 document.getElementById("botao-recuperar-fotografias").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
+
+function currentAccPlacer(){
+  var usernameLoggedInToParse = localStorage.getItem("currentAccount");
+  var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
+  document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
+}
 
 function preencheTabelaApagadas() {
 
