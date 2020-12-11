@@ -75,7 +75,7 @@
                             <input type="text" name="aName" onkeyup="verificaCampo();">
                         </form>
                         <br>
-                        <button id="botao-cancelar" onclick="closeNomeAlbum()">Cancelar</button>
+                        <button class="botao-cancelar" onclick="closeNomeAlbum()">Cancelar</button>
                         <button id="botao-confirmar" onclick="nomeAlbumDado();">Confirmar</button>
                     </div>                    
                 </div>
@@ -140,7 +140,6 @@
                     <p id="texto-cria-album">Selecione as fotografias que deseja adicionar ao seu álbum:</p>
                     <button id="botao-cancelar-selecao" onclick="closeCriaAlbum()" >Cancelar</button>
                     <button id="botao-confirmar-selecao" onclick="preencheTabelaAlbumCriado()">Confirmar</button>
-                    <button id="remover-filtros-album" onclick="aplica_filtros('remover-filtros')">Remover Filtros</button>
                     <p id="text-creation-filtros"></p>
                     <div class="botao-filtros" id="botao-filtros-album" onclick="openFiltros()" ><img id="imagem_filtros" src="images/filtros_icon_black.png" width="40" height="40"  alt=""></div>
                     <div id="fotos-adicionar-album">
