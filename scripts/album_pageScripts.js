@@ -188,25 +188,19 @@ function aplica_filtros(funcao) {
             }
                 if(localStorage.getItem("cuba" + utilizador) == "true"){
                     filtrosDesejados.push(" Cuba")
-                    console.log(listFiltrosImgs);
                     for(let img = 0; img < listFiltrosImgs.length; img++) {
                         let imageToCheck = listFiltrosImgs[img]["cuba"];
-                        console.log(imageToCheck);
                         if(imageToCheck == "true"){
                             imagensFiltradas.push(listFiltrosImgs[img])
-                            console.log(imagensFiltradas)
                         }
                     }
                 }
                     if(localStorage.getItem("franca" + utilizador) == "true"){
                         filtrosDesejados.push(" França")
-                        console.log(listFiltrosImgs);
                         for(let img = 0; img < listFiltrosImgs.length; img++) {
                             let imageToCheck = listFiltrosImgs[img]["franca"];
-                            console.log(imageToCheck);
                             if(imageToCheck == "true"){
                                 imagensFiltradas.push(listFiltrosImgs[img])
-                                console.log(imagensFiltradas)
                             }
                         }
                     }
@@ -299,9 +293,10 @@ function aplica_filtros(funcao) {
         checkboxDia = document.getElementById("dia").checked = false;
         document.getElementById("imagem_filtros").src = "images/filtros_icon_black.png";
         document.getElementsByClassName("popupFiltrosAplicados-album")[0].style.display = "block";
+        document.getElementsByClassName("popupFiltrosAplicados-album")[0].innerHTML = "Os seus filtros foram aplicados com sucesso!";
         document.getElementById("popup-filtros-album").style.display = "none";
         $('.popupFiltrosAplicados-album').fadeOut(7000);
-        console.log(listFiltrosImgs);
+        
         tiraFiltros();
 
     } else{
@@ -360,41 +355,68 @@ function nomeAlbumDado(){
     let toResetForm = document.forms.nomeDoAlbum;
     let ff = document.forms.nomeDoAlbum.elements.aName.value;
     toResetForm.reset();
-    if (localStorage.getItem("nomesAlbums" + utilizador) == null) {
-        arrayNomesAlbum.push(ff);
-        localStorage.setItem("nomesAlbums" + utilizador, JSON.stringify(arrayNomesAlbum)); 
-    } else {
-        let nomesAlbums = JSON.parse(localStorage.getItem("nomesAlbums" + utilizador));
+    var inUseChecker = 0;
+    
+    if(JSON.parse(localStorage.getItem("nomesAlbums" + utilizador)) == null){
+        inUseChecker = false;
+    }else{
+        for(var i = 0; i < JSON.parse(localStorage.getItem("nomesAlbums" + utilizador)).length; i++){
+            if(ff == JSON.parse(localStorage.getItem("nomesAlbums" + utilizador))[i]){
+                inUseChecker= true;
 
-        nomesAlbums.push(ff);
-        localStorage.setItem("nomesAlbums" + utilizador, JSON.stringify(nomesAlbums));
+            }else{
+
+                inUseChecker = false;
+
+            }
+
+        }
     }
 
-    if (localStorage.getItem("fotosAlbum" + utilizador) || localStorage.getItem("fotosFavortitosAlbum" + utilizador)) {
-        if ( JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador)) == null) {
-            arrayFotos = [];
+    
+    if (inUseChecker){
+        document.getElementsByClassName('popupFiltrosAplicados-album')[0].innerHTML = "O nome que deseja já está a ser usado!";
+        document.getElementsByClassName('popupFiltrosAplicados-album')[0].style.display ='block';
+        $('.popupFiltrosAplicados-album').fadeOut(7000);
+
+    }else{
+        if (localStorage.getItem("nomesAlbums" + utilizador) == null) {
+            arrayNomesAlbum.push(ff);
+            localStorage.setItem("nomesAlbums" + utilizador, JSON.stringify(arrayNomesAlbum)); 
         } else {
-            arrayFotos = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))
+            let nomesAlbums = JSON.parse(localStorage.getItem("nomesAlbums" + utilizador));
+
+            nomesAlbums.push(ff);
+            localStorage.setItem("nomesAlbums" + utilizador, JSON.stringify(nomesAlbums));
         }
-        if (localStorage.getItem("fotosAlbum" + utilizador)) {
+
+        if (localStorage.getItem("fotosAlbum" + utilizador) || localStorage.getItem("fotosFavortitosAlbum" + utilizador)) {
+            if ( JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador)) == null) {
+                arrayFotos = [];
+            } else {
+                arrayFotos = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))
+            }
+            if (localStorage.getItem("fotosAlbum" + utilizador)) {
+                arrayFotos.push(JSON.parse(localStorage.getItem("fotosAlbum" + utilizador)))
+            } else {
+                arrayFotos.push(JSON.parse(localStorage.getItem("fotosFavoritosAlbum" + utilizador)))
+            }
+            
+            document.getElementsByClassName("dimmer")[0].style.display = 0;
             arrayFotos.push(JSON.parse(localStorage.getItem("fotosAlbum" + utilizador)))
+            localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayFotos));
+            mostraCapaAlbunsWorkspace();
+            enableBackground();
+            location.reload();
         } else {
-            arrayFotos.push(JSON.parse(localStorage.getItem("fotosFavoritosAlbum" + utilizador)))
+            preencheTabelaAlbum();
+            document.getElementsByClassName('popup-album')[0].style.display ='block';
         }
-        
-        document.getElementsByClassName("dimmer")[0].style.display = 0;
-        arrayFotos.push(JSON.parse(localStorage.getItem("fotosAlbum" + utilizador)))
-        localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayFotos));
-        mostraCapaAlbunsWorkspace();
-        enableBackground();
-        location.reload();
-    } else {
-        preencheTabelaAlbum();
-        document.getElementsByClassName('popup-album')[0].style.display ='block';
-    }
 
-    localStorage.removeItem("fotosAlbum" + utilizador)
-    document.getElementsByClassName("album_modal")[0].style.display = "none";
+        localStorage.removeItem("fotosAlbum" + utilizador)
+        document.getElementsByClassName("album_modal")[0].style.display = "none";
+
+}
     
 }
 
