@@ -180,7 +180,7 @@ function open_popup(popup) {
         document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar a fotografia selecionada?"
     }
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
-    if (popup = "popup-eliminar-fotos-geral") {
+    if (popup == "popup-eliminar-fotos-geral") {
         document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "block";
     } else {
         document.getElementById(popup).style.display = "block";
@@ -190,7 +190,7 @@ function open_popup(popup) {
 
 function close_popup(popup) {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
-    if (popup = "popup-eliminar-fotos-geral") {
+    if (popup == "popup-eliminar-fotos-geral") {
         document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "none";
     } else {
         document.getElementById(popup).style.display = "none";
@@ -791,6 +791,7 @@ function open_addFotosAlbum() {
     document.getElementById("botao-popup-confirmar").style.display = "block";
     document.getElementById("popup-adicionar-fotos-album").style.display = "block";
     close_popup("popup-adicionar-fotos-galeria");
+    document.getElementsByClassName("dimmer")[0].style.opacity="1";
 
     if (localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador) != null) {
 
@@ -859,5 +860,5 @@ function add_fotos_album() {
 
     localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(albuns));
     close_popup('popup-adicionar-fotos-album');
-
+    location.replace("album.html");
 }
