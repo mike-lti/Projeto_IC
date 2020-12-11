@@ -29,19 +29,22 @@ function showModal(disponibilidade) {
     let local = document.createElement("div");
     div.innerHTML = "";
     if (disponibilidade == "disponivel-pc") {
+        localStorage.setItem("local", "cuba");
         document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
         document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
-        local.innerHTML = "<input type='image' id='file_cuba' width='180' height='235' src='img_icon_importar/ferias_cuba.png' onclick='selectCuba()'>";
+        local.innerHTML = "<input type='image' onclick='verifica()' id='file_cuba' width='180' height='235' src='img_icon_importar/ferias_cuba.png' >";
         div.appendChild(local);
     } else if (disponibilidade == "disponivel-google-fotos") {
+        localStorage.setItem("local", "franca");
         document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
         document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
-        local.innerHTML ="<input type='image' id='file_franca' width='180' height='235' src='img_icon_importar/fotos_frança.png' onclick='selectFranca()'>";
+        local.innerHTML ="<input type='image' id='file_franca' width='180' height='235' src='img_icon_importar/fotos_frança.png' onclick='verifica()'>";
         div.appendChild(local);
     } else if (disponibilidade == "disponivel-icloud") {
+        localStorage.setItem("local", "spike");
         document.getElementsByClassName("importing_modal")[0].style.display = "inline-block";
         document.getElementsByClassName("importing_modal")[0].style.zIndex = "9";
-        local.innerHTML = "<input type='image' id='file_spike' width='180' height='235' src='img_icon_importar/fotos_spike.png' onclick='selectSpike()'>";
+        local.innerHTML = "<input type='image' id='file_spike' width='180' height='235' src='img_icon_importar/fotos_spike.png' onclick='verifica()'>";
         div.appendChild(local);
     } else {
         document.getElementById("indisponivel-importar").style.display = "inline-block";
@@ -63,11 +66,22 @@ function closeModal() {
 
 function cancelSelection() {
     closeModal();
+    localStorage.removeItem("local");
 }
 
 function confirmSelection() {
+    var local = localStorage.getItem("local");
+    if (local == "cuba") {
+        selectCuba();
+    } else if (local == "franca") {
+        selectFranca();
+    } else {
+        selectSpike();
+    }
     localStorage.setItem("imagensImportadas" + utilizador, JSON.stringify(arrayImagensImportadas))
     localStorage.setItem("showPopup" + utilizador, "true");
+    location.replace("galeria.html")
+    localStorage.removeItem("local");
 }
 
 function selectCuba() {
@@ -263,4 +277,8 @@ function open_dropup() {
       $('.dropup-content').fadeOut(100);
     }
     
+}
+
+function verifica() {
+    document.getElementById("botao-confirmar").disabled = false; 
 }

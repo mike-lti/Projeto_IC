@@ -230,7 +230,7 @@ function nova_galeria_eliminada() {
 
     document.getElementsByClassName("dimmer")[0].style.opacity="0"  
     
-    
+    location.reload();
     close_popup_eliminar_fotografias()
 }   
 

@@ -65,16 +65,18 @@ function open_icon_partilha(icon) {
     document.getElementsByClassName("popup-partilha")[0].style.display="block";
     preencheTabelaImagensPartilhar();
     document.getElementById("botao-confirmar-partilha").disabled = true;
-    if (localStorage.getItem("fotosPartilhar" + utilizador) || localStorage.getItem("fotosFavoritosPartilhar" + utilizador)) {
+    if (localStorage.getItem("fotosPartilhar" + utilizador) || localStorage.getItem("fotosFavoritosPartilhar" + utilizador) || localStorage.getItem("albunsFotografiasPartilhar" + utilizador)) {
         document.getElementById("texto-seleciona").innerHTML = "As fotos selecionadas para partilhar:";
         document.getElementById("botao-trocar-tipo").style.display = "none";  
         preencheTabelaImagensPartilhar();    
         $("input[type=checkbox]").attr("disabled", true);
         document.getElementById("botao-confirmar-partilha").disabled = false;
         if (localStorage.getItem("fotosPartilhar" + utilizador)) {
-            var numeroFotos = JSON.parse(localStorage.getItem("fotosPartilhar" + utilizador)).length
+            var numeroFotos = JSON.parse(localStorage.getItem("fotosPartilhar" + utilizador)).length;
+        } else if (localStorage.getItem("fotosFavoritosPartilhar" + utilizador)) {
+            var numeroFotos = JSON.parse(localStorage.getItem("fotosFavoritosPartilhar" + utilizador)).length;
         } else {
-            var numeroFotos = JSON.parse(localStorage.getItem("fotosFavoritosPartilhar" + utilizador)).length
+            var numeroFotos = JSON.parse(localStorage.getItem("albunsFotografiasPartilhar" + utilizador)).length;
         }
         
         if (numeroFotos > 1) {
@@ -240,7 +242,6 @@ function open_dropup() {
     } else {
       $('.dropup-content').fadeOut(100);
     }
-    
 }
 
 function popupAlbum() {
@@ -255,6 +256,8 @@ function popupAlbum() {
 function removerSelecao() {
     localStorage.removeItem("fotosPartilhar" + utilizador);
     localStorage.removeItem("fotosFavoritosPartilhar" + utilizador);
+    localStorage.removeItem("albunsFotografiasPartilhar" + utilizador);
+    localStorage.removeItem("albunsPartilhar" + utilizador);
     closePopup("popupEstadoVisivel");
 }
 

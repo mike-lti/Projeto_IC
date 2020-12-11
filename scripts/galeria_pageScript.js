@@ -132,28 +132,16 @@ function verifica() {
   
     if (document.querySelectorAll('input[type=checkbox]:checked').length != 0) {
         $("#right-top-right-bar button img").removeClass("disabled-image-button");
-        $("#href-album").removeClass("disabled");
-        $("#href-partilhar").removeClass("disabled");
         document.getElementById("botao-eliminar").disabled = false;    
         document.getElementById("botao-criar-galeria").disabled = false;
         document.getElementById("botao-adicionar").disabled = false;
-        document.getElementById("href-album").style.color = "black";
-        document.getElementById("href-partilhar").href = "partilhar.html";
-        document.getElementById("href-album").href = "album.html";
         $("#botao-popup-confirmar").removeClass("disabled-confirm-button");
 
     } else {
         $("#right-top-right-bar button img").addClass("disabled-image-button");
-        $("#href-album").addClass("disabled");
-        $("#href-partilhar").addClass("disabled");
         document.getElementById("botao-eliminar").disabled = true;    
         document.getElementById("botao-criar-galeria").disabled = true;
-        document.getElementById("href-album").style.color = "rgb(204, 204, 204)";
         document.getElementById("botao-adicionar").disabled = true;
-        document.getElementById("href-partilhar").disabled = true;
-        document.getElementById("href-partilhar").href = "";
-        document.getElementById("href-album").disabled = true;
-        document.getElementById("href-album").href = "";
         $("#botao-popup-confirmar").addClass("disabled-confirm-button");
     }
 }
@@ -308,6 +296,7 @@ function guardarFotos(local) {
         }
     
         localStorage.setItem(local, JSON.stringify(srcList))
+        location.replace("partilhar.html");
     } else if (local == "fotosFavoritas" + utilizador) {
         localStorage.setItem("showPopupFavoritos" + utilizador, "true")
 
@@ -320,6 +309,7 @@ function guardarFotos(local) {
             }
 
             localStorage.setItem(local, JSON.stringify(srcList))
+            location.replace("partilhar.html");
         } else {
 
             let srcList = JSON.parse(localStorage.getItem(local));
@@ -330,6 +320,7 @@ function guardarFotos(local) {
             }
         
             localStorage.setItem(local, JSON.stringify(srcList));    
+            location.replace("partilhar.html");
         }
     
     } else if (local == "fotosAlbum" + utilizador) {
@@ -343,7 +334,9 @@ function guardarFotos(local) {
         }
 
         localStorage.setItem(local, JSON.stringify(srcList));
+        location.replace("album.html");
     }
+
 }
 
 function preencheTabelaImagens() {
@@ -643,11 +636,6 @@ function aplica_filtros(funcao) {
     document.getElementById("botao-adicionar").disabled = true;
     document.getElementById("botao-eliminar").disabled = true;
     document.getElementById("botao-partilhar").disabled = true;
-    document.getElementById("href-partilhar").disabled = true;
-    document.getElementById("href-album").disabled = true; 
-    document.getElementById("href-album").style.color = "rgb(204, 204, 204)";
-    $("#href-album").addClass("disabled");
-    $("#href-partilhar").addClass("disabled");
     $("#right-top-right-bar button img").addClass("disabled-image-button");
     $("#tabela").removeClass("disabled")
     
