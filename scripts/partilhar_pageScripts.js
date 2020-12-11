@@ -49,9 +49,12 @@ function closePopup(popup) {
 
 function popup_partilha_efetuada() {
     localStorage.removeItem("fotosPartilhar" + utilizador);
+    localStorage.removeItem("fotosFavoritosPartilhar" + utilizador);
+    localStorage.removeItem("albunsPartilhar" + utilizador);
     document.getElementsByClassName("dimmer")[0].style.opacity="0";
     document.getElementsByClassName("popup")[0].style.display = "block"
     document.getElementsByClassName("popup-partilha")[0].style.display="none";
+    popupAlbum();
     $('.popup').fadeOut(7000);
     enableBackground();
 }
@@ -68,9 +71,14 @@ function open_icon_partilha(icon) {
         preencheTabelaImagensPartilhar();    
         $("input[type=checkbox]").attr("disabled", true);
         document.getElementById("botao-confirmar-partilha").disabled = false;
-        var numeroFotos = JSON.parse(localStorage.getItem("albunsPartilhar" + utilizador)).length
+        if (localStorage.getItem("fotosPartilhar" + utilizador)) {
+            var numeroFotos = JSON.parse(localStorage.getItem("fotosPartilhar" + utilizador)).length
+        } else {
+            var numeroFotos = JSON.parse(localStorage.getItem("fotosFavoritosPartilhar" + utilizador)).length
+        }
+        
         if (numeroFotos > 1) {
-            document.getElementById("mensagem-sucesso-partilha").innerHTML = numeroFotos + "fotografias partilhadas com sucesso";
+            document.getElementById("mensagem-sucesso-partilha").innerHTML = numeroFotos + " fotografias partilhadas com sucesso";
         } else {
             document.getElementById("mensagem-sucesso-partilha").innerHTML = "Fotografia partilhada com sucesso";
         }
@@ -82,7 +90,7 @@ function open_icon_partilha(icon) {
         document.getElementById("botao-confirmar-partilha").disabled = false;
         var numeroAlbuns = JSON.parse(localStorage.getItem("albunsPartilhar" + utilizador)).length
         if (numeroAlbuns> 1) {
-            document.getElementById("mensagem-sucesso-partilha").innerHTML = numeroAlbuns + "álbuns partilhados com sucesso";
+            document.getElementById("mensagem-sucesso-partilha").innerHTML = numeroAlbuns + " álbuns partilhados com sucesso";
         } else {
             document.getElementById("mensagem-sucesso-partilha").innerHTML = "Álbum partilhado com sucesso";
         }
@@ -237,7 +245,7 @@ function open_dropup() {
 
 function popupAlbum() {
 
-    if (localStorage.getItem("fotosPartilhar" + utilizador) || localStorage.getItem("fotosFavoritosPartilhar" + utilizador)) {
+    if (localStorage.getItem("fotosPartilhar" + utilizador) || localStorage.getItem("fotosFavoritosPartilhar" + utilizador) || localStorage.getItem("albuns Partilhar" + utilizador) ) {
         document.getElementsByClassName("popupEstadoVisivel")[0].style.display = "block";
     } else {
         document.getElementsByClassName("popupEstadoVisivel")[0].style.display = "none";

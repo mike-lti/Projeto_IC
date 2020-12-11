@@ -61,7 +61,7 @@ function showPhotos() {
 
 function showPopup() {
     document.getElementsByClassName("popup")[0].style.display = "block";
-    $('.popup').fadeOut(7000);
+    $('.popup').fadeOut(10000);
 }
 
 function imagem_selecionada() {
@@ -254,28 +254,32 @@ function nova_galeria_eliminada() {
         }
     }
     
-    /* var arrayImagensApagadas = [];
+    var arrayImagensApagadas;
     var imagensApagadas = [];
     for (let srcImgApagada of arrayApagar) {
         let src = srcImgApagada.parentElement.children[1].children[0].getAttribute('src'); 
         imagensApagadas.push(src);
     }
 
-    if (localStorage.getItem("ImagensApagadas" + utilizador) == null) {        
-        arrayImagensApagadas = imagensApagadas;   
+    
+
+    if (localStorage.getItem("imagensApagadas" + utilizador) == null) {        
+        localStorage.setItem("imagensApagadas" + utilizador, JSON.stringify(imagensApagadas)); 
         
     }else {        
         arrayImagensApagadas = JSON.parse(localStorage.getItem("imagensApagadas" + utilizador));
 
-        for (let imgSrc of arrayApagar) {
+        for (let srcImgApagada of arrayApagar) {
             let src = srcImgApagada.parentElement.children[1].children[0].getAttribute('src'); 
-            imagensApagadas.push(src);
+            arrayImagensApagadas.push(src);
         }
 
         localStorage.setItem("imagensApagadas" + utilizador, JSON.stringify(arrayImagensApagadas));
-    } */
+    }
 
-    document.getElementsByClassName("dimmer")[0].style.opacity="0"  
+
+
+    document.getElementsByClassName("dimmer")[0].style.opacity="0";  
     close_popup("popup-eliminar-fotos-galeria");
     
     var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador)); 
@@ -414,10 +418,11 @@ function openFiltros() {
         $("#popup-filtros-galeria").slideDown();
         $("input[type=checkbox]").attr("disabled", false);
     }
+    $("#tabela").addClass("disabled");
 }
 
 function tiraFiltros() {
-    $("input[type=checkbox]").attr("disabled", false);
+    $("input[type=checkbox]").attr("disabled", true);
     document.getElementById("imagem_filtros").src = "images/filtros_icon.png";
     $("#popup-filtros-galeria").slideUp();
     document.getElementById("desfocadas").checked = false;
@@ -430,6 +435,7 @@ function tiraFiltros() {
     document.getElementById("franca").checked = false;
     document.getElementById("filtros-localizacao").style.display = "none";
     document.getElementById("filtros-localizacao").style.marginTop = "0px";
+    $("#tabela").removeClass("disabled");
 }
 
 function abreLocalizacao() {
@@ -641,6 +647,8 @@ function aplica_filtros(funcao) {
 
         }
         document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Selecionar Todas"
+        $("input[type=checkbox]").attr("disabled", true);
+        localStorage.removeItem("imagensFiltradas");
         verifica();
     }
 
@@ -654,6 +662,7 @@ function aplica_filtros(funcao) {
     $("#href-album").addClass("disabled");
     $("#href-partilhar").addClass("disabled");
     $("#right-top-right-bar button img").addClass("disabled-image-button");
+    $("#tabela").removeClass("disabled")
     
 }
 

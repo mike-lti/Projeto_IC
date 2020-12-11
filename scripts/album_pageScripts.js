@@ -370,12 +370,18 @@ function nomeAlbumDado(){
         localStorage.setItem("nomesAlbums" + utilizador, JSON.stringify(nomesAlbums));
     }
 
-    if (localStorage.getItem("fotosAlbum" + utilizador)) {
+    if (localStorage.getItem("fotosAlbum" + utilizador) || localStorage.getItem("fotosFavortitosAlbum" + utilizador)) {
         if ( JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador)) == null) {
             arrayFotos = [];
         } else {
             arrayFotos = JSON.parse(localStorage.getItem("arrayImagensDiferentesAlbuns" + utilizador))
         }
+        if (localStorage.getItem("fotosAlbum" + utilizador)) {
+            arrayFotos.push(JSON.parse(localStorage.getItem("fotosAlbum" + utilizador)))
+        } else {
+            arrayFotos.push(JSON.parse(localStorage.getItem("fotosFavoritosAlbum" + utilizador)))
+        }
+        
         document.getElementsByClassName("dimmer")[0].style.display = 0;
         arrayFotos.push(JSON.parse(localStorage.getItem("fotosAlbum" + utilizador)))
         localStorage.setItem("arrayImagensDiferentesAlbuns" + utilizador, JSON.stringify(arrayFotos));
@@ -512,7 +518,7 @@ function preencheTabelaAlbumCriado() {
         enableBackground()
     }
     document.getElementById("remover-filtros-album").style.display = "none";
-    window.location.reload()
+    /* window.location.reload() */
 }  
 
 /* Aqui mostra o album selecionado no workspace */
