@@ -1,15 +1,14 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
 "use strict";
-var utilizador = localStorage.getItem("currentAccount")
-.slice(1,localStorage.getItem("currentAccount").length -1);
+var utilizador = localStorage.getItem("currentAccount").slice(1,localStorage.getItem("currentAccount").length -1);
 $(document).ready(preencheTabelaImagensPartilhar());
 $(document).ready(currentAccPlacer());
 $(document).ready(popupAlbum());
 
 document.getElementById("botao-confirmar-partilha").disabled = true;
 
-function currentAccPlacer(){
+function currentAccPlacer() {
     var usernameLoggedInToParse = localStorage.getItem("currentAccount");
     var usernameLoggedIn = JSON.parse(usernameLoggedInToParse);
     document.getElementById("usernameCurrentAccount").innerHTML = usernameLoggedIn;
@@ -191,12 +190,11 @@ function preencheTabelaImagensPartilhar() {
         document.getElementById("p-importar").innerHTML = "Escolha o local para onde pretende partilhar as suas fotografias:"; 
 
         if (localStorage.getItem("fotosPartilhar" + utilizador) != null) {
-
             document.getElementById("texto-seleciona").style.left = "320px";
             var arrayImagens = JSON.parse(localStorage.getItem("fotosPartilhar" + utilizador));
-        } else if (localStorage.getItem("fotosFavoritosPartilhar" + utilizador) != null)
+        } else if (localStorage.getItem("fotosFavoritosPartilhar" + utilizador) != null) {
             var arrayImagens = JSON.parse(localStorage.getItem("fotosFavoritosPartilhar" + utilizador));
-        else {
+        } else {
             var arrayImagens = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
         }
         var tabela = document.querySelector("#tabela-fotos-partilha tbody");
@@ -225,21 +223,22 @@ function preencheTabelaImagensPartilhar() {
                 }    
         
         } else {
-        document.getElementById("p-importar").innerHTML = "Não tem nenhuma fotografia na sua galeria. Importe primeiro!";
-        document.getElementById("bot_row_icons").style.opacity = 0.5;
-        document.getElementById("top_row_icons").style.opacity = 0.5;
-        $("#top_row_icons").addClass("disabled");
-        $("#bot_row_icons").addClass("disabled");
+            document.getElementById("p-importar").innerHTML = "Não tem nenhuma fotografia na sua galeria. Importe primeiro!";
+            document.getElementById("bot_row_icons").style.opacity = 0.5;
+            document.getElementById("top_row_icons").style.opacity = 0.5;
+            $("#top_row_icons").addClass("disabled");
+            $("#bot_row_icons").addClass("disabled");
         }
 }
 
 function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
-    document.getElementsByClassName("dropup-content")[0].style.display == "") {
-      document.getElementsByClassName("dropup-content")[0].style.display = "block";
-      $('.dropup-content').fadeIn(100);
+        document.getElementsByClassName("dropup-content")[0].style.display == "") {
+
+        document.getElementsByClassName("dropup-content")[0].style.display = "block";
+        $('.dropup-content').fadeIn(100);
     } else {
-      $('.dropup-content').fadeOut(100);
+        $('.dropup-content').fadeOut(100);
     }
 }
 

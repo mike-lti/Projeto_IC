@@ -20,7 +20,8 @@ document.getElementById("botao-adicionar").disabled = true;
 document.getElementById("botao-partilhar").disabled = true;
 $("input[type=checkbox]").attr("disabled", true);
 
-if (localStorage.getItem("imagensImportadas" + utilizador) == null || localStorage.getItem("imagensImportadas" + utilizador) == "[]") {
+if (localStorage.getItem("imagensImportadas" + utilizador) == null || 
+    localStorage.getItem("imagensImportadas" + utilizador) == "[]") {
     document.getElementById("p-album").innerHTML = "Ainda não tem fotografias na galeria.\
     Vá até à página <a href=importar.html>Importar</a> e importe as suas primeiras fotografias.";
     document.getElementById("botao-selecionar-galeria").disabled = true;
@@ -112,9 +113,7 @@ function seleciona_todos() {
             for (let imagem of arrayImagensSelecionadas) {
                 imagem.checked = false; 
             }
-        }
-        
-                
+        }            
     }
 }
 
@@ -228,7 +227,7 @@ function nova_galeria_eliminada() {
     if (localStorage.getItem("imagensApagadas" + utilizador) == null) {        
         localStorage.setItem("imagensApagadas" + utilizador, JSON.stringify(imagensApagadas)); 
         
-    }else {        
+    }else{        
         arrayImagensApagadas = JSON.parse(localStorage.getItem("imagensApagadas" + utilizador));
 
         for (let srcImgApagada of arrayApagar) {
@@ -264,7 +263,7 @@ function nova_galeria_eliminada() {
     location.reload();    
 }   
 
-function showPopupFavoritos(){
+function showPopupFavoritos() {
     document.getElementsByClassName("popup")[0].style.display = "block";
     $('.popup').fadeOut(7000);    
 }
@@ -580,7 +579,7 @@ function aplica_filtros(funcao) {
         document.getElementById("popup-filtros-galeria").style.display = "none" 
         $('.popupFiltrosAplicados').fadeOut(7000);
         document.getElementById("filtros-localizacao").style.display = "none";
-        }else {
+        } else {
         document.getElementById("tabela").style.marginTop = "0px";
         document.getElementById("remover-filtros").style.display = "none";
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
@@ -635,7 +634,7 @@ function closePopup(disponibilidade) {
 
 function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
-    document.getElementsByClassName("dropup-content")[0].style.display == "") {
+        document.getElementsByClassName("dropup-content")[0].style.display == "") {
       document.getElementsByClassName("dropup-content")[0].style.display = "block";
       $('.dropup-content').fadeIn(100);
     } else {
@@ -699,7 +698,8 @@ function close_open_slideShow(funcao, imagem) {
     document.getElementById("tabela").disabled = true;
     document.getElementById("imagemCarrossel").src = imagem;
 
-    if (localStorage.getItem("imagensFiltradas" + utilizador) == "[]" || localStorage.getItem("imagensFiltradas" + utilizador) == null) { 
+    if (localStorage.getItem("imagensFiltradas" + utilizador) == "[]" || 
+        localStorage.getItem("imagensFiltradas" + utilizador) == null) { 
         var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
     } else {
         var arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensFiltradas" + utilizador));         

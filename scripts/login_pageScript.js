@@ -1,14 +1,8 @@
 //Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166
 
-
-
-
-
 const registerPassword = "password";
 const loginUsername = "username";
 const loginPassword = "password";
-
-
 
 function userAcc(password){
     this.password = password    
@@ -63,22 +57,20 @@ function accUse(){
     if(localStorage.getItem(registerUserData) == null){
         return false
 
-    }else{
+    } else {
         return true
     }
 }
 
 function ValidateEmail(){
-let mailValidFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-formGetterMail = document.forms.registerData;
-registerEmailDataValidation= formGetter.elements.email.value;
- if (registerEmailDataValidation.match(mailValidFormat))
-  {
-    return (false)
-  }
-    
-    return (true)
-}
+    let mailValidFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    formGetterMail = document.forms.registerData;
+    registerEmailDataValidation= formGetter.elements.email.value;
+    if (registerEmailDataValidation.match(mailValidFormat)) {
+        return (false);
+    }
+        return (true)
+    }
 
 function registerHandler(){
     let registredAcc = [];
@@ -112,7 +104,6 @@ function registerHandler(){
         document.getElementsByClassName("homepageOperations")[0].style.bottom = "80px";
         $('.homepageOperations').fadeOut(7000);
 
-    
     }else if(accUse()){
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador já se encontra utilizado. Escolha outro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
@@ -120,7 +111,6 @@ function registerHandler(){
         $('.homepageOperations').fadeOut(5000);
         formGetter.reset()
 
-    
     }else{
         let accToApend = new userAcc(registerPassData);
         registredAcc.push(accToApend);        
@@ -138,18 +128,21 @@ function loginHandler(){
     let formData = document.forms.loginData;
     dataUsername = formData.elements.username.value;
     dataPassword = formData.elements.password.value;
-    if(localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword || "admin" == dataUsername && "admin" == dataPassword){
+    if (localStorage.getItem(dataUsername) != null && 
+        JSON.parse(localStorage.getItem(dataUsername))[0]["password"] == dataPassword || 
+        "admin" == dataUsername && "admin" == dataPassword) {
 
         localStorage.setItem("currentAccount", JSON.stringify(dataUsername));
         
         location.replace("galeria.html")
         
-    }else if (localStorage.getItem(dataUsername) != null && JSON.parse(localStorage.getItem(dataUsername))[0]["password"] != dataPassword) {
+    }else if (localStorage.getItem(dataUsername) != null && 
+    JSON.parse(localStorage.getItem(dataUsername))[0]["password"] != dataPassword) {
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "Palavra-passe incorreta."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         document.getElementsByClassName("homepageOperations")[0].style.bottom = "170px";
         $('.homepageOperations').fadeOut(7000);
-    }else {
+    } else {
         document.getElementsByClassName("homepageOperations")[0].innerHTML = "O nome de utilizador não existe. Registe-o primeiro."
         document.getElementsByClassName("homepageOperations")[0].style.display = "block"
         document.getElementsByClassName("homepageOperations")[0].style.bottom = "170px";

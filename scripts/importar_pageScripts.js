@@ -2,8 +2,7 @@
 
 "use strict";
 
-var utilizador = localStorage.getItem("currentAccount")
-.slice(1,localStorage.getItem("currentAccount").length -1);
+var utilizador = localStorage.getItem("currentAccount").slice(1,localStorage.getItem("currentAccount").length -1);
 
 $(document).ready(currentAccPlacer());
 var arrayImagensImportadas = []; 
@@ -107,7 +106,7 @@ function selectCuba() {
     if (localStorage.getItem("imagensImportadas" + utilizador) == null) {        
         arrayImagensImportadas = arrayImagensCuba;   
         
-    }else {        
+    } else {        
         arrayImagensImportadas = JSON.parse(localStorage.getItem("imagensImportadas" + utilizador));
 
         for (let imgSrc of arrayImagensCuba) {
@@ -120,7 +119,7 @@ function selectCuba() {
     if(localStorage.getItem("imagensFiltros" + utilizador) == null) {        
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objArray));
 
-    }else {
+    } else {
         var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));
         for (let element of objArray){
             objCheck.push(element);
@@ -168,7 +167,7 @@ function selectFranca() {
     if(localStorage.getItem("imagensFiltros" + utilizador) == null) {        
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objArray1));
 
-    }else {
+    } else {
         var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));
         for (let element of objArray1){
             objCheck.push(element);          
@@ -214,7 +213,7 @@ function selectSpike() {
     if(localStorage.getItem("imagensFiltros" + utilizador) == null) {        
         localStorage.setItem("imagensFiltros" + utilizador, JSON.stringify(objArray2));
 
-    }else {
+    } else {
         var objCheck = JSON.parse(localStorage.getItem("imagensFiltros" + utilizador));        
         for (let element of objArray2){
             objCheck.push(element);
@@ -247,8 +246,6 @@ function filterObj(src, filterBoolean){
     this.monumentos = filterBoolean[6];
 }
 
-
-
 function disableBackground() {
     $("#side-bar").addClass("disabled")
     $("#top_row_icons").addClass("disabled")
@@ -265,7 +262,7 @@ function enableBackground() {
 
 function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" ||
-    document.getElementsByClassName("dropup-content")[0].style.display == "") {
+        document.getElementsByClassName("dropup-content")[0].style.display == "") {
       $('.dropup-content').fadeIn(100);
     } else {
       $('.dropup-content').fadeOut(100);

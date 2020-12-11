@@ -102,7 +102,7 @@ function enableBackground() {
 
 function open_dropup() {
     if (document.getElementsByClassName("dropup-content")[0].style.display == "none" || 
-    document.getElementsByClassName("dropup-content")[0].style.display == "") {
+        document.getElementsByClassName("dropup-content")[0].style.display == "") {
       document.getElementsByClassName("dropup-content")[0].style.display = "block";
       $('.dropup-content').fadeIn(100);
     } else {
@@ -135,7 +135,7 @@ function seleciona_todos() {
         $("input[type=checkbox]").attr("disabled", false);
         var boxes = document.getElementsByClassName("checkbox");
         if (document.querySelectorAll('input[type=checkbox]:checked').length == 0 || 
-        document.querySelectorAll('input[type=checkbox]:checked').length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
+            document.querySelectorAll('input[type=checkbox]:checked').length < document.querySelectorAll('input[type=checkbox]:not(:checked)').length) {
             for (var x = 0; x < boxes.length; x++) {
                 var obj = boxes[x];
                     obj.checked = true;
