@@ -64,41 +64,15 @@ function showPopup() {
     $('.popup').fadeOut(10000);
 }
 
-function imagem_selecionada() {
-    
-    /* if (document.querySelectorAll('input[type=checkbox]:checked').length > 0) {
-        $("#right-top-right-bar button img").removeClass("disabled-image-button");
-        $("#href-album").removeClass("disabled");
-        $("#href-partilhar").removeClass("disabled");
-        document.getElementById("botao-eliminar").disabled = false;    
-        document.getElementById("botao-criar-galeria").disabled = false;
-        document.getElementById("botao-adicionar").disabled = false;
-        document.getElementById("href-album").style.color = "black";
-        document.getElementById("href-partilhar").href = "partilhar.html";
-        document.getElementById("href-album").href = "album.html";
-        
-    } else {
-        $("#right-top-right-bar button img").addClass("disabled-image-button");
-        $("#href-album").addClass("disabled");
-        $("#href-partilhar").addClass("disabled");
-        document.getElementById("botao-eliminar").disabled = true;    
-        document.getElementById("botao-criar-galeria").disabled = true;
-        document.getElementById("href-album").style.color = "rgb(204, 204, 204)";
-        document.getElementById("botao-adicionar").disabled = true;
-        document.getElementById("href-partilhar").disabled = true;
-        document.getElementById("href-partilhar").href = "";
-        document.getElementById("href-album").disabled = true;
-        document.getElementById("href-album").href = "";
-    } */
-}  
+ 
 
 function seleciona_todos() {
     
     var arrayImagensSelecionadas = document.querySelectorAll('input[type=checkbox]:checked');
 
     if ( $("input[type=checkbox]").attr("disabled")) {
-        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas"
-        document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar"
+        document.getElementById("botao-selecionar-todas-galeria").innerHTML = "Desselecionar Todas";
+        document.getElementById("botao-selecionar-galeria").innerHTML = "Cancelar";
         $("input[type=checkbox]").attr("disabled", false);
         var boxes = document.getElementsByClassName("checkbox");
         if (arrayImagensSelecionadas.length == 0 || 
@@ -208,17 +182,18 @@ function open_popup(popup) {
         document.getElementsByClassName("numero-albuns-eliminar")[0].innerHTML = "Tem a certeza que pretende eliminar a fotografia selecionada?"
     }
     document.getElementsByClassName("dimmer")[0].style.opacity="1"
-    if (popup = "popup-eliminar-fotos-geral") {
+    if (popup == "popup-eliminar-fotos-geral") {
         document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "block";
     } else {
         document.getElementById(popup).style.display = "block";
     }
+    document.getElementsByClassName("dimmer")[0].style.opacity="1"
     disableBackground();   
 }
 
 function close_popup(popup) {
     document.getElementsByClassName("dimmer")[0].style.opacity="0"
-    if (popup = "popup-eliminar-fotos-geral") {
+    if (popup == "popup-eliminar-fotos-geral") {
         document.getElementsByClassName("popup-eliminar-fotos-geral")[0].style.display = "none";
     } else {
         document.getElementById(popup).style.display = "none";
@@ -588,6 +563,7 @@ function aplica_filtros(funcao) {
 
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("div-filtros-aplicados").innerHTML = "Filtros aplicados:" + toPLaceInHtml;
+        document.getElementById("tabela").style.marginTop = "10px";
         var tabela = document.querySelector("#tabela tbody");
         tabela.innerHTML=" ";   
         var x = 0
@@ -626,6 +602,7 @@ function aplica_filtros(funcao) {
         $('.popupFiltrosAplicados').fadeOut(7000);
         document.getElementById("filtros-localizacao").style.display = "none";
     } else {
+        document.getElementById("tabela").style.marginTop = "0px";
         document.getElementById("remover-filtros").style.display = "none";
         var toPLaceInHtml = localStorage.getItem("filtrosSelecionados" + utilizador)
         document.getElementById("div-filtros-aplicados").innerHTML = ""
