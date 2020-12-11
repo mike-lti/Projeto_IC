@@ -2,13 +2,11 @@
 
 "use strict";
 var tabelaOrigin = document.querySelector("#tabela-cuba tbody");
-var utilizador = localStorage.getItem("currentAccount")
-.slice(1,localStorage.getItem("currentAccount").length -1);
+var utilizador = localStorage.getItem("currentAccount").slice(1,localStorage.getItem("currentAccount").length -1);
 
 $(document).ready(showNomeAlbum());
 $(document).ready(mostraCapaAlbunsWorkspace());
 $(document).ready(currentAccPlacer());
-//$(document).ready(aplica_filtros());
 
 $("#right-top-right-bar button img").addClass("disabled-image-button")
 document.getElementById("botao-eliminar").disabled = true;    

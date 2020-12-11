@@ -1,298 +1,291 @@
 /*Grupo:003, Nomes: Francisco Pimenta - 54973, Pedro Quintão - 54971, Miguel Duarte - 54941, Gonçalo Ferreira - 55166*/
 
-
-a{
-    text-decoration: none;
-    color: white;
+a {
+  text-decoration: none;
+  color: white;
 }
 
-b{
-    font-size: 170%;
+b {
+  font-size: 170%;
 }
 
 .disabled {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .container {
-    margin:auto; 
-    position:relative;
-    width: 1280px;
-    height: 720px; 
-    background-color: white;
+  margin: auto;
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  background-color: white;
 }
 
-
-.welcomeUserPage{    
-    margin: auto;
+.welcomeUserPage {
+  margin: auto;
 }
 
-.loginFormStyle{
-    max-width: 400px;
-    padding: 10px;
+.loginFormStyle {
+  max-width: 400px;
+  padding: 10px;
 }
 
-.loginFormStyle p{
-    text-align: left;
-    margin-left: 10px;
+.loginFormStyle p {
+  text-align: left;
+  margin-left: 10px;
 }
 
-.loginDimmer{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: small;
-    overflow: hidden;
-    display: none;
-    position: relative;
-    border-radius: 5px; 
-    top: 50%;
-    left: 50%; 
-    height: 250px;
-    width: 300px;
-    z-index: 9;
-    background-image: url("../images/background3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;   
-    transform: translate(-50%, -50%);
-    color: white;
+.loginDimmer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: small;
+  overflow: hidden;
+  display: none;
+  position: relative;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  height: 250px;
+  width: 300px;
+  z-index: 9;
+  background-image: url("../images/background3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
-
-.loginButton{
-    cursor: pointer;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: absolute;
-    font-size: large;
-    right: 25px;
-    background-color:rgb(4, 125, 154);
-    border-radius: 5px;
-    color: white;
-    top: 203px;
-    height: 40px;
-    width: 39%;
+.loginButton {
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: absolute;
+  font-size: large;
+  right: 25px;
+  background-color: rgb(4, 125, 154);
+  border-radius: 5px;
+  color: white;
+  top: 203px;
+  height: 40px;
+  width: 39%;
 }
 
-.loginCancelationButton{
-    cursor: pointer;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: absolute;
-    font-size: large;
-    left: 25px;
-    width: 38%;
-    background-color: lightgray;
-    border-radius: 5px; 
-    margin-top: 0px;
-    height: 40px;
+.loginCancelationButton {
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: absolute;
+  font-size: large;
+  left: 25px;
+  width: 38%;
+  background-color: lightgray;
+  border-radius: 5px;
+  margin-top: 0px;
+  height: 40px;
 }
 
-.registarFormStyle{
-    text-align: center;
-    height: 300px;
-    max-width: 400px;
-    padding: 10px;
+.registarFormStyle {
+  text-align: center;
+  height: 300px;
+  max-width: 400px;
+  padding: 10px;
 }
 
-.registarFormStyle p{
-    text-align: left;
-    margin-left: 10px;
+.registarFormStyle p {
+  text-align: left;
+  margin-left: 10px;
 }
 
-
-.homepageOperations{
-    display: none;
-    position: absolute;
-    padding: 2px;
-    margin: auto;
-    left: 370px;
-    bottom: 10px;
-    width: 40%;
-    height: 5%;
-    background-color:rgb(231, 84, 84);
-    z-index: 9;
-    border-radius: 5px;
+.homepageOperations {
+  display: none;
+  position: absolute;
+  padding: 2px;
+  margin: auto;
+  left: 370px;
+  bottom: 10px;
+  width: 40%;
+  height: 5%;
+  background-color: rgb(231, 84, 84);
+  z-index: 9;
+  border-radius: 5px;
 }
 
-.homepageOperations, p{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 110%;
-    padding-left: 10px;
-    padding-bottom: 10px;
+.homepageOperations,
+p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-align: center;
+  font-size: 110%;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
-.registarDimmer{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: small;  
-    overflow: hidden;
-    display: none;
-    position: absolute;
-    border-radius: 5px;
-    top: 50%;
-    left: 50%; 
-    z-index: 9;
-    background-image: url("../images/background3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;    
-    text-align: center;   
-    transform: translate(-50%, -50%);
-    height: 452px;
-    color: white;
+.registarDimmer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: small;
+  overflow: hidden;
+  display: none;
+  position: absolute;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  z-index: 9;
+  background-image: url("../images/background3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  height: 452px;
+  color: white;
 }
 
-
-
-.registarCancelationButton{
-    position: absolute;
-    cursor: pointer;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: large;
-    left: 30px;
-    width: 40%;
-    background-color: lightgray;
-    border-radius: 5px;
-    height: 40px;
-    margin-top: 73px;
+.registarCancelationButton {
+  position: absolute;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: large;
+  left: 30px;
+  width: 40%;
+  background-color: lightgray;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 73px;
 }
 
-
-.registerButton{
-    position: absolute;
-    cursor: pointer;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: large;
-    right: 30px;
-    width: 40%;
-    background-color: rgb(4, 125, 154);
-    color: white;
-    border-radius: 5px;
-    height: 40px;
-    margin-top: 73px;
+.registerButton {
+  position: absolute;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: large;
+  right: 30px;
+  width: 40%;
+  background-color: rgb(4, 125, 154);
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 73px;
 }
 
-.backgroundPopups{
-    position: fixed;
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.589);
-    pointer-events: none;
-    z-index: 8;
-    opacity: 0;
+.backgroundPopups {
+  position: fixed;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.589);
+  pointer-events: none;
+  z-index: 8;
+  opacity: 0;
 }
 
-
-.imageContainer{
-    text-align: center;
-    margin:auto;
-    width: 35%;
+.imageContainer {
+  text-align: center;
+  margin: auto;
+  width: 35%;
 }
 
-#mementoLogo{
-    left: 300px;
-    margin-top: 50px;
-    position: absolute;
+#mementoLogo {
+  left: 300px;
+  margin-top: 50px;
+  position: absolute;
 }
 
-.closeButton{
-    font-size: 30px;
-    width: 7%;
-    cursor: pointer;
-    display: inline-block;
-    position: absolute;
-    right: 4%;
-    top: 2%;
-
+.closeButton {
+  font-size: 30px;
+  width: 7%;
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  right: 4%;
+  top: 2%;
 }
 
-.closeButtonRegistar{
-    font-size: 30px;
-    cursor: pointer;
-    display: inline-block;
-    position: absolute;
-    right: 2%;
-    top: 2%;
-
+.closeButtonRegistar {
+  font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  right: 2%;
+  top: 2%;
 }
 
-
-.loginHandler{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    justify-content: center;
-    display: block;
-    cursor: pointer;
-    margin: auto;
-    margin-top: 9%;
-    margin-bottom: 5%;
-    padding: 10px;
-    width: 96%;
-    height: 5%;
-    text-align: center;
-    border: 2px;
-    border-style: rgb(4, 125, 154) solid;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 2em;
-    position: absolute;
-    background-color: rgb(4, 125, 154);
-    top: 460px;
-    left: 15px;
-    color: white;
-    
+.loginHandler {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  justify-content: center;
+  display: block;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 9%;
+  margin-bottom: 5%;
+  padding: 10px;
+  width: 96%;
+  height: 5%;
+  text-align: center;
+  border: 2px;
+  border-style: rgb(4, 125, 154) solid;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 2em;
+  position: absolute;
+  background-color: rgb(4, 125, 154);
+  top: 460px;
+  left: 15px;
+  color: white;
 }
 
-.loginLink{
-    text-decoration: none;
-    font-size: 80%;
-    color: black;
+.loginLink {
+  text-decoration: none;
+  font-size: 80%;
+  color: black;
 }
 
-.registarHandler{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    justify-content: center;
-    position: absolute;
-    top: 580px;
-    left: 15px;
-    display: flex;
-    cursor: pointer;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    padding: 10px;
-    width: 96%;
-    height: 5%;
-    text-align: center;
-    border: 2px;
-    border-style: lightgray solid;
-    border-radius: 20px;
-    background-color:lightgray;
-    font-weight: bold;
-    font-size: 2em;
+.registarHandler {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  justify-content: center;
+  position: absolute;
+  top: 580px;
+  left: 15px;
+  display: flex;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 10px;
+  width: 96%;
+  height: 5%;
+  text-align: center;
+  border: 2px;
+  border-style: lightgray solid;
+  border-radius: 20px;
+  background-color: lightgray;
+  font-weight: bold;
+  font-size: 2em;
 }
 
 #mensagem-abertura {
-    position: absolute;
-    top: 370px;
-    right: 420px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: large;
-    text-align: center;
-    color: rgb(4, 125, 154);
+  position: absolute;
+  top: 370px;
+  right: 420px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: large;
+  text-align: center;
+  color: rgb(4, 125, 154);
 }
 
 #letras-memento {
-    text-align: right;
-    position: absolute;
-    top: 170px;
-    right: 300px;
+  text-align: right;
+  position: absolute;
+  top: 170px;
+  right: 300px;
 }
 
-
-#showPassButton{
-    position: absolute;
-    top: 69%;
-    right: 4%;
-    width: 15px;
-    height: 15px;
-
+#showPassButton {
+  position: absolute;
+  top: 69%;
+  right: 4%;
+  width: 15px;
+  height: 15px;
 }
-
-
-
-
