@@ -796,7 +796,6 @@ nav a {
 .voltar {
   display: none;
   position: absolute;
-  position: fixed;
   right: 40px;
   background-color: rgb(4, 125, 154);
   color: white;
